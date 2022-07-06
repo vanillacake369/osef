@@ -1,0 +1,244 @@
+/* Global */
+
+:root {
+    /* color */
+    --color-white: #ffffff;
+    --color-light-white: #eeeeee;
+    --color-dark-white: #bdbdbd;
+    --color-pink: #fe918d;
+    --color-dark-pink: #ff6863;
+    --color-dark-grey: #4d4d4d;
+    --color-grey: #616161;
+    --color-light-grey: #7c7979;
+    --color-blue: #73aace;
+    --color-yellow: #fff7d1;
+    --color-orange: #feb546;
+    --color-black: #000000;
+    --color-navbar: #171c22;
+    --color-light-navbar: #272e35;
+    --color-light-navbar2: #325777;
+
+    /* Font size */
+    --font-large: 48px;
+    --font-medium: 24px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+
+    /* Font weight */
+    --weight-bold: 700;
+    --weight-semi-bold: 600;
+    --weight-regular: 400;
+    --weight-thin: 100;
+
+    /* Size */
+    --size-border-radius: 4px;
+
+    /* Animation */
+    --animation-duration: 300ms;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+
+button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    font-size: var(--font-large);
+    font-weight: var(--weight-bold);
+    color: var(--color-black);
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-black);
+    margin: 8px 0;
+}
+
+h3 {
+    font-size: var(--font-regular);
+    font-weight: var(--font-regular);
+    color: var(--color-black);
+    margin: 8px 0;
+}
+
+p {
+    font-size: var(--font-regular);
+    font-weight: var(--font-regular);
+    color: var(--color-black);
+    margin: 4px 0;
+}
+
+.section {
+    padding: 50px;
+    text-align: center;
+    margin: auto;
+}
+
+.section_container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* navbar */
+#navbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px 0 20px;
+}
+
+.navbar_logo {
+    font-size: var(--font-medium);
+    color: var(--color-black);
+    font-family: 'Gugi', cursive;
+    padding: 0 16px 0 16px;
+}
+
+.navbar_list li {
+    list-style-type: none;
+    float: left;
+    padding: 0px 20px 0px 20px;
+    font-size: var(--font-regular), var(--weight-thin);
+}
+
+.navbar_toggle_btn {
+    position: absolute;
+    top: 16px;
+    right: 32px;
+    font-size: var(--font-medium);
+    display: none;
+}
+
+/* section img */
+.main_img {
+    width: 100%;
+    height: 500px;
+    background: url(img/벼.jpg) center/cover no-repeat;
+    height: 500px;
+}
+
+/* section home */
+#home {
+    background: url(img/보트.jpg) center/cover no-repeat;
+    height: 400px;
+}
+
+.home_container {
+    color: var(--color-white);
+    text-align: center;
+    padding-top: 140px;
+}
+
+.home_title, 
+.home_description {
+    color: var(--color-white);
+}
+
+.home_img {
+    width: 100%;
+    height: 500px;
+}
+
+/* section about */
+.about_img {
+    padding-top: 50px;
+
+    width: 50%;
+}
+
+.explain{ 
+    opacity: 0; 
+} 
+
+.about_imgs:hover .explain{ 
+    opacity: 1;
+}
+
+/* section service */
+#service {
+    width: 100%;
+    height: 500px;
+}
+
+.section_service {
+    margin: auto;
+}
+
+.service_service{
+    float: left;
+    width: 33%;
+    padding-top: 50px;
+}
+
+.service_icon {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    font-size: 70px;
+    margin: auto;
+    margin-bottom: 20px;
+    color: var(--color-navbar);
+    border: 1px solid var(--color-navbar);
+    border-radius: 50%;
+    border-width: thick;
+}
+
+.service_h3 {
+    margin-bottom: 40px;
+}
+
+/* section location */
+
+/* section contact */
+#contact {
+    background: url(img/벼_수정.jpg) center/cover no-repeat;
+    height: 400px;
+}
+
+.contact_title {
+    color: var(--color-white);
+}
+
+/* media screen */
+@media screen and (max-width: 760px) {
+    .navbar_toggle_btn {
+        display: block;
+    }
+
+    .navbar_list {
+        display: none;
+    }
+
+    .main_img img {
+        width: 100%;
+        height: 300px;
+    }
+}
