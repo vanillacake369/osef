@@ -210,22 +210,59 @@ p {
 #home {
     background: url(img/보트.jpg) center/cover no-repeat;
     height: 400px;
+    position: relative;
 }
 
 .home_container {
     color: var(--color-white);
     text-align: center;
-    padding-top: 140px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .home_title,
 .home_description {
     color: var(--color-white);
+    margin: 0;
 }
 
 .home_img {
     width: 100%;
     height: 500px;
+}
+
+.intro_navbar {
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    transition: all 0.25s;
+}
+
+.intro_navbar_wrap{
+    display: flex;
+    justify-content: center;
+}
+
+.intro_navbar_list li {
+    float: left;
+    color: var(--color-dark-white);
+    padding: 0 40px 0 40px;
+    cursor: pointer;
+}
+
+.intro_navbar_up {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    background-color: var(--color-light-white);
+    border: 1px solid var(--color-dark-white);
+}
+
+.intro_navbar_up li {
+    color: var(--color-grey);
+    cursor: pointer;
 }
 
 /* section about */
