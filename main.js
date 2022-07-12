@@ -6,15 +6,46 @@ const navbarHeight = navbar.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
     // console.log(window.scrollY);
     // console.log(`navbarHeight: ${navbarHeight}`);
-    if(window.scrollY > 410) {
+    if(window.scrollY > 409) {
         navbar.classList.add('intro_navbar_up');
     } else {
         navbar.classList.remove('intro_navbar_up')
     }
 })
 
+// introduce navbar up  color - 스크롤하면 navbar  color 나옴
+const navbarColor1 = document.querySelector('.intro_navbar_li1');
+const navbarColor2 = document.querySelector('.intro_navbar_li2');
+const navbarColor3 = document.querySelector('.intro_navbar_li3');
+const navbarColor4 = document.querySelector('.intro_navbar_li4');
+document.addEventListener('scroll', () => {
+    if (1150 > window.scrollY && window.scrollY > 409) {
+        navbarColor1.classList.add('intro_navbar_li_color');
+    } else {
+            navbarColor1.classList.remove('intro_navbar_li_color');
+    }
+
+    if (1850 > window.scrollY &&window.scrollY > 1150) {
+        navbarColor2.classList.add('intro_navbar_li_color');
+    } else {
+        navbarColor2.classList.remove('intro_navbar_li_color');
+    }  
+
+    if (2600 > window.scrollY &&window.scrollY > 1850) {
+        navbarColor3.classList.add('intro_navbar_li_color');
+    } else {
+        navbarColor3.classList.remove('intro_navbar_li_color');
+    }  
+
+    if (window.scrollY > 2600) {
+        navbarColor4.classList.add('intro_navbar_li_color');
+    } else {
+        navbarColor4.classList.remove('intro_navbar_li_color');
+    }  
+})
+
 // introduce navbar tapping - navbar 클릭하면 이동
-const navbarMenu = document.querySelector('.intro_navbar_list');
+const navbarMenu = document.querySelector('.intro_navbar_wrap');
 navbarMenu.addEventListener('click', (event) => {
     const target = event.target;
     const link = target.dataset.link;
