@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `file` (
   `s_id` int(11) unsigned DEFAULT NULL COMMENT '정보판매 id',
   `link` varchar(45) DEFAULT NULL COMMENT '파일주소',
   PRIMARY KEY (`file_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='파일(장비대여 이미지, 정보판매 pdf)';
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COMMENT='파일(장비대여 이미지, 정보판매 pdf)';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
@@ -49,20 +49,20 @@ CREATE TABLE IF NOT EXISTS `info_buy_list` (
   `sell_info_id` int(11) unsigned NOT NULL,
   `member_id` varchar(16) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='정보 구매 테이블';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='정보 구매 테이블';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 farm.member 구조 내보내기
 CREATE TABLE IF NOT EXISTS `member` (
   `id` varchar(16) NOT NULL COMMENT '아이디',
-  `password` varchar(16) NOT NULL COMMENT '비밀번호',
+  `password` varchar(64) NOT NULL COMMENT '비밀번호',
   `phone` char(11) DEFAULT NULL COMMENT '전화번호',
   `name` varchar(16) NOT NULL COMMENT '이름',
   `email` varchar(64) DEFAULT NULL COMMENT '이메일',
   `address` varchar(128) DEFAULT NULL,
-  `latest` date NOT NULL COMMENT '가장최근로그인(salt)',
-  `datetime` date NOT NULL COMMENT 'latest 직전 로그인(salt)',
+  `latest` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '가장최근로그인(salt)',
+  `datetime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'latest 직전 로그인(salt)',
   `login_count` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '로그인횟수(salt)',
   `IP` varchar(16) NOT NULL DEFAULT '' COMMENT '접속IP(salt)',
   PRIMARY KEY (`id`)
@@ -101,23 +101,25 @@ CREATE TABLE IF NOT EXISTS `product` (
   `make_year` date NOT NULL COMMENT '제조년식',
   `model` varchar(32) NOT NULL COMMENT '기종 및 형식명',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='장비대여';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COMMENT='장비대여';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 farm.sell_info 구조 내보내기
 CREATE TABLE IF NOT EXISTS `sell_info` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '판매 id',
+  `title` varchar(128) DEFAULT NULL,
   `price` varchar(64) NOT NULL,
   `detail` mediumtext NOT NULL,
   `member_id` varchar(16) NOT NULL,
+  `member_name` varchar(16) DEFAULT NULL,
   `member_phone` char(11) DEFAULT NULL,
   `member_email` varchar(64) DEFAULT NULL,
-  `upload` date NOT NULL COMMENT '등록일',
+  `upload` date NOT NULL DEFAULT curdate() COMMENT '등록일',
   `delate` date DEFAULT NULL COMMENT '삭제일',
   `sellnum` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '판매수',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='정보 판매';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='정보 판매';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
