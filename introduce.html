@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?after">
+    <script src="main.js" defer></script>
     <title>억새풀</title>
 </head>
 
@@ -22,13 +23,13 @@
         </div>
         <ul class="navbar_list">
             <li><a href="rent.html">임대신청</a></li>
-            <li>자료실</li>
+            <li><a href="#">자료실</a></li>
             <li><a href="introduce.html">회사소개</a></li>
             <li><a href="lend.html">기계등록</a></li>
         </ul>
         <ul class="navbar_list_login">
-            <li>로그인</li>
-            <li>마이페이지</li>
+            <li><a href="mypage.html">마이페이지</a></li>
+            <li><a href="login.html">로그인</a></li>
         </ul>
         <button class="navbar_toggle_btn">
             <i class="fas fa-bars"></i>
@@ -40,6 +41,16 @@
         <div class="home_container">
             <h1 class="home_title">About</h1>
             <p class="home_description">농업인을 위한, 미래를 위한</p>
+        </div>
+        <div class="intro_navbar">
+            <div class="intro_navbar_wrap">
+                <ul class="intro_navbar_ul">
+                    <li class="intro_navbar_li1" data-link="#about">인사말</li>
+                    <li class="intro_navbar_li2" data-link="#service">개발 & 운영</li>
+                    <li class="intro_navbar_li3" data-link="#location">회사 위치</li>
+                    <li class="intro_navbar_li4" data-link="#contact">Contact</li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -62,6 +73,7 @@
     <section id="service" class="section">
         <div class="section_container">
             <h1>운영 중인 서비스</h1>
+            <h2>임대 - 대여 - 교환</h2>
             <div class="section_service">
                 <div class="service_service">
                     <div class="service_icon" style="color: #5fa5d4; border: 1px solid #5fa5d4;">
@@ -92,7 +104,7 @@
             <h3 class="location_h3">상세 주소 : 경상북도 안동시 경동로 1375 (송천동) 공대 1호관 413호</h3>
 
             <!-- 지도를 표시할 div 입니다 -->
-            <div id="map" style="width:100%;height:500px;"></div>
+            <div id="map" style="width:100%;height:500px;z-index:1;position:relative;"></div>
 
             <script type="text/javascript"
                 src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26379676c982d4d975ccee24531321d2&libraries=services"></script>
@@ -153,6 +165,11 @@
             <p class="footer_text_p">COPYRIGHT (C)2022 억새풀. ALL RIGHTS RESERVED.</p>
         </div>
     </footer>
+
+    <!-- arrow up button -->
+    <button class="arrow">
+        <div class="btn_arrow" data-link="#about"><i class="fas fa-carrot"><p>top</p></i></div>
+    </button>
 </body>
 
 </html>

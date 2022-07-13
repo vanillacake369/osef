@@ -61,6 +61,10 @@ CREATE TABLE IF NOT EXISTS `member` (
   `name` varchar(16) NOT NULL COMMENT '이름',
   `email` varchar(64) DEFAULT NULL COMMENT '이메일',
   `address` varchar(128) DEFAULT NULL,
+  `latest` date NOT NULL COMMENT '가장최근로그인(salt)',
+  `datetime` date NOT NULL COMMENT 'latest 직전 로그인(salt)',
+  `login_count` int(1) NOT NULL DEFAULT 0 COMMENT '로그인횟수(salt)',
+  `IP` varchar(16) NOT NULL DEFAULT '' COMMENT '접속IP(salt)',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='멤버';
 
@@ -80,8 +84,8 @@ CREATE TABLE IF NOT EXISTS `notification` (
 CREATE TABLE IF NOT EXISTS `product` (
   `id` int(1) unsigned NOT NULL AUTO_INCREMENT COMMENT '대여글 id',
   `category` enum('tractor','combine','rice transplanter','rotary','livestock machinery','forklift','etc') NOT NULL DEFAULT 'etc' COMMENT '기기종류',
-  `start_date` date NOT NULL COMMENT '대여시작일',
   `end_date` date NOT NULL COMMENT '대여종료일',
+  `start_date` date NOT NULL COMMENT '대여시작일',
   `priority` tinyint(1) NOT NULL DEFAULT 1 COMMENT '우선순위',
   `detail` mediumtext NOT NULL COMMENT '내용',
   `member_id` varchar(16) NOT NULL COMMENT '등록자 id',
