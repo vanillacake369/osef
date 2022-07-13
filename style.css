@@ -126,7 +126,7 @@ p {
     padding: 10px 60px 10px 60px;
 }
 
-#navbar a:hover {
+.navbar_list a:hover {
     color: var(--color-dark-white);
 }
 
@@ -138,13 +138,6 @@ p {
 }
 
 .navbar_list li {
-    list-style-type: none;
-    float: left;
-    padding: 0px 20px 0px 20px;
-    font-size: var(--font-regular), var(--weight-thin);
-}
-
-.navbar_list_login li {
     list-style-type: none;
     float: left;
     padding: 0px 20px 0px 20px;
