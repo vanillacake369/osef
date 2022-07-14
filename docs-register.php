@@ -1,5 +1,5 @@
-<?php    
-
+<?php   
+if(isset($_POST['submit'])){
     $fileDir = $_FILES['pdfFile']['tmp_name'];
     $fileTypeExt = explode("/",$_FILES['pdfFile']['type']);
 
@@ -87,11 +87,11 @@
     $filename .= $uploadId.".".$splitFilename[count($splitFilename)-1];
         
 
-    $resFile = "./uploadImg/".$filename;        
+    $resFile = "./uploadFile/".$filename;        
     $imageUpload = move_uploaded_file($fileDir, $resFile);
                 
     if($imageUpload == true){
-        echo "파일이 정상적으로 업로드 되었습니다. <br>";
+        echo "<script> alert(\"파일이 정상적으로 업로드 되었습니다.\") </script>";
     }else{
         die ("파일 업로드에 실패하였습니다.");
     }  
@@ -104,5 +104,9 @@
     $conn->query($sql);
 
     $conn->close();
-    
+}
+include_once("header.html");
+include_once("docs-register.html");
+include_once("footer.html");
+
 ?>
