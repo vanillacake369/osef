@@ -3,15 +3,16 @@
 <header>
     <meta charset="UTF-8">
 </header>
+
 <body>
-    <form name = "productForm" method="post" action="product-register.php" enctype="multipart/form-data">
+    <form name="productForm" method="post" action="product-register.php" enctype="multipart/form-data">
         기종 및 형식명 <br>
         <input type="text" name="model" /> <br>
 
         제조사 <br>
         <input type="text" name="maker" /> <br>
 
-        농기구 종류 
+        농기구 종류
         <select name="category">
             <option value="etc">기타</option>
             <option value="tractor">트랙터</option>
@@ -32,8 +33,9 @@
         <input type="text" name="price" /> <br>
 
         사진<br>
-        <input type="file" multiple name="imgFile" /> <br>
+        <input type="file" multiple name="imgFile[]" /> <br>
         <input type="submit" value="업로드" />
     </form>
 </body>
+
 </html>
