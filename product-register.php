@@ -104,7 +104,7 @@ function upload(){
         $filename .= $uploadId.".".$splitFilename[count($splitFilename)-1];
         
 
-        $resFile = "./uploadImg/".$filename;        
+        $resFile = "./uploadFile/".$filename;        
         $imageUpload = move_uploaded_file($fileDir, $resFile);
 
         $imgArray = array($i=>$resFile);
