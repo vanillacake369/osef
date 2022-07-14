@@ -1,5 +1,5 @@
 <?php    
-
+function upload(){
     $fileDir = $_FILES['pdfFile']['tmp_name'];
     $fileTypeExt = explode("/",$_FILES['pdfFile']['type']);
 
@@ -104,5 +104,11 @@
     $conn->query($sql);
 
     $conn->close();
-    
+}
+include_once("header.html");
+include_once("docs-register.html");
+include_once("footer.html");
+if(isset($_POST['submit'])){
+    upload();
+}
 ?>

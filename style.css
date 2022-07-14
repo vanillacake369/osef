@@ -536,3 +536,44 @@ p {
         height: 300px;
     }
 }
+input.docsRegister{
+    justify-content: center;
+    width: 80%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-color: #000000;
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 10px;
+}
+textarea.docsRegister{
+    position: center;
+    width: 80%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-color: #000000;
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 10px;
+}
+input.docsSubmit{
+    float:right;
+    position: center;
+    width: 100px;
+    box-sizing: border-box;
+    border-color: #000000;
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 10px;
+}
+input.docsPrice{
+    position: center;
+    width: 60%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-color: #000000;
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 10px;
+}
+div.docsRegiForm{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10%;
+}

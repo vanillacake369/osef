@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
+        <title>억새풀</title>
+    </head>
+    
 <header>
     <meta charset="UTF-8">
+    
 </header>
 <body>
-    
-    <form name = "docsForm" method="post" action="docs-register.php" enctype="multipart/form-data">
-        학술지명 <br>
-        <input type="text" name="title" /> <br>        
+    <hr>
+    <div class="docsRegiForm">
+        <h1>기술문서 등록</h1>
+        <form name = "docsForm" method="post" action="docs-register.php" enctype="multipart/form-data" >        
+            <h2>기술문서명</h2> <br>
+            <input type="text" name="title" class="docsRegister" /> <br>        
 
-        상세내용<br>
-        <textarea row="10" cols="30" name="detail"></textarea> <br>
+            <h2>상세내용</h2><br>
+            <textarea row="10" cols="30" name="detail" class="docsRegister"></textarea> <br>
 
-        임대가격 <br>
-        <input type="text" name="price" /> <br>
+            <h2>판매가격</h2> <br>
+            <input type="text" name="price" class="docsPrice" />원 <br>
 
-        파일(txt, ppt, pptx, pdf파일 외에는 사용이 불가합니다.)<br>
-        <input type="file" name="pdfFile" /> <br>
-        <input type="submit" value="업로드" />
-    </form>
+            <h2>파일(txt, ppt, pptx, pdf파일 외에는 사용이 불가합니다.)</h2><br>
+            <input type="file" name="pdfFile" class="docsRegister"/> <br>
+            <input type="submit" value="업로드" class="docsSubmit"/>
+        </form>
+    </div>
 </body>
 </html>

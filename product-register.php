@@ -1,5 +1,5 @@
 <?php
-
+function upload(){
     //---------------------------------img file conform--------
 
     $fileNumCount = count($_FILES['imgFile']['name']);
@@ -128,5 +128,11 @@
     }
 
     $conn->close();
-    
+}
+include_once("header.html");
+include_once("product-register.html");
+include_once("footer.html");
+if(isset($_POST['submit'])){
+    upload();
+}
 ?>
