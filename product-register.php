@@ -1,5 +1,5 @@
 <?php
-
+function upload(){
     //---------------------------------img file conform--------
 
     $fileNumCount = count($_FILES['imgFile']['name']);
@@ -104,7 +104,7 @@
         $filename .= $uploadId.".".$splitFilename[count($splitFilename)-1];
         
 
-        $resFile = "./uploadImg/".$filename;        
+        $resFile = "./uploadFile/".$filename;        
         $imageUpload = move_uploaded_file($fileDir, $resFile);
 
         $imgArray = array($i=>$resFile);
@@ -128,5 +128,11 @@
     }
 
     $conn->close();
-    
+}
+include_once("header.html");
+include_once("product-register.html");
+include_once("footer.html");
+if(isset($_POST['submit'])){
+    upload();
+}
 ?>
