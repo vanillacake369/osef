@@ -38,73 +38,195 @@
     <!-- section lend_Q -->
     <section id="lend_Q">
         <div id="lend_Q1">
-            <h1 class="lend_Q_Q">어떤 종류의 기계인가요?</h1>
+            <h1 class="lend_Q_Q">어떤 종류의 기계,장비 인가요?</h1>
         </div>
         <div id="lend_Q2" class="hidden">
-            <h1 class="lend_Q_Q">어쩔티비 다음 질문</h1>
+            <h1 class="lend_Q_Q">기계, 장비의 제조사를 입력해 주세요!</h1>
+        </div>
+        <div id="lend_Q3" class="hidden">
+            <h1 class="lend_Q_Q">임대할 주소를 입력해 주세요!</h1>
+        </div>
+        <div id="lend_Q4" class="hidden">
+            <h1 class="lend_Q_Q">임대할 기간을 설정해 주세요!</h1>
+        </div>
+        <div id="lend_Q5" class="hidden">
+            <h1 class="lend_Q_Q">기계, 장비의 사진을 업로드 해주세요!</h1>
+        </div>
+        <div id="lend_Q6" class="hidden">
+            <h1 class="lend_Q_Q">상세 내용을 입력해 주세요!</h1>
+        </div>
+        <div id="lend_Q7" class="hidden">
+            <h1 class="lend_Q_Q">임대 비용을 입력해 주세요!</h1>
         </div>
     </section>
 
     <!-- section lend_Answer -->
     <section id="lend_answer" class="section">
-        <form id="lend_form">
-            <div id="lend_form_A1">
-                <!-- <input type="text" class="lend_input" placeholder="text"/> -->
+        <div id="lend_form" class="section_container">
+
+            <!-- lend_form_A1 -->
+            <form id="lend_form_A1">
                 <div role="radiogroup">
-                    <div>
-                        <input type="radio" id="Choice1" name="model" value="email">
-                        <label for="Choice1" class="lend_answer_list">
-                            <p class="lend_answer_list_p">트렉터</p>
-                        </label>
-                        <input type="radio" id="Choice2" name="model" value="combine">
-                        <label for="Choice2" class="lend_answer_list">
-                            <p class="lend_answer_list_p">콤바인</p>
-                        </label>
-                        <input type="radio" id="Choice3" name="model" value="rice transplanter">
-                        <label for="Choice3" class="lend_answer_list">
-                            <p class="lend_answer_list_p">이양기</p>
-                        </label>
-                        <input type="radio" id="Choice4" name="model" value="rotary">
-                        <label for="Choice4" class="lend_answer_list">
-                            <p class="lend_answer_list_p">로터리</p>
-                        </label>
-                        <input type="radio" id="Choice5" name="model" value="livestock machinery">
-                        <label for="Choice5" class="lend_answer_list">
-                            <p class="lend_answer_list_p">축산기계</p>
-                        </label>
-                        <input type="radio" id="Choice6" name="model" value="forklift">
-                        <label for="Choice6" class="lend_answer_list">
-                            <p class="lend_answer_list_p">포크레인</p>
-                        </label>
-                        <input type="radio" id="Choice7" name="model" value="etc">
-                        <label for="Choice7" class="lend_answer_list">
-                            <p class="lend_answer_list_p">기타</p>
-                        </label>
-                    
-                    </div>
+                    <input type="radio" id="Choice1" name="category" value="tractor">
+                    <label for="Choice1" class="lend_answer_list">
+                        <p class="lend_answer_list_p">트렉터</p>
+                    </label>
+                    <input type="radio" id="Choice2" name="category" value="combine">
+                    <label for="Choice2" class="lend_answer_list">
+                        <p class="lend_answer_list_p">콤바인</p>
+                    </label>
+                    <input type="radio" id="Choice3" name="category" value="rice transplanter">
+                    <label for="Choice3" class="lend_answer_list">
+                        <p class="lend_answer_list_p">이양기</p>
+                    </label>
+                    <input type="radio" id="Choice4" name="category" value="rotary">
+                    <label for="Choice4" class="lend_answer_list">
+                        <p class="lend_answer_list_p">로터리</p>
+                    </label>
+                    <input type="radio" id="Choice5" name="category" value="livestock machinery">
+                    <label for="Choice5" class="lend_answer_list">
+                        <p class="lend_answer_list_p">축산기계</p>
+                    </label>
+                    <input type="radio" id="Choice6" name="category" value="forklift">
+                    <label for="Choice6" class="lend_answer_list">
+                        <p class="lend_answer_list_p">포크레인</p>
+                    </label>
+                    <input type="radio" id="Choice7" name="category" value="etc">
+                    <label for="Choice7" class="lend_answer_list">
+                        <p class="lend_answer_list_p">기타</p>
+                    </label>
                 </div>
-            </div>
-            <div id="lend_form_A2" class="hidden">
-                <div>
-                    <div class="lend_answer_list">
+                <div class="lend_answer_bottom">
+                    <div class="lend_answer_back">
                         <button type="button">
-                            <p class="lend_answer_list_p">어쩔티비비ㅣ비비</p>
+                            <p>뒤로</p>
                         </button>
                     </div>
+                    <div id="lend_next_btn" class="lend_answer_next hidden">
+                        <input type="submit" value="다음" class="lend_answer_next_p">
+                    </div>
                 </div>
-            </div>
-            <div class="lend_answer_bottom">
-                <div class="lend_answer_back">
-                    <button type="button">
-                        <p>뒤로</p>
-                    </button>
+            </form>
+
+            <!-- lend_form_A2 -->
+            <form id="lend_form_A2" class="hidden">
+                <div class="section_container">
+                    <div class="input_row" style="width: 75%;">
+                        <input type="text" name="maker" class="input_text" placeholder="제조사를 입력해 주세요">
+                    </div>
                 </div>
-                <div class="lend_answer_next">
-                    <input type="submit" value="다음" class="lend_answer_next_p">
-                    </input>
+                <div class="lend_answer_bottom">
+                    <div class="lend_answer_back">
+                        <button type="button">
+                            <p>뒤로</p>
+                        </button>
+                    </div>
+                    <div id="lend_next_btn" class="lend_answer_next">
+                        <input type="submit" value="다음" class="lend_answer_next_p">
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+
+            <!-- lend_form_A3 -->
+            <form id="lend_form_A3" class="hidden">
+                <div class="section_container">
+                    <div class="input_row" style="width: 75%;">
+                        <input type="text" name="adress" class="input_text" placeholder="주소를 입력해 주세요">
+                    </div>
+                </div>
+                <div class="lend_answer_bottom">
+                    <div class="lend_answer_back">
+                        <button type="button">
+                            <p>뒤로</p>
+                        </button>
+                    </div>
+                    <div id="lend_next_btn" class="lend_answer_next">
+                        <input type="submit" value="다음" class="lend_answer_next_p">
+                    </div>
+                </div>
+            </form>
+            
+            <!-- lend_form_A4 -->
+            <form id="lend_form_A4" class="hidden">
+                <div class="section_container">
+                    <div class="A4_date">
+                        <div class="A4_date_box" id="lend_form_A4_start">
+                            <label><p class="date_p">시작일</p></label>
+                            <input type="date" id="date1" name="startDate" class="date">
+                        </div>
+                        <div class="A4_date_box" id="lend_form_A4_end">
+                            <label><p class="date_p">종료일</p></label>
+                            <input type="date" id="date2" name="endDate" class="date">
+                        </div>
+                    </div>
+                </div>
+                <div class="lend_answer_bottom">
+                    <div class="lend_answer_back">
+                        <button type="button">
+                            <p>뒤로</p>
+                        </button>
+                    </div>
+                    <div id="lend_next_btn" class="lend_answer_next">
+                        <input type="submit" value="다음" class="lend_answer_next_p">
+                    </div>
+                </div>
+            </form>
+            
+            <!-- lend_form_A5 -->
+            <form id="lend_form_A5" class="hidden">
+                <div class="section_container">
+                    <div class="input_row" style="width: 75%;">
+                    </div>
+                </div>
+                <div class="lend_answer_bottom">
+                    <div class="lend_answer_back">
+                        <button type="button">
+                            <p>뒤로</p>
+                        </button>
+                    </div>
+                    <div id="lend_next_btn" class="lend_answer_next">
+                        <input type="submit" value="다음" class="lend_answer_next_p">
+                    </div>
+                </div>
+            </form>
+            
+            <!-- lend_form_A6 -->
+            <form id="lend_form_A6" class="hidden">
+                <div class="section_container">
+                    <div class="input_row" style="width: 75%;">
+                    </div>
+                </div>
+                <div class="lend_answer_bottom">
+                    <div class="lend_answer_back">
+                        <button type="button">
+                            <p>뒤로</p>
+                        </button>
+                    </div>
+                    <div id="lend_next_btn" class="lend_answer_next">
+                        <input type="submit" value="다음" class="lend_answer_next_p">
+                    </div>
+                </div>
+            </form>
+            
+            <!-- lend_form_A7 -->
+            <form id="lend_form_A7" class="hidden">
+                <div class="section_container">
+                    <div class="input_row" style="width: 75%;">
+                    </div>
+                </div>
+                <div class="lend_answer_bottom">
+                    <div class="lend_answer_back">
+                        <button type="button">
+                            <p>뒤로</p>
+                        </button>
+                    </div>
+                    <div id="lend_next_btn" class="lend_answer_next">
+                        <input type="submit" value="다음" class="lend_answer_next_p">
+                    </div>
+                </div>
+            </form>
+            
+        </div>
     </section>
 
     <!-- footer -->
