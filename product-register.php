@@ -1,33 +1,4 @@
 <?php
-    //---------------------------------get uploader info--------
-    session_start();
-    //$id = $_SESSION["id"];
-    $id = "admin";
-
-
-    $servername = "localhost";
-    $DBname = "root";
-    $DBpassword = "1234";
-    
-    $conn = new mysqli($servername, $DBname, $DBpassword, "farm");
-    $conn -> set_charset('utf8mb4');
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $sql = "SELECT phone, email, name from member where ID = '".$id."';";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $name=$row["name"];
-        $phone=$row["phone"];
-        $email=$row["email"];
-    } else {
-        echo "멤버 정보 확인할수 없음";
-    }
-    $conn->close();
 
     //---------------------------------img file conform--------
 
@@ -60,6 +31,38 @@
             die ("이미지 파일이 아닙니다");
         }
     }
+
+    //---------------------------------get uploader info--------
+    session_start();
+    //$id = $_SESSION["id"];
+    $id = "admin";
+
+
+    $servername = "localhost";
+    $DBname = "root";
+    $DBpassword = "1234";
+    
+    $conn = new mysqli($servername, $DBname, $DBpassword, "farm");
+    $conn -> set_charset('utf8mb4');
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT phone, email, name from member where ID = '".$id."';";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $name=$row["name"];
+        $phone=$row["phone"];
+        $email=$row["email"];
+    } else {
+        echo "멤버 정보 확인할수 없음";
+    }
+    $conn->close();
+
+    
 
     //---------------------------------upload DB--------
 
