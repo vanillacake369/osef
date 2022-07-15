@@ -41,14 +41,16 @@
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, input, select, textarea, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    padding: 0px;
+    margin: 0px;
+    vertical-align: top;
 }
 
 button, input, select, textarea {
     border-radius: 0;
     border: none;
-    background: 0 0;
+    background: 0;
     appearance: none;
     outline: 0;
     text-decoration: none;
@@ -113,6 +115,10 @@ p {
 .section_container {
     padding-top: 50px;
     padding-bottom: 50px;
+}
+
+.hidden {
+    display: none;
 }
 
 /* indec.html */
@@ -231,22 +237,24 @@ p {
 
 .intro_navbar {
     width: 100%;
-    height: 60px;
     position: absolute;
     bottom: 0;
     transition: all 0.25s;
 }
 
 .intro_navbar_wrap {
+    height: 60px;
     display: flex;
     justify-content: center;
+    flex-direction: row;
+    align-items: center;
 }
 
 .intro_navbar_ul li {
     float: left;
     color: var(--color-light-white);
     margin: 0 20px 0 20px;
-    padding: 0px 20px 20px 20px;
+    padding: 17px 20px 17px 20px;
     cursor: pointer;
 }
 
@@ -256,6 +264,8 @@ p {
 }
 
 .intro_navbar_up {
+    width: 100%;
+    height: 60px;
     position: fixed;
     z-index: 5;
     top: 0;
@@ -293,10 +303,6 @@ p {
     height: 700px;
 }
 
-.section_service {
-    margin: auto;
-}
-
 .service_service {
     float: left;
     width: 33%;
@@ -306,18 +312,13 @@ p {
 .service_icon {
     width: 150px;
     height: 150px;
-    line-height: 150px;
     font-size: 70px;
-    margin: auto;
+    margin: 0 auto;
+    padding: 40px 10px 0px 10px;
     margin-bottom: 20px;
     color: var(--color-navbar);
     border: 1px solid var(--color-navbar);
     border-radius: 50%;
-    border-width: thick;
-}
-
-.service_h3 {
-    margin-bottom: 40px;
 }
 
 /* section contact */
@@ -373,7 +374,7 @@ p {
     text-align: center;
 }
 
-.lend_Q {
+#lend_Q1 {
     width: 100%;
 }
 
@@ -383,20 +384,24 @@ p {
     color: var(--color-white);
 }
 
-/* section lend_A */
-#lend_A {
+/* section lend_Answer */
+#lend_answer {
     padding: 30px;
 }
 
-#lend_A button {
+#lend_answer button {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.lend_A_list {
+.lend_input {
+    border: 1px solid var(--color-black);
+}
+
+.lend_answer_list {
     display: inline-block;
-    width: 20%;
+    width: 230px;
     height: 80px;
     margin: 10px;
     border: 1px solid var(--color-dark-white);
@@ -404,51 +409,71 @@ p {
     cursor: pointer;
 }
 
-.lend_A_list:hover {
+.lend_answer_list:hover {
     border: 1px solid var(--color-black);
 }
 
-.lend_A_list_p {
+.lend_answer_list_p {
+    margin: 0;
+    line-height: 80px;
     font-size: 28px;
     font-weight: var(--weight-regular);
 }
 
-.lend_A_bottom {
+.lend_answer_bottom {
     width: 100%;
     height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-.lend_A_back {
-    display: inline-block;
+.lend_answer_back {
     width: 100px;
     height: 50px;
-    margin: 10px;
     border: 1px solid var(--color-dark-white);
     border-radius: 2vh;
     cursor: pointer;
 }
 
-.lend_A_next {
-    display: inline-block;
+.lend_answer_next {
     width: 100px;
     height: 50px;
-    margin: 20px;
     background-color: var(--color-dark-grey);
     border: 1px solid var(--color-dark-grey);
     border-radius: 2vh;
     cursor: pointer;
 }
 
-.lend_A_back:hover {
+.lend_answer_back:hover {
     border: 1px solid var(--color-black);
 }
 
-.lend_A_next:hover {
+.lend_answer_next:hover {
     background-color: var(--color-black);
 }
 
-.lend_A_next_p {
+.lend_answer_next_p {
+    line-height: 50px;
+    font-size: var(--font-regular);
     color: var(--color-white);
+}
+
+.A4_date_box {
+    border: 1px solid var(--color-dark-white);
+    border-radius: 2vh;
+    display: inline-block;
+    width: 250px;
+    height: 100px;
+}
+
+.date_p {
+    font-size: var(--font-regular);
+}
+
+.date {
+    font-size: var(--font-regular);
+    line-height: 50px;
 }
 
 
@@ -479,7 +504,7 @@ p {
 }
 
 .input_row {
-    display: block;
+    display: inline-block;
     text-align: left;
     border: 1px solid var(--color-dark-white);
     border-radius: 5px;
@@ -535,53 +560,4 @@ p {
         width: 100%;
         height: 300px;
     }
-}
-input.docsRegister{
-    font-size: x-large;
-    justify-content: center;
-    width: 80%;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border-color: #000000;
-    border: 1px solid rgb(2, 2, 2);
-    border-radius: 10px;
-}
-textarea.docsRegister{
-    height: 30em;
-    font-size: x-large;
-    resize: none;
-    position: center;
-    width: 80%;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border-color: #000000;
-    border: 1px solid rgb(2, 2, 2);
-    border-radius: 10px;
-}
-input.docsSubmit{
-    font-size: x-large;
-    float:right;
-    position: relative;
-    margin-top: 3%;
-    right:20%;
-    width: 100px;    
-    box-sizing: border-box;
-    border-color: #000000;
-    border: 1px solid rgb(2, 2, 2);
-    border-radius: 10px;
-}
-input.docsPrice{
-    font-size: x-large;
-    position: center;
-    width: 60%;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border-color: #000000;
-    border: 1px solid rgb(2, 2, 2);
-    border-radius: 10px;
-}
-div.docsRegiForm{
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 10%;
 }
