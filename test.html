@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="lend.js" defer></script>
+    <title>억새풀</title>
+</head>
+
+<body>
+    <!-- section lend_Q -->
+    <section id="lend_Q">
+        <div id="lend_Q1">
+            <h1 class="lend_Q_Q">1/7</h1>
+            <h1 class="lend_Q_Q">어떤 종류의 기계,장비 인가요?</h1>
+        </div>
+        <div id="lend_Q2" class="hidden">
+            <h1 class="lend_Q_Q">2/7</h1>
+            <h1 class="lend_Q_Q">등록 정보를 확인해 주세요</h1>
+        </div>
+    </section>
+
+    <!-- section lend_Answer -->
+    <section id="lend_answer" class="section">
+        <div id="lend_form" class="section_container">
+
+            <!-- lend_form_A1 -->
+            <form id="lend_form_A1">
+                <div role="radiogroup">
+                    <input type="radio" id="Choice1" name="category" value="tractor">
+                    <label for="Choice1" class="lend_answer_list">
+                        <p class="lend_answer_list_p">트렉터</p>
+                    </label>
+                    <input type="radio" id="Choice2" name="category" value="combine">
+                    <label for="Choice2" class="lend_answer_list">
+                        <p class="lend_answer_list_p">콤바인</p>
+                    </label>
+                    <input type="radio" id="Choice3" name="category" value="rice transplanter">
+                    <label for="Choice3" class="lend_answer_list">
+                        <p class="lend_answer_list_p">이양기</p>
+                    </label>
+                    <input type="radio" id="Choice4" name="category" value="rotary">
+                    <label for="Choice4" class="lend_answer_list">
+                        <p class="lend_answer_list_p">로터리</p>
+                    </label>
+                    <input type="radio" id="Choice5" name="category" value="livestock machinery">
+                    <label for="Choice5" class="lend_answer_list">
+                        <p class="lend_answer_list_p">축산기계</p>
+                    </label>
+                    <input type="radio" id="Choice6" name="category" value="forklift">
+                    <label for="Choice6" class="lend_answer_list">
+                        <p class="lend_answer_list_p">포크레인</p>
+                    </label>
+                    <input type="radio" id="Choice7" name="category" value="etc">
+                    <label for="Choice7" class="lend_answer_list">
+                        <p class="lend_answer_list_p">기타</p>
+                    </label>
+                </div>
+                <div class="lend_answer_bottom">
+                    <div class="lend_answer_bottom">
+                        <div id="lend_next_btn" class="lend_answer_next hidden">
+                            <input type="submit" value="다음" class="lend_answer_next_p">
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </form>
+
+            <!-- lend_form_A2 -->
+            <form id="lend_form_A2" class="hidden">
+                <div class="section_container flex">
+                    <div class="lend_card">
+                        <div class="lend_card_top">
+                            <div class="lend_card_img">
+                                <img id="preview" style="width: 350px; height:250px;">
+                            </div>
+                            <div class="lend_card_text">
+                                <h1 id="category">트렉터</h1>
+                                <h2 id="price">가격</h2>
+                                <p id="maker">제조사</p>
+                                <p id="adress">주소</p>
+                                <p id="date"> 날짜</ㅔ>
+                            </div>
+                        </div>
+                        <p id="detail">상세내용</p>
+                    </div>
+                </div>
+                <div class="lend_answer_bottom">
+                    <div class="lend_answer_back">
+                        <button type="button" id="A2_btn">
+                            <p>뒤로</p>
+                        </button>
+                    </div>
+                    <div id="lend_next_btn" class="lend_answer_next">
+                        <input type="submit" value="다음" class="lend_answer_next_p">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer id="footer">
+        <div class="footer_logo">
+            <div class="navbar_logo">
+                <i class="fas fa-seedling"></i>
+                <a href="index.html">억새풀</a>
+            </div>
+        </div>
+        <div class="footer_text">
+            <p class="footer_text_p">36729 경상북도 안동시 경동로 1375 (송천동) 국립안동대학교 공대1호관 413호 NGN연구실</p>
+            <p class="footer_text_p">TEL : 010-9548-1369 / E-MAIL : w1683111@naver.com</p>
+            <p class="footer_text_p">COPYRIGHT (C)2022 억새풀. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

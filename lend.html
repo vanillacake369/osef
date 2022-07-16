@@ -38,25 +38,36 @@
     <!-- section lend_Q -->
     <section id="lend_Q">
         <div id="lend_Q1">
+            <h1 class="lend_Q_Q">1/7</h1>
             <h1 class="lend_Q_Q">어떤 종류의 기계,장비 인가요?</h1>
         </div>
         <div id="lend_Q2" class="hidden">
+            <h1 class="lend_Q_Q">2/7</h1>
             <h1 class="lend_Q_Q">기계, 장비의 제조사를 입력해 주세요!</h1>
         </div>
         <div id="lend_Q3" class="hidden">
+            <h1 class="lend_Q_Q">3/7</h1>
             <h1 class="lend_Q_Q">임대할 주소를 입력해 주세요!</h1>
         </div>
         <div id="lend_Q4" class="hidden">
+            <h1 class="lend_Q_Q">4/7</h1>
             <h1 class="lend_Q_Q">임대할 기간을 설정해 주세요!</h1>
         </div>
         <div id="lend_Q5" class="hidden">
+            <h1 class="lend_Q_Q">5/7</h1>
             <h1 class="lend_Q_Q">기계, 장비의 사진을 업로드 해주세요!</h1>
         </div>
         <div id="lend_Q6" class="hidden">
+            <h1 class="lend_Q_Q">6/7</h1>
             <h1 class="lend_Q_Q">상세 내용을 입력해 주세요!</h1>
         </div>
         <div id="lend_Q7" class="hidden">
+            <h1 class="lend_Q_Q">7/7</h1>
             <h1 class="lend_Q_Q">임대 비용을 입력해 주세요!</h1>
+        </div>
+        <div id="lend_Q8" class="hidden">
+            <h1 class="lend_Q_Q">7/7</h1>
+            <h1 class="lend_Q_Q">등록 정보를 확인해 주세요</h1>
         </div>
     </section>
 
@@ -97,11 +108,6 @@
                     </label>
                 </div>
                 <div class="lend_answer_bottom">
-                    <div class="lend_answer_back">
-                        <button type="button">
-                            <p>뒤로</p>
-                        </button>
-                    </div>
                     <div id="lend_next_btn" class="lend_answer_next hidden">
                         <input type="submit" value="다음" class="lend_answer_next_p">
                     </div>
@@ -112,12 +118,12 @@
             <form id="lend_form_A2" class="hidden">
                 <div class="section_container">
                     <div class="input_row" style="width: 75%;">
-                        <input type="text" name="maker" class="input_text" placeholder="제조사를 입력해 주세요">
+                        <input type="text" name="price" class="input_text" placeholder="제조사를 입력해 주세요" required>
                     </div>
                 </div>
                 <div class="lend_answer_bottom">
                     <div class="lend_answer_back">
-                        <button type="button">
+                        <button type="button" id="A2_btn">
                             <p>뒤로</p>
                         </button>
                     </div>
@@ -131,12 +137,12 @@
             <form id="lend_form_A3" class="hidden">
                 <div class="section_container">
                     <div class="input_row" style="width: 75%;">
-                        <input type="text" name="adress" class="input_text" placeholder="주소를 입력해 주세요">
+                        <input type="text" name="adress" class="input_text" placeholder="주소를 입력해 주세요" required>
                     </div>
                 </div>
                 <div class="lend_answer_bottom">
                     <div class="lend_answer_back">
-                        <button type="button">
+                        <button type="button" id="A3_btn">
                             <p>뒤로</p>
                         </button>
                     </div>
@@ -152,17 +158,17 @@
                     <div class="A4_date">
                         <div class="A4_date_box" id="lend_form_A4_start">
                             <label><p class="date_p">시작일</p></label>
-                            <input type="date" id="date1" name="startDate" class="date">
+                            <input type="date" id="date1" name="startDate" class="date" required>
                         </div>
                         <div class="A4_date_box" id="lend_form_A4_end">
                             <label><p class="date_p">종료일</p></label>
-                            <input type="date" id="date2" name="endDate" class="date">
+                            <input type="date" id="date2" name="endDate" class="date" required>
                         </div>
                     </div>
                 </div>
                 <div class="lend_answer_bottom">
                     <div class="lend_answer_back">
-                        <button type="button">
+                        <button type="button" id="A4_btn">
                             <p>뒤로</p>
                         </button>
                     </div>
@@ -175,12 +181,18 @@
             <!-- lend_form_A5 -->
             <form id="lend_form_A5" class="hidden">
                 <div class="section_container">
-                    <div class="input_row" style="width: 75%;">
+                    <div class="filebox">
+                        <input class="upload-name" value="파일을 업로드하면 이미지가 표시됩니다">
+                        <label for="file">파일찾기</label>
+                        <input type="file" id="file" multiple name="imgFile[]" onchange="readURL(this);" required>
+                    </div>
+                    <div class="A5_img">
+                        <img id="preview" class="hidden">
                     </div>
                 </div>
                 <div class="lend_answer_bottom">
                     <div class="lend_answer_back">
-                        <button type="button">
+                        <button type="button" id="A5_btn">
                             <p>뒤로</p>
                         </button>
                     </div>
@@ -194,11 +206,12 @@
             <form id="lend_form_A6" class="hidden">
                 <div class="section_container">
                     <div class="input_row" style="width: 75%;">
+                        <textarea  name="detail" class="input_text" style="height: 200px;" required></textarea>
                     </div>
                 </div>
                 <div class="lend_answer_bottom">
                     <div class="lend_answer_back">
-                        <button type="button">
+                        <button type="button" id="A6_btn">
                             <p>뒤로</p>
                         </button>
                     </div>
@@ -211,12 +224,13 @@
             <!-- lend_form_A7 -->
             <form id="lend_form_A7" class="hidden">
                 <div class="section_container">
-                    <div class="input_row" style="width: 75%;">
+                    <div class="input_row" style="width: 50%;">
+                        <input type="price" name="maker" class="input_text" placeholder="$000원 /1박" required>
                     </div>
                 </div>
                 <div class="lend_answer_bottom">
                     <div class="lend_answer_back">
-                        <button type="button">
+                        <button type="button" id="A7_btn">
                             <p>뒤로</p>
                         </button>
                     </div>
