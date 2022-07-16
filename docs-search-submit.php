@@ -39,9 +39,10 @@
     $row = $result -> fetch_assoc();
     $totalPageNum = ceil($row['num']/20);
     
-    $stmt = $conn -> prepare("SELECT * FROM sell_info where title = ?  LIMIT ?,20");
+    $stmt = $conn -> prepare("SELECT * FROM sell_info where title LIKE ? LIMIT ?,20");
 
-    $stmt -> bind_param("si",$_POST["searchWord"],$page);
+    $search =  "%".$_POST["searchWord"]."%";
+    $stmt -> bind_param("si", $search, $currentPage);
     $page = ($currentPage-1)*20;
     $stmt -> execute();
     $result = $stmt -> get_result();
@@ -62,8 +63,7 @@
     
     echo("페이지");
     //--------------------------------------------페이지
-    $showingPage=4; //앞뒤로 보여지는 페이지 수
-    echo("<form method=\"post\">");
+    $showingPage=4; //앞뒤로 보여지는 페이지 수    
     echo("<table border=\"1\"> <tr>");
     if (($currentPage-$showingPage)<=1){
         for($i=1;$i<$currentPage;$i++){
@@ -88,11 +88,11 @@
         }
         echo("<td  onclick=\"refresh(".($currentPage+$showingPage+1).")\" style=\"cursor:pointer\" > ... </td>");
     }
-    echo("</tr> </table>");    
+    echo("</tr> </table> </form>");      
 ?>
 <form name = "docsForm" method="post" action="docs-search-submit.php" enctype="multipart/form-data" > 
-    <input type="text" name="searchWord" required class="searchInput" value=<?php $_POST["searchWord"]?>/>
-    <input type="submit" value="업로드" class="searchSubmit" name="submit">
+    <input type="text" name="searchWord" required class="searchInput"/>
+    <input type="submit" value="검색" class="searchSubmit" name="submit">
 </form>
 
 <?php include_once("footer.html"); ?>

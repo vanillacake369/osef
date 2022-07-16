@@ -87,7 +87,7 @@
         }
         echo("<td  onclick=\"refresh(".($currentPage+$showingPage+1).")\" style=\"cursor:pointer\" > ... </td>");
     }
-    echo("</tr> </table>");    
+    echo("</tr> </table> </form>");    
 ?>
 <form name = "docsForm" method="post" action="docs-search-submit.php" enctype="multipart/form-data" > 
     <input type="text" name="searchWord" required class="searchInput"/>
