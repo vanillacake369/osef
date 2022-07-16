@@ -19,11 +19,11 @@
     include_once("header.html"); 
 
     //현재 페이지탐색
-    if(!isset($_COOKIE["docsPageCookie"])) {
-        setcookie("docsPageCookie","1",time()+(86400),"/") ; //86400=1day
+    if(!isset($_COOKIE["docsPageCookie".$_POST["searchWord"]])) {
+        setcookie("docsPageCookie".$_POST["searchWord"],"1",time()+(86400),"/") ; //86400=1day
         $currentPage = 1;
       } else {
-        $currentPage = $_COOKIE["docsPageCookie"];
+        $currentPage = $_COOKIE["docsPageCookie".$_POST["searchWord"]];
       }
 
     $servername = "localhost";
@@ -39,8 +39,9 @@
     $row = $result -> fetch_assoc();
     $totalPageNum = ceil($row['num']/20);
     
-    $stmt = $conn -> prepare("SELECT * FROM sell_info LIMIT ?,20");
-    $stmt -> bind_param("i",$page);
+    $stmt = $conn -> prepare("SELECT * FROM sell_info where title = ?  LIMIT ?,20");
+
+    $stmt -> bind_param("si",$_POST["searchWord"],$page);
     $page = ($currentPage-1)*20;
     $stmt -> execute();
     $result = $stmt -> get_result();
@@ -90,8 +91,8 @@
     echo("</tr> </table>");    
 ?>
 <form name = "docsForm" method="post" action="docs-search-submit.php" enctype="multipart/form-data" > 
-    <input type="text" name="searchWord" required class="searchInput"/>
-    <input type="submit" value="검색" class="searchSubmit" name="submit">
+    <input type="text" name="searchWord" required class="searchInput" value=<?php $_POST["searchWord"]?>/>
+    <input type="submit" value="업로드" class="searchSubmit" name="submit">
 </form>
 
 <?php include_once("footer.html"); ?>
