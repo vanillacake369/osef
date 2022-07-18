@@ -20,7 +20,7 @@
 
     //현재 페이지탐색
     if(!isset($_COOKIE["docsPageCookie".$_POST["searchWord"]])) {
-        setcookie("docsPageCookie".$_POST["searchWord"],"1",time()+(86400),"/") ; //86400=1day
+        setcookie("docsPageCookie".$_POST["searchWord"],"1",time()+(1),"/") ; //86400=1day
         $currentPage = 1;
       } else {
         $currentPage = $_COOKIE["docsPageCookie".$_POST["searchWord"]];
@@ -33,31 +33,37 @@
     $conn = new mysqli($servername,$DBname,$DBpassword,"farm");
     $conn -> set_charset('utf8mb4');
     //전체 페이지수
-    $stmt = $conn -> prepare("SELECT COUNT(*) AS \"num\" FROM sell_info"); 
+    $stmt = $conn -> prepare("SELECT COUNT(*) AS \"num\" FROM sell_info where deleteDate IS NULL"); 
     $stmt -> execute();
     $result = $stmt -> get_result();
     $row = $result -> fetch_assoc();
     $totalPageNum = ceil($row['num']/20);
     
-    $stmt = $conn -> prepare("SELECT * FROM sell_info where title LIKE ? LIMIT ?,20");
+    $stmt = $conn -> prepare("SELECT * FROM sell_info where title LIKE ? AND deleteDate IS NULL LIMIT ?,20");
 
     $search =  "%".$_POST["searchWord"]."%";
     $stmt -> bind_param("si", $search, $currentPage);
     $page = ($currentPage-1)*20;
     $stmt -> execute();
-    $result = $stmt -> get_result();
-
-    //--------------------------------------------게시물
-    echo ("<table border=\"1\">");
-    echo("<th>제목</th><th>등록자</th><th>등록일</th>");
-    while($row = $result -> fetch_assoc()){
-        echo("<tr>");
-        echo("<td>".$row['title']."</td>");
-        echo("<td>".$row['member_name']."</td>");
-        echo("<td>".$row['upload']."</td>");        
-        echo("</tr>");
-    }  
-    echo("</table>");
+    $result = $stmt -> get_result();    
+    echo ("<h1> \"".$_POST["searchWord"]."\" 검색결과 </h1>");
+    //--------------------------------------------게시물    
+    if($result!=NULL){        
+        echo ("<table border=\"1\">");    
+        echo("<th>제목</th><th>등록자</th><th>등록일</th>");
+        while($row = $result -> fetch_assoc()){
+            echo("<form method=\"post\" action=\"docs-info.php\" enctype=\"multipart/form-data\" > "); 
+            echo("<tr>");
+            echo("<td><input type=\"submit\" value=\"".$row['title']."\" /></td>");
+            echo("<td>".$row['member_name']."</td>");
+            echo("<td>".$row['upload']."</td>");        
+            echo("<input type=\"hidden\" name=\"docId\" value=\"".$row['id']."\" >");
+            echo("</tr> </form>");            
+        }  
+        echo("</table>");
+    }else{
+        echo("<h2>검색결과가 없습니다</h2>");
+    }
     $stmt->close();
     $conn->close();
     

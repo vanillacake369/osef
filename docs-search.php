@@ -33,34 +33,40 @@
     $conn = new mysqli($servername,$DBname,$DBpassword,"farm");
     $conn -> set_charset('utf8mb4');
     //전체 페이지수
-    $stmt = $conn -> prepare("SELECT COUNT(*) AS \"num\" FROM sell_info"); 
+    $stmt = $conn -> prepare("SELECT COUNT(*) AS \"num\" FROM sell_info where deleteDate IS NULL"); 
     $stmt -> execute();
     $result = $stmt -> get_result();
     $row = $result -> fetch_assoc();
     $totalPageNum = ceil($row['num']/20);
     
-    $stmt = $conn -> prepare("SELECT * FROM sell_info LIMIT ?,20");
+    $stmt = $conn -> prepare("SELECT * FROM sell_info where deleteDate IS NULL LIMIT ?,20");
     $stmt -> bind_param("i",$page);
     $page = ($currentPage-1)*20;
     $stmt -> execute();
     $result = $stmt -> get_result();
 
-    //--------------------------------------------게시물
-    echo ("<table border=\"1\">");
-    echo("<th>제목</th><th>등록자</th><th>등록일</th>");
-    while($row = $result -> fetch_assoc()){
-        echo("<tr>");
-        echo("<td>".$row['title']."</td>");
-        echo("<td>".$row['member_name']."</td>");
-        echo("<td>".$row['upload']."</td>");        
-        echo("</tr>");
-    }  
-    echo("</table>");
+    //--------------------------------------------게시물    
+    if($result!=NULL){        
+        echo ("<table border=\"1\">");    
+        echo("<th>제목</th><th>등록자</th><th>등록일</th>");
+        while($row = $result -> fetch_assoc()){
+            echo("<form method=\"post\" action=\"docs-info.php\" enctype=\"multipart/form-data\" > "); 
+            echo("<tr>");
+            echo("<td><input type=\"submit\" value=\"".$row['title']."\" /></td>");
+            echo("<td>".$row['member_name']."</td>");
+            echo("<td>".$row['upload']."</td>");        
+            echo("<input type=\"hidden\" name=\"docId\" value=\"".$row['id']."\" >");
+            echo("</tr> </form>");            
+        }  
+        echo("</table>");
+    }else{
+        echo("<h2>검색결과가 없습니다</h2>");
+    }
     $stmt->close();
-    $conn->close();
+    $conn->close();    
     
-    echo("페이지");
     //--------------------------------------------페이지
+    echo("페이지");
     $showingPage=4; //앞뒤로 보여지는 페이지 수
     echo("<form method=\"post\">");
     echo("<table border=\"1\"> <tr>");
