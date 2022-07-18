@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `member_id` varchar(16) NOT NULL COMMENT '작성자 이름',
   `detail` text NOT NULL COMMENT '댓글',
   `upload` date NOT NULL COMMENT '업로드일',
-  `delete` date DEFAULT NULL COMMENT '삭제일',
+  `deleteDate` date DEFAULT NULL COMMENT '삭제일',
   `reply_id` int(11) unsigned DEFAULT NULL COMMENT '대댓글시 댓글의 id 그냥 댓글시 null',
   PRIMARY KEY (`comment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='댓글';
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `member_email` varchar(64) DEFAULT NULL COMMENT '등록자 이메일',
   `member_name` varchar(16) DEFAULT NULL COMMENT '등록자 이름',
   `upload` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '등록일',
-  `delete` date DEFAULT NULL COMMENT '삭제일 null일시 미삭제',
+  `deleteDate` date DEFAULT NULL COMMENT '삭제일 null일시 미삭제',
   `place` varchar(64) NOT NULL COMMENT '대여장소',
   `price` decimal(16,0) unsigned NOT NULL DEFAULT 0 COMMENT '가격',
   `close` tinyint(1) unsigned NOT NULL DEFAULT 0 COMMENT '종료 빌리면1 아닌경우 0',
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `sell_info` (
   `member_phone` char(11) DEFAULT NULL,
   `member_email` varchar(64) DEFAULT NULL,
   `upload` date NOT NULL DEFAULT curdate() COMMENT '등록일',
-  `delete` date DEFAULT NULL COMMENT '삭제일',
+  `deleteDate` date DEFAULT NULL COMMENT '삭제일',
   `sellnum` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '판매수',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8mb4 COMMENT='정보 판매';
