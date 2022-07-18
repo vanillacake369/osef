@@ -19,11 +19,11 @@
     include_once("header.html"); 
 
     //현재 페이지탐색
-    if(!isset($_COOKIE["docsPageCookie".$_POST["searchWord"]])) {
-        setcookie("docsPageCookie".$_POST["searchWord"],"1",time()+(1),"/") ; //86400=1day
+    if(!isset($_COOKIE["productPageCookie".$_POST["searchWord"]])) {
+        setcookie("productPageCookie".$_POST["searchWord"],"1",time()+(1),"/") ; //86400=1day
         $currentPage = 1;
       } else {
-        $currentPage = $_COOKIE["docsPageCookie".$_POST["searchWord"]];
+        $currentPage = $_COOKIE["productPageCookie".$_POST["searchWord"]];
       }
 
     $servername = "localhost";
@@ -45,73 +45,66 @@
     $stmt -> bind_param("si", $search, $currentPage);
     $page = ($currentPage-1)*20;
     $stmt -> execute();
-    $result = $stmt -> get_result();   
-    echo("<div class=\"section\">"); 
-    echo ("<h1 > \"".$_POST["searchWord"]."\" 검색결과 </h1>");
+    $result = $stmt -> get_result();    
+    echo ("<h1> \"".$_POST["searchWord"]."\" 검색결과 </h1>");
     //--------------------------------------------게시물    
-   
     if($result!=NULL){        
-        echo("<div class=\"board__list\" >");
-        echo ("<table border=\"1\" class=\"board__list__table\" style=\"width: 100%;\" >");    
+        echo ("<table border=\"1\">");    
         echo("<th>제목</th><th>등록자</th><th>등록일</th>");
         while($row = $result -> fetch_assoc()){
             echo("<form method=\"post\" action=\"docs-info.php\" enctype=\"multipart/form-data\" > "); 
             echo("<tr>");
-            echo("<td style=\"width: 60%;\" ><input type=\"submit\" value=\"".$row['title']."\" /></td>");
+            echo("<td><input type=\"submit\" value=\"".$row['title']."\" /></td>");
             echo("<td>".$row['member_name']."</td>");
             echo("<td>".$row['upload']."</td>");        
             echo("<input type=\"hidden\" name=\"docId\" value=\"".$row['id']."\" >");
             echo("</tr> </form>");            
         }  
-        echo("</table></div>");
+        echo("</table>");
     }else{
         echo("<h2>검색결과가 없습니다</h2>");
     }
     $stmt->close();
-    $conn->close();    
+    $conn->close();
     
+    echo("페이지");
     //--------------------------------------------페이지
-    
-    $showingPage=4; //앞뒤로 보여지는 페이지 수
-    echo("<div class=\"section\">");
-    echo("<form method=\"post\" >");
-    echo("<p style=\"display:inline-block\">페이지</p>"); 
-    echo("<table border=\"1\" style=\" display:inline-block; text-align: center;\"  > <tr>");
+    $showingPage=4; //앞뒤로 보여지는 페이지 수    
+    echo("<table border=\"1\"> <tr>");
     if (($currentPage-$showingPage)<=1){
         for($i=1;$i<$currentPage;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");  
+            echo("<td onclick=\"refresh(".$i.")\" style=\"cursor:pointer\">".$i."</td>");  
         }
     }else{
-        echo("<td  onclick=\"refresh(".($currentPage-$showingPage-1).")\" style=\"width:60px; cursor:pointer\" > ... </td>");
+        echo("<td  onclick=\"refresh(".($currentPage-$showingPage-1).")\" style=\"cursor:pointer\" > ... </td>");
         for($i=$currentPage-$showingPage;$i<$currentPage;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");  
+            echo("<td onclick=\"refresh(".$i.")\" style=\"cursor:pointer\">".$i."</td>");  
         }
     }
 
-    echo("<td style=\" width:60px; background-color: aqua;\">".$currentPage."</td>");
+    echo("<td style=\"background-color: aqua;\">".$currentPage."</td>");
 
     if(($currentPage+$showingPage)>=$totalPageNum){
         for($i=$currentPage+1;$i<=$totalPageNum;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\" width:60px; cursor:pointer\">".$i."</td>");  
+            echo("<td onclick=\"refresh(".$i.")\" style=\"cursor:pointer\">".$i."</td>");  
         }
     }else{
         for($i=$currentPage+1;$i<=($currentPage+$showingPage);$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");              
+            echo("<td onclick=\"refresh(".$i.")\" style=\"cursor:pointer\">".$i."</td>");              
         }
-        echo("<td  onclick=\"refresh(".($currentPage+$showingPage+1).")\" style=\"width:60px; cursor:pointer\" > ... </td>");
+        echo("<td  onclick=\"refresh(".($currentPage+$showingPage+1).")\" style=\"cursor:pointer\" > ... </td>");
     }
-    echo("</tr> </table> </form> </div>");    
+    echo("</tr> </table> </form>");      
 ?>
-<form name = "docsForm" method="post" action="docs-search-submit.php" enctype="multipart/form-data" class="section" > 
+<form name = "docsForm" method="post" action="docs-search-submit.php" enctype="multipart/form-data" > 
     <input type="text" name="searchWord" required class="searchInput"/>
     <input type="submit" value="검색" class="searchSubmit" name="submit">
 </form>
-</div>
 
 <?php include_once("footer.html"); ?>
 <script>
 function refresh(page) {
-  document.cookie = ("docsPageCookie ="+page);
+  document.cookie = ("productPageCookie ="+page);
   location.reload();
 }
 </script>
