@@ -628,3 +628,72 @@ p {
         height: 300px;
     }
 }
+input.docsRegister{
+    font-size: x-large;
+    justify-content: center;
+    width: 80%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-color: #000000;
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 10px;
+}
+textarea.docsRegister{
+    height: 30em;
+    font-size: x-large;
+    resize: none;
+    position: center;
+    width: 80%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-color: #000000;
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 10px;
+}
+input.docsSubmit{
+    font-size: x-large;
+    float:right;
+    position: relative;
+    margin-top: 3%;
+    right:20%;
+    width: 100px;    
+    box-sizing: border-box;
+    border-color: #000000;
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 10px;
+}
+input.docsPrice{
+    font-size: x-large;
+    position: center;
+    width: 60%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-color: #000000;
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 10px;
+}
+div.docsRegiForm{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10%;
+}
+input.searchInput{
+    font-size: x-large;
+    justify-content: center;
+    width: 20%;
+    padding: 6px 5px;
+    box-sizing: border-box;
+    border-color: #000000;
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 10px;
+}
+input.searchSubmit{
+    font-size: x-large;
+    position: center;
+    right:20%;
+    width: 100px;    
+    box-sizing: border-box;
+    border-color: #000000;
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 10px;
+}

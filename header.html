@@ -10,16 +10,36 @@
     <ul class="navbar_list">
         <li><a href="rent.html">임대신청</a></li>
         <li><a href="lend.html">기계등록</a></li>
-        <li><a href="#">자료실</a></li>
+        <li><a href="docs-search.php">자료실</a></li>
         <li><a href="docs-register.php">자료등록</a></li>
         <li><a href="introduce.html">회사소개</a></li>        
     </ul>
     <ul class="navbar_list">
-        <li><a href="mypage.html">마이페이지</a></li>
-        <li><a href="login.html">로그인</a></li>
+        <li><a href="wet.html" id="afterLogin">로그아웃</a></li>
+        <li><a href="mypage.html" id="afterLogin">마이페이지</a></li>
+        <li><a href="login.html" id="beforeLogin">로그인</a></li>
     </ul>
     <button class="navbar_toggle_btn">
         <i class="fas fa-bars"></i>
     </button>
 </nav>
 </body>
+<script>
+    const HIDDEN_CLASSNAME = 'hidden';
+    
+    const after = document.querySelectorAll('#afterLogin');
+    const before = document.querySelectorAll('#beforeLogin');
+
+    var uid = '<%=(String)session.getAttribute("id")%>';
+    if(uid=="null"){ 
+        for (let i = 0; i < before.length; i++) {
+            before[i].classList.add(HIDDEN_CLASSNAME);
+        }        
+    }else{
+        for (let i = 0; i < after.length; i++) {
+            after[i].classList.add(HIDDEN_CLASSNAME);
+        }       
+    }
+</script>
+
+</html>
