@@ -19,11 +19,11 @@
     include_once("header.html"); 
 
     //현재 페이지탐색
-    if(!isset($_COOKIE["docsPageCookie"])) {
-        setcookie("docsPageCookie","1",time()+(86400),"/") ; //86400=1day
+    if(!isset($_COOKIE["docsPageCookie".$_POST["searchWord"]])) {
+        setcookie("docsPageCookie".$_POST["searchWord"],"1",time()+(1),"/") ; //86400=1day
         $currentPage = 1;
       } else {
-        $currentPage = $_COOKIE["docsPageCookie"];
+        $currentPage = $_COOKIE["docsPageCookie".$_POST["searchWord"]];
       }
 
     $servername = "localhost";
@@ -39,12 +39,14 @@
     $row = $result -> fetch_assoc();
     $totalPageNum = ceil($row['num']/20);
     
-    $stmt = $conn -> prepare("SELECT * FROM sell_info where deleteDate IS NULL LIMIT ?,20");
-    $stmt -> bind_param("i",$page);
+    $stmt = $conn -> prepare("SELECT * FROM sell_info where title LIKE ? AND deleteDate IS NULL LIMIT ?,20");
+
+    $search =  "%".$_POST["searchWord"]."%";
+    $stmt -> bind_param("si", $search, $currentPage);
     $page = ($currentPage-1)*20;
     $stmt -> execute();
-    $result = $stmt -> get_result();
-
+    $result = $stmt -> get_result();    
+    echo ("<h1> \"".$_POST["searchWord"]."\" 검색결과 </h1>");
     //--------------------------------------------게시물    
     if($result!=NULL){        
         echo ("<table border=\"1\">");    
@@ -63,12 +65,11 @@
         echo("<h2>검색결과가 없습니다</h2>");
     }
     $stmt->close();
-    $conn->close();    
+    $conn->close();
     
-    //--------------------------------------------페이지
     echo("페이지");
-    $showingPage=4; //앞뒤로 보여지는 페이지 수
-    echo("<form method=\"post\">");
+    //--------------------------------------------페이지
+    $showingPage=4; //앞뒤로 보여지는 페이지 수    
     echo("<table border=\"1\"> <tr>");
     if (($currentPage-$showingPage)<=1){
         for($i=1;$i<$currentPage;$i++){
@@ -93,7 +94,7 @@
         }
         echo("<td  onclick=\"refresh(".($currentPage+$showingPage+1).")\" style=\"cursor:pointer\" > ... </td>");
     }
-    echo("</tr> </table> </form>");    
+    echo("</tr> </table> </form>");      
 ?>
 <form name = "docsForm" method="post" action="docs-search-submit.php" enctype="multipart/form-data" > 
     <input type="text" name="searchWord" required class="searchInput"/>
