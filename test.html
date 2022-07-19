@@ -95,22 +95,24 @@
 
         <!-- lend_form_A2 -->
         <form id="lend_form_A2" class="hidden">
-            <div class="section_container flex">
+            <div class="section_container">
                 <div class="lend_card">
                     <div class="lend_card_top">
                         <div class="lend_card_img">
-                            <img id="preview" style="width: 350px; height:250px;">
+                            <!-- <img id="preview" style="width: 350px; height:250px;"> -->
                         </div>
                         <div class="lend_card_text">
-                            <input type="text" id="category" value="123">기계명</input>
-                            <h2 id="price">가격</h2>
-                            <p id="maker">제조사</p>
-                            <p id="adress">주소</p>
-                            <p id="startdate"> 시작일</p>
-                            <p id="enddate"> 종료일</p>
+                            <h2>기계명</h2><input id="category" value=""></input>
+                            <h2>가격</h2><input id="price" value=""></input>
+                            <p>제조사</p><input id="maker" value=""></input>
                         </div>
                     </div>
-                    <p id="detail">상세내용</p>
+                    <div class="lend_card_text_1">
+                        <p>주소</p><input id="adress" value=""></input>
+                        <p>시작일</p><input id="startdate" value=""></input>
+                        <p>종료일</p><input id="enddate" value=""></p>
+                        <p>상세내용</p><input id="detail" value=""></input>
+                    </div>
                 </div>
             </div>
             <div class="lend_answer_bottom">
