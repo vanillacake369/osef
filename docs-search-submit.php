@@ -19,11 +19,12 @@
     include_once("header.html"); 
 
     //현재 페이지탐색
-    if(!isset($_COOKIE["docsPageCookie".$_POST["searchWord"]])) {
-        setcookie("docsPageCookie".$_POST["searchWord"],"1",time()+(10),"/") ; //86400=1day
+    $cookieSearchWorld = str_replace(" ", "_",$_POST["searchWord"]);
+    if(!isset($_COOKIE["docsPageCookie".$cookieSearchWorld])) {
+        setcookie("docsPageCookie".$cookieSearchWorld,"1",time()+(10),"/") ; //86400=1day
         $currentPage = 1;
       } else {
-        $currentPage = $_COOKIE["docsPageCookie".$_POST["searchWord"]];
+        $currentPage = $_COOKIE["docsPageCookie".$cookieSearchWorld];
       }
 
     $servername = "localhost";
@@ -33,7 +34,7 @@
     $conn = new mysqli($servername,$DBname,$DBpassword,"farm");
     $conn -> set_charset('utf8mb4');
     //전체 페이지수
-    $search =  "%".$_POST["searchWord"]."%";
+    $search =  "%".$_POST['searchWord']."%";
 
     $stmt = $conn -> prepare("SELECT COUNT(*) AS \"num\" FROM sell_info where title LIKE ? AND deleteDate IS NULL"); 
     $stmt -> bind_param("s", $search);

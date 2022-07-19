@@ -40,7 +40,7 @@
     $row = $result -> fetch_assoc();
     $totalPageNum = ceil($row['num']/20);
     
-    $stmt = $conn -> prepare("SELECT * FROM product where title LIKE ? AND deleteDate IS NULL LIMIT ?,20");
+    $stmt = $conn -> prepare("SELECT id,file.link, file.p_id FROM product LEFT JOIN file ON product.id= file.p_id where model = ? AND deleteDate IS NULL GROUP BY (id) LIMIT ?,20;");
 
     $search =  "%".$_POST["searchWord"]."%";
     $stmt -> bind_param("si", $search, $currentPage);

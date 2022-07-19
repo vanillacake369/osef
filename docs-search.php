@@ -44,12 +44,6 @@
     $page = ($currentPage-1)*20;
     $stmt -> execute();
     $result = $stmt -> get_result();
-
-    $stmt = $conn -> prepare("SELECT link FROM file where p_id = ?");
-    $stmt -> bind_param("i",$page);
-    $page = ($currentPage-1)*20;
-    $stmt -> execute();
-    $result = $stmt -> get_result();
      
     //--------------------------------------------게시물 
     echo("<div class=\"section\">");
