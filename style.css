@@ -1,0 +1,496 @@
+/* Global */
+:root {
+    /* color */
+    --color-white: #ffffff;
+    --color-light-white: #eeeeee;
+    --color-dark-white: #bdbdbd;
+    --color-pink: #fe918d;
+    --color-dark-pink: #ff6863;
+    --color-dark-grey: #4d4d4d;
+    --color-grey: #616161;
+    --color-light-grey: #7c7979;
+    --color-blue: #73aace;
+    --color-yellow: #fff7d1;
+    --color-orange: #feb546;
+    --color-black: #000000;
+    --color-navbar: #171c22;
+    --color-light-navbar: #272e35;
+    --color-light-navbar2: #325777;
+
+    /* Font size */
+    --font-large: 48px;
+    --font-medium: 24px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+
+    /* Font weight */
+    --weight-bold: 700;
+    --weight-semi-bold: 600;
+    --weight-regular: 400;
+    --weight-thin: 100;
+
+    /* Size */
+    --size-border-radius: 4px;
+
+    /* Animation */
+    --animation-duration: 300ms;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+button, input, select, textarea {
+    border-radius: 0;
+    border: none;
+    background: 0 0;
+    appearance: none;
+    outline: 0;
+    text-decoration: none;
+    cursor: pointer;
+
+    /* -webkit-appearance: none;
+    -webkit-text-size-adjust: none;
+    -moz-appearance: none; */
+    
+    /* position: relative;
+    top: 50%;
+    transform: translateY(-50%); */
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    font-size: var(--font-large);
+    font-weight: var(--weight-bold);
+    color: var(--color-black);
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-black);
+    margin: 8px 0;
+}
+
+h3 {
+    font-size: var(--font-regular);
+    font-weight: var(--font-regular);
+    color: var(--color-black);
+    margin: 8px 0;
+}
+
+p {
+    font-size: var(--font-regular);
+    font-weight: var(--font-regular);
+    color: var(--color-black);
+    margin: 4px 0;
+}
+
+.section {
+    padding: 100px;
+    text-align: center;
+    margin: auto;
+}
+
+.section_container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* indec.html */
+/* navbar */
+#navbar {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 60px 10px 60px;
+}
+
+.navbar_logo {
+    font-size: var(--font-medium);
+    color: var(--color-black);
+    font-family: 'Gugi', cursive;
+    padding: 16px;
+}
+
+.navbar_list li {
+    list-style-type: none;
+    float: left;
+    padding: 0px 20px 0px 20px;
+    font-size: var(--font-regular), var(--weight-thin);
+}
+
+.navbar_list_login li {
+    list-style-type: none;
+    float: left;
+    padding: 0px 20px 0px 20px;
+    font-size: var(--font-regular), var(--weight-thin);
+}
+
+.navbar_toggle_btn {
+    position: absolute;
+    top: 16px;
+    right: 32px;
+    font-size: var(--font-medium);
+    display: none;
+}
+
+/* section img */
+.main_img {
+    width: 100%;
+    height: 500px;
+    background: url(img/벼.jpg) center/cover no-repeat;
+    height: 500px;
+    text-align: center;
+}
+
+/* section item */
+.main_img_title {
+    margin: 0 auto;
+    color: var(--color-white);
+    height: 300px;
+}
+
+.machine_list_item {
+    display: inline-block;
+    width: 330px;
+    margin: 12px;
+    padding: 12px;
+    border: 1px solid var(--color-dark-white);
+    border-radius: 5%;
+    cursor: pointer;
+}
+
+.machine_list_item_img {
+    width: 300px;
+}
+
+/* footer */
+#footer {
+    width: 100%;
+    height: 170px;
+    padding: 10px;
+    background-color: var(--color-light-white);
+    text-align: center;
+}
+
+.footer_logo {
+    width: 150px;
+    display: inline-block;
+
+}
+
+.footer_text_p {
+    font-size: var(--font-micro);
+}
+
+
+/* introduce.html */
+/* section home */
+#home {
+    background: url(img/보트.jpg) center/cover no-repeat;
+    height: 400px;
+    position: relative;
+}
+
+.home_container {
+    color: var(--color-white);
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.home_title,
+.home_description {
+    color: var(--color-white);
+    margin: 0;
+}
+
+.home_img {
+    width: 100%;
+    height: 500px;
+}
+
+.intro_navbar {
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    transition: all 0.25s;
+}
+
+.intro_navbar_wrap{
+    display: flex;
+    justify-content: center;
+}
+
+.intro_navbar_list li {
+    float: left;
+    color: var(--color-dark-white);
+    padding: 0 40px 0 40px;
+    cursor: pointer;
+}
+
+.intro_navbar_up {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    background-color: var(--color-light-white);
+    border: 1px solid var(--color-dark-white);
+}
+
+.intro_navbar_up li {
+    color: var(--color-grey);
+    cursor: pointer;
+}
+
+/* section about */
+.about_img {
+    padding-top: 50px;
+    width: 50%;
+}
+
+.explain {
+    opacity: 0;
+}
+
+.about_imgs:hover .explain {
+    opacity: 1;
+}
+
+/* section service */
+#service {
+    width: 100%;
+    height: 700px;
+}
+
+.section_service {
+    margin: auto;
+}
+
+.service_service {
+    float: left;
+    width: 33%;
+    padding-top: 50px;
+}
+
+.service_icon {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    font-size: 70px;
+    margin: auto;
+    margin-bottom: 20px;
+    color: var(--color-navbar);
+    border: 1px solid var(--color-navbar);
+    border-radius: 50%;
+    border-width: thick;
+}
+
+.service_h3 {
+    margin-bottom: 40px;
+}
+
+/* section contact */
+#contact {
+    background: url(img/벼_수정.jpg) center/cover no-repeat;
+    height: 400px;
+}
+
+.contact_title {
+    color: var(--color-white);
+}
+
+/* lend.html */
+/* section lend_Q */
+#lend_Q {
+    width: 100%;
+    height: 300px;
+    background-color: var(--color-pink);
+    text-align: center;
+}
+
+.lend_Q {
+    width: 100%;
+}
+
+.lend_Q_Q {
+    margin: 0;
+    padding-top: 120px;
+    color: var(--color-white);
+}
+
+/* section lend_A */
+#lend_A {
+    padding: 30px;
+}
+
+#lend_A button {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lend_A_list {
+    display: inline-block;
+    width: 20%;
+    height: 80px;
+    margin: 10px;
+    border: 1px solid var(--color-dark-white);
+    border-radius: 2vh;
+    cursor: pointer;
+}
+
+.lend_A_list:hover {
+    border: 1px solid var(--color-black);
+}
+
+.lend_A_list_p {
+    font-size: 28px;
+    font-weight: var(--weight-regular);
+}
+
+.lend_A_bottom {
+    width: 100%;
+    height: 100px;
+}
+
+.lend_A_back {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    margin: 10px;
+    border: 1px solid var(--color-dark-white);
+    border-radius: 2vh;
+    cursor: pointer;
+}
+
+.lend_A_next {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    margin: 20px;
+    background-color: var(--color-dark-grey);
+    border: 1px solid var(--color-dark-grey);
+    border-radius: 2vh;
+    cursor: pointer;
+}
+
+.lend_A_back:hover {
+    border: 1px solid var(--color-black);
+}
+
+.lend_A_next:hover {
+    background-color: var(--color-black);
+}
+
+.lend_A_next_p {
+    color: var(--color-white);
+}
+
+
+/* login.html */
+/* section login */
+#login {
+    border: 1px solid var(--color-dark-white);
+}
+.login_pannel {
+    display: block;
+    margin: 0 auto;
+    width: 450px;
+    border: 1px solid var(--color-dark-white);
+    border-radius: 3%;
+} 
+
+.login_pannel_inner {
+    padding: 20px;
+}
+
+.id_pw_wrap {
+    display: block;
+}
+
+.id_pw_wrap .input_row {
+    width: 100%;
+    padding: 16px;
+}
+
+.input_row {
+    display: block;
+    text-align: left;
+    border: 1px solid var(--color-dark-white);
+    border-radius: 5px;
+    padding: 16px;
+}
+
+.input_text {
+    position: relative;
+    display: block;
+    width: 100%;
+    font-size: var(--font-small);
+}
+
+.keep {
+    height: 50px;
+}
+
+.btn_login {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--color-dark-grey);
+    border-radius: 5px;
+    background-color: var(--color-dark-grey);
+}
+
+.btn_login .btn_text {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #fff;
+}
+
+.login_find {
+    padding: 25px;
+}
+.login_find_menu {
+    padding: 16px;
+    color: var(--color-light-grey);
+}
+
+/* media screen */
+@media screen and (max-width: 760px) {
+    .navbar_toggle_btn {
+        display: block;
+    }
+
+    .navbar_list {
+        display: none;
+    }
+
+    .main_img img {
+        width: 100%;
+        height: 300px;
+    }
+}

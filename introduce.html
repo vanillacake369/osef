@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css?after">
+    <script src="main.js" defer></script>
+    <title>억새풀</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav id="navbar">
+        <div class="navbar_logo">
+            <i class="fas fa-seedling"></i>
+            <a href="index.php">억새풀</a>
+        </div>
+        <ul class="navbar_list">
+            <li><a href="rent.html">임대신청</a></li>
+            <li>자료실</li>
+            <li><a href="introduce.html">회사소개</a></li>
+            <li><a href="lend.html">기계등록</a></li>
+        </ul>
+        <ul class="navbar_list_login">
+            <li><a href="mypage.php">마이페이지</a></li>
+            <li><a href="login.html">로그인</a></li>
+        </ul>
+        <button class="navbar_toggle_btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- section home -->
+    <section id="home">
+        <div class="home_container">
+            <h1 class="home_title">About</h1>
+            <p class="home_description">농업인을 위한, 미래를 위한</p>
+        </div>
+        <div class="intro_navbar">
+            <div class="intro_navbar_wrap">
+                <ul class="intro_navbar_list">
+                    <li data-link="#about">인사말</li>
+                    <li data-link="#service">개발 & 운영</li>
+                    <li data-link="#location">회사 위치</li>
+                    <li data-link="#contact">Contact</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- section about -->
+    <section id="about" class="section">
+        <div class="section_container">
+            <div class="about_imgs">
+                <h1>농기계 임대 & 정보 공유</h1>
+                <h2>저희 억새풀은 농업인을 위한 서비스입니다.</h2>
+                <img src="img/농부.jpg" class="about_img"
+                    alt="https://www.freepik.com/vectors/organic-farming'>Organic farming vector created by freepik - www.freepik.com">
+                <br>
+                <a href='https://www.freepik.com/vectors/organic-farming' class="explain">Organic farming vector created
+                    by freepik - www.freepik.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- section service -->
+    <section id="service" class="section">
+        <div class="section_container">
+            <h1>운영 중인 서비스</h1>
+            <h2>임대 - 대여 - 교환</h2>
+            <div class="section_service">
+                <div class="service_service">
+                    <div class="service_icon" style="color: #5fa5d4; border: 1px solid #5fa5d4;">
+                        <i class="fas fa-tractor"></i>
+                    </div>
+                    <div class="service_title">농기계 임대</div>
+                </div>
+                <div class="service_service">
+                    <div class="service_icon" style="color: #ff6863; border: 1px solid #ff6863;">
+                        <i class="fas fa-luggage-cart"></i>
+                    </div>
+                    <div class="service_title">농기계 대여</div>
+                </div>
+                <div class="service_service">
+                    <div class="service_icon" style="color: #feb546; border: 1px solid #feb546;">
+                        <i class="fas fa-retweet"></i>
+                    </div>
+                    <div class="service_title">정보 교환</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section location -->
+    <section id="location" class="section">
+        <div class="section_container" style="padding: 60px;">
+            <h1>회사 위치</h1>
+            <h3 class="location_h3">상세 주소 : 경상북도 안동시 경동로 1375 (송천동) 공대 1호관 413호</h3>
+
+            <!-- 지도를 표시할 div 입니다 -->
+            <div id="map" style="width:100%;height:500px;z-index:1;position:relative;"></div>
+
+            <script type="text/javascript"
+                src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26379676c982d4d975ccee24531321d2&libraries=services"></script>
+            <script>
+                var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                    mapOption = {
+                        center: new kakao.maps.LatLng(36.54349293081557, 128.79632590241707), // 지도의 중심좌표
+                        level: 3 // 지도의 확대 레벨
+                    };
+
+                // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+                var map = new kakao.maps.Map(mapContainer, mapOption);
+
+                // 마커가 표시될 위치입니다 
+                var markerPosition = new kakao.maps.LatLng(36.54349293081557, 128.79632590241707);
+
+                // 마커를 생성합니다
+                var marker = new kakao.maps.Marker({
+                    position: markerPosition
+                });
+                // 마커가 지도 위에 표시되도록 설정합니다
+                marker.setMap(map);
+                var iwContent = '<div style="padding: 5px 5px 5px 33px">억새풀<br><a href="https://map.kakao.com/link/map/NGN 연구실,36.54349293081557, 128.79632590241707" style="color:blue" target="_blank">큰지도보기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                    iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+
+                // 인포윈도우를 생성합니다
+                var infowindow = new kakao.maps.InfoWindow({
+                    position: iwPosition,
+                    content: iwContent
+                });
+
+                // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+                infowindow.open(map, marker); 
+            </script>
+        </div>
+    </section>
+
+    <!-- section contact -->
+    <section id="contact" class="section">
+        <div class="section_container">
+            <h1 class="contact_title">Contact</h1>
+        </div>
+        <a href="https://www.freepik.com/photos/paddy-field" class="contact_title">Paddy field photo created by
+            wirestock - www.freepik.com</a>
+    </section>
+
+    <!-- footer -->
+    <footer id="footer">
+        <div class="footer_logo">
+            <div class="navbar_logo">
+                <i class="fas fa-seedling"></i>
+                <a href="index.php">억새풀</a>
+            </div>
+        </div>
+        <div class="footer_text">
+            <p class="footer_text_p">36729 경상북도 안동시 경동로 1375 (송천동) 국립안동대학교 공대1호관 413호 NGN연구실</p>
+            <p class="footer_text_p">TEL : 010-9548-1369 / E-MAIL : w1683111@naver.com</p>
+            <p class="footer_text_p">COPYRIGHT (C)2022 억새풀. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
