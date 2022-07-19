@@ -5,7 +5,7 @@
 |:---:|:---:|:---:|:---:|:---:|
 |index.html (메인페이지)|O|황근원|O|미정|
 |member-login.html (로그인 페이지)|O|황근원|X|임지훈|
-|member-signup.html (회원가입 페이지)|X|미정|X|임지훈|
+|member-signup.html (회원가입 페이지)|O|황근원|X|임지훈|
 |member-modify.html (회원정보 수정 페이지)|X|미정|X|임지훈|
 |member-info.html (회원 마이 페이지)|X|미정|X|임지훈|
 |docs-search.html (기술문서 조회)|X|미정|O|김승민|
@@ -20,5 +20,3 @@
 |instruction.html (서비스 이용안내 / 절차)|X|미정|O|미정|
 |conditions.html (이용약관)|X|미정|O|미정|
 |user-policy.html (개인정보처리방침)|X|미정|O|미정|
-
-O미정 = 필요없음
