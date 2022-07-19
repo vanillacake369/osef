@@ -18,6 +18,7 @@
     --color-light-navbar2: #325777;
 
     /* Font size */
+    --font-big: 48px;
     --font-large: 32px;
     --font-medium: 24px;
     --font-regular: 18px;
@@ -39,84 +40,6 @@
 
 * {
     box-sizing: border-box;
-}
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-input,
-select,
-textarea,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
     padding: 0px;
     margin: 0px;
     vertical-align: top;
@@ -308,6 +231,10 @@ p {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.home_container h1 {
+    font-size: var(--font-big);
 }
 
 .home_title,

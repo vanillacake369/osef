@@ -13,77 +13,76 @@
     <title>억새풀</title>
 </head>
 
-<!-- section document detail -->
-<section  id="document" class="section">
-        <div class="section_container">
-            <div class="doc_title">
-                <h1><?= $row["title"];?></h1> 
+<section id="section" class="section">
+    <div class="section_container">
+        <form action="" method="post">
+            <div class="form-group">
+                <label>ID</label>
+                <span class="essential" style="color:red">*</span>
+                <input type="text" name="id" class="form-control" value="" maxlength="16" required="">
+                <span>
+                    <?php if (isset($member_exist_error)) {
+                        echo $member_exist_error;
+                    }
+                    ?>
+                    <span>
             </div>
-            <hr>
-            <div class="doc_wrap">
-                <div class="doc_img">
-                    <img class="preview">
-                </div>
-                <div class="doc_detail">
-                    <div class="doc_detail_top">
-                        <p>저자: <?=$row["member_name"];?></p>
-                        <p>등록일: <?=$row["upload"];?></p>
-                    </div>
-                    <h2 class="doc_price">가격: <?=$row["price"];?></h2>
-                    <h3 class="doc_contents">상세내용 : <?=$row["detail"];?></h3>
-                    <div class="doc_detail_bottom">
-                        <button>바로구매</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- section location -->
-    <section id="location" class="section">
-        <div class="section_container">
-            <h1>회사 위치</h1>
-            <h3 class="location_h3">상세 주소 : 경상북도 안동시 경동로 1375 (송천동) 공대 1호관 413호</h3>
-
-            <!-- 지도를 표시할 div 입니다 -->
-            <div id="map" style="width:100%;height:500px;z-index:1;position:relative;"></div>
-
-            <script type="text/javascript"
-                src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26379676c982d4d975ccee24531321d2&libraries=services"></script>
+            <!-- #2 PASSWORD VERIFICATION -->
             <script>
-                var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-                    mapOption = {
-                        center: new kakao.maps.LatLng(36.54349293081557, 128.79632590241707), // 지도의 중심좌표
-                        level: 3 // 지도의 확대 레벨
-                    };
-
-                // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-                var map = new kakao.maps.Map(mapContainer, mapOption);
-
-                // 마커가 표시될 위치입니다 
-                var markerPosition = new kakao.maps.LatLng(36.54349293081557, 128.79632590241707);
-
-                // 마커를 생성합니다
-                var marker = new kakao.maps.Marker({
-                    position: markerPosition
-                });
-                // 마커가 지도 위에 표시되도록 설정합니다
-                marker.setMap(map);
-                var iwContent = '<div style="padding: 5px 5px 5px 33px">억새풀<br><a href="https://map.kakao.com/link/map/NGN 연구실,36.54349293081557, 128.79632590241707" style="color:blue" target="_blank">큰지도보기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-                    iwPosition = new kakao.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
-
-                // 인포윈도우를 생성합니다
-                var infowindow = new kakao.maps.InfoWindow({
-                    position: iwPosition,
-                    content: iwContent
-                });
-
-                // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-                infowindow.open(map, marker); 
+                var check = function () {
+                    if (document.getElementById('pw').value ==
+                        document.getElementById('cpassword').value) {
+                        document.getElementById('message').style.color = 'green';
+                        document.getElementById('message').innerHTML = 'matching';
+                    } else {
+                        document.getElementById('message').style.color = 'red';
+                        document.getElementById('message').innerHTML = 'not matching';
+                    }
+                }
             </script>
-        </div>
-    </section>
-</body>
-<?= include("footer.html"); ?>
+            <div class="form-group">
+                <label>Password</label>
+                <span class="essential" style="color:red">*</span>
+                <input type="password" name="pw" id="pw" class="form-control" value="" minlength="8" maxlength="30"
+                    required="" onkeyup='check();'>
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password*</label>
+                <span class="essential" style="color:red">*</span>
+                <input type="password" name="cpassword" id="cpassword" class="form-control" value="" minlength="8"
+                    maxlength="30" required="" onkeyup='check();'>
+                <span id='message'></span>
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Name</label>
+                <span class="essential" style="color:red">*</span>
+                <input type="text" name="name" class="form-control" value="" maxlength="50" required="">
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group ">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" value="" maxlength="30">
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <span class="essential" style="color:red">*</span>
+                <input type="text" name="phone" class="form-control" value="" maxlength="12" required="">
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                <span class="essential" style="color:red">*</span>
+                <input type="text" name="address" class="form-control" value="" maxlength="128" required="">
+                <span class="text-danger"></span>
+            </div>
+            <input type="submit" class="btn btn-primary" name="signup" value="submit">
+            Already have a account?<a href="login.php" class="btn btn-default">Login</a>
+        </form>
+    </div>
+    </div>
+    </body>
+    <?= include("footer.html"); ?>
+
 </html>
