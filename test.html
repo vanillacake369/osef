@@ -9,11 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="lend.js" defer></script>
     <title>억새풀</title>
 </head>
 
 <body>
+
     <!-- navbar -->
     <nav id="navbar">
         <div class="navbar_logo">
@@ -34,99 +34,31 @@
         </button>
     </nav>
 
-    <!-- section lend_Q -->
-    <section id="lend_Q">
-        <div id="lend_Q1">
-            <h1 class="lend_Q_Q">1/7</h1>
-            <h1 class="lend_Q_Q">어떤 종류의 기계,장비 인가요?</h1>
-        </div>
-        <div id="lend_Q2" class="hidden">
-            <h1 class="lend_Q_Q">2/7</h1>
-            <h1 class="lend_Q_Q">등록 정보를 확인해 주세요</h1>
-        </div>
-    </section>
-
-    <!-- section lend_Answer -->
-    <section id="lend_answer" class="section">
-        <div id="lend_form" class="section_container">
-
-            <!-- lend_form_A1 -->
-            <form id="lend_form_A1">
-                <div role="radiogroup">
-                    <input type="radio" id="Choice1" name="category" value="tractor">
-                    <label for="Choice1" class="lend_answer_list">
-                        <p class="lend_answer_list_p">트렉터</p>
-                    </label>
-                    <input type="radio" id="Choice2" name="category" value="combine">
-                    <label for="Choice2" class="lend_answer_list">
-                        <p class="lend_answer_list_p">콤바인</p>
-                    </label>
-                    <input type="radio" id="Choice3" name="category" value="rice transplanter">
-                    <label for="Choice3" class="lend_answer_list">
-                        <p class="lend_answer_list_p">이양기</p>
-                    </label>
-                    <input type="radio" id="Choice4" name="category" value="rotary">
-                    <label for="Choice4" class="lend_answer_list">
-                        <p class="lend_answer_list_p">로터리</p>
-                    </label>
-                    <input type="radio" id="Choice5" name="category" value="livestock machinery">
-                    <label for="Choice5" class="lend_answer_list">
-                        <p class="lend_answer_list_p">축산기계</p>
-                    </label>
-                    <input type="radio" id="Choice6" name="category" value="forklift">
-                    <label for="Choice6" class="lend_answer_list">
-                        <p class="lend_answer_list_p">포크레인</p>
-                    </label>
-                    <input type="radio" id="Choice7" name="category" value="etc">
-                    <label for="Choice7" class="lend_answer_list">
-                        <p class="lend_answer_list_p">기타</p>
-                    </label>
+    <section  id="document" class="section">
+        <div class="section_container">
+            <div class="doc_title">
+                <h1><?= $row["title"];?></h1> 
+            </div>
+            <hr>
+            <div class="doc_wrap">
+                <div class="doc_img">
+                    <img class="preview">
                 </div>
-                <div class="lend_answer_bottom">
-                    <div class="lend_answer_bottom">
-                        <div id="lend_next_btn" class="lend_answer_next hidden">
-                            <input type="submit" value="다음" class="lend_answer_next_p">
-                        </div>
+                <div class="doc_detail">
+                    <div class="doc_detail_top">
+                        <p>저자: <?=$row["member_name"];?></p>
+                        <p>등록일: <?=$row["upload"];?></p>
                     </div>
-            </form>
-        </div>
-        </form>
-
-        <!-- lend_form_A2 -->
-        <form id="lend_form_A2" class="hidden">
-            <div class="section_container">
-                <div class="lend_card">
-                    <div class="lend_card_top">
-                        <div class="lend_card_img">
-                            <!-- <img id="preview" style="width: 350px; height:250px;"> -->
-                        </div>
-                        <div class="lend_card_text">
-                            <h2>기계명</h2><input id="category" value=""></input>
-                            <h2>가격</h2><input id="price" value=""></input>
-                            <p>제조사</p><input id="maker" value=""></input>
-                        </div>
-                    </div>
-                    <div class="lend_card_text_1">
-                        <p>주소</p><input id="adress" value=""></input>
-                        <p>시작일</p><input id="startdate" value=""></input>
-                        <p>종료일</p><input id="enddate" value=""></p>
-                        <p>상세내용</p><input id="detail" value=""></input>
+                    <h2 class="doc_price">가격: <?=$row["price"];?></h2>
+                    <h3 class="doc_contents">상세내용 : <?=$row["detail"];?></h3>
+                    <div class="doc_detail_bottom">
+                        <button>바로구매</button>
                     </div>
                 </div>
             </div>
-            <div class="lend_answer_bottom">
-                <div class="lend_answer_back">
-                    <button type="button" id="A2_btn">
-                        <p>뒤로</p>
-                    </button>
-                </div>
-                <div id="lend_next_btn" class="lend_answer_next">
-                    <input type="submit" value="다음" class="lend_answer_next_p">
-                </div>
-            </div>
-        </form>
         </div>
     </section>
+
 
     <!-- footer -->
     <footer id="footer">
