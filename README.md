@@ -20,5 +20,3 @@
 |instruction.html (서비스 이용안내 / 절차)|X|미정|O|미정|
 |conditions.html (이용약관)|X|미정|O|미정|
 |user-policy.html (개인정보처리방침)|X|미정|O|미정|
-
-O미정 = 필요없음
