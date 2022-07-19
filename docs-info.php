@@ -27,14 +27,32 @@
     <link rel="stylesheet" href="style.css">
     <title>억새풀</title>
 </head>
-<body>
-<h1><?= $row["title"];?></h1>
-<h2> 저자: <?=$row["member_name"];?> </h2>
-<h2> 등록일: <?=$row["upload"];?> </h2>
-<h2> 가격: <?=$row["price"];?> </h2>
-<h3> 상세내용 : <?=$row["detail"];?></h3>
-<button>구매 버튼 </button>
 
+<!-- section document detail -->
+<section  id="document" class="section">
+        <div class="section_container">
+            <div class="doc_title">
+                <h1><?= $row["title"];?></h1> 
+            </div>
+            <hr>
+            <div class="doc_wrap">
+                <div class="doc_img">
+                    <img class="preview">
+                </div>
+                <div class="doc_detail">
+                    <div class="doc_detail_top">
+                        <p>저자: <?=$row["member_name"];?></p>
+                        <p>등록일: <?=$row["upload"];?></p>
+                    </div>
+                    <h2 class="doc_price">가격: <?=$row["price"];?></h2>
+                    <h3 class="doc_contents">상세내용 : <?=$row["detail"];?></h3>
+                    <div class="doc_detail_bottom">
+                        <button>바로구매</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 <?= include("footer.html"); ?>
 </html>

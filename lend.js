@@ -70,6 +70,15 @@ function onLendSumbitA1(event) {
     // submit 1번 누르면 A2, Q2 생김
     lendFormQ2.classList.remove(HIDDEN_CLASSNAME);
     lendFormA2.classList.remove(HIDDEN_CLASSNAME);
+
+    // 밑에 지우기
+    document.getElementById("category").value = localStorage.getItem(CATEGORY_KEY);
+    document.getElementById("price").value = localStorage.getItem(Price_KEY);
+    document.getElementById("maker").value = localStorage.getItem(MAKER_KEY);
+    document.getElementById("adress").value = localStorage.getItem(Adress_KEY);
+    document.getElementById("startdate").value = localStorage.getItem(StartDate_KEY);
+    document.getElementById("enddate").value = localStorage.getItem(Enddate_KEY);
+    document.getElementById("detail").value = localStorage.getItem(Textarea_KEY);
 }
 lendFormA1.addEventListener('submit', onLendSumbitA1);
 
@@ -82,33 +91,6 @@ lendFormA1.addEventListener('click', (event) => {
         }
     }) 
 })
-
-
-
-
-
-
-// lend_form_   input 
-function getValue(event) {
-    event.preventDefault();
-    
-    const getCategory = window.localStorage.getItem(CATEGORY_KEY);
-    const getPrice = window.localStorage.getItem(Price_KEY);
-
-    // category.innerHTML = `${getCategory}`;
-    document.getElementById("category").innerText = 'asdasdasds';
-    document.getElementById("price").innerHTML = localStorage.getItem(Price_KEY);
-
-    console.log(document.getElementById('input'));
-
-}
-lendFormA1.addEventListener('submit', getValue);
-
-
-
-
-
-
 
 // lend_form_A2
 function onLendSumbitA2(event) {
@@ -265,6 +247,14 @@ function onLendSumbitA7(event) {
 
     lendFormQ8.classList.remove(HIDDEN_CLASSNAME);
     lendFormA8.classList.remove(HIDDEN_CLASSNAME);
+
+    document.getElementById("category").value = localStorage.getItem(CATEGORY_KEY);
+    document.getElementById("price").value = localStorage.getItem(Price_KEY);
+    document.getElementById("maker").value = localStorage.getItem(MAKER_KEY);
+    document.getElementById("adress").value = localStorage.getItem(Adress_KEY);
+    document.getElementById("startdate").value = localStorage.getItem(StartDate_KEY);
+    document.getElementById("enddate").value = localStorage.getItem(Enddate_KEY);
+    document.getElementById("detail").value = localStorage.getItem(Textarea_KEY);
 }
 lendFormA7.addEventListener('submit', onLendSumbitA7);
 
@@ -279,28 +269,12 @@ lendFormA7Btn.addEventListener('click', (event) => {
 })
 
 // lend_form_A8
-function getValue(event) {
-    event.preventDefault();
-    
-    const getFile = window.localStorage.getItem(Flie_KEY);
-    const getCategory = window.localStorage.getItem(CATEGORY_KEY);
-    const getPrice = window.localStorage.getItem(Price_KEY);
-    const getMaker = window.localStorage.getItem(MAKER_KEY);
-    const getAdress = window.localStorage.getItem(Adress_KEY);
-    const getStartdate = window.localStorage.getItem(StartDate_KEY);
-    const getEnddate = window.localStorage.getItem(Enddate_KEY);
-    const getDetail = window.localStorage.getItem(Textarea_KEY);
-    
-    preview.innerHTML = `${getFile}`;
-    category.innerHTML = `${getCategory}`;
-    price.innerText = `${getPrice}`;
-    maker.innerText = `${getMaker}`;
-    adress.innerText = `${getAdress}`;
-    startdate.innerText = `${getStartdate}`;
-    enddate.innerText = `${getEnddate}`;
-    detail.innerText = `${getDetail}`;
+function onLendSumbitA8(event) {
+
+    lendFormQ7.classList.add(HIDDEN_CLASSNAME);
+    lendFormA7.classList.add(HIDDEN_CLASSNAME);
 }
-lendFormA7.addEventListener('submit', getValue);
+lendFormA8.addEventListener('submit', onLendSumbitA8);
 
 // 뒤로가기 버튼
 const lendFormA8Btn = document.querySelector('#A8_btn');
