@@ -73,17 +73,15 @@
                                         <div class="profile-header-content">
                                             <!-- BEGIN profile-header-img -->
                                             <div class="profile-header-img">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                                                <img src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="">
                                             </div>
                                             <!-- END profile-header-img -->
                                             <!-- BEGIN profile-header-info -->
                                             <div class="profile-header-info">
                                                 <?php
                                                     $user_id = $_SESSION['id'];
-                                                    echo ("<h4 class='m-t-10 m-b-5'>'$user_id'</h4>");
+                                                    echo ("<h1 class='m-t-10 m-b-5'>'$user_id'</h1>");
                                                 ?>
-                                                <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
-                                                <a href="#" class="btn btn-xs btn-success">Edit Profile</a>
                                             </div>
                                             <!-- END profile-header-info -->
                                         </div>

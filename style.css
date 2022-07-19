@@ -18,6 +18,7 @@
     --color-light-navbar2: #325777;
 
     /* Font size */
+    --font-big: 48px;
     --font-large: 32px;
     --font-medium: 24px;
     --font-regular: 18px;
@@ -39,84 +40,6 @@
 
 * {
     box-sizing: border-box;
-}
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-input,
-select,
-textarea,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
     padding: 0px;
     margin: 0px;
     vertical-align: top;
@@ -308,6 +231,10 @@ p {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.home_container h1 {
+    font-size: var(--font-big);
 }
 
 .home_title,
@@ -515,6 +442,7 @@ p {
 }
 
 .lend_answer_back {
+    font-size: var(--font-regular);
     width: 100px;
     height: 50px;
     border: 1px solid var(--color-dark-white);
@@ -666,7 +594,7 @@ p {
     text-align: left;
     border: 1px solid var(--color-dark-white);
     border-radius: 5px;
-    padding: 16px;
+    padding: 12px;
 }
 
 .input_text {
@@ -783,6 +711,66 @@ p {
 }
 
 
+/* signup html */
+/* section signup */
+#signup .navbar_logo,
+.sigup_bottom {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    padding-top: 50px;
+}
+
+.signup_wrap {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 0 auto;
+    width: 600px;
+    border: 1px solid var(--color-dark-white);
+    border-radius: 3%;
+    padding: 50px;
+}
+
+.signup_wrap label {
+    padding: 10px;
+    padding-top: 20px;
+}
+
+.red_dot {
+    color: red;
+}
+
+.signup_submit {
+    padding-top: 40px;
+}
+
+.sigup_bottom {
+    width: 100%;
+    padding: 20px;
+}
+
+.signup_btn {
+    margin-left: 10px;
+    border: 1px solid var(--color-dark-white);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-login {
+    padding: 10px 30px;
+    color: #333;
+    border: 1px solid #333;
+    background: #fff;
+    border-radius: 20px;
+    transition: all ease-in-out 0.3s;
+}
+
+.btn-login:hover {
+    border-color: #fff;
+    background: #666;
+    color: #fff;
+}
 
 /* media screen */
 @media screen and (max-width: 760px) {
@@ -799,6 +787,9 @@ p {
         height: 300px;
     }
 }
+
+
+
 
 
 

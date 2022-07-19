@@ -9,6 +9,9 @@ $password = isset($_POST['pw']) ? $_POST['pw'] : '';
 
 // IF SUBMIT HAS DONE
 if (isset($_POST['login'])) {
+
+    echo "login post successw";
+
     // GET MEMBER BY USER INPUT
     $select_query = "SELECT * FROM member WHERE id = '$id'";
     

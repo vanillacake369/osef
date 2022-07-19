@@ -1,14 +1,10 @@
 <?php
 
-
-// INCLUDE SIGNUP HTML
-include_once "signup.html";
-
 session_start();
 
 // CONNECT DATABASE
 require_once "dbcon.php";
-$member_exist_error = '';
+
 
 if (isset($_POST['signup'])) {
     // GET USER INPUT
@@ -34,7 +30,7 @@ if (isset($_POST['signup'])) {
         if ($member_count && (int)$member_count['cnt'] === 1) {
             echo '<script type="text/javascript">'; 
             echo 'alert("Member already exists");'; 
-            echo 'window.location.href = "signup.php";';
+            echo 'window.location.href = "signup.html";';
             echo '</script>';
             exit();
         }
