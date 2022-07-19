@@ -5,7 +5,7 @@
     if(!isset($_SESSION['id'])){
         var_dump($_SESSION);
         echo '<script>alert("You need to login first");';
-        echo 'window.location.href = "login.php";';
+        echo 'window.location.href = "login.html";';
         echo '</script>';
     }
 ?>
@@ -39,9 +39,14 @@
             <li><a href="lend.html">기계등록</a></li>
         </ul>
         <ul class="navbar_list">
-        <li><a href="wet.html" id="afterLogin">로그아웃</a></li>
-        <li><a href="mypage.html" id="afterLogin">마이페이지</a></li>
-        <li><a href="login.html" id="beforeLogin">로그인</a></li>
+            <?php
+            if(!isset($_SESSION['id'])) {
+            echo '<li><a href="login.html">로그인</a></li>';
+            }else{
+            echo '<li><a href="logout.php">로그아웃</a></li>';
+            echo '<li><a href="mypage.php">마이페이지</a></li>';
+            }
+            ?>
         </ul>
         <button class="navbar_toggle_btn">
             <i class="fas fa-bars"></i>
@@ -85,16 +90,20 @@
                                         <!-- END profile-header-content -->
                                         <!-- BEGIN profile-header-tab -->
                                         <ul class="profile-header-tab nav nav-tabs">
+                                            <li class="nav-item"><a href="mypage.php" target="__blank"
+                                                    class="nav-link_ active show">정보 확인</a></li>
                                             <li class="nav-item"><a href="#" target="__blank"
-                                                    class="nav-link_">POSTS</a></li>
+                                                    class="nav-link_">회원정보 변경</a></li>
                                             <li class="nav-item"><a href="#" target="__blank"
-                                                    class="nav-link_">ABOUT</a></li>
+                                                    class="nav-link_">등록한 농기계 관리</a></li>
                                             <li class="nav-item"><a href="#" target="__blank"
-                                                    class="nav-link_">PHOTOS</a></li>
+                                                    class="nav-link_">임대 중인 농기계</a></li>
                                             <li class="nav-item"><a href="#" target="__blank"
-                                                    class="nav-link_">VIDEOS</a></li>
+                                                    class="nav-link_">등록한 기술문서</a></li>   
                                             <li class="nav-item"><a href="#" target="__blank"
-                                                    class="nav-link_ active show">FRIENDS</a></li>
+                                                    class="nav-link_">구매한 기술문서</a>
+                                            <li class="nav-item"><a href="#" target="__blank"
+                                                    class="nav-link_">회원 탈퇴</a></li>
                                         </ul>
                                         <!-- END profile-header-tab -->
                                     </div>
@@ -118,12 +127,16 @@
                                                                 require_once "dbcon.php";
                                                                 $user_id = $_SESSION['id'];
                                                                 $member_query = "SELECT * FROM member WHERE id = '$user_id'";
-                                                                if($result = mysqli_query($conn, $find_name_query )){
+                                                                if($result = mysqli_query($conn, $member_query )){
                                                                     $row = mysqli_fetch_assoc($result);
                                                                     $user_name = $row['name'];
-                                                                    $user_mobile = $row['mobile'];
+                                                                    $user_mobile = $row['phone'];
+                                                                    $user_email = $row['email'];
                                                                     $user_address = $row['address'];
 
+                                                                    echo ("<h4 class='m-t-10 m-b-5'>'$user_name'</h4>");
+                                                                    echo ("<h4 class='m-t-10 m-b-5'>'$user_mobile'</h4>");
+                                                                    echo ("<h4 class='m-t-10 m-b-5'>'$user_email'</h4>");
                                                                     echo ("<h4 class='m-t-10 m-b-5'>'$user_name'</h4>");
                                                                 }else{                                          
                                                                     session_destroy();                  
@@ -239,22 +252,4 @@
         </div>
     </footer>
 </body>
-
-<script>
-    const HIDDEN_CLASSNAME = 'hidden';
-
-    const after = document.querySelectorAll('#afterLogin');
-    const before = document.querySelectorAll('#beforeLogin');
-
-    var uid = '<%=(String)session.getAttribute("id")%>';
-    if (uid == "null") {
-        for (let i = 0; i < before.length; i++) {
-            before[i].classList.add(HIDDEN_CLASSNAME);
-        }
-    } else {
-        for (let i = 0; i < after.length; i++) {
-            after[i].classList.add(HIDDEN_CLASSNAME);
-        }
-    }
-</script>
 </html>

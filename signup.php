@@ -1,6 +1,10 @@
 <?php
-session_start();
 
+
+// INCLUDE SIGNUP HTML
+include_once "signup.html";
+
+session_start();
 
 // CONNECT DATABASE
 require_once "dbcon.php";
@@ -85,8 +89,5 @@ function getSaltString($datetime, $latest, $login_count, $password)
     return hash('sha256', "$saltString[$mod]");
 }
 //  ---- END OF SALT ---- 
-
-// INCLUDE SIGNUP HTML
-include_once "signup.html";
 
 ?>

@@ -11,7 +11,7 @@ $password = isset($_POST['pw']) ? $_POST['pw'] : '';
 if (isset($_POST['login'])) {
     // GET MEMBER BY USER INPUT
     $select_query = "SELECT * FROM member WHERE id = '$id'";
-
+    
     if($result = mysqli_query($conn, $select_query)){
         // GET PRIOR SALT PW BY INPUT
         $row = mysqli_fetch_assoc($result);
@@ -40,17 +40,17 @@ if (isset($_POST['login'])) {
                 header("Location: index.php");
             }else{   // UPDATE FAIL
                 echo '<script>alert("Server has failed to update password :( ")';
-                echo 'window.location.href = "login.php";';
+                echo 'window.location.href = "login.html";';
                 echo '</script>';
             }            
         } else { // WRONG INPUT
             echo '<script>alert("Unvalid Id & Password. Please try again. :( ")';
-            echo 'window.location.href = "login.php";';
+            echo 'window.location.href = "login.html";';
             echo '</script>';
         }
     }else{ // USER INPUT UNVALID
         echo '<script>alert("Please fill Id & Password.")';
-        echo 'window.location.href = "login.php";';
+        echo 'window.location.href = "login.html";';
         echo '</script>';
     }
 }
@@ -73,7 +73,4 @@ function getSaltString($datetime, $latest, $login_count, $password)
     }
     return hash('sha256', "$saltString[$mod]");
 }
-
-include_once "login.html";
-
 ?> 
