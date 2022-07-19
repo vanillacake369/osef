@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>억새풀</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav id="navbar">
+        <div class="navbar_logo">
+            <a href="index.html"><i class="fas fa-seedling"></i> 억새풀</a>
+        </div>
+        <ul class="navbar_list">
+            <li><a href="rent.html">임대신청</a></li>
+            <li><a href="#">자료실</a></li>
+            <li><a href="introduce.html">회사소개</a></li>
+            <li><a href="lend.html">기계등록</a></li>
+        </ul>
+        <ul class="navbar_list">
+            <li><a href="mypage.html">마이페이지</a></li>
+            <li><a href="login.html">로그인</a></li>
+        </ul>
+        <button class="navbar_toggle_btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <section id="signup" class="">
+        <div class="">
+            <div class="navbar_logo" style="font-size: 35px;">
+                <i class="fas fa-seedling"></i>
+                <a href="index.html">억새풀</a>
+            </div>
+            <form action="" method="post">
+                <div class="signup_wrap">
+                    <label>아이디<span class="red_dot">*</span></label>
+                    <div class="input_row">
+                        <input type="text" name="id" class="input_text" value="" maxlength="16" required="">
+                    </div>
+                    <label>비밀번호<span class="red_dot">*</span></label>
+                    <div class="input_row">
+                        <input type="password" name="pw" id="pw" class="input_text" value="" minlength="8"
+                            maxlength="30" required="" onkeyup='check();'>
+                    </div>
+                    <label>비밀번호 재확인<span class="red_dot">*</span></label>
+                    <div class="input_row">
+                        <input type="password" name="cpassword" id="cpassword" class="input_text" value="" minlength="8"
+                            maxlength="30" required="" onkeyup='check();'>
+                    </div>
+                    <label>이름<span class="red_dot">*</span></label>
+                    <div class="input_row">
+                        <input type="text" name="name" class="input_text" value="" maxlength="50" required="">
+                    </div>
+                    <label>이메일</label>
+                    <div class="input_row">
+                        <input type="email" name="email" class="input_text" value="" maxlength="30">
+                    </div>
+                    <label>휴대전화<span class="red_dot">*</span></label>
+                    <div class="input_row">
+                        <input type="text" name="phone" class="input_text" value="" maxlength="12" required="">
+                    </div>
+                    <label>주소<span class="red_dot">*</span></label>
+                    <div class="input_row">
+                        <input type="text" name="address" class="input_text" value="" maxlength="128" required="">
+                    </div>
+                    <div class="signup_submit">
+                        <button type="submit" class="btn_login">
+                            <span class="btn_text">회원가입</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="sigup_bottom">
+                    Already have a account? 
+                    <a href="login.php" class="signup_btn">로그인</a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer id="footer">
+        <div class="footer_logo">
+            <div class="navbar_logo">
+                <i class="fas fa-seedling"></i>
+                <a href="index.html">억새풀</a>
+            </div>
+        </div>
+        <div class="footer_text">
+            <p class="footer_text_p">36729 경상북도 안동시 경동로 1375 (송천동) 국립안동대학교 공대1호관 413호 NGN연구실</p>
+            <p class="footer_text_p">TEL : 010-9548-1369 / E-MAIL : w1683111@naver.com</p>
+            <p class="footer_text_p">COPYRIGHT (C)2022 억새풀. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

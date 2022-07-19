@@ -442,6 +442,7 @@ p {
 }
 
 .lend_answer_back {
+    font-size: var(--font-regular);
     width: 100px;
     height: 50px;
     border: 1px solid var(--color-dark-white);
@@ -593,7 +594,7 @@ p {
     text-align: left;
     border: 1px solid var(--color-dark-white);
     border-radius: 5px;
-    padding: 16px;
+    padding: 12px;
 }
 
 .input_text {
@@ -710,6 +711,50 @@ p {
 }
 
 
+/* signup html */
+/* section signup */
+#signup .navbar_logo, .sigup_bottom {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    padding-top: 50px;
+}
+
+.signup_wrap {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 0 auto;
+    width: 600px;
+    border: 1px solid var(--color-dark-white);
+    border-radius: 3%;
+    padding: 50px;
+}
+
+.signup_wrap label {
+    padding: 10px;
+    padding-top: 20px;
+}
+
+.red_dot {
+    color: red;
+}
+
+.signup_submit {
+    padding-top: 40px;
+}
+
+.sigup_bottom {
+    width: 100%;
+    padding: 20px;
+}
+
+.signup_btn{
+    margin-left: 10px;
+    border: 1px solid var(--color-dark-white);
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 /* media screen */
 @media screen and (max-width: 760px) {
@@ -727,6 +772,11 @@ p {
     }
 }
 
+
+
+
+
+
 /* docs-register.html  */
 
 .docsRegiForm h2 {
@@ -743,7 +793,7 @@ p {
 
 input.docsRegister {
     font-size: var(--font-regular);
-    ontent: center;
+    justify-content: center;
     width: 100%;
     padding: 12px 20px;
     box-sizing: border-box;
@@ -818,56 +868,4 @@ input.searchSubmit {
     border-color: #000000;
     border: 1px solid rgb(2, 2, 2);
     border-radius: 10px;
-}
-
-
-/* docs-search.php*/
-
-#board {
-    margin: 30px 30px 0px 30px;
-    padding: 16px 16px 0px 16px;
-    background-color: #e7eef3;
-}
-
-/* .board__list {
-    height: 500px;
-} */
-
-.board__list__table th, td {
-    border-bottom: 1px solid #444444;
-    padding: 10px;
-    text-align: center;
-}
-
-.board__list__write th, tr {
-    border: 0;
-    text-align: center;
-}
-
-.board__list__write td {
-    border: 0;
-    text-align: left;
-}
-
-.board__write {
-    text-align: right;
-    margin: 0px 30px 30px 30px;
-    padding: 0px 16px 16px 16px;
-}
-
-.board__list__write__button {
-    margin: 0px 30px 30px 30px;
-    padding: 0px 16px 16px 16px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.board__list__view  th, tr{
-    width: 10%;
-    text-align: center;
-    border-bottom: 1px solid #444444;
-}
-
-.board__list__view td {
-    text-align: left;
 }
