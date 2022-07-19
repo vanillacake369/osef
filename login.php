@@ -1,13 +1,7 @@
 <?php // START OF PHP
 
-session_start();
-var_dump($_SESSION);
-
 // DB CONNECTION
 require_once "dbcon.php";
-
-// START SESSION
-session_start();
 
 // CHECK AND GET ID&PASSWORD
 $id =  isset($_POST['id']) ? $_POST['id'] : '';
@@ -80,6 +74,6 @@ function getSaltString($datetime, $latest, $login_count, $password)
     return hash('sha256', "$saltString[$mod]");
 }
 
-include_once "index.php";
+include_once "login.html";
 
 ?> 

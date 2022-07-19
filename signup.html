@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>억새풀</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-offset-2">
+                <div class="page-header">
+                    <h2>Registration Form in PHP with Validation</h2>
+                </div>
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label>ID</label>
+                        <span class="essential" style="color:red">*</span>
+                        <input type="text" name="id" class="form-control" value="" maxlength="16" required="">
+                        <span>
+                            <?php if (isset($member_exist_error)) {
+                            echo $member_exist_error;
+                        }
+                        ?>
+                            <span>
+                    </div>
+                    <!-- #2 PASSWORD VERIFICATION -->
+                    <script>
+                        var check = function () {
+                            if (document.getElementById('pw').value ==
+                                document.getElementById('cpassword').value) {
+                                document.getElementById('message').style.color = 'green';
+                                document.getElementById('message').innerHTML = 'matching';
+                            } else {
+                                document.getElementById('message').style.color = 'red';
+                                document.getElementById('message').innerHTML = 'not matching';
+                            }
+                        }
+                    </script>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <span class="essential" style="color:red">*</span>
+                        <input type="password" name="pw" id="pw" class="form-control" value="" minlength="8"
+                            maxlength="30" required="" onkeyup='check();'>
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password*</label>
+                        <span class="essential" style="color:red">*</span>
+                        <input type="password" name="cpassword" id="cpassword" class="form-control" value=""
+                            minlength="8" maxlength="30" required="" onkeyup='check();'>
+                        <span id='message'></span>
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <span class="essential" style="color:red">*</span>
+                        <input type="text" name="name" class="form-control" value="" maxlength="50" required="">
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group ">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" value="" maxlength="30">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <span class="essential" style="color:red">*</span>
+                        <input type="text" name="phone" class="form-control" value="" maxlength="12" required="">
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <span class="essential" style="color:red">*</span>
+                        <input type="text" name="address" class="form-control" value="" maxlength="128" required="">
+                        <span class="text-danger"></span>
+                    </div>
+                    <input type="submit" class="btn btn-primary" name="signup" value="submit">
+                    Already have a account?<a href="login.php" class="btn btn-default">Login</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
