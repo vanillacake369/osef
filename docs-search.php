@@ -107,7 +107,7 @@
 <?php include_once("footer.html"); ?>
 <script>
 function refresh(page) {
-  document.cookie = ("docsPageCookie ="+page);
+  document.cookie = ("<?="docsPageCookie".$cookieSearchWorld?> ="+page);
   location.reload();
 }
 </script>

@@ -19,11 +19,12 @@
     include_once("header.html"); 
 
     //현재 페이지탐색
-    if(!isset($_COOKIE["productPageCookie".$_POST["searchWord"]])) {
-        setcookie("productPageCookie".$_POST["searchWord"],"1",time()+(10),"/") ; //86400=1day
+    $cookieSearchWorld = str_replace(" ", "_",$_POST["searchWord"]);
+    if(!isset($_COOKIE["productPageCookie".$cookieSearchWorld])) {
+        setcookie("productPageCookie".$cookieSearchWorld,"1",time()+(600),"/") ; //86400=1day
         $currentPage = 1;
       } else {
-        $currentPage = $_COOKIE["productPageCookie".$_POST["searchWord"]];
+        $currentPage = $_COOKIE["productPageCookie".$cookieSearchWorld];
       }
 
     $servername = "localhost";
@@ -33,17 +34,17 @@
     $conn = new mysqli($servername,$DBname,$DBpassword,"farm");
     $conn -> set_charset('utf8mb4');
     //전체 페이지수
-    $stmt = $conn -> prepare("SELECT COUNT(*) AS \"num\" FROM product where title LIKE ? AND deleteDate IS NULL"); 
+    $search =  $_POST["searchWord"];
+    $search="%$search%";
+    $stmt = $conn -> prepare("SELECT COUNT(*) AS \"num\" FROM product where model LIKE ? AND deleteDate IS NULL"); 
     $stmt -> bind_param("s", $search);
     $stmt -> execute();
     $result = $stmt -> get_result();
     $row = $result -> fetch_assoc();
     $totalPageNum = ceil($row['num']/20);
-    
-    $stmt = $conn -> prepare("SELECT id,file.link, file.p_id FROM product LEFT JOIN file ON product.id= file.p_id where model = ? AND deleteDate IS NULL GROUP BY (id) LIMIT ?,20;");
 
-    $search =  "%".$_POST["searchWord"]."%";
-    $stmt -> bind_param("si", $search, $currentPage);
+    $stmt = $conn -> prepare("SELECT * FROM product LEFT JOIN file ON product.id= file.p_id where model LIKE ? AND deleteDate IS NULL GROUP BY (id) LIMIT ?,20;");    
+    $stmt -> bind_param("si", $search, $page);
     $page = ($currentPage-1)*20;
     $stmt -> execute();
     $result = $stmt -> get_result();   
@@ -54,15 +55,16 @@
     if($result!=NULL){        
         echo("<div class=\"board__list\" >");
         echo ("<table border=\"1\" class=\"board__list__table\" style=\"width: 100%;\" >");    
-        echo("<th>제목</th><th>등록자</th><th>등록일</th>");
+        echo("<th>대표이미지</th><th>모델</th><th>등록자</th><th>등록일</th>");
         while($row = $result -> fetch_assoc()){
-            echo("<form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\" > "); 
+            echo("<form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\">"); 
             echo("<tr>");
-            echo("<td style=\"width: 60%;\" ><input type=\"submit\" value=\"".$row['title']."\" /></td>");
+            echo("<td> <img src=\"".$row['link']."\" height=\"100px\"> </td>");
+            echo("<td style=\"width: 40%;\" ><input type=\"submit\" value=\"".$row['model']."\" /></td>");
             echo("<td>".$row['member_name']."</td>");
             echo("<td>".$row['upload']."</td>");        
             echo("<input type=\"hidden\" name=\"productId\" value=\"".$row['id']."\" >");
-            echo("</tr> </form>");            
+            echo("</tr> </form>");                     
         }  
         echo("</table></div>");
     }else{

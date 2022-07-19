@@ -49,7 +49,7 @@
     if($result!=NULL){        
         echo("<div class=\"board__list\" >");
         echo ("<table border=\"1\" class=\"board__list__table\" style=\"width: 100%;\" >");    
-        echo("<th>대표이미지</th><th>제목</th><th>등록자</th><th>등록일</th>");
+        echo("<th>대표이미지</th><th>모델</th><th>등록자</th><th>등록일</th>");
         while($row = $result -> fetch_assoc()){
             echo("<form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\">"); 
             echo("<tr>");
@@ -68,40 +68,41 @@
     $conn->close();    
     
     //--------------------------------------------페이지
-    echo("페이지");
     $showingPage=4; //앞뒤로 보여지는 페이지 수
+    echo("<div class=\"section\">");
+    echo("<p style=\"display:inline-block\">페이지</p>"); 
     echo("<form method=\"post\">");
     echo("<table border=\"1\"> <tr>");
     if (($currentPage-$showingPage)<=1){
         for($i=1;$i<$currentPage;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"cursor:pointer\">".$i."</td>");  
+            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");  
         }
     }else{
-        echo("<td  onclick=\"refresh(".($currentPage-$showingPage-1).")\" style=\"cursor:pointer\" > ... </td>");
+        echo("<td  onclick=\"refresh(".($currentPage-$showingPage-1).")\" style=\"width:60px; cursor:pointer\" > ... </td>");
         for($i=$currentPage-$showingPage;$i<$currentPage;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"cursor:pointer\">".$i."</td>");  
+            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");  
         }
     }
 
-    echo("<td style=\"background-color: aqua;\">".$currentPage."</td>");
+    echo("<td style=\" width:60px; background-color: aqua;\">".$currentPage."</td>");
 
     if(($currentPage+$showingPage)>=$totalPageNum){
         for($i=$currentPage+1;$i<=$totalPageNum;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"cursor:pointer\">".$i."</td>");  
+            echo("<td onclick=\"refresh(".$i.")\" style=\" width:60px; cursor:pointer\">".$i."</td>");  
         }
     }else{
         for($i=$currentPage+1;$i<=($currentPage+$showingPage);$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"cursor:pointer\">".$i."</td>");              
+            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");              
         }
-        echo("<td  onclick=\"refresh(".($currentPage+$showingPage+1).")\" style=\"cursor:pointer\" > ... </td>");
+        echo("<td  onclick=\"refresh(".($currentPage+$showingPage+1).")\" style=\"width:60px; cursor:pointer\" > ... </td>");
     }
-    echo("</tr> </table> </form>");    
+    echo("</tr> </table> </form> </div>");   
 ?>
 <form name = "ProductForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
     <input type="text" name="searchWord" required class="searchInput"/>
     <input type="submit" value="모델 검색" class="searchSubmit" name="submit">
 </form>
-
+</div>
 <?php include_once("footer.html"); ?>
 <script>
 function refresh(page) {
