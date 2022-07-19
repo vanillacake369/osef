@@ -19,19 +19,6 @@ if (isset($_POST['login'])) {
     $select_query = "SELECT * FROM member WHERE id = '$id'";
 
     if($result = mysqli_query($conn, $select_query)){
-        /*
-        // GET PRIOR SALT PW BY INPUT
-        $row = mysqli_fetch_assoc($result);
-        $datetime = $row['datetime'];
-        $latest = $row['latest'];
-        $login_count = $row['login_count'];
-        echo 'input : '.$password.'<br>';
-        $password = getSaltString($datetime, $latest, $login_count, $password);
-        echo '$row[id] : '.$row['id'].'<br>';
-        echo '$id : '.$id.'<br>';
-        echo '$row[password] : '.$row['password'].'<br>';
-        echo '$password : '.$password.'<br>';
-        */       
         // GET PRIOR SALT PW BY INPUT
         $row = mysqli_fetch_assoc($result);
         $datetime = $row['datetime'];
