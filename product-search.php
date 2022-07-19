@@ -20,7 +20,7 @@
 
     //현재 페이지탐색
     if(!isset($_COOKIE["productPageCookie"])) {
-        setcookie("productPageCookie","1",time()+(86400),"/") ; //86400=1day
+        setcookie("productPageCookie","1",time()+(10),"/") ; //86400=1day
         $currentPage = 1;
       } else {
         $currentPage = $_COOKIE["productPageCookie"];
@@ -50,12 +50,12 @@
         echo ("<table border=\"1\">");    
         echo("<th>제목</th><th>등록자</th><th>등록일</th>");
         while($row = $result -> fetch_assoc()){
-            echo("<form method=\"post\" action=\"docs-info.php\" enctype=\"multipart/form-data\" > "); 
+            echo("<form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\" > "); 
             echo("<tr>");
             echo("<td><input type=\"submit\" value=\"".$row['title']."\" /></td>");
             echo("<td>".$row['member_name']."</td>");
             echo("<td>".$row['upload']."</td>");        
-            echo("<input type=\"hidden\" name=\"docId\" value=\"".$row['id']."\" >");
+            echo("<input type=\"hidden\" name=\"productId\" value=\"".$row['id']."\" >");
             echo("</tr> </form>");            
         }  
         echo("</table>");
@@ -95,7 +95,7 @@
     }
     echo("</tr> </table> </form>");    
 ?>
-<form name = "docsForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
+<form name = "ProductForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
     <input type="text" name="searchWord" required class="searchInput"/>
     <input type="submit" value="검색" class="searchSubmit" name="submit">
 </form>

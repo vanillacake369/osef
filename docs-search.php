@@ -20,7 +20,7 @@
 
     //현재 페이지탐색
     if(!isset($_COOKIE["docsPageCookie"])) {
-        setcookie("docsPageCookie","1",time()+(86400),"/") ; //86400=1day
+        setcookie("docsPageCookie","1",time()+(10),"/") ; //86400=1day
         $currentPage = 1;
       } else {
         $currentPage = $_COOKIE["docsPageCookie"];
@@ -45,6 +45,12 @@
     $stmt -> execute();
     $result = $stmt -> get_result();
 
+    $stmt = $conn -> prepare("SELECT link FROM file where p_id = ?");
+    $stmt -> bind_param("i",$page);
+    $page = ($currentPage-1)*20;
+    $stmt -> execute();
+    $result = $stmt -> get_result();
+     
     //--------------------------------------------게시물 
     echo("<div class=\"section\">");
     if($result!=NULL){        

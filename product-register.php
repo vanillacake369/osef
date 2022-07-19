@@ -33,7 +33,7 @@ function upload(){
     }
 
     //---------------------------------get uploader info--------
-    session_start();
+    //session_start();
     //$id = $_SESSION["id"];
     $id = "admin";
 
@@ -129,9 +129,9 @@ function upload(){
 
     $conn->close();
 }
-include_once("header.html");
+//include_once("header.html");
 include_once("product-register.html");
-include_once("footer.html");
+//include_once("footer.html");
 if(isset($_POST['submit'])){
     upload();
 }
