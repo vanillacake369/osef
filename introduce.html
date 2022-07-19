@@ -10,32 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css?after">
-    <script src="main.js" defer></script>
+    <script src="introduce.js" defer></script>
     <title>억새풀</title>
 </head>
 
 <body>
-    <!-- navbar -->
-    <nav id="navbar">
-        <div class="navbar_logo">
-            <i class="fas fa-seedling"></i>
-            <a href="index.php">억새풀</a>
-        </div>
-        <ul class="navbar_list">
-            <li><a href="rent.html">임대신청</a></li>
-            <li>자료실</li>
-            <li><a href="introduce.html">회사소개</a></li>
-            <li><a href="lend.html">기계등록</a></li>
-        </ul>
-        <ul class="navbar_list_login">
-            <li><a href="mypage.php">마이페이지</a></li>
-            <li><a href="login.html">로그인</a></li>
-        </ul>
-        <button class="navbar_toggle_btn">
-            <i class="fas fa-bars"></i>
-        </button>
-    </nav>
-
     <!-- section home -->
     <section id="home">
         <div class="home_container">
@@ -44,11 +23,11 @@
         </div>
         <div class="intro_navbar">
             <div class="intro_navbar_wrap">
-                <ul class="intro_navbar_list">
-                    <li data-link="#about">인사말</li>
-                    <li data-link="#service">개발 & 운영</li>
-                    <li data-link="#location">회사 위치</li>
-                    <li data-link="#contact">Contact</li>
+                <ul class="intro_navbar_ul">
+                    <li class="intro_navbar_li1" data-link="#about">인사말</li>
+                    <li class="intro_navbar_li2" data-link="#service">개발 & 운영</li>
+                    <li class="intro_navbar_li3" data-link="#location">회사 위치</li>
+                    <li class="intro_navbar_li4" data-link="#contact">Contact</li>
                 </ul>
             </div>
         </div>
@@ -151,20 +130,12 @@
             wirestock - www.freepik.com</a>
     </section>
 
-    <!-- footer -->
-    <footer id="footer">
-        <div class="footer_logo">
-            <div class="navbar_logo">
-                <i class="fas fa-seedling"></i>
-                <a href="index.php">억새풀</a>
-            </div>
-        </div>
-        <div class="footer_text">
-            <p class="footer_text_p">36729 경상북도 안동시 경동로 1375 (송천동) 국립안동대학교 공대1호관 413호 NGN연구실</p>
-            <p class="footer_text_p">TEL : 010-9548-1369 / E-MAIL : w1683111@naver.com</p>
-            <p class="footer_text_p">COPYRIGHT (C)2022 억새풀. ALL RIGHTS RESERVED.</p>
-        </div>
-    </footer>
+    <!-- arrow up button -->
+    <button class="arrow">
+        <div class="btn_arrow" data-link="#about"><i class="fas fa-carrot">
+                <p>top</p>
+            </i></div>
+    </button>
 </body>
 
 </html>

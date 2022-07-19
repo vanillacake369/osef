@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<header>
+    <meta charset="UTF-8">
+</header>
+
+<body>
+    <form name="productForm" method="post" action="product-register.php" enctype="multipart/form-data">
+        기종 및 형식명 <br>
+        <input type="text" name="model" /> <br>
+
+        제조사 <br>
+        <input type="text" name="maker" /> <br>
+
+        농기구 종류
+        <select name="category">
+            <option value="etc">기타</option>
+            <option value="tractor">트랙터</option>
+            <option value="combine">콤바인</option>
+            <option value="rice transplanter">이양기</option>
+            <option value="rotary">로터리</option>
+            <option value="livestock machinery">축산기계</option>
+            <option value="forklift">포크레인</option>
+        </select>
+        <br>
+        제조년식 <input type="date" name="makeDate" /> <br>
+        사용기간 <br>
+        시작일 <input type="date" name="startDate" /> 종료일 <input type="date" name="endDate" /> <br>
+        임대가능주소 <input type="text" name="adress" /> <br>
+        상세내용<br>
+        <textarea row="10" cols="30" name="detail"></textarea> <br>
+        임대가격 <br>
+        <input type="text" name="price" /> <br>
+
+        사진<br>
+        <input type="file" multiple name="imgFile[]" /> <br>
+        <input type="submit" value="업로드" />
+    </form>
+</body>
+
+</html>

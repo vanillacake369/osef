@@ -19,78 +19,52 @@ USE `farm`;
 
 -- 테이블 farm.comment 구조 내보내기
 CREATE TABLE IF NOT EXISTS `comment` (
-  `comment_id` int(1) unsigned NOT NULL COMMENT '댓글id',
-  `e_id` int(1) unsigned DEFAULT NULL COMMENT '장비대여 id',
-  `s_id` int(1) unsigned DEFAULT NULL COMMENT '정보판매 id',
+  `comment_id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '댓글id',
+  `p_id` int(11) unsigned DEFAULT NULL COMMENT '장비대여 id',
+  `s_id` int(11) unsigned DEFAULT NULL COMMENT '정보판매 id',
   `member_id` varchar(16) NOT NULL COMMENT '작성자 이름',
   `detail` text NOT NULL COMMENT '댓글',
   `upload` date NOT NULL COMMENT '업로드일',
-  `delate` date DEFAULT NULL COMMENT '삭제일',
-  `reply_id` int(1) unsigned DEFAULT NULL COMMENT '대댓글시 댓글의 id 그냥 댓글시 null',
-  PRIMARY KEY (`comment_id`),
-  KEY `FK_comment_e_id_equipment_id` (`e_id`),
-  KEY `FK_comment_s_id_sell_info_id` (`s_id`),
-  CONSTRAINT `FK_comment_e_id_equipment_id` FOREIGN KEY (`e_id`) REFERENCES `equipment` (`id`),
-  CONSTRAINT `FK_comment_s_id_sell_info_id` FOREIGN KEY (`s_id`) REFERENCES `sell_info` (`id`)
+  `deleteDate` date DEFAULT NULL COMMENT '삭제일',
+  `reply_id` int(11) unsigned DEFAULT NULL COMMENT '대댓글시 댓글의 id 그냥 댓글시 null',
+  PRIMARY KEY (`comment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='댓글';
-
--- 내보낼 데이터가 선택되어 있지 않습니다.
-
--- 테이블 farm.equipment 구조 내보내기
-CREATE TABLE IF NOT EXISTS `equipment` (
-  `id` int(1) unsigned NOT NULL DEFAULT 0 COMMENT '대여글 id',
-  `category` varchar(64) NOT NULL DEFAULT 'etc' COMMENT '기기종류',
-  `start_date` date NOT NULL COMMENT '대여시작일',
-  `end_date` date NOT NULL COMMENT '대여종료일',
-  `priority` tinyint(1) NOT NULL DEFAULT 1 COMMENT '우선순위',
-  `detail` mediumtext NOT NULL COMMENT '내용',
-  `member_id` varchar(16) NOT NULL COMMENT '등록자 id',
-  `member_phone` char(11) DEFAULT NULL COMMENT '등록자 전화번호',
-  `member_email` varchar(64) DEFAULT NULL COMMENT '등록자 이메일',
-  `member_name` varchar(16) DEFAULT NULL COMMENT '등록자 이름',
-  `upload` date NOT NULL COMMENT '등록일',
-  `delate` date DEFAULT NULL COMMENT '삭제일 null일시 미삭제',
-  `place` varchar(64) NOT NULL COMMENT '대여장소',
-  `price` int(1) unsigned NOT NULL COMMENT '가격',
-  `close` tinyint(1) unsigned NOT NULL DEFAULT 0 COMMENT '종료 빌리면1 아닌경우 0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='장비대여';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 farm.file 구조 내보내기
 CREATE TABLE IF NOT EXISTS `file` (
-  `file_id` int(1) unsigned NOT NULL AUTO_INCREMENT COMMENT '파일 id',
-  `e_id` int(1) unsigned DEFAULT NULL COMMENT '장비대여 id',
-  `s_id` int(1) unsigned DEFAULT NULL COMMENT '정보판매 id',
+  `file_id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '파일 id',
+  `p_id` int(11) unsigned DEFAULT NULL COMMENT '장비대여 id',
+  `s_id` int(11) unsigned DEFAULT NULL COMMENT '정보판매 id',
   `link` varchar(45) DEFAULT NULL COMMENT '파일주소',
-  PRIMARY KEY (`file_id`),
-  KEY `FK_file_e_id_equipment_id` (`e_id`),
-  KEY `FK_file_s_id_sell_info_id` (`s_id`),
-  CONSTRAINT `FK_file_e_id_equipment_id` FOREIGN KEY (`e_id`) REFERENCES `equipment` (`id`),
-  CONSTRAINT `FK_file_s_id_sell_info_id` FOREIGN KEY (`s_id`) REFERENCES `sell_info` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='파일(장비대여 이미지, 정보판매 pdf)';
+  PRIMARY KEY (`file_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COMMENT='파일(장비대여 이미지, 정보판매 pdf)';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 farm.info_buy_list 구조 내보내기
 CREATE TABLE IF NOT EXISTS `info_buy_list` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
-  `sell_info_id` int(1) NOT NULL,
-  `member_id` int(1) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `sell_info_id` int(11) unsigned NOT NULL,
+  `member_id` varchar(16) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='정보 구매 테이블';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='정보 구매 테이블';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
 -- 테이블 farm.member 구조 내보내기
 CREATE TABLE IF NOT EXISTS `member` (
   `id` varchar(16) NOT NULL COMMENT '아이디',
-  `password` varchar(16) NOT NULL COMMENT '비밀번호',
+  `password` varchar(64) NOT NULL COMMENT '비밀번호',
   `phone` char(11) DEFAULT NULL COMMENT '전화번호',
   `name` varchar(16) NOT NULL COMMENT '이름',
   `email` varchar(64) DEFAULT NULL COMMENT '이메일',
   `address` varchar(128) DEFAULT NULL,
+  `latest` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '가장최근로그인(salt)',
+  `datetime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'latest 직전 로그인(salt)',
+  `login_count` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '로그인횟수(salt)',
+  `IP` varchar(16) NOT NULL DEFAULT '' COMMENT '접속IP(salt)',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='멤버';
 
@@ -98,27 +72,54 @@ CREATE TABLE IF NOT EXISTS `member` (
 
 -- 테이블 farm.notification 구조 내보내기
 CREATE TABLE IF NOT EXISTS `notification` (
-  `notification_id` int(1) unsigned NOT NULL AUTO_INCREMENT,
+  `notification_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `member_id` varchar(16) NOT NULL DEFAULT '',
-  `comment_id` int(1) unsigned NOT NULL,
+  `comment_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`notification_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='댓글 등 알람';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
+-- 테이블 farm.product 구조 내보내기
+CREATE TABLE IF NOT EXISTS `product` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '대여글 id',
+  `category` enum('tractor','combine','rice transplanter','rotary','livestock machinery','forklift','etc') NOT NULL DEFAULT 'etc' COMMENT '기기종류',
+  `end_date` date NOT NULL COMMENT '대여종료일',
+  `start_date` date NOT NULL COMMENT '대여시작일',
+  `priority` tinyint(1) NOT NULL DEFAULT 1 COMMENT '우선순위',
+  `detail` mediumtext NOT NULL COMMENT '내용',
+  `member_id` varchar(16) NOT NULL COMMENT '등록자 id',
+  `member_phone` char(11) DEFAULT NULL COMMENT '등록자 전화번호',
+  `member_email` varchar(64) DEFAULT NULL COMMENT '등록자 이메일',
+  `member_name` varchar(16) DEFAULT NULL COMMENT '등록자 이름',
+  `upload` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '등록일',
+  `deleteDate` date DEFAULT NULL COMMENT '삭제일 null일시 미삭제',
+  `place` varchar(64) NOT NULL COMMENT '대여장소',
+  `price` decimal(16,0) unsigned NOT NULL DEFAULT 0 COMMENT '가격',
+  `close` tinyint(1) unsigned NOT NULL DEFAULT 0 COMMENT '종료 빌리면1 아닌경우 0',
+  `maker` varchar(16) NOT NULL COMMENT '제조사',
+  `make_year` date NOT NULL COMMENT '제조년식',
+  `model` varchar(32) NOT NULL COMMENT '기종 및 형식명',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COMMENT='장비대여';
+
+-- 내보낼 데이터가 선택되어 있지 않습니다.
+
 -- 테이블 farm.sell_info 구조 내보내기
 CREATE TABLE IF NOT EXISTS `sell_info` (
-  `id` int(1) unsigned NOT NULL AUTO_INCREMENT COMMENT '판매 id',
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '판매 id',
+  `title` varchar(128) DEFAULT NULL,
   `price` varchar(64) NOT NULL,
   `detail` mediumtext NOT NULL,
   `member_id` varchar(16) NOT NULL,
+  `member_name` varchar(16) DEFAULT NULL,
   `member_phone` char(11) DEFAULT NULL,
   `member_email` varchar(64) DEFAULT NULL,
-  `upload` date NOT NULL COMMENT '등록일',
-  `delate` date DEFAULT NULL COMMENT '삭제일',
-  `sellnum` int(1) DEFAULT 0 COMMENT '판매수',
+  `upload` date NOT NULL DEFAULT curdate() COMMENT '등록일',
+  `deleteDate` date DEFAULT NULL COMMENT '삭제일',
+  `sellnum` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '판매수',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='정보 판매';
+) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8mb4 COMMENT='정보 판매';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
