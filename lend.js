@@ -269,13 +269,12 @@ lendFormA7Btn.addEventListener('click', (event) => {
 })
 
 // lend_form_A8
-function getValue(event) {
-    event.preventDefault(); 
+function onLendSumbitA8(event) {
 
     lendFormQ7.classList.add(HIDDEN_CLASSNAME);
     lendFormA7.classList.add(HIDDEN_CLASSNAME);
 }
-lendFormA8.addEventListener('submit', getValue);
+lendFormA8.addEventListener('submit', onLendSumbitA8);
 
 // 뒤로가기 버튼
 const lendFormA8Btn = document.querySelector('#A8_btn');
