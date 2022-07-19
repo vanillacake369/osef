@@ -38,15 +38,10 @@
             <li><a href="introduce.html">회사소개</a></li>
             <li><a href="lend.html">기계등록</a></li>
         </ul>
-        <ul class="navbar_list_login">
-            <li><a href="mypage.php">마이페이지</a></li>
-            <?php
-            if(!isset($_SESSION['id'])) {
-                echo '<li><a href="login.php">로그인</a></li>';
-            }else{
-                echo '<li><a href="logout.php">로그아웃</a></li>';
-            }
-            ?>
+        <ul class="navbar_list">
+        <li><a href="wet.html" id="afterLogin">로그아웃</a></li>
+        <li><a href="mypage.html" id="afterLogin">마이페이지</a></li>
+        <li><a href="login.html" id="beforeLogin">로그인</a></li>
         </ul>
         <button class="navbar_toggle_btn">
             <i class="fas fa-bars"></i>
@@ -245,4 +240,21 @@
     </footer>
 </body>
 
+<script>
+    const HIDDEN_CLASSNAME = 'hidden';
+
+    const after = document.querySelectorAll('#afterLogin');
+    const before = document.querySelectorAll('#beforeLogin');
+
+    var uid = '<%=(String)session.getAttribute("id")%>';
+    if (uid == "null") {
+        for (let i = 0; i < before.length; i++) {
+            before[i].classList.add(HIDDEN_CLASSNAME);
+        }
+    } else {
+        for (let i = 0; i < after.length; i++) {
+            after[i].classList.add(HIDDEN_CLASSNAME);
+        }
+    }
+</script>
 </html>
