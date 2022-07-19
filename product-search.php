@@ -20,7 +20,7 @@
 
     //현재 페이지탐색
     if(!isset($_COOKIE["productPageCookie"])) {
-        setcookie("productPageCookie","1",time()+(10),"/") ; //86400=1day
+        setcookie("productPageCookie","1",time()+(600),"/") ; //86400=1day
         $currentPage = 1;
       } else {
         $currentPage = $_COOKIE["productPageCookie"];
