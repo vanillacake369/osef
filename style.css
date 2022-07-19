@@ -18,7 +18,7 @@
     --color-light-navbar2: #325777;
 
     /* Font size */
-    --font-large: 48px;
+    --font-large: 32px;
     --font-medium: 24px;
     --font-regular: 18px;
     --font-small: 16px;
@@ -187,12 +187,13 @@ p {
 .section {
     padding: 60px 100px 60px 100px;
     text-align: center;
-    margin: auto;
 }
 
 .section_container {
     padding-top: 20px;
     padding-bottom: 50px;
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
 .flex {
@@ -702,6 +703,83 @@ p {
 .login_find_menu {
     padding: 16px;
     color: var(--color-light-grey);
+}
+
+/* docs-info html, php 기술상세 */
+/* section document */
+.doc_title h1 {
+    text-align: left;
+}
+
+.doc_title {
+    width: 100%;
+    background-color: #c7e4f7;
+}
+
+.doc_wrap {
+    display: flex;
+    text-align: left;
+    position: relative;
+}
+
+.doc_img {
+    width: 250px;
+    height: 400px;
+    background-color: #fdcdcd;
+}
+
+.preview {
+    width: 200px;
+    height: 300px;
+    background-color: #b4f39c;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.doc_detail {
+    width: 80%;
+    background-color: #f9fab3;
+    padding-left: 20px;
+}
+
+.doc_detail_top {
+    width: 100%;
+    height: 60px;
+    background-color: #fad380;
+}
+
+.doc_detail_top p {
+    margin: 0;
+    display: inline-block;
+    line-height: 60px;
+    font-size: var(--font-micro);
+}
+
+.doc_price {
+    padding-top: 20px;
+}
+
+.doc_contents {
+    padding-top: 20px;
+    font-size: var(--font-small);
+}
+
+.doc_detail_bottom {
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+}
+
+.doc_detail_bottom button {
+    font-size: var(--font-regular);
+    position: center;
+    right: 20%;
+    width: 100px;
+    box-sizing: border-box;
+    border-color: #000000;
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 5px;
 }
 
 
