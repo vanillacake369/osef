@@ -21,7 +21,7 @@
     //현재 페이지탐색
     $cookieSearchWorld = str_replace(" ", "_",$_POST["searchWord"]);
     if(!isset($_COOKIE["docsPageCookie".$cookieSearchWorld])) {
-        setcookie("docsPageCookie".$cookieSearchWorld,"1",time()+(10),"/") ; //86400=1day
+        setcookie("docsPageCookie".$cookieSearchWorld,"1",time()+(600),"/") ; //86400=1day
         $currentPage = 1;
       } else {
         $currentPage = $_COOKIE["docsPageCookie".$cookieSearchWorld];
@@ -34,7 +34,8 @@
     $conn = new mysqli($servername,$DBname,$DBpassword,"farm");
     $conn -> set_charset('utf8mb4');
     //전체 페이지수
-    $search =  "%".$_POST['searchWord']."%";
+    $search = $_POST['searchWord'];
+    $search =  "%$search%";
 
     $stmt = $conn -> prepare("SELECT COUNT(*) AS \"num\" FROM sell_info where title LIKE ? AND deleteDate IS NULL"); 
     $stmt -> bind_param("s", $search);
@@ -44,7 +45,7 @@
     $totalPageNum = ceil($row['num']/20);
     
     $stmt = $conn -> prepare("SELECT * FROM sell_info where title LIKE ? AND deleteDate IS NULL LIMIT ?,20");    
-    $stmt -> bind_param("si", $search, $currentPage);
+    $stmt -> bind_param("si", $search, $page);
     $page = ($currentPage-1)*20;
     $stmt -> execute();
     $result = $stmt -> get_result();   
@@ -113,7 +114,7 @@
 <?php include_once("footer.html"); ?>
 <script>
 function refresh(page) {
-  document.cookie = ("docsPageCookie ="+page);
+  document.cookie = ("<?="docsPageCookie".$cookieSearchWorld ?> ="+page);
   location.reload();
 }
 </script>

@@ -20,7 +20,7 @@
 
     //현재 페이지탐색
     if(!isset($_COOKIE["docsPageCookie"])) {
-        setcookie("docsPageCookie","1",time()+(10),"/") ; //86400=1day
+        setcookie("docsPageCookie","1",time()+(600),"/") ; //86400=1day
         $currentPage = 1;
       } else {
         $currentPage = $_COOKIE["docsPageCookie"];
@@ -107,7 +107,7 @@
 <?php include_once("footer.html"); ?>
 <script>
 function refresh(page) {
-  document.cookie = ("docsPageCookie ="+page);
+  document.cookie = ("<?="docsPageCookie".$cookieSearchWorld?> ="+page);
   location.reload();
 }
 </script>
