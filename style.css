@@ -709,7 +709,6 @@ p {
 /* section document */
 .doc_title h1 {
     text-align: left;
-
 }
 
 .doc_title {
@@ -724,10 +723,9 @@ p {
 }
 
 .doc_img {
-    width: 250px !important;
+    width: 250px;
     height: 400px;
     background-color: #fdcdcd;
-    
 }
 
 .preview {
@@ -783,7 +781,6 @@ p {
     border: 1px solid rgb(2, 2, 2);
     border-radius: 5px;
 }
-
 
 
 
