@@ -38,7 +38,7 @@ if (isset($_POST['signup'])) {
                 mysqli_close($conn);
                 echo '<script type="text/javascript">'; 
                 echo 'alert("User Registeration Completed!");'; 
-                echo 'window.location.href = "login.html";';
+                echo 'window.location.href = "index.php";';
                 echo '</script>';
                 exit();
             } else { // DB CONNECTION FAIL
