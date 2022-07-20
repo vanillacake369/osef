@@ -6,7 +6,7 @@ const CATEGORY_KEY = 'Category';
 const Adress_KEY = 'Adress';
 const StartDate_KEY = 'Startdate';
 const Enddate_KEY = 'Enddate';
-const Flie_KEY = 'File';
+const File_KEY = 'File';
 const Textarea_KEY = 'Textarea';
 const Price_KEY = 'Price';
 
@@ -174,7 +174,7 @@ function onLendSumbitA5(event) {
     event.preventDefault(); 
 
     const flieValue = lendInputA5.value;
-    localStorage.setItem(Flie_KEY, flieValue);
+    localStorage.setItem(File_KEY, flieValue);
 
     lendFormQ5.classList.add(HIDDEN_CLASSNAME);
     lendFormA5.classList.add(HIDDEN_CLASSNAME);
@@ -248,7 +248,7 @@ function onLendSumbitA7(event) {
     lendFormQ8.classList.remove(HIDDEN_CLASSNAME);
     lendFormA8.classList.remove(HIDDEN_CLASSNAME);
 
-    document.getElementById("preview").value = localStorage.getItem(Flie_KEY);
+    document.getElementById("img").value = localStorage.getItem(File_KEY);
     document.getElementById("category").value = localStorage.getItem(CATEGORY_KEY);
     document.getElementById("price").value = localStorage.getItem(Price_KEY);
     document.getElementById("maker").value = localStorage.getItem(MAKER_KEY);
