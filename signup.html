@@ -17,7 +17,7 @@
     <!-- navbar -->
     <nav id="navbar">
         <div class="navbar_logo">
-            <a href="index.html"><i class="fas fa-seedling"></i> 억새풀</a>
+            <a href="index.php"><i class="fas fa-seedling"></i> 억새풀</a>
         </div>
         <ul class="navbar_list">
             <li><a href="rent.html">임대신청</a></li>
@@ -38,14 +38,27 @@
         <div class="">
             <div class="navbar_logo" style="font-size: 35px;">
                 <i class="fas fa-seedling"></i>
-                <a href="index.html">억새풀</a>
+                <a href="index.php">억새풀</a>
             </div>
-            <form action="" method="post">
+            <form action="signup.php" method="post">
                 <div class="signup_wrap">
                     <label>아이디<span class="red_dot">*</span></label>
                     <div class="input_row">
                         <input type="text" name="id" class="input_text" value="" maxlength="16" required="">
                     </div>
+                    <!-- #2 PASSWORD VERIFICATION -->
+                    <script>
+                        var check = function () {
+                            if (document.getElementById('pw').value ==
+                                document.getElementById('cpassword').value) {
+                                document.getElementById('message').style.color = 'green';
+                                document.getElementById('message').innerHTML = 'matching';
+                            } else {
+                                document.getElementById('message').style.color = 'red';
+                                document.getElementById('message').innerHTML = 'not matching';
+                            }
+                        }
+                    </script>
                     <label>비밀번호<span class="red_dot">*</span></label>
                     <div class="input_row">
                         <input type="password" name="pw" id="pw" class="input_text" value="" minlength="8"
@@ -56,6 +69,8 @@
                         <input type="password" name="cpassword" id="cpassword" class="input_text" value="" minlength="8"
                             maxlength="30" required="" onkeyup='check();'>
                     </div>
+                    <span id='message'></span>
+                    <span class="text-danger"></span>
                     <label>이름<span class="red_dot">*</span></label>
                     <div class="input_row">
                         <input type="text" name="name" class="input_text" value="" maxlength="50" required="">
@@ -66,21 +81,24 @@
                     </div>
                     <label>휴대전화<span class="red_dot">*</span></label>
                     <div class="input_row">
-                        <input type="text" name="phone" class="input_text" value="" maxlength="12" required="">
+                        <input type="text" name="phone" class="input_text" value="010-xxxx-xxxx" maxlength="12"
+                            required="">
                     </div>
                     <label>주소<span class="red_dot">*</span></label>
                     <div class="input_row">
                         <input type="text" name="address" class="input_text" value="" maxlength="128" required="">
                     </div>
                     <div class="signup_submit">
-                        <button type="submit" class="btn_login">
+                        <button type="submit" class="btn_login" name="signup">
                             <span class="btn_text">회원가입</span>
                         </button>
                     </div>
+
                 </div>
                 <div class="sigup_bottom">
-                    Already have a account? 
-                    <a href="login.php" class="signup_btn">로그인</a>
+                    <p><a class="btn-login" href="login.html" class="signup_btn">
+                            이미 계정이 있으신가요?
+                        </a></p>
                 </div>
             </form>
         </div>
