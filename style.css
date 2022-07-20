@@ -468,7 +468,6 @@ p {
 }
 
 .lend_answer_next_p {
-    line-height: 50px;
     font-size: var(--font-regular);
     color: var(--color-white);
 }
@@ -544,10 +543,6 @@ p {
 }
 
 .lend_card_text {
-    width: 100%;
-}
-
-.lend_card_text_1 {
     width: 100%;
 }
 
