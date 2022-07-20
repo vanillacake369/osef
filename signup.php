@@ -29,6 +29,7 @@ if (isset($_POST['signup'])) {
             echo 'alert("Member already exists");'; 
             echo 'window.location.href = "signup.html";';
             echo '</script>';
+            exit();
         }else{ // REGISTERED USER
             // INSERT INPUT INTO MEMBER DB
             // id,pw,name,email,phone,address,datetime,latest,login_count,ip
@@ -39,11 +40,13 @@ if (isset($_POST['signup'])) {
                 echo 'alert("User Registeration Completed!");'; 
                 echo 'window.location.href = "login.html";';
                 echo '</script>';
+                exit();
             } else { // DB CONNECTION FAIL
                 echo '<script type="text/javascript">';
-                echo 'alert("Something Went Wrong :(");';
+                echo 'alert("Lost server connection :(");';
                 echo 'window.location.href = "login.html";';
                 echo '</script>';
+                exit();
             }
         }
     }else{ // DB CONNECTION FAIL
@@ -51,6 +54,7 @@ if (isset($_POST['signup'])) {
         echo 'alert("Lost server connection :(");';
         echo 'window.location.href = "login.html";';
         echo '</script>';
+        exit();
     }
     // CLOSE DB CONNECTION
     mysqli_close($conn);
@@ -58,6 +62,7 @@ if (isset($_POST['signup'])) {
     echo "<script>alert('You've misseed some of the input. Please try again. :( ');";
     echo 'window.location.href = "signup.html";';
     echo '</script>';
+    exit();
 }
 
 // ---- DYNAMIC SALT ---- 

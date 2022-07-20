@@ -148,11 +148,13 @@
                                                 </div>
                                                 <label>휴대전화<span class="red_dot">*</span></label>
                                                 <div class="input_row">
-                                                    <input type="text" name="phone" class="input_text" value="" maxlength="12" required="">
+                                                    <input type="tel" name="phone" class="input_text" value="" maxlength="16"
+                                                        pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" required placeholder="010-xxxx-xxxx">
                                                 </div>
                                                 <label>주소<span class="red_dot">*</span></label>
                                                 <div class="input_row">
-                                                    <input type="text" name="address" class="input_text" value="" maxlength="128" required="">
+                                                    <input type="text" name="address" class="input_text" value="" maxlength="128" required=""
+                                                        placeholder="~시 ~읍/면/동/리">
                                                 </div>
                                                 <div class="modify_submit">
                                                     <button type="modify" class="btn_modify" name="modify">
