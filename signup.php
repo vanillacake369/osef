@@ -1,16 +1,16 @@
 <?php
 
-session_start();
-
 // IF SUBMIT HAS DONE
 if (isset($_POST['signup'])) {    
+
+    var_dump($_POST);
+
     // CONNECT DATABASE
     require_once "dbcon.php";
 
     // GET USER INPUT
     $id = $_POST['id'];
     $pw = $_POST['pw'];
-    $cpassword = $_POST['cpassword'];
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
@@ -23,24 +23,24 @@ if (isset($_POST['signup'])) {
     // UPDATE PASSWORD USING DYNAMIC SALT
     $pw = getSaltString($datetime, $latest, $login_count, $pw);
 
+    echo "<br>".$pw."<br>";
+
     // VERIFY MEMBER&INPUT_ID
     $member_count_query = "SELECT COUNT(*) as cnt FROM member WHERE id = '$id' ";
     if($result = mysqli_query($conn,$member_count_query)){
         $member_count = mysqli_fetch_assoc($result);
         if ($member_count && (int)$member_count['cnt'] === 1) {
+            echo $member_count;
             echo '<script type="text/javascript">'; 
             echo 'alert("Member already exists");'; 
             echo 'window.location.href = "signup.html";';
             echo '</script>';
-            exit();
         }
     }else{
         echo '<script type="text/javascript">';
         echo 'alert("Something Went Wrong :(")';
         echo 'window.location.href = "login.html";';
         echo '</script>';
-        exit();
-        // echo "Error: ".mysqli_error($conn);
     }
 
     // INSERT INPUT INTO MEMBER DB
@@ -52,14 +52,11 @@ if (isset($_POST['signup'])) {
         echo 'alert("User Registeration Completed!");'; 
         echo 'window.location.href = "login.html";';
         echo '</script>';
-        exit();
     } else {
         echo '<script type="text/javascript">';
         echo 'alert("Something Went Wrong :(")';
         echo 'window.location.href = "login.html";';
         echo '</script>';
-        exit();
-        // echo "Error: ".mysqli_error($conn);
     }
 
     // CLOSE DB CONNECTION
