@@ -15,7 +15,8 @@ if(isset($_POST['submit'])){
             break;
  
         default:
-            die ("txt, ppt, pptx, pdf파일 외에는 사용이 불가합니다."); 
+        echo "<script>alert(\"txt, ppt, pptx, pdf파일 외에는 사용이 불가합니다.\");";
+        echo "history.go(-1);</script>";
             exit;
             break;
     }
@@ -33,7 +34,8 @@ if(isset($_POST['submit'])){
     $conn -> set_charset('utf8mb4');
 
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        echo "<script>alert(\"Connection failed: " . $conn->connect_error."\")";
+        echo "history.go(-1);</script>";
     }
 
     $sql = "SELECT phone, email, name from member where ID = '".$id."';";
@@ -59,7 +61,8 @@ if(isset($_POST['submit'])){
     $conn -> set_charset('utf8mb4');
     
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        echo "Connection failed: " . $conn->connect_error;
+        echo "history.go(-1);</script>";
     }
 
     $result = $conn->query($sql);
@@ -69,6 +72,8 @@ if(isset($_POST['submit'])){
         $uploadId=$row["id"];
     } else {
         echo "UPLOAD ERROR: ".$conn->error;
+        echo "Connection failed: " . $conn->connect_error;
+        echo "history.go(-1);</script>";
     }
     $conn->close();
 
@@ -90,11 +95,10 @@ if(isset($_POST['submit'])){
     $resFile = "./uploadFile/".$filename;        
     $imageUpload = move_uploaded_file($fileDir, $resFile);
                 
-    if($imageUpload == true){
-        echo "<script> alert(\"파일이 정상적으로 업로드 되었습니다.\") </script>";
-    }else{
-        die ("파일 업로드에 실패하였습니다.");
-    }  
+    if($imageUpload != true){
+        echo "<script> alert(\"파일 업로드에 실패하였습니다.\") </script>";
+        echo "history.go(-1);</script>";
+    }
 
     
 
@@ -104,6 +108,9 @@ if(isset($_POST['submit'])){
     $conn->query($sql);
 
     $conn->close();
+
+    echo "<script>alert(\"등록되었습니다\");";
+    echo "location.href(\"./index.php\");</script>";
 }
 include_once("header.html");
 include_once("docs-register.html");
