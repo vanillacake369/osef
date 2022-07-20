@@ -43,8 +43,8 @@
                         echo("<h1> 대여 완료 </h1>");
                     }
                     ?>
-                    <h3 class="doc_contents">제조사 : <?=$productRow["make"];?></h3>
-                    <h3 class="doc_contents">제조년 : <?=$productRow["maker_year"];?></h3>
+                    <h3 class="doc_contents">제조사 : <?=$productRow["maker"];?></h3>
+                    <h3 class="doc_contents">제조년 : <?=$productRow["make_year"];?></h3>
 
                     <h2 class="doc_price">가격: <?=$productRow["price"];?></h2>
                     
