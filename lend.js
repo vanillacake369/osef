@@ -280,6 +280,8 @@ lendFormA8.addEventListener('submit', onLendSumbitA8);
 // 뒤로가기 버튼
 const lendFormA8Btn = document.querySelector('#A8_btn');
 lendFormA8Btn.addEventListener('click', (event) => {
+    event.preventDefault(); 
+
     lendFormQ8.classList.add(HIDDEN_CLASSNAME);
     lendFormA8.classList.add(HIDDEN_CLASSNAME);
 
