@@ -2,11 +2,11 @@
 
 session_start();
 
-// CONNECT DATABASE
-require_once "dbcon.php";
+// IF SUBMIT HAS DONE
+if (isset($_POST['signup'])) {    
+    // CONNECT DATABASE
+    require_once "dbcon.php";
 
-
-if (isset($_POST['signup'])) {
     // GET USER INPUT
     $id = $_POST['id'];
     $pw = $_POST['pw'];
@@ -35,8 +35,9 @@ if (isset($_POST['signup'])) {
             exit();
         }
     }else{
-        echo "<script>alert('Something Went Wrong :(')";
-        echo 'window.location.href = "login.php";';
+        echo '<script type="text/javascript">';
+        echo 'alert("Something Went Wrong :(")';
+        echo 'window.location.href = "login.html";';
         echo '</script>';
         exit();
         // echo "Error: ".mysqli_error($conn);
@@ -44,24 +45,29 @@ if (isset($_POST['signup'])) {
 
     // INSERT INPUT INTO MEMBER DB
     // id,pw,cpw,name,email,phone,address,datetime,latest,login_count,ip
-    $insert = "INSERT INTO member(id, password, datetime, name, email, phone, latest, login_count, IP) VALUES('$id', '$pw', '$datetime', '$name', '$email', '$phone', '$latest', '$login_count', '$ip')";
+    $insert = "INSERT INTO member(id, password, datetime, name, email, phone, address, latest, login_count, IP) VALUES('$id', '$pw', '$datetime', '$name', '$email', '$phone', '$address', '$latest', '$login_count', '$ip')";
     if (mysqli_query($conn, $insert)) {
         // show window message & redirect
         echo '<script type="text/javascript">'; 
         echo 'alert("User Registeration Completed!");'; 
-        echo 'window.location.href = "login.php";';
+        echo 'window.location.href = "login.html";';
         echo '</script>';
         exit();
     } else {
-        echo "<script>alert('Something Went Wrong :(')";
-        echo 'window.location.href = "login.php";';
+        echo '<script type="text/javascript">';
+        echo 'alert("Something Went Wrong :(")';
+        echo 'window.location.href = "login.html";';
         echo '</script>';
         exit();
         // echo "Error: ".mysqli_error($conn);
     }
 
-    // close sql connection
+    // CLOSE DB CONNECTION
     mysqli_close($conn);
+} else{ // WRONG INPUT
+    echo "<script>alert('You've misseed some of the input. Please try again. :( ')";
+    echo 'window.location.href = "signup.html";';
+    echo '</script>';
 }
 
 // ---- DYNAMIC SALT ---- 

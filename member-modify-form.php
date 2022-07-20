@@ -87,9 +87,9 @@
                                         <!-- BEGIN profile-header-tab -->
                                         <ul class="profile-header-tab nav nav-tabs">
                                             <li class="nav-item"><a href="mypage.php" target="__blank"
-                                                    class="nav-link_ active show">정보 확인</a></li>
+                                                    class="nav-link_">정보 확인</a></li>
                                             <li class="nav-item"><a href="member-modify-form.php" target="__blank"
-                                                    class="nav-link_">회원정보 변경</a></li>
+                                                    class="nav-link_ active show">회원정보 변경</a></li>
                                             <li class="nav-item"><a href="#" target="__blank"
                                                     class="nav-link_">등록한 농기계 관리</a></li>
                                             <li class="nav-item"><a href="#" target="__blank"
@@ -109,63 +109,57 @@
                                 <div class="profile-content">
                                     <!-- begin tab-content -->
                                     <div class="tab-content p-0">
-
+                                    <div>
                                         <!-- begin #profile-about tab -->
                                         <div class="tab-pane fade in active show" id="profile-about">
-                                            <!-- begin table -->
-                                            <div class="table-responsive">
-                                                <table class="table table-profile">
-                                                <?php
-                                                require_once "dbcon.php";
-                                                $user_id = $_SESSION['id'];
-                                                $member_query = "SELECT * FROM member WHERE id = '$user_id'";
-                                                if($result = mysqli_query($conn, $member_query )){
-                                                $row = mysqli_fetch_assoc($result);
-                                                $user_name = $row['name'];
-                                                $user_mobile = $row['phone'];
-                                                $user_email = $row['email'];
-                                                $user_address = $row['address'];
-                                                echo <<< FORM
-                                                    <thead>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>$user_name</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="field">Mobile</td>
-                                                            <td><i class="fa fa-mobile fa-lg m-r-5"></i>$user_mobile
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="divider">
-                                                            <td colspan="2"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="field">E-Mail</td>
-                                                            <td>$user_email</td>
-                                                        </tr>
-                                                        <tr class="divider">
-                                                            <td colspan="2"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="field">Address</td>
-                                                            <td>$user_address</td>
-                                                        </tr>
-                                                    </tbody>
-                                                FORM;
-                                                }else{                                          
-                                                    session_destroy();
-                                                    echo <<<ALERT
-                                                    <script>alert("Server Disconnected")'
-                                                    window.location.href = "index.php";'
-                                                    '</script>'
-                                                    ALERT;
-                                                }
-                                                ?>  
-                                                </table>
-                                            </div>
-                                            <!-- end table -->
+                                            <form action="member-modify.php" method="post">
+                                                <!-- #2 PASSWORD VERIFICATION -->
+                                                <script>
+                                                    var check = function () {
+                                                        if (document.getElementById('pw').value ==
+                                                            document.getElementById('cpassword').value) {
+                                                            document.getElementById('message').style.color = 'green';
+                                                            document.getElementById('message').innerHTML = 'matching';
+                                                        } else {
+                                                            document.getElementById('message').style.color = 'red';
+                                                            document.getElementById('message').innerHTML = 'not matching';
+                                                        }
+                                                    }
+                                                </script>
+                                                <label>비밀번호<span class="red_dot">*</span></label>
+                                                <div class="input_row">
+                                                    <input type="password" name="pw" id="pw" class="input_text" value="" minlength="8"
+                                                        maxlength="30" required="" onkeyup='check();'>
+                                                </div>
+                                                <label>비밀번호 재확인<span class="red_dot">*</span></label>
+                                                <div class="input_row">
+                                                    <input type="password" name="cpassword" id="cpassword" class="input_text" value="" minlength="8"
+                                                        maxlength="30" required="" onkeyup='check();'>
+                                                </div>
+                                                <span id='message'></span>
+                                                <span class="text-danger"></span>
+                                                <label>이름<span class="red_dot">*</span></label>
+                                                <div class="input_row">
+                                                    <input type="text" name="name" class="input_text" value="" maxlength="50" required="">
+                                                </div>
+                                                <label>이메일</label>
+                                                <div class="input_row">
+                                                    <input type="email" name="email" class="input_text" value="" maxlength="30">
+                                                </div>
+                                                <label>휴대전화<span class="red_dot">*</span></label>
+                                                <div class="input_row">
+                                                    <input type="text" name="phone" class="input_text" value="" maxlength="12" required="">
+                                                </div>
+                                                <label>주소<span class="red_dot">*</span></label>
+                                                <div class="input_row">
+                                                    <input type="text" name="address" class="input_text" value="" maxlength="128" required="">
+                                                </div>
+                                                <div class="modify_submit">
+                                                    <button type="modify" class="btn_modify" name="modify">
+                                                        <span class="btn_text">회원정보 수정</span>
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
                                         <!-- end #profile-about tab -->
                                     </div>
@@ -179,7 +173,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- footer -->
     <footer id="footer">
         <div class="footer_logo">

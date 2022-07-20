@@ -1,61 +1,85 @@
 <?php // START OF PHP
 
-// DB CONNECTION
-require_once "dbcon.php";
-
-// CHECK AND GET ID&PASSWORD
+// GET ID&PASSWORD
 $id =  isset($_POST['id']) ? $_POST['id'] : '';
 $password = isset($_POST['pw']) ? $_POST['pw'] : '';
 
+var_dump($_POST);
+
 // IF SUBMIT HAS DONE
 if (isset($_POST['login'])) {
-
-    echo "login post successw";
-
-    // GET MEMBER BY USER INPUT
-    $select_query = "SELECT * FROM member WHERE id = '$id'";
-    
-    if($result = mysqli_query($conn, $select_query)){
-        // GET PRIOR SALT PW BY INPUT
-        $row = mysqli_fetch_assoc($result);
-        $datetime = $row['datetime'];
-        $latest = $row['latest'];
-        $login_count = $row['login_count'];
-        $password = getSaltString($datetime, $latest, $login_count, $password);
-
-        // IF DB&INPUT MATCH
-        if ($row['id'] === $id && $row['password'] === $password) {
-            // UPDATE PASSWORD USING DYNAMIC SALT
-            // new salt password
-            $datetime = $latest;
-            $latest = date("Y-m-d").' '.date('H:i:s');
-            $login_count = $login_count + 1;
-            $ip = $_SERVER['REMOTE_ADDR'];
-            $password = $_POST['pw'];
-            $password = getSaltString($datetime, $latest, $login_count, $password);          
-            // update query
-            $update_pw_query = "UPDATE member SET datetime = '$datetime', latest = '$latest', login_count = '$login_count', password = '$password', ip = '$ip' WHERE id='$id'";
-            if($result = mysqli_query($conn, $update_pw_query)){
-                // START SESSION & INPUT ID INTO SESSION
-                session_start();
-                $_SESSION['id'] = $row['id'];
-                // GO TO HOME
-                header("Location: index.php");
-            }else{   // UPDATE FAIL
-                echo '<script>alert("Server has failed to update password :( ")';
-                echo 'window.location.href = "login.html";';
-                echo '</script>';
-            }            
-        } else { // WRONG INPUT
-            echo '<script>alert("Unvalid Id & Password. Please try again. :( ")';
-            echo 'window.location.href = "login.html";';
-            echo '</script>';
-        }
-    }else{ // USER INPUT UNVALID
-        echo '<script>alert("Please fill Id & Password.")';
-        echo 'window.location.href = "login.html";';
+    if(empty($id) || empty($password)){ // CHECK ID&PASSWORD VALIDATION
+        echo '<script type="text/javascript">';
+        echo 'alert("You have to insert both id & password!");';  
+        echo 'window.location.href = "login.html"'; 
         echo '</script>';
+        exit();
+    }else{
+        // DB CONNECTION
+        require_once "dbcon.php";
+
+        // GET MEMBER BY USER INPUT
+        $select_query = "SELECT * FROM member WHERE id = '$id'";
+        if($result = mysqli_query($conn, $select_query)){
+            $row = mysqli_fetch_assoc($result);
+            if(!isset($row)){ // UNREGISTERED USER
+                echo '<script type="text/javascript">';
+                echo 'alert("You have to sign up first!");';  
+                echo 'window.location.href = "signup.html"'; 
+                echo '</script>';
+                exit();
+            }else{ // REGISTERED USER
+                // GET PRIOR SALT PW BY INPUT
+                $datetime = $row['datetime'];
+                $latest = $row['latest'];
+                $login_count = $row['login_count'];
+                $password = getSaltString($datetime, $latest, $login_count, $password);
+
+                // IF DB&INPUT MATCH
+                if ($row['id'] === $id && $row['password'] === $password) {
+                    // UPDATE DYNAMIC SALT PASSWORD
+                    $datetime = $latest;
+                    $latest = date("Y-m-d").' '.date('H:i:s');
+                    $login_count = $login_count + 1;
+                    $ip = $_SERVER['REMOTE_ADDR'];
+                    $password = $_POST['pw'];
+                    $password = getSaltString($datetime, $latest, $login_count, $password);
+                    $update_pw_query = "UPDATE member SET datetime = '$datetime', latest = '$latest', login_count = '$login_count', password = '$password', ip = '$ip' WHERE id='$id'";
+                    if($result = mysqli_query($conn, $update_pw_query)){
+                        // START SESSION & INPUT ID INTO SESSION
+                        session_start();
+                        $_SESSION['id'] = $row['id'];
+                        // GO TO HOME
+                        header("Location: index.php");
+                    }else{ // SERVER ERROR
+                        echo '<script type="text/javascript">';
+                        echo 'alert("Server has encouterd error. :(")';
+                        echo 'window.location.href = "signup.html";';
+                        echo '</script>'; 
+                        exit();
+                    }            
+                } else { // WRONG INPUT
+                    echo '<script type="text/javascript">';
+                    echo 'alert("Unvalid Id & Password. Please try again. :( ")';
+                    echo 'window.location.href = "login.html"';
+                    echo '</script>';
+                    exit();
+                }
+            }
+        }else{ // SERVER ERROR
+            echo '<script type="text/javascript">';
+            echo 'alert("Server has encouterd error. :(")';
+            echo 'window.location.href = "signup.html";';
+            echo '</script>'; 
+            exit();
+        }
     }
+}else{ // SERVER ERROR
+    echo '<script type="text/javascript">';
+    echo 'alert("Server has encouterd error. :(")';
+    echo 'window.location.href = "signup.html";';
+    echo '</script>'; 
+    exit();
 }
 
 
