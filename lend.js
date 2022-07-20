@@ -248,6 +248,7 @@ function onLendSumbitA7(event) {
     lendFormQ8.classList.remove(HIDDEN_CLASSNAME);
     lendFormA8.classList.remove(HIDDEN_CLASSNAME);
 
+    document.getElementById("preview").value = localStorage.getItem(Flie_KEY);
     document.getElementById("category").value = localStorage.getItem(CATEGORY_KEY);
     document.getElementById("price").value = localStorage.getItem(Price_KEY);
     document.getElementById("maker").value = localStorage.getItem(MAKER_KEY);
