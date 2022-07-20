@@ -1,5 +1,5 @@
 <?php
-function upload(){
+//function upload(){
     //---------------------------------img file conform--------
 
     $fileNumCount = count($_FILES['imgFile']['name']);
@@ -33,7 +33,7 @@ function upload(){
     }
 
     //---------------------------------get uploader info--------
-    session_start();
+    //session_start();
     //$id = $_SESSION["id"];
     $id = "admin";
 
@@ -106,17 +106,17 @@ function upload(){
 
         $resFile = "./uploadFile/".$filename;        
         $imageUpload = move_uploaded_file($fileDir, $resFile);
-
-        $imgArray = array($i=>$resFile);
+        
+        array_push($imgArray,$resFile);
                 
         if($imageUpload == true){
             echo "파일이 정상적으로 업로드 되었습니다. <br>";
             echo "<img src='{$resFile}' width='100' /> <br>";
         }else{
             die ("파일 업로드에 실패하였습니다.");
-        }
-        print_r($imgArray);  
+        }        
     }
+    print_r($imgArray);  
 
     
 
@@ -128,11 +128,11 @@ function upload(){
     }
 
     $conn->close();
-}
-include_once("header.html");
-include_once("product-register.html");
-include_once("footer.html");
-if(isset($_POST['submit'])){
-    upload();
-}
+//}
+//include_once("header.html");
+//include_once("product-register.html");
+//include_once("footer.html");
+// if(isset($_POST['submit'])){
+//     upload();
+// }
 ?>
