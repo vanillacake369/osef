@@ -9,6 +9,9 @@
     $stmt -> execute();
     $result = $stmt -> get_result();
     $row = $result -> fetch_assoc();
+
+    $stmt->close();
+    $conn->close();  
     include("header.html")
 ?>
 
