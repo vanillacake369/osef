@@ -15,7 +15,8 @@
 
 <body>        
 
-<?php
+<?php    
+
     include_once("header.html"); 
 
     //현재 페이지탐색
@@ -36,14 +37,36 @@
     //전체 페이지수
     $search =  $_POST["searchWord"];
     $search="%$search%";
-    $stmt = $conn -> prepare("SELECT COUNT(*) AS \"num\" FROM product where model LIKE ? AND deleteDate IS NULL"); 
+    
+    $sqlcount = 0;
+    $sql1 ="SELECT COUNT(*) AS \"num\" FROM product where ";
+    $sql2 ="SELECT * FROM product LEFT JOIN file ON product.id= file.p_id where ";
+    if($_POST["category"]!="all"){
+        $sql1 .= "category = \"".$_POST["category"]."\" AND ";
+        $sql2 .= "category = \"".$_POST["category"]."\" AND ";
+    }
+    if($_POST["dDate"] != null){
+        $sql1 .= "start_date < str_to_date('".$_POST["dDate"]."', '%Y-%m-%d') AND end_date > str_to_date('".$_POST["dDate"]."', '%Y-%m-%d')";
+        $sql2 .= "start_date < str_to_date('".$_POST["dDate"]."', '%Y-%m-%d') AND end_date > str_to_date('".$_POST["dDate"]."', '%Y-%m-%d')";
+    }
+    if($_POST["sDate"] != null){
+        $sql1 .= "start_date < str_to_date('".$_POST["sDate"]."', '%Y-%m-%d') AND end_date > str_to_date('".$_POST["eDate"]."', '%Y-%m-%d')";
+        $sql2 .= "start_date < str_to_date('".$_POST["sDate"]."', '%Y-%m-%d') AND end_date > str_to_date('".$_POST["eDate"]."', '%Y-%m-%d')";
+    }
+    
+    
+    $sql1 .= "model LIKE ? AND deleteDate IS NULL";
+    $sql2 .= "model LIKE ? AND deleteDate IS NULL GROUP BY (id) LIMIT ?,20";
+
+    $stmt = $conn -> prepare($sql1);
+    
     $stmt -> bind_param("s", $search);
     $stmt -> execute();
     $result = $stmt -> get_result();
     $row = $result -> fetch_assoc();
     $totalPageNum = ceil($row['num']/20);
 
-    $stmt = $conn -> prepare("SELECT * FROM product LEFT JOIN file ON product.id= file.p_id where model LIKE ? AND deleteDate IS NULL GROUP BY (id) LIMIT ?,20;");    
+    $stmt = $conn -> prepare($sql2);    
     $stmt -> bind_param("si", $search, $page);
     $page = ($currentPage-1)*20;
     $stmt -> execute();
@@ -105,9 +128,25 @@
     }
     echo("</tr> </table> </form> </div>");    
 ?>
-<form name = "productForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" class="section" > 
-    <input type="text" name="searchWord" required class="searchInput"/>
-    <input type="submit" value="검색" class="searchSubmit" name="submit">
+<form name = "ProductForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
+    <p style="display: inline-block;">카테고리</p>
+    <select style="display: inline-block; width:100px; border:1;" name="category" >
+        <option value="all">전체</option>
+        <option value="etc">기타</option>
+        <option value="tractor">트랙터</option>
+        <option value="combine">콤바인</option>
+        <option value="rice transplanter">이양기</option>
+        <option value="rotary">로터리</option>
+        <option value="livestock machinery">축산기계</option>
+        <option value="forklift">포크레인</option>
+    </select>
+    <br>
+    <p style="display: inline-block;">모델명</p>
+    <input type="text" name="searchWord" required class="searchInput" style="display: inline-block;"/> <br>
+    대여당일 <input type="date" name="Date" /> <br>
+    대여시작일 <input type="date" name="Date" /> <br>
+    대여종료일 <input type="date" name="Date" /> <br>
+    <input type="submit" value="모델 검색" class="searchSubmit" name="submit">
 </form>
 </div>
 

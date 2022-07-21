@@ -110,7 +110,7 @@ if(isset($_POST['submit'])){
     $conn->close();
 
     echo "<script>alert(\"등록되었습니다\");";
-    echo "location.href(\"./index.php\");</script>";
+    echo "location.href= \"index.php\";</script>";
 }
 include_once("header.html");
 include_once("docs-register.html");

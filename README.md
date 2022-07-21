@@ -19,3 +19,7 @@
 |instruction.html (서비스 이용안내 / 절차)|X|김은민|O|미정|
 |conditions.html (이용약관)|X|김은민|O|미정|
 |user-policy.html (개인정보처리방침)|X|김은민|O|미정|
+  
+  
+  ## 문서
+> https://vanillacake369.notion.site/OSEF-Online-Sharing-Economy-for-Farming-298136138dad444e9bf2a035bb7fc945  
