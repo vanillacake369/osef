@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `file` (
   `s_id` int(11) unsigned DEFAULT NULL COMMENT '정보판매 id',
   `link` varchar(45) DEFAULT NULL COMMENT '파일주소',
   PRIMARY KEY (`file_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COMMENT='파일(장비대여 이미지, 정보판매 pdf)';
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COMMENT='파일(장비대여 이미지, 정보판매 pdf)';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS `info_buy_list` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `sell_info_id` int(11) unsigned NOT NULL,
   `member_id` varchar(16) NOT NULL DEFAULT '',
+  `buy_completion` tinyint(1) DEFAULT NULL COMMENT '기본 NULL 구매확정후 1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='정보 구매 테이블';
 
@@ -57,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `info_buy_list` (
 CREATE TABLE IF NOT EXISTS `member` (
   `id` varchar(16) NOT NULL COMMENT '아이디',
   `password` varchar(64) NOT NULL COMMENT '비밀번호',
-  `phone` char(11) DEFAULT NULL COMMENT '전화번호',
+  `phone` char(16) DEFAULT NULL COMMENT '전화번호',
   `name` varchar(16) NOT NULL COMMENT '이름',
   `email` varchar(64) DEFAULT NULL COMMENT '이메일',
   `address` varchar(128) DEFAULT NULL,
@@ -101,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `make_year` date NOT NULL COMMENT '제조년식',
   `model` varchar(32) NOT NULL COMMENT '기종 및 형식명',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COMMENT='장비대여';
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COMMENT='장비대여';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
@@ -119,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `sell_info` (
   `deleteDate` date DEFAULT NULL COMMENT '삭제일',
   `sellnum` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '판매수',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8mb4 COMMENT='정보 판매';
+) ENGINE=InnoDB AUTO_INCREMENT=155 DEFAULT CHARSET=utf8mb4 COMMENT='정보 판매';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
