@@ -9,12 +9,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <script src="lend.js" defer></script>
+    <link rel="stylesheet" href="../style.css?after">
+    <script src="../lend.js" defer></script>
     <title>억새풀</title>
 </head>
 
 <body>
+
+    <!-- navbar -->
+    <nav id="navbar">
+        <div class="navbar_logo">
+            <a href="index.html"><i class="fas fa-seedling"></i> 억새풀</a>
+        </div>
+        <ul class="navbar_list">
+            <li><a href="product-search.html">임대신청</a></li>
+            <li><a href="lend.html">기계등록</a></li>
+            <li><a href="docs-search.html">자료실</a></li>
+            <li><a href="docs-register.html">자료등록</a></li>
+            <li><a href="introduce.html">회사소개</a></li>
+        </ul>
+        <ul class="navbar_list">
+            <li><a href="login.html">로그인</a></li>
+            <li><a href="signup.html">회원가입</a></li>
+        </ul>
+
+        <button class="navbar_toggle_btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
 
     <!-- section lend_Q -->
     <section id="lend_Q">
@@ -122,7 +144,7 @@
                         <br>
                     </div>
                     <div class="input_row" style="width: 75%;" id="lend_form_A3_date">
-                        <input type="date" name="date" class="input_text" placeholder="제년식를 입력해 주세요" required>
+                        <input type="text" name="date" class="input_text" placeholder="제년식를 입력해 주세요" required>
                     </div>
                 </div>
                 <div class="lend_answer_bottom">
@@ -223,21 +245,23 @@
                             <div class="filebox">
                                 <input class="upload-name" value="파일을 업로드하면 이미지가 표시됩니다">
                                 <label for="file">파일찾기</label>
-                                <input type="file" id="file" multiple name="imgFile[]" onchange="readURL(this);" required>
+                                <input type="file" id="file" multiple name="imgFile[]" onchange="readURL(this);"
+                                    required>
                             </div>
                             <div class="A8_img">
                                 <img id="preview" class="hidden">
                             </div>
                             <div class="lend_card_text">
-                                <h2>기계종류</h2><input id="category" value="" name="category"></input>
-                                <h2>기계명</h2><input id="model" value="" name="model"></input>
-                                <h2>가격</h2><input id="price" value="" name="price"></input>
-                                <p>제조사</p><input id="maker" value="" name="maker"></input>
-                                <p>제조년식</p><input id="date" value="" name="makeDate"></input>
-                                <p>주소</p><input id="adress" value="" name="adress"></input>
-                                <p>시작일</p><input id="startdate" value="" name="startDate"></input>
-                                <p>종료일</p><input id="enddate" value="" name="endDate"></p>
-                                <p>상세내용</p><input id="detail" value="" name="detail"></input>
+
+                                <h2>기계종류</h2><input id="category" value=""></input>
+                                <h2>기계명</h2><input id="model" value=""></input>
+                                <h2>가격</h2><input id="price" value=""></input>
+                                <p>제조사</p><input id="maker" value=""></input>
+                                <p>제조년식</p><input id="date" value=""></input>
+                                <p>주소</p><input id="adress" value=""></input>
+                                <p>시작일</p><input id="startdate" value=""></input>
+                                <p>종료일</p><input id="enddate" value=""></p>
+                                <p>상세내용</p><input id="detail" value=""></input>
                             </div>
                         </div>
                     </div>
@@ -253,11 +277,22 @@
             </form>
         </div>
     </section>
-    </div>
-    </section>
 
-    </div>
-    </section>
+        <!-- footer -->
+        <footer id="footer">
+            <div class="footer_logo">
+                <div class="navbar_logo">
+                    <i class="fas fa-seedling"></i>
+                    <a href="index.html">억새풀</a>
+                </div>
+            </div>
+            </div>
+            <div class="footer_text">
+                <p class="footer_text_p">36729 경상북도 안동시 경동로 1375 (송천동) 국립안동대학교 공대1호관 413호 NGN연구실</p>
+                <p class="footer_text_p">TEL : 010-9548-1369 / E-MAIL : w1683111@naver.com</p>
+                <p class="footer_text_p">COPYRIGHT (C)2022 억새풀. ALL RIGHTS RESERVED.</p>
+            </div>
+        </footer>
 </body>
 
 </html>
