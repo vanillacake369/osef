@@ -84,24 +84,8 @@
                                             <!-- END profile-header-info -->
                                         </div>
                                         <!-- END profile-header-content -->
-                                        <!-- BEGIN profile-header-tab -->
-                                        <ul class="profile-header-tab nav nav-tabs">
-                                            <li class="nav-item"><a href="mypage.php" target="__blank"
-                                                    class="nav-link_">정보 확인</a></li>
-                                            <li class="nav-item"><a href="member-modify-form.php" target="__blank"
-                                                    class="nav-link_ active show">회원정보 변경</a></li>
-                                            <li class="nav-item"><a href="#" target="__blank"
-                                                    class="nav-link_">등록한 농기계 관리</a></li>
-                                            <li class="nav-item"><a href="#" target="__blank"
-                                                    class="nav-link_">임대 중인 농기계</a></li>
-                                            <li class="nav-item"><a href="#" target="__blank"
-                                                    class="nav-link_">등록한 기술문서</a></li>   
-                                            <li class="nav-item"><a href="#" target="__blank"
-                                                    class="nav-link_">구매한 기술문서</a>
-                                            <li class="nav-item"><a href="#" target="__blank"
-                                                    class="nav-link_">회원 탈퇴</a></li>
-                                        </ul>
-                                        <!-- END profile-header-tab -->
+                                        <!-- profile-header-tab -->
+                                        <?php include_once "member-modify-nav.html"; ?>
                                     </div>
                                 </div>
                                 <!-- end profile -->
@@ -148,11 +132,13 @@
                                                 </div>
                                                 <label>휴대전화<span class="red_dot">*</span></label>
                                                 <div class="input_row">
-                                                    <input type="text" name="phone" class="input_text" value="" maxlength="12" required="">
+                                                    <input type="tel" name="phone" class="input_text" value="" maxlength="16"
+                                                        pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" required placeholder="010-xxxx-xxxx">
                                                 </div>
                                                 <label>주소<span class="red_dot">*</span></label>
                                                 <div class="input_row">
-                                                    <input type="text" name="address" class="input_text" value="" maxlength="128" required="">
+                                                    <input type="text" name="address" class="input_text" value="" maxlength="128" required=""
+                                                        placeholder="~시 ~읍/면/동/리">
                                                 </div>
                                                 <div class="modify_submit">
                                                     <button type="modify" class="btn_modify" name="modify">

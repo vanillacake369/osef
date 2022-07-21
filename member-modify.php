@@ -31,26 +31,23 @@ if(isset($_SESSION['id'])){
             $login_count = $row['login_count'];
         }else{ // SERVER ERROR
             echo '<script type="text/javascript">';
-            echo 'alert("Server has encouterd error. :(")';
+            echo 'alert("Server has encouterd error. :(");';
             echo 'window.location.href = "signup.html";';
             echo '</script>'; 
             exit();
         }
-
-        echo $login_count."<br>";
-
         // UPDATE PASSWORD USING DYNAMIC SALT
         $pw = getSaltString($datetime, $latest, $login_count, $pw);
         $update_pw_query = "UPDATE member SET datetime = '$datetime', latest = '$latest', login_count = '$login_count', password = '$pw', ip = '$ip' WHERE id='$id'";
         if($result = mysqli_query($conn, $update_pw_query)){
             echo '<script type="text/javascript">';
-            echo 'alert("Info Modification Success!!")';
-            echo 'window.location.href = "member-modfiy-form.php";';
+            echo 'alert("Info Modification Success!!");';
+            echo 'window.location.href = "member-modify-form.php";';
             echo '</script>';
-        }else{ // SERVER ERROR
+        }else{ // DB CONNECTION FAIL
             echo '<script type="text/javascript">';
-            echo 'alert("Server has encouterd error. :(")';
-            echo 'window.location.href = "signup.html";';
+            echo 'alert("Lost server connection :(");';
+            echo 'window.location.href = "login.html";';
             echo '</script>'; 
             exit();
         }
@@ -59,15 +56,16 @@ if(isset($_SESSION['id'])){
         mysqli_close($conn);
     } else{ // WRONG INPUT
         echo '<script type="text/javascript">';
-        echo 'alert("You have misseed some of the input. Please try again. :( ")';
-        echo 'window.location.href = "member-modfiy-form.html";';
+        echo 'alert("Submit Failed. Please try again.");';
+        echo 'window.location.href = "member-modify-form.php";';
         echo '</script>';
     }
 }else{ // SESSION EXPIRED
     echo '<script type="text/javascript">';
-    echo 'alert("Session Expired! Please login again.");';
+    echo 'alert("Session Expired. Please login again.");';
     echo 'window.location.href = "login.html";';
     echo '</script>';
+    exit();
 }
 
 // ---- DYNAMIC SALT ---- 

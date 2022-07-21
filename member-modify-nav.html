@@ -1,0 +1,27 @@
+<!-- BEGIN profile-header-tab -->
+<ul class="profile-header-tab nav nav-tabs">
+    <li class="nav-item"><a href="mypage.php" target="__blank" class="nav-link_ active show">정보 확인</a></li>
+    <li class="nav-item"><a href="member-modify-form.php" target="__blank" class="nav-link_ active show">회원정보 변경</a>
+    </li>
+    <li class="nav-item"><a href="#" class="nav-link_ active show">등록한 농기계 관리</a></li>
+    <li class="nav-item"><a href="#" target="__blank" class="nav-link_ active show">임대 중인 농기계</a></li>
+    <li class="nav-item"><a href="#" target="__blank" class="nav-link_ active show">등록한 기술문서</a></li>
+    <li class="nav-item"><a href="#" target="__blank" class="nav-link_ active show">구매한 기술문서</a></li>
+    <li class="nav-item">
+        <form id="delete-form" action="member-delete.php" method="post">
+            <button type="submit" name="delete-btn" class="delete-btn-link" onclick="confirm_delete()">회원 탈퇴</button>
+        </form>
+    </li>
+
+    <script type="text/javascript">
+        function confirm_delete() {
+            if (window.confirm("정말로 탈퇴하시겠습니까?")) {
+                document.getElementById('delete-form').submit();
+            } else {
+                window.alert("계정 삭제가 취소되었습니다.");
+                window.location.href = "index.php";
+            }
+        }
+    </script>
+</ul>
+<!-- END profile-header-tab -->
