@@ -25,7 +25,7 @@
       } else {
         $currentPage = $_COOKIE["productPageCookie"];
       }
-
+      
     $servername = "localhost";
     $DBname = "root";
     $DBpassword = "1234";    
@@ -99,7 +99,23 @@
     echo("</tr> </table> </form> </div>");   
 ?>
 <form name = "ProductForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
-    <input type="text" name="searchWord" required class="searchInput"/>
+    <p style="display: inline-block;">카테고리</p>
+    <select style="display: inline-block; width:100px; border:1;" name="category" >
+        <option value="all">전체</option>
+        <option value="etc">기타</option>
+        <option value="tractor">트랙터</option>
+        <option value="combine">콤바인</option>
+        <option value="rice transplanter">이양기</option>
+        <option value="rotary">로터리</option>
+        <option value="livestock machinery">축산기계</option>
+        <option value="forklift">포크레인</option>
+    </select>
+    <br>
+    <p style="display: inline-block;">모델명</p>
+    <input type="text" name="searchWord" required class="searchInput" style="display: inline-block;"/> <br>
+    대여당일 <input type="date" name="Date" /> <br>
+    대여시작일 <input type="date" name="Date" /> <br>
+    대여종료일 <input type="date" name="Date" /> <br>
     <input type="submit" value="모델 검색" class="searchSubmit" name="submit">
 </form>
 </div>
