@@ -881,12 +881,6 @@ input.searchSubmit {
     border-radius: 10px;
 }
 
-/* mypage */
-body {
-    margin-top: 20px;
-    background: #eee;
-}
-
 .profile-header {
     position: relative;
     overflow: hidden
