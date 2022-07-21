@@ -6,9 +6,10 @@ const CATEGORY_KEY = 'Category';
 const Adress_KEY = 'Adress';
 const StartDate_KEY = 'Startdate';
 const Enddate_KEY = 'Enddate';
-const File_KEY = 'File';
 const Textarea_KEY = 'Textarea';
 const Price_KEY = 'Price';
+const DATE_KEY = 'date';
+const MODEL_KEY = 'Model';
 
 const lendFormA1 = document.querySelector('#lend_form_A1');
 const lendFormA2 = document.querySelector('#lend_form_A2');
@@ -29,21 +30,13 @@ const lendFormQ7 = document.querySelector('#lend_Q7');
 const lendFormQ8 = document.querySelector('#lend_Q8');
 
 const lendInputA2 = document.querySelector('#lend_form_A2 input');
-const lendInputA3 = document.querySelector('#lend_form_A3 input');
-const lendInputA41 = document.querySelector('#lend_form_A4_start input');
-const lendInputA42 = document.querySelector('#lend_form_A4_end input');
-const lendInputA5 = document.querySelector('#lend_form_A5 #file');
+const lendInputA31 = document.querySelector('#lend_form_A3_maker input');
+const lendInputA32 = document.querySelector('#lend_form_A3_date input');
+const lendInputA4 = document.querySelector('#lend_form_A4 input');
+const lendInputA51 = document.querySelector('#lend_form_A5_start input');
+const lendInputA52 = document.querySelector('#lend_form_A5_end input');
 const lendInputA6 = document.querySelector('#lend_form_A6 textarea');
 const lendInputA7 = document.querySelector('#lend_form_A7 input');
-
-const category = document.querySelector('#category');
-const price = document.querySelector('#price');
-const maker = document.querySelector('#maker');
-const adress = document.querySelector('#adress');
-const startDate = document.querySelector('#startDate');
-const endDate = document.querySelector('#endDate');
-const detail = document.querySelector('#detail');
-
 
 const nodeCategory = document.getElementsByName('category');
 const lendBtn = document.querySelector('#lend_next_btn');
@@ -96,8 +89,8 @@ lendFormA1.addEventListener('click', (event) => {
 function onLendSumbitA2(event) {
     event.preventDefault(); 
 
-    const makerValue = lendInputA2.value;
-    localStorage.setItem(MAKER_KEY, makerValue);
+    const modelValue = lendInputA2.value;
+    localStorage.setItem(MODEL_KEY, modelValue);
 
     lendFormQ2.classList.add(HIDDEN_CLASSNAME);
     lendFormA2.classList.add(HIDDEN_CLASSNAME);
@@ -121,8 +114,11 @@ lendFormA2Btn.addEventListener('click', (event) => {
 function onLendSumbitA3(event) {
     event.preventDefault(); 
 
-    const adressValue = lendInputA3.value;
-    localStorage.setItem(Adress_KEY, adressValue);
+    const makerValue = lendInputA31.value;
+    localStorage.setItem(MAKER_KEY, makerValue);
+
+    const dateValue = lendInputA32.value;
+    localStorage.setItem(DATE_KEY, dateValue);
 
     lendFormQ3.classList.add(HIDDEN_CLASSNAME);
     lendFormA3.classList.add(HIDDEN_CLASSNAME);
@@ -146,10 +142,8 @@ lendFormA3Btn.addEventListener('click', (event) => {
 function onLendSumbitA4(event) {
     event.preventDefault(); 
 
-    const startdateValue = lendInputA41.value;
-    const enddateValue = lendInputA42.value;
-    localStorage.setItem(StartDate_KEY, startdateValue);
-    localStorage.setItem(Enddate_KEY, enddateValue);
+    const adressValue = lendInputA4.value;
+    localStorage.setItem(Adress_KEY, adressValue);
 
     lendFormQ4.classList.add(HIDDEN_CLASSNAME);
     lendFormA4.classList.add(HIDDEN_CLASSNAME);
@@ -173,8 +167,10 @@ lendFormA4Btn.addEventListener('click', (event) => {
 function onLendSumbitA5(event) {
     event.preventDefault(); 
 
-    const flieValue = lendInputA5.value;
-    localStorage.setItem(File_KEY, flieValue);
+    const startdateValue = lendInputA51.value;
+    const enddateValue = lendInputA52.value;
+    localStorage.setItem(StartDate_KEY, startdateValue);
+    localStorage.setItem(Enddate_KEY, enddateValue);
 
     lendFormQ5.classList.add(HIDDEN_CLASSNAME);
     lendFormA5.classList.add(HIDDEN_CLASSNAME);
@@ -248,10 +244,11 @@ function onLendSumbitA7(event) {
     lendFormQ8.classList.remove(HIDDEN_CLASSNAME);
     lendFormA8.classList.remove(HIDDEN_CLASSNAME);
 
-    document.getElementById("img").value = localStorage.getItem(File_KEY);
     document.getElementById("category").value = localStorage.getItem(CATEGORY_KEY);
+    document.getElementById("model").value = localStorage.getItem(MODEL_KEY);
     document.getElementById("price").value = localStorage.getItem(Price_KEY);
     document.getElementById("maker").value = localStorage.getItem(MAKER_KEY);
+    document.getElementById("date").value = localStorage.getItem(DATE_KEY);
     document.getElementById("adress").value = localStorage.getItem(Adress_KEY);
     document.getElementById("startdate").value = localStorage.getItem(StartDate_KEY);
     document.getElementById("enddate").value = localStorage.getItem(Enddate_KEY);
@@ -280,6 +277,8 @@ lendFormA8.addEventListener('submit', onLendSumbitA8);
 // 뒤로가기 버튼
 const lendFormA8Btn = document.querySelector('#A8_btn');
 lendFormA8Btn.addEventListener('click', (event) => {
+    event.preventDefault(); 
+
     lendFormQ8.classList.add(HIDDEN_CLASSNAME);
     lendFormA8.classList.add(HIDDEN_CLASSNAME);
 
