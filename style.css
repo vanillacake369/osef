@@ -222,8 +222,8 @@ p {
 /* footer */
 #footer {
     width: 100%;
-    height: 170px;
-    padding: 10px;
+    height: 160px;
+    padding: 20px;
     background-color: var(--color-light-white);
     text-align: center;
 }
@@ -231,6 +231,7 @@ p {
 .footer_logo {
     width: 150px;
     display: inline-block;
+    line-height: 40px;
 
 }
 
@@ -421,6 +422,10 @@ p {
 }
 
 .lend_Q_Q {
+    color: var(--color-white);
+}
+
+.lend_Q_Q:nth-child(1) {
     line-height: 120px;
     margin: 0;
     color: var(--color-white);
@@ -439,7 +444,7 @@ p {
     display: inline-block;
     width: 220px;
     height: 80px;
-    margin-bottom: 10px;
+    margin: 10px;
     border: 1px solid var(--color-dark-white);
     border-radius: 2vh;
     cursor: pointer;
@@ -499,8 +504,10 @@ p {
     border: 1px solid var(--color-dark-white);
     border-radius: 2vh;
     display: inline-block;
-    width: 250px;
+    width: 200px;
     height: 100px;
+    padding: 10px;
+    margin: 20px;
 }
 
 .date_p {
@@ -558,8 +565,7 @@ p {
 
 .lend_card {
     display: inline-block;
-    width: 800px;
-    margin: 12px;
+    width: 100%;
     padding: 12px;
     border: 1px solid var(--color-dark-white);
     border-radius: 5px;
@@ -609,6 +615,7 @@ p {
 }
 
 .input_row {
+    width: 100%;
     display: inline-block;
     text-align: left;
     border: 1px solid var(--color-dark-white);
@@ -619,7 +626,6 @@ p {
 .input_text {
     position: relative;
     display: block;
-    width: 100%;
     font-size: var(--font-small);
 }
 
@@ -1329,7 +1335,7 @@ select.form-control:not([size]):not([multiple]) {
         --font-medium: 18px;
         --font-regular: 16px;
         --font-small: 14px;
-        --font-micro: 12px;
+        --font-micro: 10px;
     }
 
     .section {
@@ -1350,16 +1356,20 @@ select.form-control:not([size]):not([multiple]) {
         font-size: var(--font-medium);
         line-height: 70px;
     }
+
+    .lend_Q_Q {
+        margin: 0;
+    }
     
-    .lend_Q_Q:nth-child(1) {
+    .lend_Q_Q:first-child {
         padding-top: 50px;
     }
 
     .lend_answer_list {
-        width: 80px;
+        width: 90px;
         height: 45px;
+        margin: 10px;
     }
-    
     
     .lend_answer_list_p {
         line-height: 45px;
@@ -1367,7 +1377,12 @@ select.form-control:not([size]):not([multiple]) {
     }
 
     .lend_answer_next {
-        width: 80px;
+        width: 90px;
+        height: 45px;
+    }
+
+    .lend_answer_back {
+        width: 90px;
         height: 45px;
     }
 
