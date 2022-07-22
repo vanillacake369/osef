@@ -25,7 +25,6 @@
       } else {
         $currentPage = $_COOKIE["productPageCookie"];
       }
-      
     $servername = "localhost";
     $DBname = "root";
     $DBpassword = "1234";    

@@ -47,19 +47,19 @@ function onLendSumbitA1(event) {
     event.preventDefault(); // 브라우저 기본 동작 막음 (submit 클릭시 페이지 새로고침)
     // console.log(event);
     // console.log(lendInput.value);
-    
+
     // submit 1번 누르면 radio value 값이 저장
     nodeCategory.forEach((node) => {
         const categoryValue = node.value;
-        if(node.checked) {
+        if (node.checked) {
             localStorage.setItem(CATEGORY_KEY, categoryValue);
         }
-    }) 
-    
+    })
+
     // submit 1번 누르면 A1, Q1 사라짐
     lendFormQ1.classList.add(HIDDEN_CLASSNAME);
     lendFormA1.classList.add(HIDDEN_CLASSNAME);
-    
+
     // submit 1번 누르면 A2, Q2 생김
     lendFormQ2.classList.remove(HIDDEN_CLASSNAME);
     lendFormA2.classList.remove(HIDDEN_CLASSNAME);
@@ -79,15 +79,15 @@ lendFormA1.addEventListener('submit', onLendSumbitA1);
 lendFormA1.addEventListener('click', (event) => {
     nodeCategory.forEach((node) => {
         const categoryValue = node.value;
-        if(node.checked)  {
+        if (node.checked) {
             lendBtn.classList.remove(HIDDEN_CLASSNAME);
         }
-    }) 
+    })
 })
 
 // lend_form_A2
 function onLendSumbitA2(event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const modelValue = lendInputA2.value;
     localStorage.setItem(MODEL_KEY, modelValue);
@@ -112,7 +112,7 @@ lendFormA2Btn.addEventListener('click', (event) => {
 
 // lend_form_A3
 function onLendSumbitA3(event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const makerValue = lendInputA31.value;
     localStorage.setItem(MAKER_KEY, makerValue);
@@ -140,7 +140,7 @@ lendFormA3Btn.addEventListener('click', (event) => {
 
 // lend_form_A4
 function onLendSumbitA4(event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const adressValue = lendInputA4.value;
     localStorage.setItem(Adress_KEY, adressValue);
@@ -165,7 +165,7 @@ lendFormA4Btn.addEventListener('click', (event) => {
 
 // lend_form_A5
 function onLendSumbitA5(event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const startdateValue = lendInputA51.value;
     const enddateValue = lendInputA52.value;
@@ -191,7 +191,7 @@ lendFormA5Btn.addEventListener('click', (event) => {
 })
 
 // 이미지 미리보기
-function readURL (input) {
+function readURL(input) {
     if (input.files && input.files[0]) {
         const reader = new FileReader();
         reader.onload = function (e) {
@@ -208,7 +208,7 @@ function readURL (input) {
 
 // lend_form_A6
 function onLendSumbitA6(event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const textareaValue = lendInputA6.value;
     localStorage.setItem(Textarea_KEY, textareaValue);
@@ -233,7 +233,7 @@ lendFormA6Btn.addEventListener('click', (event) => {
 
 // lend_form_A7
 function onLendSumbitA7(event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const priceValue = lendInputA7.value;
     localStorage.setItem(Price_KEY, priceValue);
@@ -277,7 +277,7 @@ lendFormA8.addEventListener('submit', onLendSumbitA8);
 // 뒤로가기 버튼
 const lendFormA8Btn = document.querySelector('#A8_btn');
 lendFormA8Btn.addEventListener('click', (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     lendFormQ8.classList.add(HIDDEN_CLASSNAME);
     lendFormA8.classList.add(HIDDEN_CLASSNAME);

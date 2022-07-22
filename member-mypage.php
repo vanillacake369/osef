@@ -1,12 +1,5 @@
 <!-- Ref : https://www.bootdey.com/snippets/view/bs4-profile-about -->
-<?php
-    session_start();
-    if(!isset($_SESSION['id'])){
-        echo '<script>alert("You need to login first");';
-        echo 'window.location.href = "login.html";';
-        echo '</script>';
-    }
-?>
+<?php include_once "check-session.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
