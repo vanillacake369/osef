@@ -64,7 +64,7 @@
                         $stmt->close();
                         $conn->close();    
                     ?>
-
+                    
                     <div class="doc_detail_bottom">                    
                         <button>바로구매</button>
                     </div>
