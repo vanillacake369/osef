@@ -17,159 +17,85 @@
 </head>
 
 <body>
-    <!-- navbar -->
-    <nav id="navbar">
-        <div class="navbar_logo">
-            <i class="fas fa-seedling"></i>
-            <a href="index.php">억새풀</a>
-        </div>
-        <ul class="navbar_list">
-            <li><a href="rent.html">임대신청</a></li>
-            <li>자료실</li>
-            <li><a href="introduce.html">회사소개</a></li>
-            <li><a href="lend.html">기계등록</a></li>
-        </ul>
-        <ul class="navbar_list">
-            <?php
-            if(!isset($_SESSION['id'])) {
-            echo '<li><a href="login.html">로그인</a></li>';
-            }else{
-            echo '<li><a href="logout.php">로그아웃</a></li>';
-            echo '<li><a href="member-mypage.php">마이페이지</a></li>';
-            }
-            ?>
-        </ul>
-        <button class="navbar_toggle_btn">
-            <i class="fas fa-bars"></i>
-        </button>
-    </nav>
+    <!-- add default header -->
+    <?php include_once "header.html"; ?>
 
-    <!-- profile -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-                    rel="stylesheet">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="content" class="content content-full-width">
-                                <!-- begin profile -->
-                                <div class="profile">
-                                    <div class="profile-header">
-                                        <!-- BEGIN profile-header-cover -->
-                                        <div class="profile-header-cover"></div>
-                                        <!-- END profile-header-cover -->
-                                        <!-- BEGIN profile-header-content -->
-                                        <div class="profile-header-content">
-                                            <!-- BEGIN profile-header-img -->
-                                            <div class="profile-header-img">
-                                                <img src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="">
-                                            </div>
-                                            <!-- END profile-header-img -->
-                                            <!-- BEGIN profile-header-info -->
-                                            <div class="profile-header-info">
-                                                <?php
-                                                    $user_id = $_SESSION['id'];
-                                                    echo "<h1 class='m-t-10 m-b-5'>$user_id</h1>";
-                                                ?>
-                                            </div>
-                                            <!-- END profile-header-info -->
-                                        </div>
-                                        <!-- END profile-header-content -->
-                                        <!-- profile-header-tab -->
-                                        <?php include_once "member-modify-nav.html"; ?>
-                                    </div>
-                                </div>
-                                <!-- end profile -->
-                                <!-- begin profile-content -->
-                                <div class="profile-content">
-                                    <!-- begin tab-content -->
-                                    <div class="tab-content p-0">
+    <!-- add default profile -->
+    <?php include_once "member-modify-form-profile.php"; ?>
 
-                                        <!-- begin #profile-about tab -->
-                                        <div class="tab-pane fade in active show" id="profile-about">
-                                            <!-- begin table -->
-                                            <div class="table-responsive">
-                                                <table class="table table-profile">
-                                                <?php
-                                                require_once "dbcon.php";
-                                                $user_id = $_SESSION['id'];
-                                                $member_query = "SELECT * FROM member WHERE id = '$user_id'";
-                                                if($result = mysqli_query($conn, $member_query )){
-                                                $row = mysqli_fetch_assoc($result);
-                                                $user_name = $row['name'];
-                                                $user_mobile = $row['phone'];
-                                                $user_email = $row['email'];
-                                                $user_address = $row['address'];
-                                                echo <<< FORM
-                                                    <thead>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>$user_name</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="field">Mobile</td>
-                                                            <td><i class="fa fa-mobile fa-lg m-r-5"></i>$user_mobile
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="divider">
-                                                            <td colspan="2"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="field">E-Mail</td>
-                                                            <td>$user_email</td>
-                                                        </tr>
-                                                        <tr class="divider">
-                                                            <td colspan="2"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="field">Address</td>
-                                                            <td>$user_address</td>
-                                                        </tr>
-                                                    </tbody>
-                                                FORM;
-                                                }else{                                          
-                                                    session_destroy();
-                                                    echo <<<ALERT
-                                                    <script>alert("Server Disconnected")'
-                                                    window.location.href = "index.php";'
-                                                    '</script>'
-                                                    ALERT;
-                                                }
-                                                ?>  
-                                                </table>
-                                            </div>
-                                            <!-- end table -->
-                                        </div>
-                                        <!-- end #profile-about tab -->
-                                    </div>
-                                    <!-- end tab-content -->
-                                </div>
-                                <!-- end profile-content -->
-                            </div>
-                        </div>
+    <!-- begin member info section -->
+    <section>
+        <div class="profile-content">
+            <!-- begin tab-content -->
+            <div class="tab-content p-0">
+
+                <!-- begin #profile-about tab -->
+                <div class="tab-pane fade in active show" id="profile-about">
+                    <!-- begin table -->
+                    <div class="table-responsive">
+                        <table class="table table-profile">
+                        <?php
+                        require_once "dbcon.php";
+                        $user_id = $_SESSION['id'];
+                        $member_query = "SELECT * FROM member WHERE id = '$user_id'";
+                        if($result = mysqli_query($conn, $member_query )){
+                        $row = mysqli_fetch_assoc($result);
+                        $user_name = $row['name'];
+                        $user_mobile = $row['phone'];
+                        $user_email = $row['email'];
+                        $user_address = $row['address'];
+                        echo <<< FORM
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>$user_name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="field">Mobile</td>
+                                    <td><i class="fa fa-mobile fa-lg m-r-5"></i>$user_mobile
+                                    </td>
+                                </tr>
+                                <tr class="divider">
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td class="field">E-Mail</td>
+                                    <td>$user_email</td>
+                                </tr>
+                                <tr class="divider">
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td class="field">Address</td>
+                                    <td>$user_address</td>
+                                </tr>
+                            </tbody>
+                        FORM;
+                        }else{                                          
+                            session_destroy();
+                            echo <<<ALERT
+                            <script>alert("Server Disconnected")'
+                            window.location.href = "index.php";'
+                            '</script>'
+                            ALERT;
+                        }
+                        ?>  
+                        </table>
                     </div>
+                    <!-- end table -->
                 </div>
+                <!-- end #profile-about tab -->
             </div>
+            <!-- end tab-content -->
         </div>
-    </div>
+        <!-- end profile-content -->
+    </section>                     
+    <!-- end member info section -->
+
+    <!-- add default footer -->
+    <?php include_once "footer.html"; ?>
     
-    <!-- footer -->
-    <footer id="footer">
-        <div class="footer_logo">
-            <div class="navbar_logo">
-                <i class="fas fa-seedling"></i>
-                <a href="index.php">억새풀</a>
-            </div>
-        </div>
-        <div class="footer_text">
-            <p class="footer_text_p">36729 경상북도 안동시 경동로 1375 (송천동) 국립안동대학교 공대1호관 413호 NGN연구실</p>
-            <p class="footer_text_p">TEL : 010-9548-1369 / E-MAIL : w1683111@naver.com</p>
-            <p class="footer_text_p">COPYRIGHT (C)2022 억새풀. ALL RIGHTS RESERVED.</p>
-        </div>
-    </footer>
 </body>
 </html>
