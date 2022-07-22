@@ -1325,6 +1325,11 @@ select.form-control:not([size]):not([multiple]) {
         padding-top: 40px;
     }
 
+    .machine_list_item {
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+
     #navbar {
         flex-direction: column;
         align-items: flex-start;
