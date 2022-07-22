@@ -103,6 +103,11 @@
             }
         }
     ?>
+    <form>
+        댓글입력: <input type="text" name="commnetInput">
+        <button type="submit">댓글 저장</submit>
+
+    </form>
 </div>
 <?php
     $stmt->close();
