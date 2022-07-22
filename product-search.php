@@ -40,7 +40,7 @@
     $page = ($currentPage-1)*20;
     $stmt -> execute();
     $result = $stmt -> get_result();
-    //--------------------------------------------게시물    
+    //--------------------------------------------게시물
     echo("<div class=\"section\">");
     if($result!=NULL){        
         echo("<div class=\"board__list\" >");
@@ -61,7 +61,7 @@
         echo("<h2>검색결과가 없습니다</h2>");
     }
     $stmt->close();
-    $conn->close();    
+    $conn->close();
     
     //--------------------------------------------페이지
     $showingPage=4; //앞뒤로 보여지는 페이지 수

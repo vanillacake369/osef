@@ -1299,7 +1299,7 @@ select.form-control:not([size]):not([multiple]) {
     padding: 0 7px;
 }
 
-.member-delete-btn{
+.member-delete-btn {
     border: none;
     outline: none;
     background: none;

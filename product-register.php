@@ -42,7 +42,7 @@ include_once "check-session.php";
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT phone, email, name from member where ID = '".$id."';";
+    $sql = "SELECT phone, email, name from member where ID = '".$_SESSION['id']."';";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
