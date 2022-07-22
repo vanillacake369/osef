@@ -1,9 +1,5 @@
 <?php
-    $servername = "localhost";
-    $DBname = "root";
-    $DBpassword = "1234";
-    $conn = new mysqli($servername,$DBname,$DBpassword,"farm");
-    $conn -> set_charset('utf8mb4');
+    require_once "dbcon.php";
     $stmt = $conn -> prepare("SELECT * FROM product where id = ?"); 
     $stmt -> bind_param("i", $_POST["productId"]);
     $stmt -> execute();
@@ -60,18 +56,58 @@
 
                         while($row = $result -> fetch_assoc()){
                             echo(" <img src=\"".$row["link"]."\" width=\"1000\"> ");
-                        }
-                        $stmt->close();
-                        $conn->close();    
+                        }                            
                     ?>
-
+                    
                     <div class="doc_detail_bottom">                    
                         <button>바로구매</button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+</section>
+<div class="section">
+   댓글 <br>
+    <?php
+        $stmt = $conn -> prepare("
+        SELECT * FROM comment AS noreply LEFT JOIN
+	        (SELECT 
+		        comment_id AS reply_comment_id,
+		        p_id AS reply_p_id,
+		        s_id AS reply_s_id,
+		        member_id AS reply_member_id,
+		        detail AS reply_detail,
+		        upload AS reply_upload,
+		        deleteDate AS reply_deleteDate,
+		        reply_id AS reply_reply_id
+		    FROM comment WHERE p_id = ?) as reply 
+		    ON noreply.comment_id=reply.reply_reply_id 
+            where noreply.p_id = ? AND noreply.reply_id IS NULL
+        "); 
+        $stmt -> bind_param("ii", $_POST["productId"], $_POST["productId"]);
+        $stmt -> execute();
+        $result = $stmt -> get_result();
+        $prevCommentId = null;
+        while($row = $result -> fetch_assoc()){            
+            if($prevCommentId==$row["comment_id"]){
+                echo ("&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ".$row["reply_member_id"]." <br>");
+                echo ("&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ".$row["reply_detail"]." <br>");
+            }else{
+                echo ($row["member_id"]." <br>");
+                echo ($row["detail"]." <br>");
+                if(isset($row["reply_member_id"])){
+                    echo ("&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ".$row["reply_member_id"]." <br>");                    
+                    echo ("&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ".$row["reply_detail"]." <br>");
+                }
+                $prevCommentId = $row["comment_id"];
+            }
+        }
+    ?>
+</div>
+<?php
+    $stmt->close();
+    $conn->close();
+?>
 </body>
 <?= include("footer.html"); ?>
 </html>

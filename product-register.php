@@ -1,4 +1,5 @@
 <?php
+include_once "check-session.php";
 //function upload(){
     //---------------------------------img file conform--------
 
@@ -35,15 +36,7 @@
     //---------------------------------get uploader info--------
     //session_start();
     //$id = $_SESSION["id"];
-    $id = "admin";
-
-
-    $servername = "localhost";
-    $DBname = "root";
-    $DBpassword = "1234";
-    
-    $conn = new mysqli($servername, $DBname, $DBpassword, "farm");
-    $conn -> set_charset('utf8mb4');
+    require_once "dbcon.php";
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -111,14 +104,10 @@
                 
         if($imageUpload == true){
             echo "파일이 정상적으로 업로드 되었습니다. <br>";
-            echo "<img src='{$resFile}' width='100' /> <br>";
         }else{
             die ("파일 업로드에 실패하였습니다.");
         }        
-    }
-    print_r($imgArray);  
-
-    
+    }   
 
     $conn = new mysqli($servername, $DBname, $DBpassword, "farm");
     $conn -> set_charset('utf8mb4');
@@ -128,6 +117,9 @@
     }
 
     $conn->close();
+
+    echo "<script>alert(\"등록되었습니다\");";
+    echo "location.href= \"index.php\";</script>";
 //}
 //include_once("header.html");
 //include_once("product-register.html");

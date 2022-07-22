@@ -24,14 +24,7 @@ if(isset($_POST['submit'])){
     //---------------------------------get uploader info--------
     session_start();
     //$id = $_SESSION["id"];
-    $id = "admin";
-
-    $servername = "localhost";
-    $DBname = "root";
-    $DBpassword = "1234";
-    
-    $conn = new mysqli($servername, $DBname, $DBpassword, "farm");
-    $conn -> set_charset('utf8mb4');
+    require_once "dbcon.php";
 
     if ($conn->connect_error) {
         echo "<script>alert(\"Connection failed: " . $conn->connect_error."\")";
