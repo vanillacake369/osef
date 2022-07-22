@@ -1,71 +1,62 @@
 <?php
-// RESUME SESSION
-session_start();
-
 // CHECK SESSION
-if(isset($_SESSION['id'])){
-    // IF SUBMIT HAS DONE
-    if (isset($_POST['modify'])) {
-        // CONNECT DATABASE
-        require_once "dbcon.php";
+include_once "check-session.php";
 
-        // GET USER INPUT
-        $id = $_SESSION['id'];
-        $pw = $_POST['pw'];
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $address = $_POST['address'];
-        $datetime = date('Y-m-d').' '.date('H:i:s');
-        $latest = $datetime;
-        $ip = $_SERVER['REMOTE_ADDR'];
-        $login_count = 0;
+// USER INFO MODIFICATION
+if (isset($_POST['modify'])) {
+    // CONNECT DATABASE
+    require_once "dbcon.php";
 
-        var_dump($_POST['modify']);
-        echo "<br>".$login_count."<br>";
+    // GET USER INPUT
+    $id = $_SESSION['id'];
+    $pw = $_POST['pw'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
+    $datetime = date('Y-m-d').' '.date('H:i:s');
+    $latest = $datetime;
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $login_count = 0;
 
-        // KEEP LOGIN_COUNT ALIVE
-        $member_count_query = "SELECT * FROM member WHERE id = '$id' ";
-        if($result = mysqli_query($conn,$member_count_query)){
-            $row = mysqli_fetch_assoc($result);
-            $login_count = $row['login_count'];
-        }else{ // SERVER ERROR
-            echo '<script type="text/javascript">';
-            echo 'alert("Server has encouterd error. :(");';
-            echo 'window.location.href = "signup.html";';
-            echo '</script>'; 
-            exit();
-        }
-        // UPDATE PASSWORD USING DYNAMIC SALT
-        $pw = getSaltString($datetime, $latest, $login_count, $pw);
-        $update_pw_query = "UPDATE member SET datetime = '$datetime', latest = '$latest', login_count = '$login_count', password = '$pw', ip = '$ip' WHERE id='$id'";
-        if($result = mysqli_query($conn, $update_pw_query)){
-            echo '<script type="text/javascript">';
-            echo 'alert("Info Modification Success!!");';
-            echo 'window.location.href = "member-modify-form.php";';
-            echo '</script>';
-        }else{ // DB CONNECTION FAIL
-            echo '<script type="text/javascript">';
-            echo 'alert("Lost server connection :(");';
-            echo 'window.location.href = "login.html";';
-            echo '</script>'; 
-            exit();
-        }
+    var_dump($_POST['modify']);
+    echo "<br>".$login_count."<br>";
 
-        // CLOSE DB CONNECTION
-        mysqli_close($conn);
-    } else{ // WRONG INPUT
+    // KEEP LOGIN_COUNT ALIVE
+    $member_count_query = "SELECT * FROM member WHERE id = '$id' ";
+    if($result = mysqli_query($conn,$member_count_query)){
+        $row = mysqli_fetch_assoc($result);
+        $login_count = $row['login_count'];
+    }else{ // SERVER ERROR
         echo '<script type="text/javascript">';
-        echo 'alert("Submit Failed. Please try again.");';
+        echo 'alert("Server has encouterd error. :(");';
+        echo 'window.location.href = "signup.html";';
+        echo '</script>'; 
+        exit();
+    }
+    // UPDATE PASSWORD USING DYNAMIC SALT
+    $pw = getSaltString($datetime, $latest, $login_count, $pw);
+    $update_pw_query = "UPDATE member SET datetime = '$datetime', latest = '$latest', login_count = '$login_count', password = '$pw', ip = '$ip' WHERE id='$id'";
+    if($result = mysqli_query($conn, $update_pw_query)){
+        echo '<script type="text/javascript">';
+        echo 'alert("Info Modification Success!!");';
         echo 'window.location.href = "member-modify-form.php";';
         echo '</script>';
+    }else{ // DB CONNECTION FAIL
+        echo '<script type="text/javascript">';
+        echo 'alert("Lost server connection :(");';
+        echo 'window.location.href = "login.html";';
+        echo '</script>'; 
+        exit();
     }
-}else{ // SESSION EXPIRED
+
+    // CLOSE DB CONNECTION
+    mysqli_close($conn);
+} else{ // WRONG INPUT
     echo '<script type="text/javascript">';
-    echo 'alert("Session Expired. Please login again.");';
-    echo 'window.location.href = "login.html";';
+    echo 'alert("Submit Failed. Please try again.");';
+    echo 'window.location.href = "member-modify-form.php";';
     echo '</script>';
-    exit();
 }
 
 // ---- DYNAMIC SALT ---- 

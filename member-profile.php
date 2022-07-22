@@ -52,13 +52,13 @@
                                                 <li class="nav-item"><a href="member-modify-form.php" target="__blank"
                                                         class="nav-link_ active show">회원정보 변경</a>
                                                 </li>
-                                                <li class="nav-item"><a href="#" class="nav-link_ active show">등록한 농기계
+                                                <li class="nav-item"><a href="member-product-info.php" class="nav-link_ active show">등록한 농기계
                                                         관리</a></li>
-                                                <li class="nav-item"><a href="#" target="__blank"
+                                                <li class="nav-item"><a href="member-product-lended.php" target="__blank"
                                                         class="nav-link_ active show">임대 중인 농기계</a></li>
-                                                <li class="nav-item"><a href="#" target="__blank"
+                                                <li class="nav-item"><a href="member-docs-info.php" target="__blank"
                                                         class="nav-link_ active show">등록한 기술문서</a></li>
-                                                <li class="nav-item"><a href="#" target="__blank"
+                                                <li class="nav-item"><a href="member-docs-lended.php" target="__blank"
                                                         class="nav-link_ active show">구매한 기술문서</a></li>
                                                 <li class="nav-item">
                                                     <form id="delete-form" action="member-delete.php" method="post">

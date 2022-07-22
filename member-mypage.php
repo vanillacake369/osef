@@ -1,5 +1,6 @@
 <!-- Ref : https://www.bootdey.com/snippets/view/bs4-profile-about -->
 <?php include_once "check-session.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +22,7 @@
     <?php include_once "header.html"; ?>
 
     <!-- add default profile -->
-    <?php include_once "member-modify-form-profile.php"; ?>
+    <?php include_once "member-profile.php"; ?>
 
     <!-- begin member info section -->
     <section>
