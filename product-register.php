@@ -1,4 +1,5 @@
 <?php
+include_once "check-session.php";
 //function upload(){
     //---------------------------------img file conform--------
 
