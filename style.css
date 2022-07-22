@@ -1299,14 +1299,15 @@ select.form-control:not([size]):not([multiple]) {
     padding: 0 7px;
 }
 
-.delete-btn-link {
+.member-delete-btn{
     border: none;
     outline: none;
     background: none;
     cursor: pointer;
-    color: #0000EE;
-    padding: 0;
-    text-decoration: underline;
-    font-family: inherit;
-    font-size: inherit;
+    color: #242A30;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-family: Malgun Gothic;
+    font-size: 12px;
+    line-height: normal;
 }

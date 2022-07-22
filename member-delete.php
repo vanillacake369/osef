@@ -1,13 +1,10 @@
 <?php
 
+
 // DB CONNECTION
 require_once "dbcon.php";
 
-
-echo 'POST 실패';
-var_dump($_POST);
-
-// SUBMIT SUCCESS 
+// DELETE MEMBER
 if (isset($_POST['delete-btn'])) {
     echo 'POST 성공';
     var_dump($_POST);

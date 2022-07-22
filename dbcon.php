@@ -1,7 +1,7 @@
 <?php
     $servername='localhost';
     $username='root';
-    $password='12341234';
+    $password='1234';
     $dbname = "farm";
     $conn=mysqli_connect($servername,$username,$password,"$dbname");
     if(!$conn){
