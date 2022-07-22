@@ -98,25 +98,34 @@
     }
     echo("</tr> </table> </form> </div>");   
 ?>
+
 <form name = "ProductForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
-    <p style="display: inline-block;">카테고리</p>
-    <select style="display: inline-block; width:100px; border:1;" name="category" >
-        <option value="all">전체</option>
-        <option value="etc">기타</option>
-        <option value="tractor">트랙터</option>
-        <option value="combine">콤바인</option>
-        <option value="rice transplanter">이양기</option>
-        <option value="rotary">로터리</option>
-        <option value="livestock machinery">축산기계</option>
-        <option value="forklift">포크레인</option>
-    </select>
-    <br>
-    <p style="display: inline-block;">모델명</p>
-    <input type="text" name="searchWord" required class="searchInput" style="display: inline-block;"/> <br>
-    대여당일 <input type="date" name="Date" /> <br>
-    대여시작일 <input type="date" name="Date" /> <br>
-    대여종료일 <input type="date" name="Date" /> <br>
-    <input type="submit" value="모델 검색" class="searchSubmit" name="submit">
+    <table style="width:100%;  border: 1px solid #444444;">
+        <tr>
+        <td style="width:60%;">
+        <p style="display: inline-block; ">카테고리</p>
+            <select style="display: inline-block; width:50%; border:1;  border: 1px solid #444444; margin-top:5px;" name="category" >
+                <option value="all">전체</option>
+                <option value="etc">기타</option>
+                <option value="tractor">트랙터</option>
+                <option value="combine">콤바인</option>
+                <option value="rice transplanter">이양기</option>
+                <option value="rotary">로터리</option>
+                <option value="livestock machinery">축산기계</option>
+                <option value="forklift">포크레인</option>
+            </select>
+            <br>
+            <p style="display: inline-block;">모델명</p>
+            <input type="text" name="searchWord" required class="searchInput" style="display: inline-block; width:50%;"/> <br>
+        </td>
+        <td>
+            일단위: <input type="date" name="dDate" /> <br>
+            기간단위: 대여시작일 <input type="date" name="sDate" />
+            대여종료일 <input type="date" name="eDate" /> <br>
+            <input type="submit" value="모델 검색" class="searchSubmit" name="submit">
+        </td>
+        </tr>
+    </table>
 </form>
 </div>
 <?php include_once("footer.html"); ?>
