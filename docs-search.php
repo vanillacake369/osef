@@ -26,12 +26,7 @@
         $currentPage = $_COOKIE["docsPageCookie"];
       }
 
-    $servername = "localhost";
-    $DBname = "root";
-    $DBpassword = "1234";    
-
-    $conn = new mysqli($servername,$DBname,$DBpassword,"farm");
-    $conn -> set_charset('utf8mb4');
+    require_once "dbcon.php";
     //전체 페이지수
     $stmt = $conn -> prepare("SELECT COUNT(*) AS \"num\" FROM sell_info where deleteDate IS NULL"); 
     $stmt -> execute();

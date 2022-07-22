@@ -26,12 +26,8 @@
         $currentPage = $_COOKIE["productPageCookie"];
       }
       
-    $servername = "localhost";
-    $DBname = "root";
-    $DBpassword = "1234";    
+    require_once "dbcon.php";
 
-    $conn = new mysqli($servername,$DBname,$DBpassword,"farm");
-    $conn -> set_charset('utf8mb4');
     //전체 페이지수
     $stmt = $conn -> prepare("SELECT COUNT(*) AS \"num\" FROM product where deleteDate IS NULL"); 
     $stmt -> execute();

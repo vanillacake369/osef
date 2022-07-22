@@ -24,15 +24,12 @@
     if(!isset($_COOKIE["productPageCookie".$cookieSearchWorld])) {
         setcookie("productPageCookie".$cookieSearchWorld,"1",time()+(600),"/") ; //86400=1day
         $currentPage = 1;
-      } else {
+    } else {
         $currentPage = $_COOKIE["productPageCookie".$cookieSearchWorld];
-      }
+    }
 
-    $servername = "localhost";
-    $DBname = "root";
-    $DBpassword = "1234";    
-
-    $conn = new mysqli($servername,$DBname,$DBpassword,"farm");
+    require_once "dbcon.php";
+    
     $conn -> set_charset('utf8mb4');
     //전체 페이지수
     $search =  $_POST["searchWord"];

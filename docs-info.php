@@ -1,9 +1,5 @@
 <?php
-    $servername = "localhost";
-    $DBname = "root";
-    $DBpassword = "1234";
-    $conn = new mysqli($servername,$DBname,$DBpassword,"farm");
-    $conn -> set_charset('utf8mb4');
+    require_once "dbcon.php";
     $stmt = $conn -> prepare("SELECT * FROM sell_info where id = ?"); 
     $stmt -> bind_param("i", $_POST["docId"]);
     $stmt -> execute();
