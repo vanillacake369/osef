@@ -68,8 +68,8 @@
                         <td>대여장소</td>
                         <td>등록일</td>
                         <td>가격</td>
-                        <td><button type="button" onclick="member-product-modify.php">수정하기</button></td>
-                        <td><button type="button" onclick="member-product-delete.php">삭제하기</button></td>
+                        <td><button class="btn_back small" type="button" onclick="member-product-modify.php">수정하기</button></td>
+                        <td><button class="btn_withe small" type="button" onclick="member-product-delete.php">삭제하기</button></td>
                     </tr>
                 </tbody>
             </table>

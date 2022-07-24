@@ -2,7 +2,7 @@
 include_once "check-session.php";
 //function upload(){
     //---------------------------------img file conform--------
-
+    $username='root';
     $fileNumCount = count($_FILES['imgFile']['name']);
     $imgArray = array();
 
@@ -35,14 +35,14 @@ include_once "check-session.php";
 
     //---------------------------------get uploader info--------
     //session_start();
-    //$id = $_SESSION["id"];
+    $id = $_SESSION["id"];
     require_once "dbcon.php";
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT phone, email, name from member where ID = '".$_SESSION['id']."';";
+    $sql = "SELECT phone, email, name from member where ID = '".$id."';";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -63,7 +63,7 @@ include_once "check-session.php";
         VALUE ( '".$_POST['category']."','".$_POST['startDate']."','".$_POST['endDate']."','".$_POST['detail']."','".$id."','".$phone."','".$email
         ."','".$name."','".$_POST['adress']."','".$_POST['price']."','".$_POST['maker']."','".$_POST['makeDate']."','".$_POST['model']."') RETURNING id;";
 
-    $conn = new mysqli($servername, $DBname, $DBpassword, "farm");
+    $conn = new mysqli($servername, $username, $password, "farm");
     $conn -> set_charset('utf8mb4');
     
     if ($conn->connect_error) {
@@ -84,9 +84,9 @@ include_once "check-session.php";
     
 
     for( $i = 0; $i<$fileNumCount;$i++){
-        $fileDir = $_FILES['imgFile']['tmp_name'][$i];
+        $fileDir = $_FILES['imgFile']['tmp_name'][$i]; //경로명포함 파일명
         
-        $filename = $_FILES['imgFile']['name'][$i];
+        $filename = $_FILES['imgFile']['name'][$i]; //순수파일명
         
         //add id end of name
         $splitFilename = explode(".",$filename);      
@@ -109,7 +109,7 @@ include_once "check-session.php";
         }        
     }   
 
-    $conn = new mysqli($servername, $DBname, $DBpassword, "farm");
+    $conn = new mysqli($servername, $username, $password, "farm");
     $conn -> set_charset('utf8mb4');
     for($i=0;$i<$fileNumCount;$i++){
         $sql="insert into file(p_id,link) VALUE ('".$uploadId."','".$imgArray[$i]."');";
