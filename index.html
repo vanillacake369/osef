@@ -30,47 +30,64 @@
             <h2>임대 신청</h2><br>
             <hr>
             <div class="machine_list">
-                <div class="machine_list_item" onclick="location.href='#';">
+                
+                <div class="machine_list_item" >                    
+                    <form name = "tractorForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
+                    <input type="hidden" name="category" value="tractor"> <input type="hidden" name="searchWord"/> <input type="hidden" name="dDate"/> <input type="hidden" name="sDate"/> <input type="hidden" name="eDate"/>
                     <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
-                        class="machine_list_item_img">
-                    <h2>트렉터</h2>
-                    <p>등록 장비 : 0</p>
+                        class="machine_list_item_img" onClick="document.forms['tractorForm'].submit();">
+                    <h2>트렉터</h2>                    
+                    </form>
+                </div>
+                
+                <div class="machine_list_item" onclick="location.href='#';">
+                    <form name = "combineForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
+                        <input type="hidden" name="category" value="combine"> <input type="hidden" name="searchWord"/> <input type="hidden" name="dDate"/> <input type="hidden" name="sDate"/> <input type="hidden" name="eDate"/>
+                        <img src="https://www.yanmar.com/ltc/kr/agri/img/360101ce76/img_index_52.jpg"
+                            class="machine_list_item_img" onClick="document.forms['combineForm'].submit();">
+                            <h2>콤바인</h2>                    
+                        </form>
+                </div>
+
+                <div class="machine_list_item" onclick="location.href='#';">
+                    <form name = "rice_transplanter Form" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
+                        <input type="hidden" name="category" value="rice_transplanter"> <input type="hidden" name="searchWord"/> <input type="hidden" name="dDate"/> <input type="hidden" name="sDate"/> <input type="hidden" name="eDate"/>
+                        <img src="https://www.yanmar.com/ltc/kr/agri/img/a7a8f9241c/img_index_08.jpg"
+                            class="machine_list_item_img" onClick="document.forms['rice_transplanter Form'].submit();">
+                        <h2>이양기</h2>                    
+                        </form>
                 </div>
                 <div class="machine_list_item" onclick="location.href='#';">
-                    <img src="https://www.yanmar.com/ltc/kr/agri/img/360101ce76/img_index_52.jpg"
-                        class="machine_list_item_img">
-                    <h2>트렉터 부속기</h2>
-                    <p>등록 장비 : 0</p>
+                    <form name = "rotaryForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
+                        <input type="hidden" name="category" value="rotary"> <input type="hidden" name="searchWord"/> <input type="hidden" name="dDate"/> <input type="hidden" name="sDate"/> <input type="hidden" name="eDate"/>
+                        <img src="https://www.yanmar.com/ltc/kr/agri/img/3f924afbef/img_index_18.jpg"
+                            class="machine_list_item_img" onClick="document.forms['rotaryForm'].submit();">
+                        <h2>로터리</h2>                    
+                        </form>
                 </div>
                 <div class="machine_list_item" onclick="location.href='#';">
-                    <img src="https://www.yanmar.com/ltc/kr/agri/img/a7a8f9241c/img_index_08.jpg"
-                        class="machine_list_item_img">
-                    <h2>존디어</h2>
-                    <p>등록 장비 : 0</p>
+                    <form name = "livestock_machineryForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
+                        <input type="hidden" name="category" value="livestock_machinery"> <input type="hidden" name="searchWord"/> <input type="hidden" name="dDate"/> <input type="hidden" name="sDate"/> <input type="hidden" name="eDate"/>
+                        <img src="https://www.yanmar.com/ltc/kr/agri/img/6e1eb89142/img_index_19.jpg"
+                            class="machine_list_item_img" onClick="document.forms['livestock_machineryForm'].submit();">
+                        <h2>축산기계</h2>                    
+                        </form>
                 </div>
                 <div class="machine_list_item" onclick="location.href='#';">
-                    <img src="https://www.yanmar.com/ltc/kr/agri/img/3f924afbef/img_index_18.jpg"
-                        class="machine_list_item_img">
-                    <h2>존디어 부속기</h2>
-                    <p>등록 장비 : 0</p>
+                    <form name = "forkliftForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
+                        <input type="hidden" name="category" value="forklift"> <input type="hidden" name="searchWord"/> <input type="hidden" name="dDate"/> <input type="hidden" name="sDate"/> <input type="hidden" name="eDate"/>
+                        <img src="https://www.yanmar.com/ltc/kr/agri/img/d6e76e72da/img_index_27.jpg"
+                            class="machine_list_item_img" onClick="document.forms['forkliftForm'].submit();">
+                        <h2>포크레인</h2>                    
+                        </form>
                 </div>
                 <div class="machine_list_item" onclick="location.href='#';">
-                    <img src="https://www.yanmar.com/ltc/kr/agri/img/6e1eb89142/img_index_19.jpg"
-                        class="machine_list_item_img">
-                    <h2>콤바인</h2>
-                    <p>등록 장비 : 0</p>
-                </div>
-                <div class="machine_list_item" onclick="location.href='#';">
-                    <img src="https://www.yanmar.com/ltc/kr/agri/img/d6e76e72da/img_index_27.jpg"
-                        class="machine_list_item_img">
-                    <h2>이양기</h2>
-                    <p>등록 장비 : 0</p>
-                </div>
-                <div class="machine_list_item" onclick="location.href='#';">
-                    <img src="https://www.yanmar.com/ltc/kr/agri/img/53d8c1c3a7/img_index_29.jpg"
-                        class="machine_list_item_img">
-                    <h2>기타</h2>
-                    <p>등록 장비 : 0</p>
+                    <form name = "etcForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
+                        <input type="hidden" name="category" value="etc"> <input type="hidden" name="searchWord"/> <input type="hidden" name="dDate"/> <input type="hidden" name="sDate"/> <input type="hidden" name="eDate"/>
+                        <img src="https://www.yanmar.com/ltc/kr/agri/img/53d8c1c3a7/img_index_29.jpg"
+                            class="machine_list_item_img" onClick="document.forms['etcForm'].submit();">
+                        <h2>기타</h2>                    
+                        </form>
                 </div>
             </div>
         </div>
