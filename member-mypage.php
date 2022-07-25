@@ -1,6 +1,4 @@
 <!-- Ref : https://www.bootdey.com/snippets/view/bs4-profile-about -->
-<?php include_once "check-session.php"; ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +17,9 @@
 <body>
     <!-- add default header -->
     <?php include_once "header.html"; ?>
+
+    <!-- CHECK SESSION -->
+    <?php include_once "check-session.php"; ?>
 
     <!-- add default profile -->
     <?php include_once "member-profile.php"; ?>

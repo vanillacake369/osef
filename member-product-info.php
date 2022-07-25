@@ -1,19 +1,9 @@
-<?php include_once "check-session.php"?>
-
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>억새풀</title>
-</head>
+<?php include_once "header.html"; ?>
+
+<?php include_once "check-session.php"?>
 
 <style>
     .myproduct-table{
@@ -50,29 +40,36 @@
                         <th style="text-align:center">수정</th>
                         <th style="text-align:center">삭제</th>
                         <!-- <th scope="col">우선순위</th> // priority : 우선순위 "클릭 시 해당 농기계 페이지로 이동--> 
-                        <!-- <th scope="col">상세내용</th> // priority : 상세내용 "클릭 시 해당 농기계 페이지로 이동--> 
+                        <!-- <th scope="col">상세내용</th> // priority : 상세내용 "클릭 시 해당 농기계 페이지로 이동-->
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <!-- <td><img src="C:/Users/admin/Documents/Personal/profile/vanilla.png" alt="Vanilla Image" width="500" height="500"></td> -->
-                        <td>
-    <img class="product-img"
-     src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
-     alt="Grapefruit slice atop a pile of other slices"></td>
-                        <td>기종 및 형식명</td>
-                        <td>제조사</td>
-                        <td>농기구 종류</td>
-                        <td>제조년식</td>
-                        <td>임대 시작일</td>
-                        <td>임대 종료일</td>
-                        <td>대여장소</td>
-                        <td>등록일</td>
-                        <td>가격</td>
-                        <td><button class="btn-primary edit" type="button" onclick="member-product-modify.php">수정</button></td>
-                        <td><button class="btn-primary delete" type="button" onclick="member-product-delete.php">삭제</button></td>
-                    </tr>
+                    <?php 
+                    include "dbcon.php";
+                    $id = $_SESSION['id'];
+                    //$product_query = "SELECT * FROM product WHERE member_id = '$id'";
+                    $product_query = "SELECT * FROM product LEFT JOIN file ON product.id= file.p_id where member_id='{$_SESSION['id']}' AND deleteDate IS NULL";
+                    $result = mysqli_query($conn, $product_query);
+                    while($row = mysqli_fetch_array($result)){
+                        echo <<< VIEW_PRODUCT
+                        <tr>
+                            <td>{$row['id']}</td>
+                            <td><img class="product-img" src="{$row['link']}"></td>
+                            <td>{$row['model']}</td> 
+                            <td>{$row['maker']}</td>
+                            <td>{$row['category']}</td>
+                            <td>{$row['make_year']}</td>
+                            <td>{$row['start_date']}</td>
+                            <td>{$row['end_date']}</td>
+                            <td>{$row['place']}</td>
+                            <td>{$row['upload']}</td>
+                            <td>{$row['price']}</td>
+                            <td><button class="btn-primary edit" type="button" onclick="member-product-modify.php">수정</button></td>
+                            <td><button class="btn-primary delete" type="button" onclick="member-product-delete.php">삭제</button></td>
+                        </tr>
+                        VIEW_PRODUCT;
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
