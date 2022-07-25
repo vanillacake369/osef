@@ -5,7 +5,7 @@
 require_once "dbcon.php";
 
 // DELETE MEMBER
-if (isset($_POST['delete-btn'])) {
+if (isset($_POST['member-delete-btn'])) {
     echo 'POST 성공';
     var_dump($_POST);
 

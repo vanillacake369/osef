@@ -61,8 +61,8 @@
                                                 <li class="nav-item"><a href="member-docs-lended.php" target="__blank"
                                                         class="nav-link_ active show">구매한 기술문서</a></li>
                                                 <li class="nav-item">
-                                                    <form id="delete-form" action="member-delete.php" method="post">
-                                                        <button type="submit" name="delete-btn"
+                                                    <form id="member-delete-form" action="member-delete.php" method="post">
+                                                        <button type="submit" name="member-delete-btn"
                                                             class="member-delete-btn" onclick="confirm_delete()">회원
                                                             탈퇴</button>
                                                     </form>
@@ -71,10 +71,10 @@
                                                 <script type="text/javascript">
                                                     function confirm_delete() {
                                                         if (window.confirm("정말로 탈퇴하시겠습니까?")) {
-                                                            document.getElementById('delete-form').submit();
+                                                            document.getElementById('member-delete-form').submit();
                                                         } else {
                                                             window.alert("계정 삭제가 취소되었습니다.");
-                                                            window.location.href = "index.php";
+                                                            window.location.reload();
                                                         }
                                                     }
                                                 </script>

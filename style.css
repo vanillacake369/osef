@@ -800,7 +800,7 @@ p {
     margin: 0;
 }
 
-.product_left  p {
+.product_left p {
     padding: 5px;
 }
 
@@ -817,11 +817,11 @@ p {
     float: right;
 }
 
-.product_box > .product_title {
+.product_box>.product_title {
     padding: 15px 10px 15px 25px
 }
 
-.product_box > .btn_gray {
+.product_box>.btn_gray {
     width: 90%;
     margin: auto;
     margin-bottom: 15px;
@@ -843,9 +843,9 @@ p {
     background-color: #d4e6f7;
 }
 
-.comment_form > .btn_white {
+.comment_form>.btn_white {
     font-size: var(--font-small);
-} 
+}
 
 
 /* signup html */
@@ -1434,7 +1434,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .delete {
-    background: rgb(192, 57, 43);
+    background: #f40004;
 }
 
 /* 제일 밑에 두기 */

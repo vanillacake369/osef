@@ -45,8 +45,9 @@ include_once "check-session.php";
     $stmt -> execute();
     $result = $stmt -> get_result();
 
+    $name=$phone=$email="";
+
     if ($row = $result->fetch_assoc()) {
-        
         $name=$row["name"];
         $phone=$row["phone"];
         $email=$row["email"];
@@ -54,7 +55,6 @@ include_once "check-session.php";
         echo "멤버 정보 확인할수 없음";
     }
 
-    
 
     //---------------------------------upload DB--------
 
@@ -65,7 +65,7 @@ include_once "check-session.php";
         $sql="INSERT INTO product(category,start_date,end_date,detail,member_id,member_phone,member_email,member_name,place,price,maker,make_year,model)
         VALUE (?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id;";
         $stmt = $conn -> prepare($sql);
-        $stmt -> bind_param("sssssisssssss", $_POST['category'],$_POST['startDate'],$_POST['endDate'],$_POST['detail'],$id,$phone,$email,$name,$_POST['adress'],$_POST['price'],$_POST['maker'],$_POST['makeDate'],$_POST['model']);            
+        $stmt -> bind_param("sssssssssisss", $_POST['category'],$_POST['startDate'],$_POST['endDate'],$_POST['detail'],$id,$phone,$email,$name,$_POST['adress'],$_POST['price'],$_POST['maker'],$_POST['makeDate'],$_POST['model']);            
         $stmt -> execute();
         $result = $stmt -> get_result();
 
@@ -112,7 +112,6 @@ include_once "check-session.php";
     $conn->query($sql);
     $stmt->close();
     $conn->close();
-
 
     echo "<script>alert(\"등록되었습니다\");";
     echo "location.href= \"index.php\";</script>";

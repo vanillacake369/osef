@@ -45,35 +45,64 @@
                 </thead>
                 <tbody>
                     <?php 
-                    include "dbcon.php";
+                    require_once "dbcon.php";
                     $id = $_SESSION['id'];
                     //$product_query = "SELECT * FROM product WHERE member_id = '$id'";
-                    $product_query = "SELECT * FROM product LEFT JOIN file ON product.id= file.p_id where member_id='{$_SESSION['id']}' AND deleteDate IS NULL";
+                    $product_query = "SELECT * FROM product LEFT JOIN file ON product.id= file.p_id where member_id='{$_SESSION['id']}' AND deleteDate IS NULL GROUP BY (id)";
                     $result = mysqli_query($conn, $product_query);
-                    while($row = mysqli_fetch_array($result)){
-                        echo <<< VIEW_PRODUCT
-                        <tr>
-                            <td>{$row['id']}</td>
-                            <td><img class="product-img" src="{$row['link']}"></td>
-                            <td>{$row['model']}</td> 
-                            <td>{$row['maker']}</td>
-                            <td>{$row['category']}</td>
-                            <td>{$row['make_year']}</td>
-                            <td>{$row['start_date']}</td>
-                            <td>{$row['end_date']}</td>
-                            <td>{$row['place']}</td>
-                            <td>{$row['upload']}</td>
-                            <td>{$row['price']}</td>
-                            <td><button class="btn-primary edit" type="button" onclick="member-product-modify.php">수정</button></td>
-                            <td><button class="btn-primary delete" type="button" onclick="member-product-delete.php">삭제</button></td>
-                        </tr>
-                        VIEW_PRODUCT;
+                    if($result->num_rows == 0){
+                        echo <<< ZERO_PRODUCT
+                            <tr>
+                                <td colspan = '13'><h4>등록하신 제품이 없습니다.</h4></td>
+                            </tr>
+                        ZERO_PRODUCT;
+                    }while($row = mysqli_fetch_array($result)){
+                            echo <<< VIEW_PRODUCT
+                            <tr>
+                                <td>{$row['id']}</td>
+                                <td><img class="product-img" src="{$row['link']}"></td>
+                                <td>{$row['model']}</td> 
+                                <td>{$row['maker']}</td>
+                                <td>{$row['category']}</td>
+                                <td>{$row['make_year']}</td>
+                                <td>{$row['start_date']}</td>
+                                <td>{$row['end_date']}</td>
+                                <td>{$row['place']}</td>
+                                <td>{$row['upload']}</td>
+                                <td>{$row['price']}</td>
+                                <td>
+                                    <form id="product-modify-form" action="member-product-modify.php" method="POST">
+                                        <input type="hidden" name="product_id" value={$row['id']}></input>
+                                        <button class="btn-primary edit" type="submit" name="product-modify-btn" onclick="member-product-modify.php">수정</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form id="product-delete-form" action="member-product-delete.php" method="POST">
+                                        <input type="hidden" name="product_id" value={$row['id']}></input>
+                                        <button class="btn-primary delete" type="submit" name="product-delete-btn" onclick="confirm_delete()">삭제</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            VIEW_PRODUCT;
                     }
+                    mysqli_close($conn);
                     ?>
                 </tbody>
             </table>
         </div>
     </section>
+
+    <script type="text/javascript">
+        function confirm_delete() {
+            if (window.confirm("정말로 등록하신 농기기를 삭제하시겠습니까?")) {
+                document.getElementById('product-delete-form').submit();
+            } else {
+                window.alert("계정 삭제가 취소되었습니다.");
+                window.location.reload();
+            }
+        }
+    </script>
+
     <!-- add default footer -->
     <?php include_once "footer.html" ?>
 
