@@ -130,16 +130,17 @@ p {
     display: none;
 }
 
-.btn_back {
+.btn_white {
     font-size: var(--font-regular);
     width: 100px;
     height: 50px;
+    background-color: var(--color-white);
     border: 1px solid var(--color-dark-white);
     border-radius: 2vh;
     cursor: pointer;
 }
 
-.btn_withe {
+.btn_black {
     width: 100px;
     height: 50px;
     background-color: var(--color-dark-grey);
