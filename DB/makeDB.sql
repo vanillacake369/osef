@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `notification` (
 -- 테이블 farm.product 구조 내보내기
 CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '대여글 id',
-  `category` enum('tractor','combine','rice transplanter','rotary','livestock machinery','forklift','etc') NOT NULL DEFAULT 'etc' COMMENT '기기종류',
+  `category` enum('tractor','combine','rice_transplanter','rotary','livestock_machinery','forklift','etc') NOT NULL DEFAULT 'etc' COMMENT '기기종류',
   `end_date` date NOT NULL COMMENT '대여종료일',
   `start_date` date NOT NULL COMMENT '대여시작일',
   `priority` tinyint(1) NOT NULL DEFAULT 1 COMMENT '우선순위',
