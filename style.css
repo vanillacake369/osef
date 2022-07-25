@@ -21,7 +21,7 @@
     --font-big: 48px;
     --font-large: 32px;
     --font-medium: 24px;
-    --font-regular: 18px;
+    --font-regular: 20px;
     --font-small: 16px;
     --font-micro: 14px;
 
@@ -97,13 +97,20 @@ h2 {
 
 h3 {
     font-size: var(--font-regular);
-    font-weight: var(--font-regular);
+    font-weight: var(--weight-semi-bold);
     color: var(--color-black);
     margin: 8px 0;
 }
 
+h4 {
+    font-size: var(--font-small);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-black);
+    margin: 0;
+}
+
 p {
-    font-size: var(--font-regular);
+    font-size: var(--font-small);
     font-weight: var(--font-regular);
     color: var(--color-black);
     margin: 4px 0;
@@ -133,20 +140,36 @@ p {
 .btn_white {
     font-size: var(--font-regular);
     width: 100px;
-    height: 50px;
+    height: 45px;
     background-color: var(--color-white);
     border: 1px solid var(--color-dark-white);
-    border-radius: 2vh;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 .btn_black {
     width: 100px;
-    height: 50px;
+    height: 45px;
     background-color: var(--color-dark-grey);
     border: 1px solid var(--color-dark-grey);
-    border-radius: 2vh;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+.btn_gray {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background-color: var(--color-light-grey);
+    border: 1px solid var(--color-light-grey);
+    border-radius: 5px;
+    font-size: var(--font-regular);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-white);
+}
+
+.hr_gray {
+    border-top: 1px solid var(--color-light-white);
 }
 
 /* indec.html */
@@ -633,6 +656,7 @@ p {
 .input_text {
     position: relative;
     display: block;
+    width: 100%;
     font-size: var(--font-small);
 }
 
@@ -644,12 +668,9 @@ p {
     display: block;
     width: 100%;
     padding: 16px;
-    border: 1px solid var(--color-dark-grey);
+    border: 1px solid var(--color-light-grey);
     border-radius: 5px;
-    background-color: var(--color-dark-grey);
-}
-
-.btn_login .btn_text {
+    background-color: var(--color-light-grey);
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
@@ -742,6 +763,81 @@ p {
     border: 1px solid rgb(2, 2, 2);
     border-radius: 5px;
 }
+
+/* product-info html, php 기술상세 */
+/* section detail */
+.product_wrap {
+    width: 100%;
+    display: flex;
+    justify-content: stretch;
+}
+
+.product_title {
+    text-align: left;
+}
+
+.product_detail {
+    text-align: left;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f7dfdf;
+
+}
+
+.product_img {
+    width: 50%;
+    height: 400px;
+    margin: 5px;
+    background-color: #f7dfdf;
+}
+
+.product_left {
+    width: 66%;
+    padding-right: 20px;
+}
+
+.product_right {
+    width: 33%;
+    position: relative;
+}
+
+.product_box {
+    width: 90%;
+    margin-top: 90px;
+    border: 1px solid var(--color-dark-white);
+    border-radius: 15px;
+    float: right;
+}
+
+.product_box > .product_title {
+    padding: 15px 10px 15px 25px
+}
+
+.product_box > .btn_gray {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+
+/* section comment */
+.product_comment {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    background-color: #f7dfdf;
+}
+
+.comment {
+    width: 80%;
+    padding-left: 10px;
+    background-color: #d4e6f7;
+}
+
+.comment_form > .btn_white {
+    font-size: var(--font-small);
+} 
 
 
 /* signup html */
@@ -1356,11 +1452,11 @@ select.form-control:not([size]):not([multiple]) {
         margin-top: 10px;
     }
 
-    #lend_Q{
+    #lend_Q {
         height: 200px;
     }
-    
-    #lend_Q  h1 {
+
+    #lend_Q h1 {
         font-size: var(--font-medium);
         line-height: 70px;
     }
@@ -1368,7 +1464,7 @@ select.form-control:not([size]):not([multiple]) {
     .lend_Q_Q {
         margin: 0;
     }
-    
+
     .lend_Q_Q:first-child {
         padding-top: 50px;
     }
@@ -1378,7 +1474,7 @@ select.form-control:not([size]):not([multiple]) {
         height: 45px;
         margin: 10px;
     }
-    
+
     .lend_answer_list_p {
         line-height: 45px;
         font-size: var(--font-medium);
@@ -1423,7 +1519,7 @@ select.form-control:not([size]):not([multiple]) {
         display: none;
     }
 
-    .intro_navbar_ul > li {
+    .intro_navbar_ul>li {
         margin: 0 5px 0 5px;
         padding: 5px;
     }
