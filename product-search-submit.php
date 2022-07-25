@@ -52,7 +52,7 @@
     
     
     $sql1 .= "model LIKE ? AND deleteDate IS NULL";
-    $sql2 .= "model LIKE ? AND deleteDate IS NULL GROUP BY (id) LIMIT ?,20";
+    $sql2 .= "model LIKE ? AND deleteDate IS NULL GROUP BY (id) ORDER BY upload DESC LIMIT ?,20";
 
     
     $stmt = $conn -> prepare($sql1);
@@ -142,7 +142,7 @@
             </select>
             <br>
             <p style="display: inline-block;">모델명</p>
-            <input type="text" name="searchWord" required class="searchInput" style="display: inline-block; width:50%;"/> <br>
+            <input type="text" name="searchWord" class="searchInput" style="display: inline-block; width:50%;"/> <br>
         </td>
         <td>
             일단위: <input type="date" name="dDate" /> <br>

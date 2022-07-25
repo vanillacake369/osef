@@ -35,7 +35,7 @@
     $row = $result -> fetch_assoc();
     $totalPageNum = ceil($row['num']/20);
     
-    $stmt = $conn -> prepare("SELECT * FROM product LEFT JOIN file ON product.id= file.p_id where deleteDate IS NULL GROUP BY (id) LIMIT ?,20;");
+    $stmt = $conn -> prepare("SELECT * FROM product LEFT JOIN file ON product.id= file.p_id where deleteDate IS NULL GROUP BY (id) ORDER BY upload DESC LIMIT ?,20;");
     $stmt -> bind_param("i",$page);
     $page = ($currentPage-1)*20;
     $stmt -> execute();
@@ -92,7 +92,8 @@
         }
         echo("<td  onclick=\"refresh(".($currentPage+$showingPage+1).")\" style=\"width:60px; cursor:pointer\" > ... </td>");
     }
-    echo("</tr> </table> </form> </div>");   
+    echo("</tr> </table> </form> </div>");  
+    //--------------------------------------------검색 
 ?>
 
 <form name = "ProductForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
@@ -112,7 +113,7 @@
             </select>
             <br>
             <p style="display: inline-block;">모델명</p>
-            <input type="text" name="searchWord" required class="searchInput" style="display: inline-block; width:50%;"/> <br>
+            <input type="text" name="searchWord"  class="searchInput" style="display: inline-block; width:50%;"/> <br>
         </td>
         <td>
             일단위: <input type="date" name="dDate" /> <br>

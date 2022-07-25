@@ -1,4 +1,5 @@
 <?php   
+session_start();
 if(isset($_POST['submit'])){
     $fileDir = $_FILES['pdfFile']['tmp_name'];
     $fileTypeExt = explode("/",$_FILES['pdfFile']['type']);
@@ -22,58 +23,46 @@ if(isset($_POST['submit'])){
     }
 
     //---------------------------------get uploader info--------
-    session_start();
-    //$id = $_SESSION["id"];
+    
+    $id = $_SESSION["id"];
     require_once "dbcon.php";
-
-    if ($conn->connect_error) {
-        echo "<script>alert(\"Connection failed: " . $conn->connect_error."\")";
-        echo "history.go(-1);</script>";
-    }
 
     $sql = "SELECT phone, email, name from member where ID = '".$id."';";
     $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+    $sql="SELECT phone, email, name from member where ID = ?";
+    $stmt = $conn -> prepare($sql);
+    $stmt -> bind_param("i",$id);            
+    $stmt -> execute();
+    $result = $stmt -> get_result();
+
+    if ($row = $result -> fetch_assoc()) {
         $name=$row["name"];
         $phone=$row["phone"];
         $email=$row["email"];
     } else {
         echo "멤버 정보 확인할수 없음";
-    }
-    $conn->close();    
+    }  
 
     //---------------------------------upload DB--------
+    $sql="insert into sell_info(title, detail, price, member_id, member_phone, member_email, member_name)
+        VALUE ( ?,?,?,?,?,?,?) RETURNING id;";
+    $stmt = $conn -> prepare($sql);
+    $stmt -> bind_param("ssissss",$_POST['title'],$_POST['detail'],$_POST['price'],$id,$phone,$email,$name);            
+    $stmt -> execute();
+    $result = $stmt -> get_result();   
 
-    $sql = "insert into sell_info(title, detail, price, member_id, member_phone, member_email, member_name)
-        VALUE ( '".$_POST['title']."','".$_POST['detail']."','".$_POST['price']."','".$id."','".$phone."','".$email
-        ."','".$name."') RETURNING id;";
-
-    $conn = new mysqli($servername, $DBname, $DBpassword, "farm");
-    $conn -> set_charset('utf8mb4');
-    
-    if ($conn->connect_error) {
-        echo "Connection failed: " . $conn->connect_error;
-        echo "history.go(-1);</script>";
-    }
-
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+    if ($row = $result->fetch_assoc()) {        
         $uploadId=$row["id"];
     } else {
         echo "UPLOAD ERROR: ".$conn->error;
         echo "Connection failed: " . $conn->connect_error;
         echo "history.go(-1);</script>";
     }
-    $conn->close();
 
     //---------------------------------save image file--------
     
-    $fileDir = $_FILES['pdfFile']['tmp_name'];
-        
+    $fileDir = $_FILES['pdfFile']['tmp_name'];        
     $filename = $_FILES['pdfFile']['name'];
         
         //add id end of name
@@ -92,14 +81,14 @@ if(isset($_POST['submit'])){
         echo "<script> alert(\"파일 업로드에 실패하였습니다.\") </script>";
         echo "history.go(-1);</script>";
     }
-
     
+    $sql="INSERT INTO file(s_id,link) VALUE (?,?);";
+    $stmt = $conn -> prepare($sql);
+    $stmt -> bind_param("is",$uploadId,$resFile);            
+    $stmt -> execute();
+    $result = $stmt -> get_result();
 
-    $conn = new mysqli($servername, $DBname, $DBpassword, "farm");
-    $conn -> set_charset('utf8mb4');
-    $sql="insert into file(s_id,link) VALUE ('".$uploadId."','".$resFile."');";
-    $conn->query($sql);
-
+    $stmt->close();
     $conn->close();
 
     echo "<script>alert(\"등록되었습니다\");";
