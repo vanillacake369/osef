@@ -24,11 +24,11 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `s_id` int(11) unsigned DEFAULT NULL COMMENT '정보판매 id',
   `member_id` varchar(16) NOT NULL COMMENT '작성자 이름',
   `detail` text NOT NULL COMMENT '댓글',
-  `upload` date NOT NULL COMMENT '업로드일',
+  `upload` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '업로드일',
   `deleteDate` date DEFAULT NULL COMMENT '삭제일',
   `reply_id` int(11) unsigned DEFAULT NULL COMMENT '대댓글시 댓글의 id 그냥 댓글시 null',
   PRIMARY KEY (`comment_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='댓글';
+) ENGINE=InnoDB AUTO_INCREMENT=179 DEFAULT CHARSET=utf8mb4 COMMENT='댓글';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `file` (
   `s_id` int(11) unsigned DEFAULT NULL COMMENT '정보판매 id',
   `link` varchar(45) DEFAULT NULL COMMENT '파일주소',
   PRIMARY KEY (`file_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COMMENT='파일(장비대여 이미지, 정보판매 pdf)';
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COMMENT='파일(장비대여 이미지, 정보판매 pdf)';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `make_year` date NOT NULL COMMENT '제조년식',
   `model` varchar(32) NOT NULL COMMENT '기종 및 형식명',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COMMENT='장비대여';
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COMMENT='장비대여';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `sell_info` (
   `deleteDate` date DEFAULT NULL COMMENT '삭제일',
   `sellnum` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '판매수',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=155 DEFAULT CHARSET=utf8mb4 COMMENT='정보 판매';
+) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=utf8mb4 COMMENT='정보 판매';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
