@@ -103,23 +103,12 @@
             }
         }
     ?>
-    <form action="product-info.php" method="POST">
+    <form action="product-comment-upload.php" method="POST">
         <input type="hidden" name="productId" value="<?= $_POST["productId"]?>">
-        댓글입력: <input type="text" name="commnetInput" > <br>
+        댓글입력: <input type="text" name="commnetInput" require > <br>
         <button type="submit">댓글 저장</submit>
     </form>
-    <?php
-        if(isset($_POST["commnetInput"])){
-            if(!isset($_SESSION['id'])) {
-                echo "<script> alert(\"로그인이 필요합니다\"); </script>";
-            }else{            
-            $sql="INSERT INTO comment (p_id, member_id, detail) VALUES (?,?,?);";
-            $stmt = $conn -> prepare($sql);
-            $stmt -> bind_param("iss",$_POST["productId"],$_SESSION['id'],$_POST["commnetInput"]);            
-            $stmt -> execute();
-            }
-        }
-    ?>
+    
 </div>
 <?php
     $stmt->close();
