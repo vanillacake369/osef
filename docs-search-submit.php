@@ -39,7 +39,7 @@
     $row = $result -> fetch_assoc();
     $totalPageNum = ceil($row['num']/20);
     
-    $stmt = $conn -> prepare("SELECT * FROM sell_info where title LIKE ? AND deleteDate IS NULL LIMIT ?,20");    
+    $stmt = $conn -> prepare("SELECT * FROM sell_info where title LIKE ? AND deleteDate IS NULL ORDER BY upload DESC LIMIT ?,20");    
     $stmt -> bind_param("si", $search, $page);
     $page = ($currentPage-1)*20;
     $stmt -> execute();

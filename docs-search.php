@@ -34,7 +34,7 @@
     $row = $result -> fetch_assoc();
     $totalPageNum = ceil($row['num']/20);
     
-    $stmt = $conn -> prepare("SELECT * FROM sell_info where deleteDate IS NULL LIMIT ?,20");
+    $stmt = $conn -> prepare("SELECT * FROM sell_info where deleteDate IS NULL ORDER BY upload DESC LIMIT ?,20");
     $stmt -> bind_param("i",$page);
     $page = ($currentPage-1)*20;
     $stmt -> execute();

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once "check-session.php";
 //function upload(){
     //---------------------------------img file conform--------
@@ -34,26 +35,24 @@ include_once "check-session.php";
     }
 
     //---------------------------------get uploader info--------
-    //session_start();
-    //$id = $_SESSION["id"];
+    
+    $id = $_SESSION["id"];
     require_once "dbcon.php";
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    $sql="SELECT phone, email, name from member where ID = ?";
+    $stmt = $conn -> prepare($sql);
+    $stmt -> bind_param("s",$id);            
+    $stmt -> execute();
+    $result = $stmt -> get_result();
 
-    $sql = "SELECT phone, email, name from member where ID = '".$id."';";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+    if ($row = $result->fetch_assoc()) {
+        
         $name=$row["name"];
         $phone=$row["phone"];
         $email=$row["email"];
     } else {
         echo "멤버 정보 확인할수 없음";
     }
-    $conn->close();
 
     
 
@@ -63,22 +62,18 @@ include_once "check-session.php";
         VALUE ( '".$_POST['category']."','".$_POST['startDate']."','".$_POST['endDate']."','".$_POST['detail']."','".$id."','".$phone."','".$email
         ."','".$name."','".$_POST['adress']."','".$_POST['price']."','".$_POST['maker']."','".$_POST['makeDate']."','".$_POST['model']."') RETURNING id;";
 
-    $conn = new mysqli($servername, $DBname, $DBpassword, "farm");
-    $conn -> set_charset('utf8mb4');
-    
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+        $sql="INSERT INTO product(category,start_date,end_date,detail,member_id,member_phone,member_email,member_name,place,price,maker,make_year,model)
+        VALUE (?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id;";
+        $stmt = $conn -> prepare($sql);
+        $stmt -> bind_param("sssssisssssss", $_POST['category'],$_POST['startDate'],$_POST['endDate'],$_POST['detail'],$id,$phone,$email,$name,$_POST['adress'],$_POST['price'],$_POST['maker'],$_POST['makeDate'],$_POST['model']);            
+        $stmt -> execute();
+        $result = $stmt -> get_result();
 
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+    if ($row = $result->fetch_assoc()) {        
         $uploadId=$row["id"];
     } else {
         echo "UPLOAD ERROR: ".$conn->error;
     }
-    $conn->close();
 
     //---------------------------------save image file--------
     
@@ -109,22 +104,16 @@ include_once "check-session.php";
         }        
     }   
 
-    $conn = new mysqli($servername, $DBname, $DBpassword, "farm");
-    $conn -> set_charset('utf8mb4');
-    for($i=0;$i<$fileNumCount;$i++){
-        $sql="insert into file(p_id,link) VALUE ('".$uploadId."','".$imgArray[$i]."');";
-        $conn->query($sql);
+    $sql="insert into file(p_id,link) VALUE ";
+    for($i=0;$i<$fileNumCount-1;$i++){
+        $sql.="('".$uploadId."','".$imgArray[$i]."'),";        
     }
-
+    $sql.="('".$uploadId."','".$imgArray[$i]."');";
+    $conn->query($sql);
+    $stmt->close();
     $conn->close();
+
 
     echo "<script>alert(\"등록되었습니다\");";
     echo "location.href= \"index.php\";</script>";
-//}
-//include_once("header.html");
-//include_once("product-register.html");
-//include_once("footer.html");
-// if(isset($_POST['submit'])){
-//     upload();
-// }
 ?>
