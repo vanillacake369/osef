@@ -1,5 +1,4 @@
-<?php   
-session_start();
+<?php
 if(isset($_POST['submit'])){
     $fileDir = $_FILES['pdfFile']['tmp_name'];
     $fileTypeExt = explode("/",$_FILES['pdfFile']['type']);

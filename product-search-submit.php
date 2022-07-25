@@ -20,12 +20,24 @@
     include_once("header.html"); 
 
     //현재 페이지탐색
-    $cookieSearchWorld = str_replace(" ", "_",$_POST["searchWord"]);
-    if(!isset($_COOKIE["productPageCookie".$cookieSearchWorld])) {
-        setcookie("productPageCookie".$cookieSearchWorld,"1",time()+(600),"/") ; //86400=1day
+    $cokiekey = $_POST["category"];
+    if(isset($_POST["searchWord"])){
+    $cokiekey .= str_replace(" ", "_",$_POST["searchWord"]);
+    }
+    if(isset($_POST["dDate"])){
+        $cokiekey .=$_POST["dDate"];
+    }
+
+    if(isset($_POST["sDate"])){
+        $cokiekey .=$_POST["sDate"];
+        $cokiekey .=$_POST["eDate"];
+    }
+
+    if(!isset($_COOKIE["productPageCookie".$cokiekey])) {
+        setcookie("productPageCookie".$cokiekey,"1",time()+(600),"/") ; //86400=1day
         $currentPage = 1;
     } else {
-        $currentPage = $_COOKIE["productPageCookie".$cookieSearchWorld];
+        $currentPage = $_COOKIE["productPageCookie".$cokiekey];
     }
 
     require_once "dbcon.php";
@@ -69,22 +81,27 @@
     $stmt -> execute();
     $result = $stmt -> get_result();   
     echo("<div class=\"section\">"); 
-    echo ("<h1 > \"".$_POST["searchWord"]."\" 검색결과 </h1>");
+    $searchResult=$_POST["category"]." 카테고리 ";
+    if(isset($_POST["searchWord"])){
+    $searchResult.=$_POST["searchWord"];
+    }
+    echo ("<h1 > ".$searchResult." 검색결과 </h1>");
     //--------------------------------------------게시물    
    
     if($result!=NULL){        
         echo("<div class=\"board__list\" >");
         echo ("<table border=\"1\" class=\"board__list__table\" style=\"width: 100%;\" >");    
-        echo("<th>대표이미지</th><th>모델</th><th>등록자</th><th>등록일</th>");
+        echo("<th>대표이미지</th><th>모델</th><th>등록자</th><th>카테고리</th><th>등록일</th>");
         while($row = $result -> fetch_assoc()){
             echo("<form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\">"); 
             echo("<tr>");
             echo("<td> <img src=\"".$row['link']."\" height=\"100px\"> </td>");
             echo("<td style=\"width: 40%;\" ><input type=\"submit\" value=\"".$row['model']."\" /></td>");
             echo("<td>".$row['member_name']."</td>");
+            echo("<td>".$row['category']."</td>");
             echo("<td>".$row['upload']."</td>");        
             echo("<input type=\"hidden\" name=\"productId\" value=\"".$row['id']."\" >");
-            echo("</tr> </form>");                     
+            echo("</tr> </form>");                       
         }  
         echo("</table></div>");
     }else{
@@ -135,9 +152,9 @@
                 <option value="etc">기타</option>
                 <option value="tractor">트랙터</option>
                 <option value="combine">콤바인</option>
-                <option value="rice transplanter">이양기</option>
+                <option value="rice_transplanter">이양기</option>
                 <option value="rotary">로터리</option>
-                <option value="livestock machinery">축산기계</option>
+                <option value="livestock_machinery">축산기계</option>
                 <option value="forklift">포크레인</option>
             </select>
             <br>
