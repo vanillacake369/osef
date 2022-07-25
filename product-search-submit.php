@@ -29,7 +29,6 @@
     }
 
     require_once "dbcon.php";
-    
     $conn -> set_charset('utf8mb4');
     //전체 페이지수
     $search =  $_POST["searchWord"];

@@ -130,25 +130,18 @@ p {
     display: none;
 }
 
-.btn_black {
-    width: 30px;
-    height: 20px;
-    background-color: var(--color-dark-grey);
-    border: 1px solid var(--color-dark-grey);
-    border-radius: 2vh;
-    cursor: pointer;
-}
-
 .btn_white {
-    width: 30px;
-    height: 20px;
+    font-size: var(--font-regular);
+    width: 100px;
+    height: 50px;
+    background-color: var(--color-white);
     border: 1px solid var(--color-dark-white);
     border-radius: 2vh;
     cursor: pointer;
 }
 
-.small {
-    width: 80px;
+.btn_black {
+    width: 100px;
     height: 50px;
     font-size: var(--font-micro);
     padding: none;

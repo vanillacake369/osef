@@ -103,11 +103,12 @@
             }
         }
     ?>
-    <form>
-        댓글입력: <input type="text" name="commnetInput">
+    <form action="product-comment-upload.php" method="POST">
+        <input type="hidden" name="productId" value="<?= $_POST["productId"]?>">
+        댓글입력: <input type="text" name="commnetInput" require > <br>
         <button type="submit">댓글 저장</submit>
-
     </form>
+    
 </div>
 <?php
     $stmt->close();
