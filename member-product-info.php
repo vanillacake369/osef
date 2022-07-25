@@ -47,6 +47,8 @@
                         <th>대여장소</th>
                         <th>등록일</th>
                         <th>가격</th>
+                        <th style="text-align:center">수정</th>
+                        <th style="text-align:center">삭제</th>
                         <!-- <th scope="col">우선순위</th> // priority : 우선순위 "클릭 시 해당 농기계 페이지로 이동--> 
                         <!-- <th scope="col">상세내용</th> // priority : 상세내용 "클릭 시 해당 농기계 페이지로 이동--> 
                     </tr>
@@ -56,7 +58,7 @@
                         <td>1</td>
                         <!-- <td><img src="C:/Users/admin/Documents/Personal/profile/vanilla.png" alt="Vanilla Image" width="500" height="500"></td> -->
                         <td>
-    <img class="fit-picture"
+    <img class="product-img"
      src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
      alt="Grapefruit slice atop a pile of other slices"></td>
                         <td>기종 및 형식명</td>
@@ -68,8 +70,8 @@
                         <td>대여장소</td>
                         <td>등록일</td>
                         <td>가격</td>
-                        <td><button class="btn_back small" type="button" onclick="member-product-modify.php">수정하기</button></td>
-                        <td><button class="btn_withe small" type="button" onclick="member-product-delete.php">삭제하기</button></td>
+                        <td><button class="btn-primary edit" type="button" onclick="member-product-modify.php">수정</button></td>
+                        <td><button class="btn-primary delete" type="button" onclick="member-product-delete.php">삭제</button></td>
                     </tr>
                 </tbody>
             </table>

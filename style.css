@@ -130,31 +130,16 @@ p {
     display: none;
 }
 
-.btn_back {
-<<<<<<< HEAD
+.btn_black {
     width: 30px;
     height: 20px;
-=======
-    font-size: var(--font-regular);
-    width: 100px;
-    height: 50px;
-    border: 1px solid var(--color-dark-white);
-    border-radius: 2vh;
-    cursor: pointer;
-}
-
-.btn_withe {
-    width: 100px;
-    height: 50px;
->>>>>>> 87202e0181b0283a78bbb388b48b2c10860e7f14
     background-color: var(--color-dark-grey);
     border: 1px solid var(--color-dark-grey);
     border-radius: 2vh;
     cursor: pointer;
 }
 
-<<<<<<< HEAD
-.btn_withe {
+.btn_white {
     width: 30px;
     height: 20px;
     border: 1px solid var(--color-dark-white);
@@ -169,8 +154,6 @@ p {
     padding: none;
 }
 
-=======
->>>>>>> 87202e0181b0283a78bbb388b48b2c10860e7f14
 /* indec.html */
 /* navbar */
 #navbar {
@@ -984,88 +967,6 @@ input.searchSubmit {
     position: relative
 }
 
-.b-minus-1,
-.b-minus-10,
-.b-minus-2,
-.b-minus-3,
-.b-minus-4,
-.b-minus-5,
-.b-minus-6,
-.b-minus-7,
-.b-minus-8,
-.b-minus-9,
-.b-plus-1,
-.b-plus-10,
-.b-plus-2,
-.b-plus-3,
-.b-plus-4,
-.b-plus-5,
-.b-plus-6,
-.b-plus-7,
-.b-plus-8,
-.b-plus-9,
-.l-minus-1,
-.l-minus-2,
-.l-minus-3,
-.l-minus-4,
-.l-minus-5,
-.l-minus-6,
-.l-minus-7,
-.l-minus-8,
-.l-minus-9,
-.l-plus-1,
-.l-plus-10,
-.l-plus-2,
-.l-plus-3,
-.l-plus-4,
-.l-plus-5,
-.l-plus-6,
-.l-plus-7,
-.l-plus-8,
-.l-plus-9,
-.r-minus-1,
-.r-minus-10,
-.r-minus-2,
-.r-minus-3,
-.r-minus-4,
-.r-minus-5,
-.r-minus-6,
-.r-minus-7,
-.r-minus-8,
-.r-minus-9,
-.r-plus-1,
-.r-plus-10,
-.r-plus-2,
-.r-plus-3,
-.r-plus-4,
-.r-plus-5,
-.r-plus-6,
-.r-plus-7,
-.r-plus-8,
-.r-plus-9,
-.t-minus-1,
-.t-minus-10,
-.t-minus-2,
-.t-minus-3,
-.t-minus-4,
-.t-minus-5,
-.t-minus-6,
-.t-minus-7,
-.t-minus-8,
-.t-minus-9,
-.t-plus-1,
-.t-plus-10,
-.t-plus-2,
-.t-plus-3,
-.t-plus-4,
-.t-plus-5,
-.t-plus-6,
-.t-plus-7,
-.t-plus-8,
-.t-plus-9 {
-    position: relative !important
-}
-
 .profile-header .profile-header-tab {
     background: #fff;
     list-style-type: none;
@@ -1298,7 +1199,7 @@ body.flat-black {
 }
 
 .flat-black .sidebar .nav>li.nav-profile .cover.with-shadow:before {
-    background: rgba(42, 42, 42, .75)
+    background: rgba(42, 42, 42, .75);
 }
 
 .bg-white {
@@ -1339,26 +1240,103 @@ select.form-control:not([size]):not([multiple]) {
     padding: 0 7px;
 }
 
-<<<<<<< HEAD
 .member-delete-btn {
-=======
-.delete-btn-link {
->>>>>>> 87202e0181b0283a78bbb388b48b2c10860e7f14
     border: none;
     outline: none;
     background: none;
     cursor: pointer;
-    color: #0000EE;
+    color: #242A30;
     padding: 0;
-    text-decoration: underline;
-    font-family: inherit;
-    font-size: inherit;
+    font-family: Malgun Gothic;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 
+/* 농기계 관리 페이지 */
+/* member-product-info */
+.myproduct-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 400px;
+    width: 100%;
+}
 
+.myproduct-table thead tr {
+    background-color: #0090BB;
+    color: #FFFFFF;
+    text-align: left;
+    font-weight: bold;
+}
 
+.myproduct-table th,
+.myproduct-table td {
+    padding: 12px 15px;
+}
 
+.myproduct-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.myproduct-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.myproduct-table tbody tr:last-child() {
+    border-bottom: 2px solid #000000;
+}
+
+.product-img {
+    width: auto;
+    height: 60px;
+}
+
+.btn-primary {
+    font-family: 'Malgon Gothic';
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    border-radius: .25em;
+    text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.4);
+    line-height: 40px;
+    transition: ease-in-out .2s;
+    padding: 0 16px;
+    margin-left: 1.5em;
+}
+
+.btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.20), inset 0 0 0 99999px rgba(0, 0, 0, 0.2);
+}
+
+.edit:before {
+    font-family: Malgon Gothic;
+    display: inline-block;
+    font-size: 1rem;
+    padding-right: 12px;
+    background: none;
+    color: #FFF;
+}
+
+.edit {
+    background: rgb(52, 152, 219);
+}
+
+.delete:before {
+    font-family: Malgon Gothic;
+    display: inline-block;
+    font-size: 1rem;
+    padding-right: 12px;
+    background: none;
+    color: #FFF;
+}
+
+.delete {
+    background: rgb(192, 57, 43);
+}
 
 /* 제일 밑에 두기 */
 /* media screen */
@@ -1382,11 +1360,11 @@ select.form-control:not([size]):not([multiple]) {
         margin-top: 10px;
     }
 
-    #lend_Q{
+    #lend_Q {
         height: 200px;
     }
-    
-    #lend_Q  h1 {
+
+    #lend_Q h1 {
         font-size: var(--font-medium);
         line-height: 70px;
     }
@@ -1394,7 +1372,7 @@ select.form-control:not([size]):not([multiple]) {
     .lend_Q_Q {
         margin: 0;
     }
-    
+
     .lend_Q_Q:first-child {
         padding-top: 50px;
     }
@@ -1404,7 +1382,7 @@ select.form-control:not([size]):not([multiple]) {
         height: 45px;
         margin: 10px;
     }
-    
+
     .lend_answer_list_p {
         line-height: 45px;
         font-size: var(--font-medium);
@@ -1449,7 +1427,7 @@ select.form-control:not([size]):not([multiple]) {
         display: none;
     }
 
-    .intro_navbar_ul > li {
+    .intro_navbar_ul>li {
         margin: 0 5px 0 5px;
         padding: 5px;
     }
