@@ -1,0 +1,122 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../main.js" defer></script>
+    <title>억새풀</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav id="navbar">
+        <div class="navbar_logo">
+            <a href="index.html"><i class="fas fa-seedling"></i> 억새풀</a>
+        </div>
+        <ul class="navbar_list">
+            <li><a href="product-search.html">임대신청</a></li>
+            <li><a href="lend.html">기계등록</a></li>
+            <li><a href="docs-search.html">자료실</a></li>
+            <li><a href="docs-register.html">자료등록</a></li>
+            <li><a href="introduce.html">회사소개</a></li>
+        </ul>
+        <ul class="navbar_list">
+            <li><a href="login.html">로그인</a></li>
+            <li><a href="signup.html">회원가입</a></li>
+        </ul>
+
+        <button class="navbar_toggle_btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- section product detail -->
+    <section id="product" class="section">
+        <div class="section_container">
+            <div class="doc_title">
+                <h1> 트렉터 </h1>
+            </div>
+            <hr>
+            <div class="doc_wrap">
+                <div class="doc_img">
+                    <img class="preview">
+                </div>
+                <div class="doc_detail">
+                    <div class="doc_detail_top">
+                        <p>대여인:
+                            <?=$productRow["member_name"];?>
+                        </p>
+                        <p>대여인 연락처:
+                            <?=$productRow["member_name"];?>
+                        </p>
+                        <p>등록일:
+                            <?=$productRow["upload"];?>
+                        </p>
+                    </div>
+                    <?php if($productRow["close"]){
+                    echo("<h1> 대여 완료 </h1>");
+                }
+                ?>
+                    <h3 class="doc_contents">제조사 :
+                        <?=$productRow["maker"];?>
+                    </h3>
+                    <h3 class="doc_contents">제조년 :
+                        <?=$productRow["make_year"];?>
+                    </h3>
+
+                    <h2 class="doc_price">가격:
+                        <?=$productRow["price"];?>
+                    </h2>
+
+                    <h3 class="doc_contents">대여가능기간 :
+                        <?=$productRow["start_date"];?> ~
+                        <?=$productRow["end_date"];?>
+                    </h3>
+                    <h3 class="doc_contents">대여주소 :
+                        <?=$productRow["place"];?>
+                    </h3>
+
+                    <h3 class="doc_contents">상세내용 :
+                        <?=$productRow["detail"];?>
+                    </h3>
+                </div>
+
+                <div>
+                    <button class="btn_white">바로구매</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section">
+        댓글 <br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ".$row["reply_member_id"]." <br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ".$row["reply_detail"]." <br>
+        <form>
+            댓글입력: <input type="text" name="commnetInput">
+            <button type="submit">댓글 저장</submit>
+        </form>
+    </div>
+
+    <!-- footer -->
+    <footer id="footer">
+        <div class="footer_logo">
+            <div class="navbar_logo">
+                <i class="fas fa-seedling"></i>
+                <a href="index.html">억새풀</a>
+            </div>
+        </div>
+        </div>
+        <div class="footer_text">
+            <p class="footer_text_p">36729 경상북도 안동시 경동로 1375 (송천동) 국립안동대학교 공대1호관 413호 NGN연구실</p>
+            <p class="footer_text_p">TEL : 010-9548-1369 / E-MAIL : w1683111@naver.com</p>
+            <p class="footer_text_p">COPYRIGHT (C)2022 억새풀. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
