@@ -1,5 +1,6 @@
 <?php
 if(isset($_POST['submit'])){
+    session_start();
     $fileDir = $_FILES['pdfFile']['tmp_name'];
     $fileTypeExt = explode("/",$_FILES['pdfFile']['type']);
 
@@ -7,18 +8,9 @@ if(isset($_POST['submit'])){
 
     $fileExt = $fileTypeExt[1];
 
-    switch($fileExt){
-        case 'txt':
-        case 'ppt':
-        case 'pptx':
-        case 'pdf':
-            break;
- 
-        default:
-        echo "<script>alert(\"txt, ppt, pptx, pdf파일 외에는 사용이 불가합니다.\");";
+    if($fileExt!= 'pdf'){
+        echo "<script>alert(\"pdf파일 외에는 사용이 불가합니다.\");";
         echo "history.go(-1);</script>";
-            exit;
-            break;
     }
 
     //---------------------------------get uploader info--------
