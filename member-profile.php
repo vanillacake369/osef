@@ -61,20 +61,22 @@
                                                 <li class="nav-item"><a href="member-docs-lended.php" target="__blank"
                                                         class="nav-link_ active show">구매한 기술문서</a></li>
                                                 <li class="nav-item">
-                                                    <form id="member-delete-form" action="member-delete.php" method="post">
+                                                    <form id="member-delete-form" action="member-delete.php" method="post" onsubmit="return confirm_delete()">
                                                         <button type="submit" name="member-delete-btn"
-                                                            class="member-delete-btn" onclick="confirm_delete()">회원
+                                                            class="member-delete-btn">회원
                                                             탈퇴</button>
                                                     </form>
                                                 </li>
 
                                                 <script type="text/javascript">
+                                                    document.getElementById('member-delete-form').onsubmit = function(){
+                                                        return confirm_delete();
+                                                    }
                                                     function confirm_delete() {
-                                                        if (window.confirm("정말로 탈퇴하시겠습니까?")) {
-                                                            document.getElementById('member-delete-form').submit();
-                                                        } else {
+                                                        if (!window.confirm("정말로 탈퇴하시겠습니까?")) {
                                                             window.alert("계정 삭제가 취소되었습니다.");
                                                             window.location.reload();
+                                                            return false;
                                                         }
                                                     }
                                                 </script>

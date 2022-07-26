@@ -1003,6 +1003,9 @@ input.searchSubmit {
     border-radius: 10px;
 }
 
+/*마이페이지*/
+/* member-profile.html  */
+
 .profile-header {
     position: relative;
     overflow: hidden
@@ -1352,7 +1355,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 
-/* 농기계 관리 페이지 */
+/* 농기계 보기/수정/삭제 페이지 */
 /* member-product-info */
 .myproduct-table {
     border-collapse: collapse;
@@ -1403,7 +1406,6 @@ select.form-control:not([size]):not([multiple]) {
     line-height: 40px;
     transition: ease-in-out .2s;
     padding: 0 16px;
-    margin-left: 1.5em;
 }
 
 .btn-primary:hover {
@@ -1435,6 +1437,21 @@ select.form-control:not([size]):not([multiple]) {
 
 .delete {
     background: #f40004;
+}
+
+/* 농기기 정보 수정사항 입력 */
+/* member-product-modify-form.php */
+.product_modify {
+    border: none;
+    height: 3rem;
+    border-radius: 4px;
+    min-width: 20rem;
+    display: inline;
+    padding: 0 1rem;
+}
+
+.category option[value=""][disabled] {
+    display: none;
 }
 
 /* 제일 밑에 두기 */

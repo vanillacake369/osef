@@ -1,22 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!--ADD HEADER-->
 <?php include_once "header.html"; ?>
-
+<!--CHECK SESSION-->
 <?php include_once "check-session.php"?>
 
-<style>
-    .myproduct-table{
-        border-collapse : collapse;
-        font-size: 0.9em;
-        min-width: 400px;
-    }
-</style>
-
 <body>
-    <!-- add default header -->
-    <?php include_once "header.html" ?>
-
     <!-- add default profile -->
     <?php include_once "member-profile.php" ?>
 
@@ -71,15 +61,15 @@
                                 <td>{$row['upload']}</td>
                                 <td>{$row['price']}</td>
                                 <td>
-                                    <form id="product-modify-form" action="member-product-modify.php" method="POST">
+                                    <form id="product-modify-form" action="member-product-modify-form.php" method="POST">
                                         <input type="hidden" name="product_id" value={$row['id']}></input>
-                                        <button class="btn-primary edit" type="submit" name="product-modify-btn" onclick="member-product-modify.php">수정</button>
+                                        <button class="btn-primary edit" type="submit" name="product-modify-btn">수정</button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form id="product-delete-form" action="member-product-delete.php" method="POST">
+                                    <form id="product-delete-form" action="member-product-delete.php" method="POST" onsubmit="return confirm_delete()">
                                         <input type="hidden" name="product_id" value={$row['id']}></input>
-                                        <button class="btn-primary delete" type="submit" name="product-delete-btn" onclick="confirm_delete()">삭제</button>
+                                        <button class="btn-primary delete" type="submit" name="product-delete-btn">삭제</button>
                                     </form>
                                 </td>
                             </tr>
@@ -93,12 +83,14 @@
     </section>
 
     <script type="text/javascript">
+        document.getElementById('member-delete-form').onsubmit = function(){
+            return confirm_delete();
+        }
         function confirm_delete() {
-            if (window.confirm("정말로 등록하신 농기기를 삭제하시겠습니까?")) {
-                document.getElementById('product-delete-form').submit();
-            } else {
-                window.alert("계정 삭제가 취소되었습니다.");
+            if (!window.confirm("정말로 등록하신 농기기를 삭제하시겠습니까?")) {
+                window.alert("농기기 삭제가 취소되었습니다.");
                 window.location.reload();
+                return false;
             }
         }
     </script>
