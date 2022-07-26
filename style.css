@@ -794,6 +794,7 @@ p {
 }
 
 .product_preview {
+    /* width: 500px; */
     height: 400px;
     display: block;
     margin-left: auto;

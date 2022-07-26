@@ -10,7 +10,7 @@ navbarToggleBtn.addEventListener('click', () => {
 // img slide.
 // 참고 https://eunhee-programming.tistory.com/106
 const slides = document.querySelector('.slides'); 
-const slideImg = document.querySelectorAll('.slides li'); 
+const slideImg = document.querySelectorAll('.slides li img'); 
 let currentIdx = 0; 
 const slideCount = slideImg.length; 
 const prev = document.querySelector('.prev'); 
@@ -22,8 +22,11 @@ const slideMargin = 50;
 slides.style.width = (slideWidth + slideMargin) * slideCount + 'px';
 
 function moveSlide(num) {
-    slides.style.left = -num * 500 + 'px';
+    // slides.style.left = -(slideImg[num].width + slideMargin) + 'px';
+    slides.style.left = -num * 550 + 'px';
     currentIdx = num;
+
+    console.log(slides.style.left);
 }
 
 prev.addEventListener('click', function () {
@@ -32,6 +35,6 @@ prev.addEventListener('click', function () {
 
 next.addEventListener('click', function () {
     if (currentIdx !== slideCount - 1) {
-    moveSlide(currentIdx + 1);
+    moveSlide(currentIdx +1);
     }
 });
