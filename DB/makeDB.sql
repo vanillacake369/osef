@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `file` (
   `s_id` int(11) unsigned DEFAULT NULL COMMENT '정보판매 id',
   `link` varchar(45) DEFAULT NULL COMMENT '파일주소',
   PRIMARY KEY (`file_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COMMENT='파일(장비대여 이미지, 정보판매 pdf)';
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COMMENT='파일(장비대여 이미지, 정보판매 pdf)';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 CREATE TABLE IF NOT EXISTS `sell_info` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '판매 id',
   `title` varchar(128) DEFAULT NULL,
-  `price` varchar(64) NOT NULL,
+  `price` int(11) NOT NULL DEFAULT 0,
   `detail` mediumtext NOT NULL,
   `member_id` varchar(16) NOT NULL,
   `member_name` varchar(16) DEFAULT NULL,
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `sell_info` (
   `deleteDate` date DEFAULT NULL COMMENT '삭제일',
   `sellnum` int(11) unsigned NOT NULL DEFAULT 0 COMMENT '판매수',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=utf8mb4 COMMENT='정보 판매';
+) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=utf8mb4 COMMENT='정보 판매';
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 
