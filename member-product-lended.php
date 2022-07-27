@@ -39,7 +39,7 @@
                     if($result->num_rows == 0){
                         echo <<< ZERO_PRODUCT
                             <tr>
-                                <td colspan = '11'><h4>등록하신 제품이 없습니다.</h4></td>
+                                <td colspan = '11'><h4>임대하신 제품이 없습니다.</h4></td>
                             </tr>
                         ZERO_PRODUCT;
                     }while($row = mysqli_fetch_array($result)){
