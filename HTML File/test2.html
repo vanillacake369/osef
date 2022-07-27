@@ -6,8 +6,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../style.css">
     <script src="../main.js" defer></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <title>억새풀</title>
 </head>
 
@@ -37,69 +40,141 @@
     <!-- section product detail -->
     <section id="product" class="section">
         <div class="section_container">
-            <div class="doc_title">
-                <h1>
-                    <?= $productRow["model"];?>
-                </h1>
+            <div class="product_title">
+                <h1>트렉터</h1>
             </div>
-            <hr>
-            <div class="doc_wrap">
-                <div class="doc_detail">
-                    <div class="doc_detail_top">
-                        <p>대여인:
-                            <?=$productRow["member_name"];?>
-                        </p>
-                        <p>대여인 연락처:
-                            <?=$productRow["member_name"];?>
-                        </p>
-                        <p>등록일:
-                            <?=$productRow["upload"];?>
-                        </p>
+
+            <div class="swiper-container">
+                <div class="swiper-inner">
+                    <!-- navigation - 좌우 이동버튼(좌) -->
+                    <button type="button" class="swiper-prev swiper-navi">
+                        <i class="xi-long-arrow-left"></i>
+                        <span class="btn-text"></span>
+                    </button>
+
+                    <!-- 슬라이더 -->
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide" data-swiper-title="Slide 1">
+                                <img src="../img/농부.jpg" class="product_preview">
+                            </div>
+                            <div class="swiper-slide" data-swiper-title="Slide 2">
+                                <img src="../img/보트.jpg" class="product_preview">
+                            </div>
+                            <div class="swiper-slide" data-swiper-title="Slide 3">
+                                <img src="../img/농부.jpg" class="product_preview">
+                            </div>
+                            <div class="swiper-slide" data-swiper-title="Slide 4">
+                                <img src="../img/벼_수정.jpg" class="product_preview">
+                            </div>
+                            <div class="swiper-slide" data-swiper-title="Slide 5">
+                                <img src="../img/농부.jpg" class="product_preview">
+                            </div>
+                        </div>
                     </div>
-                    <?php if($productRow["close"]){
-                    echo("<h1> 대여 완료 </h1>");
-                }
-                ?>
-                    <h3 class="doc_contents">제조사 :
-                        <?=$productRow["maker"];?>
-                    </h3>
-                    <h3 class="doc_contents">제조년 :
-                        <?=$productRow["make_year"];?>
-                    </h3>
 
-                    <h2 class="doc_price">가격:
-                        <?=$productRow["price"];?>
-                    </h2>
-
-                    <h3 class="doc_contents">대여가능기간 :
-                        <?=$productRow["start_date"];?> ~
-                        <?=$productRow["end_date"];?>
-                    </h3>
-                    <h3 class="doc_contents">대여주소 :
-                        <?=$productRow["place"];?>
-                    </h3>
-
-                    <h3 class="doc_contents">상세내용 :
-                        <?=$productRow["detail"];?>
-                    </h3>
+                    <!-- navigation - 좌우 이동버튼(우) -->
+                    <button type="button" class="swiper-next swiper-navi">
+                        <i class="xi-long-arrow-right"></i>
+                        <span class="btn-text"></span>
+                    </button>
                 </div>
 
-                <div>
-                    <button class="btn_white">바로구매</button>
+                <!-- pagination - 페이지 버튼 -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section_container">
+        <hr class="hr_gray">
+    </div>
+
+    <section id="detail" class="section">
+        <div class="section_container">
+            <div class="product_wrap">
+                <div class="product_left">
+                    <div class="product_title">
+                        <h1>트렉터</h1>
+                    </div>
+                    <hr class="hr_gray">
+                    <div class="product_detail">
+                        <h3>장비정보</h3>
+                        <p>제조사</p>
+                        <p>제조년</p>
+                    </div>
+                    <hr class="hr_gray">
+                    <div class="product_detail">
+                        <h3>임대정보</h3>
+                        <p>등록일</p>
+                        <p>대여가능기간</p>
+                        <p>대여주소</p>
+                    </div>
+                    <hr class="hr_gray">
+                    <div class="product_detail">
+                        <h3>대여인정보</h3>
+                        <p>대여인</p>
+                        <p>연락처</p>
+                    </div>
+                    <hr class="hr_gray">
+                    <div class="product_detail">
+                        <h3>상세내용</h3>
+                        <p>..</p>
+                    </div>
+                </div>
+                <div class="product_right">
+                    <div class="product_box">
+                        <div class="product_title">
+                            <h2>가격</h2>
+                            <p>/박</p>
+                        </div>
+                        <button class="btn_gray">예약하기</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="section">
-        댓글 <br>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ".$row["reply_member_id"]." <br>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ".$row["reply_detail"]." <br>
-        <form>
-            댓글입력: <input type="text" name="commnetInput">
-            <button type="submit">댓글 저장</submit>
-        </form>
+    <div class="section_container">
+        <hr class="hr_gray">
     </div>
+
+    <!-- section  -->
+    <section id="product_comment" class="section">
+        <div class="section_container">
+            <div class="product_title">
+                <h2>댓글</h2>
+            </div>
+            <div class="product_comment">
+                <div class="comment">
+                    <p>좋아요</p>
+                </div>
+            </div>
+            <hr class="hr_gray">
+            <div class="product_comment">
+                <div class="comment">
+                    <p>나빠요</p>
+                </div>
+            </div>
+            <hr class="hr_gray">
+            <div class="product_comment">
+                <div class="comment">
+                    <p>그저그래요</p>
+                </div>
+            </div>
+            <hr class="hr_gray">
+            <form class="comment_form flex">
+                <h3>댓글 입력 :</h3>
+                <div class="input_row" style="width:50%; margin: 0 5px 0 20px;">
+                    <input type="text" class="input_text" name="commnetInput">
+                </div>
+                <button type="submit" class="btn_white">저장</submit>
+            </form>
+        </div>
+    </section>
+
 
     <!-- footer -->
     <footer id="footer">

@@ -6,6 +6,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="../style.css">
     <script src="../main.js" defer></script>
     <title>억새풀</title>
@@ -37,26 +40,44 @@
     <!-- section product detail -->
     <section id="product" class="section">
         <div class="section_container">
-            <div class="box">
-                <div class="product_title">
-                    <h1>트렉터</h1>
+            <div class="product_title">
+                <h1>트렉터</h1>
+            </div>
+            <div class="swiper-container">
+                <div class="swiper-inner">
+                    <!-- navigation - 좌우 이동버튼(좌) -->
+                    <button type="button" class="swiper-prev swiper-navi">
+                        < <span class="btn-text"></span>
+                    </button>
+                    <!-- 슬라이더 -->
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide">
+                                <img src="../img/농부.jpg" class="product_preview">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="../img/보트.jpg" class="product_preview">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="../img/농부.jpg" class="product_preview">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="../img/벼_수정.jpg" class="product_preview">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="../img/농부.jpg" class="product_preview">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- navigation - 좌우 이동버튼(우) -->
+                    <button type="button" class="swiper-next swiper-navi">
+                        > <span class="btn-text"></span>
+                    </button>
                 </div>
-                <div class="product_slide">
-                    <ul class="slides">
-                        <li><img src="../img/농부.jpg" class="product_preview"></li>
-                        <li><img src="../img/보트.jpg" class="product_preview"></li>
-                        <li><img src="../img/농부.jpg" class="product_preview"></li>
-                        <li><img src="../img/벼_수정.jpg" class="product_preview"></li>
-                        <li><img src="../img/농부.jpg" class="product_preview"></li>
-                        <li><img src="../img/벼_수정.jpg" class="product_preview"></li>
-                        <li><img src="../img/농부.jpg" class="product_preview"></li>
-
-                    </ul>
-                    <p class="controller">
-                        <span class="prev">&lang;</span>
-                        <span class="next">&rang;</span>
-                    </p>
-                </div>
+                <!-- pagination - 페이지 버튼 -->
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </section>
