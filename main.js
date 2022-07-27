@@ -7,40 +7,9 @@ navbarToggleBtn.addEventListener('click', () => {
     navbarList.classList.toggle('open');
 })
 
-// // img slide.
-// // 참고 https://eunhee-programming.tistory.com/106
-// const slides = document.querySelector('.slides'); 
-// const slideImg = document.querySelectorAll('.slides li img'); 
-// let currentIdx = 0; 
-// const slideCount = slideImg.length; 
-// const prev = document.querySelector('.prev'); 
-// const next = document.querySelector('.next'); 
-// const slideWidth = 500; 
-// const slideMargin = 50; 
 
-// //전체 슬라이드 컨테이너 넓이 설정
-// slides.style.width = (slideWidth + slideMargin) * slideCount + 'px';
-
-// function moveSlide(num) {
-//     // slides.style.left = -(slideImg[num].width + slideMargin) + 'px';
-//     slides.style.left = -num * 550 + 'px';
-//     currentIdx = num;
-
-//     console.log(slides.style.left);
-// }
-
-// prev.addEventListener('click', function () {
-//     if (currentIdx !== 0) moveSlide(currentIdx - 1);
-// });
-
-// next.addEventListener('click', function () {
-//     if (currentIdx !== slideCount - 1) {
-//     moveSlide(currentIdx +1);
-//     }
-// });
-
-
-//
+// img slide
+// https://kimyang-sun.tistory.com/entry/Javascript-jQuery-Swiper-%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%8D%94-%EC%9D%91%EC%9A%A9-%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%B3%80%EA%B2%BD%EC%8B%9C-%EC%A2%8C%EC%9A%B0-%EC%9D%B4%EB%8F%99%EB%B2%84%ED%8A%BC-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%B3%80%EA%B2%BD-Swiper-navigation-text-change-loop%EA%B0%80-%EC%95%84%EB%8B%90%EA%B2%BD%EC%9A%B0?category=784813
 var prevButton = $('.swiper-prev');
 var nextButton = $('.swiper-next');
 var prevButtonText = prevButton.find('> .btn-text');

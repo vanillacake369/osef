@@ -851,6 +851,7 @@ p {
 }
 
 .swiper-pagination {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -867,7 +868,6 @@ p {
 
 .swiper-pagination .swiper-pagination-bullet-active {
     background-color: var(--color-grey);
-    box-shadow: 3px 3px 5px #222;
     transition: all 0.3s;
     transform: scale(1.1);
 }
@@ -883,6 +883,7 @@ p {
     align-items: center;
     color: white;
     font-size: 50px;
+    width: 100%;
 }
 
 
@@ -1676,4 +1677,17 @@ select.form-control:not([size]):not([multiple]) {
     .signup_wrap {
         width: 100%;
     }
+
+    .product_preview {
+        max-width: 400px;
+    }
+
+    .swiper {
+        max-width: 400px;
+    }
+
+    .swiper-navi {
+        display: none;
+    }
+
 }
