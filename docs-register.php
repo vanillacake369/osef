@@ -1,13 +1,11 @@
 <?php
+session_start();
 if(isset($_POST['submit'])){
     $fileDir = $_FILES['pdfFile']['tmp_name'];
-    $fileTypeExt = explode("/",$_FILES['pdfFile']['type']);
+    $fileTypeExt = explode(".",$_FILES['pdfFile']['name']);
+    $fileType = $fileTypeExt[1];
 
-    $fileType = $fileTypeExt[0];
-
-    $fileExt = $fileTypeExt[1];
-
-    switch($fileExt){
+    switch($fileType){
         case 'txt':
         case 'ppt':
         case 'pptx':
@@ -15,7 +13,7 @@ if(isset($_POST['submit'])){
             break;
  
         default:
-        echo "<script>alert(\"txt, ppt, pptx, pdf파일 외에는 사용이 불가합니다.\");";
+        echo "<script>alert(\"txt, ppt, pptx, pdf파일 외에는 사용이 불가합니다.".$fileType."\");";
         echo "history.go(-1);</script>";
             exit;
             break;

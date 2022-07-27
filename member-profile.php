@@ -57,7 +57,7 @@
                                                 <li class="nav-item"><a href="member-product-lended.php" target="__blank"
                                                         class="nav-link_ active show">임대 중인 농기계</a></li>
                                                 <li class="nav-item"><a href="member-docs-info.php" target="__blank"
-                                                        class="nav-link_ active show">등록한 기술문서</a></li>
+                                                        class="nav-link_ active show">등록한 기술문서 관리</a></li>
                                                 <li class="nav-item"><a href="member-docs-lended.php" target="__blank"
                                                         class="nav-link_ active show">구매한 기술문서</a></li>
                                                 <li class="nav-item">
