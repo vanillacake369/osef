@@ -794,74 +794,95 @@ p {
 }
 
 .product_preview {
-    /* width: 500px; */
     height: 400px;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-.product_slide {
-    width: 100%;
-    height: 400px;
-    border: 1px solid var(--color-light-white);
-    position: relative;
-    margin: 0 auto;
-    overflow: hidden;
-    /*리스트 형식으로 이미지를 일렬로 
-    정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은
-    hidden으로 숨겨줘야됨*/
-}
-
-.slides {
-    width: 100%;
+.swiper-container {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 580px;
+}
+
+.swiper-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.swiper-navi {
     position: absolute;
-    left: 0;
-    top: 0;
-    margin: 0;
-    transition: left 0.5s ease-out;
-}
-
-.slides li:first-child {
-    margin-left: 100px;
-}
-
-.slides li:not(:last-child) {
-    float: left;
-    margin-right: 50px;
-}
-
-.slides li {
-    float: left;
-}
-
-.controller span {
-    position: absolute;
+    top: 50%;
+    transform: translatey(-50%);
+    padding: 20px;
+    cursor: pointer;
+    font-size: var(--font-regular);
+    border-radius: 10px;
     color: var(--color-white);
     background-color: var(--color-black-a);
+}
+
+.swiper-navi:hover,
+.swiper-navi:focus {
+    opacity: 0.8;
+}
+
+.swiper-navi.invisible {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.swiper-prev {
+    left: -105px;
+}
+
+.swiper-next {
+    right: -105px;
+}
+
+.btn-text {
+    display: block;
+}
+
+.swiper-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5em 0;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    color: var(--color-white);
     text-align: center;
-    border-radius: 10px;
-    padding: 10px 20px;
-    top: 50%;
-    font-size: var(--font-regular);
-    cursor: pointer;
 }
 
-.prev {
-    left: 30px;
+.swiper-pagination .swiper-pagination-bullet-active {
+    background-color: var(--color-grey);
+    box-shadow: 3px 3px 5px #222;
+    transition: all 0.3s;
+    transform: scale(1.1);
 }
 
-.prev:hover {
-    transform: translateX(-5px);
+.swiper {
+    width: 800px;
+    height: 400px;
 }
 
-.next {
-    right: 30px;
-}
-
-.next:hover {
-    transform: translateX(5px);
+.swiper-wrapper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 50px;
 }
 
 
@@ -920,6 +941,7 @@ p {
 .comment_form>.btn_white {
     font-size: var(--font-small);
 }
+
 
 
 /* signup html */
