@@ -13,7 +13,7 @@
 |docs-register.html (기술문서 등록)|O|김승민|O|김승민|
 |docs-purchase.html (기술문서 구매)|X|김은민|X|김은민|
 |product-search.html (농기기 조회)|O|김승민|O|김승민|
-|product-info.html (농기기 상세정보)|O|김승민|O|김승민|
+|product-info.html (농기기 상세정보)|O|황근원|O|김승민|
 |product-register.html (농기기 등록)|O|황근원|O|김승민|
 |customer-service.html (고객센터 페이지)|O|황근원|O|미정|
 |instruction.html (서비스 이용안내 / 절차)|O|권산|O|미정|

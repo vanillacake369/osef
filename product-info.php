@@ -8,70 +8,148 @@
     include("header.html")
 ?>
 
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin="crossorigin">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gugi&display=swap"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
     <title>억새풀</title>
 </head>
+<!-- section product detail -->
+<section id="product" class="section">
+    <div class="section_container">
+        <div class="product_title">
+            <h1><?= $productRow["model"];?></h1>
+        </div>
 
-<!-- section document detail -->
-<section  id="document" class="section">
-        <div class="section_container">
-            <div class="doc_title">
-                <h1><?= $productRow["model"];?></h1> 
+        <div class="swiper-container">
+            <div class="swiper-inner">
+                <!-- navigation - 좌우 이동버튼(좌) -->
+                <button type="button" class="swiper-prev swiper-navi">
+                    < <span class="btn-text"></span>
+                </button>
+
+                <!-- 슬라이더 -->
+                <div class="swiper">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <?php
+                                $stmt = $conn -> prepare("SELECT * FROM file where p_id = ?"); 
+                                $stmt -> bind_param("i", $_POST["productId"]);
+                                $stmt -> execute();
+                                $result = $stmt -> get_result(); 
+
+                                while($row = $result -> fetch_assoc()){
+                                    echo(" 
+                                    <div class=\"swiper-slide\">
+                                        <img src=\"".$row["link"]."\" class=\"product_preview\">
+                                    </div>
+                                    ");
+                                }                            
+                        ?>
+                    </div>
+                </div>
+
+                <!-- navigation - 좌우 이동버튼(우) -->
+                <button type="button" class="swiper-next swiper-navi">
+                    >
+                    <span class="btn-text"></span>
+                </button>
             </div>
-            <hr>
-            <div class="doc_wrap">
-                <div class="doc_detail">
-                    <div class="doc_detail_top">
-                        <p>대여인: <?=$productRow["member_name"];?></p>
-                        <p>대여인 연락처: <?=$productRow["member_name"];?></p>
-                        <p>등록일: <?=$productRow["upload"];?></p>
+
+            <!-- pagination - 페이지 버튼 -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<div class="section_container">
+    <hr class="hr_gray">
+</div>
+
+<section id="detail" class="section">
+    <div class="section_container">
+        <div class="product_wrap">
+            <div class="product_left">
+                <div class="product_title">
+                    <h1><?= $productRow["model"];?></h1>
+                </div>
+                <hr class="hr_gray">
+                <div class="product_detail">
+                    <h3>장비정보</h3>
+                    <p>제조사:
+                        <?=$productRow["maker"];?></p>
+                    <p>제조년:
+                        <?=$productRow["make_year"];?></p>
+                </div>
+                <hr class="hr_gray">
+                <div class="product_detail">
+                    <h3>임대정보</h3>
+                    <p>대여가능기간:
+                        <?=$productRow["start_date"];?>
+                        ~
+                        <?=$productRow["end_date"];?></p>
+                    <p>대여주소:
+                        <?=$productRow["place"];?></p>
+                </div>
+                <hr class="hr_gray">
+                <div class="product_detail">
+                    <h3>대여인정보</h3>
+                    <p>대여인:
+                        <?=$productRow["member_name"];?></p>
+                    <p>대여인 연락처:
+                        <?=$productRow["member_name"];?></p>
+                    <p>등록일:
+                        <?=$productRow["upload"];?></p>
+                </div>
+                <hr class="hr_gray">
+                <div class="product_detail">
+                    <h3>상세내용</h3>
+                    <p><?=$productRow["detail"];?></p>
+                </div>
+            </div>
+            <div class="product_right">
+                <div class="product_box">
+                    <div class="product_title">
+                        <h2>가격</h2>
+                        <p><?=$productRow["price"];?>
+                            /박</p>
                     </div>
-                    <?php if($productRow["close"]){
-                        echo("<h1> 대여 완료 </h1>");
-                    }
-                    ?>
-                    <h3 class="doc_contents">제조사 : <?=$productRow["maker"];?></h3>
-                    <h3 class="doc_contents">제조년 : <?=$productRow["make_year"];?></h3>
-
-                    <h2 class="doc_price">가격: <?=$productRow["price"];?></h2>
-                    
-                    <h3 class="doc_contents">대여가능기간 : <?=$productRow["start_date"];?> ~ <?=$productRow["end_date"];?></h3>
-                    <h3 class="doc_contents">대여주소 : <?=$productRow["place"];?></h3>
-
-                    <h3 class="doc_contents">상세내용 : <?=$productRow["detail"];?></h3>
-                    <?php
-                        $stmt = $conn -> prepare("SELECT * FROM file where p_id = ?"); 
-                        $stmt -> bind_param("i", $_POST["productId"]);
-                        $stmt -> execute();
-                        $result = $stmt -> get_result(); 
-
-                        while($row = $result -> fetch_assoc()){
-                            echo(" <img src=\"".$row["link"]."\" width=\"1000\"> ");
-                        }                            
-                    ?>
-                    
-                    <div class="doc_detail_bottom">                    
-                        <button>바로구매</button>
-                    </div>
+                    <button class="btn_gray">예약하기</button>
                 </div>
             </div>
         </div>
+    </div>
 </section>
-<div class="section">
-   댓글 <br>
+
+<div class="section_container">
+    <hr class="hr_gray">
+</div>
+
+<!-- section -->
+<section id="product_comment" class="section">
+    <div class="section_container">
+        <div class="product_title">
+            <h2>댓글</h2>
+        </div>
+
     <?php
-        $stmt = $conn -> prepare("
-        SELECT * FROM comment AS noreply LEFT JOIN
-	        (SELECT 
+            $stmt = $conn -> prepare("
+            SELECT * FROM comment AS noreply LEFT JOIN
+    	        (SELECT 
 		        comment_id AS reply_comment_id,
 		        p_id AS reply_p_id,
 		        s_id AS reply_s_id,
@@ -90,25 +168,55 @@
         $prevCommentId = null;
         while($row = $result -> fetch_assoc()){            
             if($prevCommentId==$row["comment_id"]){
-                echo ("&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ".$row["reply_member_id"]." <br>");
-                echo ("&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ".$row["reply_detail"]." <br>");
+                echo ("
+                <div class=\"product_comment\">
+                <div class=\"comment\">
+                    <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;".$row["reply_member_id"]."</p>
+                    <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;".$row["reply_detail"]."</p>
+                </div>
+                </div>            
+                <hr class=\"hr_gray\">                 
+                ");                
             }else{
-                echo ($row["member_id"]." <br>");
-                echo ($row["detail"]." <br>");
+                echo ("
+                    <div class=\"product_comment\">
+                    <div class=\"comment\">
+                        <p>".$row["member_id"]."</p>
+                        <p>".$row["detail"]."</p>
+                    </div>
+                    </div>            
+                    <hr class=\"hr_gray\">                 
+                ");    
                 if(isset($row["reply_member_id"])){
-                    echo ("&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ".$row["reply_member_id"]." <br>");                    
-                    echo ("&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ".$row["reply_detail"]." <br>");
+                    echo ("
+                        <div class=\"product_comment\">
+                        <div class=\"comment\">
+                        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;".$row["reply_member_id"]."</p>
+                        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;".$row["reply_detail"]."</p>
+                    </div>
+                    </div>            
+                    <hr class=\"hr_gray\">                 
+                    ");  
                 }
                 $prevCommentId = $row["comment_id"];
             }
         }
     ?>
-    <form action="product-comment-upload.php" method="POST">
-        <input type="hidden" name="productId" value="<?= $_POST["productId"]?>">
-        댓글입력: <input type="text" name="commnetInput" require > <br>
-        <button type="submit">댓글 저장</submit>
-    </form>
-    
+
+        <form
+            action="product-comment-upload.php"
+            method="POST"
+            class="comment_form flex">
+            <input type="hidden" name="productId" value="<?= $_POST["productId"]?>">
+            <h3>댓글 입력 :</h3>
+            <div class="input_row" style="width:50%; margin: 0 5px 0 20px;">
+                <input type="text" class="input_text" name="commnetInput" require="require">
+            </div>
+            <button type="submit" class="btn_white">저장</submit>
+        </form>
+    </div>
+</section>
+
 </div>
 <?php
     $stmt->close();
@@ -116,4 +224,3 @@
 ?>
 </body>
 <?= include("footer.html"); ?>
-</html>
