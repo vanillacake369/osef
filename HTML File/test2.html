@@ -6,176 +6,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../style.css">
     <script src="../main.js" defer></script>
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <title>억새풀</title>
 </head>
 
 <body>
-    <!-- navbar -->
-    <nav id="navbar">
-        <div class="navbar_logo">
-            <a href="index.html"><i class="fas fa-seedling"></i> 억새풀</a>
-        </div>
-        <ul class="navbar_list">
-            <li><a href="product-search.html">임대신청</a></li>
-            <li><a href="lend.html">기계등록</a></li>
-            <li><a href="docs-search.html">자료실</a></li>
-            <li><a href="docs-register.html">자료등록</a></li>
-            <li><a href="introduce.html">회사소개</a></li>
-        </ul>
-        <ul class="navbar_list">
-            <li><a href="login.html">로그인</a></li>
-            <li><a href="signup.html">회원가입</a></li>
-        </ul>
-
-        <button class="navbar_toggle_btn">
-            <i class="fas fa-bars"></i>
-        </button>
-    </nav>
-
-    <!-- section product detail -->
-    <section id="product" class="section">
-        <div class="section_container">
-            <div class="product_title">
-                <h1>트렉터</h1>
-            </div>
-
-            <div class="swiper-container">
-                <div class="swiper-inner">
-                    <!-- navigation - 좌우 이동버튼(좌) -->
-                    <button type="button" class="swiper-prev swiper-navi">
-                        <i class="xi-long-arrow-left"></i>
-                        <span class="btn-text"></span>
-                    </button>
-
-                    <!-- 슬라이더 -->
-                    <div class="swiper">
-                        <!-- Additional required wrapper -->
-                        <div class="swiper-wrapper">
-                            <!-- Slides -->
-                            <div class="swiper-slide" data-swiper-title="Slide 1">
-                                <img src="../img/농부.jpg" class="product_preview">
-                            </div>
-                            <div class="swiper-slide" data-swiper-title="Slide 2">
-                                <img src="../img/보트.jpg" class="product_preview">
-                            </div>
-                            <div class="swiper-slide" data-swiper-title="Slide 3">
-                                <img src="../img/농부.jpg" class="product_preview">
-                            </div>
-                            <div class="swiper-slide" data-swiper-title="Slide 4">
-                                <img src="../img/벼_수정.jpg" class="product_preview">
-                            </div>
-                            <div class="swiper-slide" data-swiper-title="Slide 5">
-                                <img src="../img/농부.jpg" class="product_preview">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- navigation - 좌우 이동버튼(우) -->
-                    <button type="button" class="swiper-next swiper-navi">
-                        <i class="xi-long-arrow-right"></i>
-                        <span class="btn-text"></span>
-                    </button>
-                </div>
-
-                <!-- pagination - 페이지 버튼 -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section_container">
-        <hr class="hr_gray">
-    </div>
-
-    <section id="detail" class="section">
-        <div class="section_container">
-            <div class="product_wrap">
-                <div class="product_left">
-                    <div class="product_title">
-                        <h1>트렉터</h1>
-                    </div>
-                    <hr class="hr_gray">
-                    <div class="product_detail">
-                        <h3>장비정보</h3>
-                        <p>제조사</p>
-                        <p>제조년</p>
-                    </div>
-                    <hr class="hr_gray">
-                    <div class="product_detail">
-                        <h3>임대정보</h3>
-                        <p>등록일</p>
-                        <p>대여가능기간</p>
-                        <p>대여주소</p>
-                    </div>
-                    <hr class="hr_gray">
-                    <div class="product_detail">
-                        <h3>대여인정보</h3>
-                        <p>대여인</p>
-                        <p>연락처</p>
-                    </div>
-                    <hr class="hr_gray">
-                    <div class="product_detail">
-                        <h3>상세내용</h3>
-                        <p>..</p>
-                    </div>
-                </div>
-                <div class="product_right">
-                    <div class="product_box">
-                        <div class="product_title">
-                            <h2>가격</h2>
-                            <p>/박</p>
-                        </div>
-                        <button class="btn_gray">예약하기</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section_container">
-        <hr class="hr_gray">
-    </div>
-
-    <!-- section  -->
-    <section id="product_comment" class="section">
-        <div class="section_container">
-            <div class="product_title">
-                <h2>댓글</h2>
-            </div>
-            <div class="product_comment">
-                <div class="comment">
-                    <p>좋아요</p>
-                </div>
-            </div>
-            <hr class="hr_gray">
-            <div class="product_comment">
-                <div class="comment">
-                    <p>나빠요</p>
-                </div>
-            </div>
-            <hr class="hr_gray">
-            <div class="product_comment">
-                <div class="comment">
-                    <p>그저그래요</p>
-                </div>
-            </div>
-            <hr class="hr_gray">
-            <form class="comment_form flex">
-                <h3>댓글 입력 :</h3>
-                <div class="input_row" style="width:50%; margin: 0 5px 0 20px;">
-                    <input type="text" class="input_text" name="commnetInput">
-                </div>
-                <button type="submit" class="btn_white">저장</submit>
-            </form>
-        </div>
-    </section>
-
-
     <!-- footer -->
     <footer id="footer">
         <div class="footer_logo">
@@ -189,6 +25,14 @@
             <p class="footer_text_p">36729 경상북도 안동시 경동로 1375 (송천동) 국립안동대학교 공대1호관 413호 NGN연구실</p>
             <p class="footer_text_p">TEL : 010-9548-1369 / E-MAIL : w1683111@naver.com</p>
             <p class="footer_text_p">COPYRIGHT (C)2022 억새풀. ALL RIGHTS RESERVED.</p>
+        </div>
+        <div class="footer_box">
+            <ul class="footer_list">
+                <li><a href="introduce.html" class="footer_text_p">회사소개</a></li>
+                <li><a href="conditions.html" class="footer_text_p">이용약관</a></li>
+                <li><a href="user-policy.html" class="footer_text_p">개인정보처리방침</a></li>
+                <li><a href="instruction.html" class="footer_text_p">서비스이용안내</a></li>
+            </ul>
         </div>
     </footer>
 </body>
