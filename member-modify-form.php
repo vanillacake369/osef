@@ -62,7 +62,7 @@
                                 placeholder="~시 ~읍/면/동/리">
                         </div>
                         <div class="modify_submit">
-                            <button type="modify" class="btn_modify" name="modify">
+                            <button type="modify" class="btn-primary edit" style="margin-top : 10px;" name="modify">
                                 <span class="btn_text">회원정보 수정</span>
                             </button>
                         </div>

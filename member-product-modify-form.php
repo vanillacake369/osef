@@ -13,12 +13,9 @@
     <section>
         <form name="product-modify" method="post" action="member-product-modify.php" enctype="multipart/form-data">
             <div class = "signup_wrap">
-                <p>기기ID</p>
-                <?php echo "<p>{$_POST['product_id']}</p>" ?>
-                <?php echo <<<PRODUCT_ID
-                <input type="hidden" name="product_id" value={$_POST['product_id']}></input> 
-                PRODUCT_ID;
-                ?>
+                <?php echo <<< PRODUCT_ID
+                <input type="hidden" name="product_id" value={$_POST['product_id']}></input>
+                PRODUCT_ID; ?>
                 <p>기종 및 형식명</p>
                 <input type="text" name="model" class="modify" placeholder="기종 및 형식명" required/>
                 <p>제조사</p>
@@ -42,8 +39,8 @@
                 <textarea row="10" cols="30" name="detail" class="modify" placeholder="상세내용" required></textarea>
                 <p>임대가격</p>
                 <input type="text" name="price" class="modify" placeholder="임대가격" required/>
-                <p>사진 입력 ( jpg, bmp, gif, png외에는 입력이 불가합니다 )</p>
-                <input type="file" multiple name="imgFile[]" class="modify" placeholder="사진" accept=".jpg, .bmp, .gif, .png" required/>
+                <p>사진 새로 입력 ( jpg, bmp, gif, png외에는 입력이 불가합니다 )</p>
+                <input type="file" multiple name="imgFile[]" class="modify"  accept=".jpg, .bmp, .gif, .png" required/>
                 <br>
                 <button type="submit" name="submit" class="btn-primary edit">기기 수정</button>
             </div>

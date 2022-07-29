@@ -29,7 +29,6 @@
         <div class="profile-content">
             <!-- begin tab-content -->
             <div class="tab-content p-0">
-
                 <!-- begin #profile-about tab -->
                 <div class="tab-pane fade in active show" id="profile-about">
                     <!-- begin table -->
@@ -63,14 +62,14 @@
                                 </tr>
                                 <tr>
                                     <td class="field">E-Mail</td>
-                                    <td>$user_email</td>
+                                    <td><i class="fa fa-envelope-o fa-lg m-r-5"></i>$user_email</td>
                                 </tr>
                                 <tr class="divider">
                                     <td colspan="2"></td>
                                 </tr>
                                 <tr>
                                     <td class="field">Address</td>
-                                    <td>$user_address</td>
+                                    <td><i class="fa fa-map-marker fa-lg m-r-5""></i>$user_address</td>
                                 </tr>
                             </tbody>
                         FORM;

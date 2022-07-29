@@ -47,18 +47,18 @@
                                             <!-- profile-header-tab -->
                                             <!-- BEGIN profile-header-tab -->
                                             <ul class="profile-header-tab nav nav-tabs">
-                                                <li class="nav-item"><a href="member-mypage.php" target="__blank"
+                                                <li class="nav-item"><a href="member-mypage.php"
                                                         class="nav-link_ active show">정보 확인</a></li>
-                                                <li class="nav-item"><a href="member-modify-form.php" target="__blank"
+                                                <li class="nav-item"><a href="member-modify-form.php"
                                                         class="nav-link_ active show">회원정보 변경</a>
                                                 </li>
                                                 <li class="nav-item"><a href="member-product-info.php" class="nav-link_ active show">등록한 농기계
                                                         관리</a></li>
-                                                <li class="nav-item"><a href="member-product-lended.php" target="__blank"
+                                                <li class="nav-item"><a href="member-product-lended.php"
                                                         class="nav-link_ active show">임대 중인 농기계</a></li>
-                                                <li class="nav-item"><a href="member-docs-info.php" target="__blank"
+                                                <li class="nav-item"><a href="member-docs-info.php"
                                                         class="nav-link_ active show">등록한 기술문서 관리</a></li>
-                                                <li class="nav-item"><a href="member-docs-lended.php" target="__blank"
+                                                <li class="nav-item"><a href="member-docs-lended.php"
                                                         class="nav-link_ active show">구매한 기술문서</a></li>
                                                 <li class="nav-item">
                                                     <form id="member-delete-form" action="member-delete.php" method="post" onsubmit="return confirm_delete()">

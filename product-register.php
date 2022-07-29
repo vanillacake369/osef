@@ -57,7 +57,6 @@ include_once "check-session.php";
 
 
     //---------------------------------upload DB--------
-
     $sql = "insert into product(category,start_date,end_date,detail,member_id,member_phone,member_email,member_name,place,price,maker,make_year,model)
         VALUE ( '".$_POST['category']."','".$_POST['startDate']."','".$_POST['endDate']."','".$_POST['detail']."','".$id."','".$phone."','".$email
         ."','".$name."','".$_POST['adress']."','".$_POST['price']."','".$_POST['maker']."','".$_POST['makeDate']."','".$_POST['model']."') RETURNING id;";
@@ -90,29 +89,25 @@ include_once "check-session.php";
             $filename .= $splitFilename[$j];
         }
         $filename .= $uploadId.".".$splitFilename[count($splitFilename)-1];
-        
-
-        $resFile = "./uploadFile/".$filename;        
+        $resFile = "./uploadFile/".$filename;
         $imageUpload = move_uploaded_file($fileDir, $resFile);
-        
         array_push($imgArray,$resFile);
-                
+
         if($imageUpload == true){
-            echo "파일이 정상적으로 업로드 되었습니다. <br>";
+            // echo "파일이 정상적으로 업로드 되었습니다. <br>";
         }else{
-            die ("파일 업로드에 실패하였습니다.");
-        }        
+            // die ("파일 업로드에 실패하였습니다.");
+        }
     }   
 
     $sql="insert into file(p_id,link) VALUE ";
     for($i=0;$i<$fileNumCount-1;$i++){
-        $sql.="('".$uploadId."','".$imgArray[$i]."'),";        
+        $sql.="('".$uploadId."','".$imgArray[$i]."'),";
     }
     $sql.="('".$uploadId."','".$imgArray[$i]."');";
     $conn->query($sql);
     $stmt->close();
     $conn->close();
-
     echo "<script>alert(\"등록되었습니다\");";
     echo "location.href= \"index.php\";</script>";
 ?>

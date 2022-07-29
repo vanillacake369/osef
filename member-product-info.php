@@ -29,6 +29,8 @@
                         <th>가격</th>
                         <th style="text-align:center">수정</th>
                         <th style="text-align:center">삭제</th>
+                        <!-- <th scope="col">우선순위</th> // priority : 우선순위 "클릭 시 해당 농기계 페이지로 이동--> 
+                        <!-- <th scope="col">상세내용</th> // priority : 상세내용 "클릭 시 해당 농기계 페이지로 이동-->
                     </tr>
                 </thead>
                 <tbody>
