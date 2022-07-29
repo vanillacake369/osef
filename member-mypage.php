@@ -17,7 +17,6 @@
 <body>
     <!-- add default header -->
     <?php include_once "header.html"; ?>
-    <?php include_once "check-session.php"; ?>
 
     <!-- CHECK SESSION -->
     <?php include_once "check-session.php"; ?>
