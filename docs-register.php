@@ -4,7 +4,7 @@ if(isset($_POST['submit'])){
     $fileDir = $_FILES['pdfFile']['tmp_name'];
     $fileTypeExt = explode(".",$_FILES['pdfFile']['name']);
     $fileType = $fileTypeExt[1];
-
+    var_dump($fileType);
     switch($fileType){
         case 'txt':
         case 'ppt':

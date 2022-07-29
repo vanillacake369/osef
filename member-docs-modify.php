@@ -7,7 +7,6 @@
     $title = $_POST["title"];
     $detail = $_POST["detail"];
     $price = $_POST["price"];
-    $pdfFile = $_POST["pdfFile"];
 
     // CHECK FORMAT & GET DOCS FILE
     $fileDir = $_FILES['pdfFile']['tmp_name'];
@@ -28,39 +27,44 @@
 
     // DELETE USER'S PRIOR DOC
     // DELETE FILE FROM SERVER STORAGE
-    $docs_link_query = "SELECT * FROM file where s_id =  {'$docs_id'}";
+    $docs_link_query = "SELECT * FROM file where s_id = {'$docs_id'}";
     $result = mysqli_query($conn,$docs_link_query);
-    $row = mysqli_fetch_assoc($result);
-    $docsArray = explode(".",$row['link']);
-    $docsMask = $imgArray[2];
-    array_map('unlink', glob("C:/xampp/htdocs/osef/uploadFile/*".$docsMask));
+    if($result){
+        if(mysqli_num_rows($result) > 0){
+            $row = mysqli_fetch_assoc($result);
+            $docsArray = explode(".",$row['link']);
+            $docsMask = $docsArray[2];
+            array_map('unlink', glob("C:/xampp/htdocs/osef/uploadFile/*".$docsMask));
+        }
+    }
     // DELETE FILE FROM DB
     $delete_link_query = "DELETE FROM file WHERE s_id = {'$docs_id'}";
     mysqli_query($conn,$delete_link_query);
    
     // SAVE DOCS INTO SERVER LOCAL STORAGE
-    $fileDir = $_FILES['pdfFile']['tmp_name'];        
+    $fileDir = $_FILES['pdfFile']['tmp_name'];
     $filename = $_FILES['pdfFile']['name'];
-    $splitFilename = explode(".",$filename);      
+    $splitFilename = explode(".",$filename);    
     $filename = "";
     for($j=0;$j<count($splitFilename)-1;$j++){
         $filename .= $splitFilename[$j];
     }
-    $filename .= $uploadId.".".$splitFilename[count($splitFilename)-1];$resFile = "./uploadFile/".$filename;        
-    $imageUpload = move_uploaded_file($fileDir, $resFile);
+    $filename .= $docs_id.".".$splitFilename[count($splitFilename)-1];
+    $resFile = "./uploadFile/".$filename;        
+    $docsUpdate = move_uploaded_file($fileDir, $resFile);
 
     // UPDATE DOCS PATH
-    $insert_docs_query = "INSERT INTO file(s_id,link) VALUE ({'$docs_id'},{'$resFile'});";
+    $insert_docs_query = "INSERT INTO file(s_id,link) VALUE ('$docs_id','$resFile');";
     $insert_docs_result = mysqli_query($conn, $insert_docs_query);
     // UPDATE QUERY
-    $update_product_query = "UPDATE sell_info SET title = '$title',detail='$detail',price = (int)'$price' WHERE id = '$docs_id'";
+    $update_product_query = "UPDATE sell_info SET title='$title',detail='$detail',price='$price' WHERE id='$docs_id'";
     $update_product_result = mysqli_query($conn, $update_product_query);
 
     // QUERY VERIFICATION
     if($insert_docs_result != NULL && $update_product_result != NULL){ // UPDATE SUCCESS
         echo '<script type="text/javascript">';
         echo 'alert("문서 정보 수정 완료!!");';
-        echo 'window.location.href = "member-product-info.php";';
+        echo 'window.location.href = "member-docs-info.php";';
         echo '</script>';
     }else{ // DB QUERY FAIL
         echo '<script type="text/javascript">';

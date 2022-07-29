@@ -6,7 +6,7 @@ require_once "dbcon.php";
 // DELETE PRODUCT
 if (isset($_POST['docs-delete-btn'])) {
     // GET PRODUCT ID
-    $docs_id = $_POST['docs-id'];
+    $docs_id = $_POST['docs_id'];
     if(isset($docs_id)){
         $delete_query = "UPDATE sell_info SET deleteDate=CURDATE() where id = '$docs_id'";
         if(mysqli_query($conn, $delete_query)){

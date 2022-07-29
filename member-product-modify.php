@@ -47,11 +47,15 @@
             // DELETE FILE FROM SERVER STORAGE
             $image_link_query = "SELECT * FROM file where p_id =  {'$product_id'}";
             $result = mysqli_query($conn,$image_link_query);
-            while($row = mysqli_fetch_assoc($result)){
-                $imgArray = explode(".",$row['link']);
-                $imgMask = $imgArray[2];
-                array_map('unlink', glob("C:/xampp/htdocs/osef/uploadFile/*".$imgMask));
-            };
+            if($result){
+                if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_assoc($result)){    
+                        $imgArray = explode(".",$row['link']);
+                        $imgMask = $imgArray[2];
+                        array_map('unlink', glob("C:/xampp/htdocs/osef/uploadFile/*".$imgMask));
+                    }
+                }
+            }
             // DELETE FILE FROM DB
             $delete_link_query = "DELETE FROM file WHERE p_id = {'$product_id'} ";
             mysqli_query($conn,$delete_link_query);
