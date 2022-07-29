@@ -174,7 +174,7 @@ p {
     border-top: 1px solid var(--color-light-white);
 }
 
-/* indec.html */
+/* index.html */
 /* navbar */
 #navbar {
     width: 100%;
@@ -183,8 +183,7 @@ p {
     justify-content: space-between;
     padding: 0 16px 0 16px;
     border-bottom: 1px solid var(--color-dark-white);
-    /* position: fixed;
-    z-index: 1; */
+    z-index: 1; 
 }
 
 .navbar_list {
@@ -787,6 +786,11 @@ p {
 
 /* product-info html, php 기술상세 */
 /* section detail */
+.product_icon {
+    font-size: var(--font-medium);
+    padding-right: 8px;
+}
+
 .product_wrap {
     width: 100%;
     display: flex;
@@ -801,7 +805,6 @@ p {
     text-align: left;
     margin-top: 10px;
     padding: 10px;
-    background-color: #f7dfdf;
 
 }
 
@@ -817,6 +820,7 @@ p {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    z-index: 5;
 }
 
 .swiper-container {
@@ -949,13 +953,11 @@ p {
     text-align: left;
     display: flex;
     justify-content: center;
-    background-color: #f7dfdf;
 }
 
 .comment {
     width: 80%;
     padding-left: 10px;
-    background-color: #d4e6f7;
 }
 
 .comment_form>.btn_white {
@@ -1625,9 +1627,11 @@ select.form-control:not([size]):not([multiple]) {
 
     .navbar_list {
         flex-direction: column;
+        z-index: 1;
         text-align: center;
         width: 100%;
         display: none;
+        background-color: var(--color-white);
     }
 
     .navbar_list.open {
