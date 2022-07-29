@@ -53,7 +53,7 @@
                 array_map('unlink', glob("C:/xampp/htdocs/osef/uploadFile/*".$imgMask));
             };
             // DELETE FILE FROM DB
-            $delete_link_query = "DELETE FROM file WHERE p_id = 31 ";
+            $delete_link_query = "DELETE FROM file WHERE p_id = {'$product_id'} ";
             mysqli_query($conn,$delete_link_query);
         }
         
@@ -84,7 +84,7 @@
         $update_product_query = "UPDATE product SET model='$model',maker='$maker',category='$category',make_year='$makeDate',start_date='$startDate',end_date='$endDate',place='$address',detail='$detail',price='$price' WHERE id = '$product_id'";
         $update_product_result = mysqli_query($conn, $update_product_query);
         
-        // DB LOG
+        // QUERY VERIFICATION
         if($insert_img_result != NULL && $update_product_result != NULL ){
             echo '<script type="text/javascript">';
             echo 'alert("기기 정보 수정이 완료되었습니다.");';
