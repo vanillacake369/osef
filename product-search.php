@@ -40,6 +40,10 @@
     $page = ($currentPage-1)*20;
     $stmt -> execute();
     $result = $stmt -> get_result();
+
+    $engCategory=['tractor','combine','rice_transplanter','rotary','livestock_machinery','forklift','etc','all'];
+    $korCategory=['트랙터','콤바인','이양기','로터리','축산기계','포크레인','기타','전체'];
+    
     //--------------------------------------------게시물    
     echo("<div class=\"section\">");
     if($result!=NULL){        
@@ -52,7 +56,7 @@
             echo("<td> <img src=\"".$row['link']."\" height=\"100px\"> </td>");
             echo("<td style=\"width: 40%;\" ><input type=\"submit\" value=\"".$row['model']."\" /></td>");
             echo("<td>".$row['member_name']."</td>");
-            echo("<td>".$row['category']."</td>");
+            echo("<td>".$korCategory[array_search($row['category'], $engCategory)]."</td>");
             echo("<td>".$row['upload']."</td>");        
             echo("<input type=\"hidden\" name=\"productId\" value=\"".$row['id']."\" >");
             echo("</tr> </form>");                     
@@ -62,7 +66,7 @@
         echo("<h2>검색결과가 없습니다</h2>");
     }
     $stmt->close();
-    $conn->close();    
+    $conn->close();
     
     //--------------------------------------------페이지
     $showingPage=4; //앞뒤로 보여지는 페이지 수

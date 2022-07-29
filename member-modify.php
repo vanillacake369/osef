@@ -19,9 +19,6 @@ if (isset($_POST['modify'])) {
     $ip = $_SERVER['REMOTE_ADDR'];
     $login_count = 0;
 
-    var_dump($_POST['modify']);
-    echo "<br>".$login_count."<br>";
-
     // KEEP LOGIN_COUNT ALIVE
     $member_count_query = "SELECT * FROM member WHERE id = '$id' ";
     if($result = mysqli_query($conn,$member_count_query)){
@@ -43,10 +40,10 @@ if (isset($_POST['modify'])) {
         echo 'window.location.href = "member-modify-form.php";';
         echo '</script>';
     }else{ // DB CONNECTION FAIL
-        echo '<script type="text/javascript">';
-        echo 'alert("Lost server connection :(");';
-        echo 'window.location.href = "login.html";';
-        echo '</script>'; 
+        $fp = fopen('database_error_log.txt','w');
+        $db_err = mysqli_connect_error();
+        fwrite($fp,$db_err);
+        fclose($fp);
         exit();
     }
 

@@ -111,7 +111,7 @@
                     <p>대여인:
                         <?=$productRow["member_name"];?></p>
                     <p>대여인 연락처:
-                        <?=$productRow["member_name"];?></p>
+                        <?=$productRow["member_phone"];?></p>
                     <p>등록일:
                         <?=$productRow["upload"];?></p>
                 </div>

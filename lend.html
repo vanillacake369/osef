@@ -203,7 +203,7 @@
             <form id="lend_form_A7" class="hidden">
                 <div class="section_container">
                     <div class="input_row" style="width: 50%;">
-                        <input type="price" name="maker" class="input_text" placeholder="$000원 /1박" required>
+                        <input type="number" name="maker" class="input_text" placeholder="$000원 /1박" required>
                     </div>
                 </div>
                 <div class="lend_answer_bottom">
@@ -225,7 +225,8 @@
                             <div class="filebox">
                                 <input class="upload-name" value="파일을 업로드하면 이미지가 표시됩니다">
                                 <label for="file">파일찾기</label>
-                                <input type="file" id="file" multiple name="imgFile[]" onchange="readURL(this);" required>
+                                <input type="file" id="file" multiple name="imgFile[]" onchange="readURL(this);"
+                                    required>
                             </div>
                             <div class="A8_img">
                                 <img id="preview" class="hidden">

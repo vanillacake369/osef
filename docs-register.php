@@ -1,16 +1,20 @@
 <?php
 if(isset($_POST['submit'])){
-    session_start();
     $fileDir = $_FILES['pdfFile']['tmp_name'];
-    $fileTypeExt = explode("/",$_FILES['pdfFile']['type']);
-
-    $fileType = $fileTypeExt[0];
-
-    $fileExt = $fileTypeExt[1];
-
-    if($fileExt!= 'pdf'){
-        echo "<script>alert(\"pdf파일 외에는 사용이 불가합니다.\");";
+    $fileTypeExt = explode(".",$_FILES['pdfFile']['name']);
+    $fileType = $fileTypeExt[1];
+    var_dump($fileType);
+    switch($fileType){
+        case 'txt':
+        case 'ppt':
+        case 'pptx':
+        case 'pdf':
+            break;
+ 
+        default:
+        echo "<script>alert(\"txt, ppt, pptx, pdf파일 외에는 입력이 불가합니다.\");";
         echo "history.go(-1);</script>";
+            break;
     }
 
     //---------------------------------get uploader info--------
@@ -26,22 +30,22 @@ if(isset($_POST['submit'])){
     $stmt -> bind_param("i",$id);            
     $stmt -> execute();
     $result = $stmt -> get_result();
-
     if ($row = $result -> fetch_assoc()) {
         $name=$row["name"];
         $phone=$row["phone"];
         $email=$row["email"];
+        $price = (int)$_POST['price'];
     } else {
         echo "멤버 정보 확인할수 없음";
-    }  
+    }
 
     //---------------------------------upload DB--------
     $sql="insert into sell_info(title, detail, price, member_id, member_phone, member_email, member_name)
         VALUE ( ?,?,?,?,?,?,?) RETURNING id;";
     $stmt = $conn -> prepare($sql);
-    $stmt -> bind_param("ssissss",$_POST['title'],$_POST['detail'],$_POST['price'],$id,$phone,$email,$name);            
+    $stmt -> bind_param("ssissss",$_POST['title'],$_POST['detail'],$price,$id,$phone,$email,$name);        
     $stmt -> execute();
-    $result = $stmt -> get_result();   
+    $result = $stmt -> get_result();
 
     if ($row = $result->fetch_assoc()) {        
         $uploadId=$row["id"];
@@ -86,6 +90,7 @@ if(isset($_POST['submit'])){
     echo "location.href= \"index.php\";</script>";
 }
 include_once("header.html");
+include_once "check-session.php";
 include_once("docs-register.html");
 include_once("footer.html");
 

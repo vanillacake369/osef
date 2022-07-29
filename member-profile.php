@@ -47,34 +47,36 @@
                                             <!-- profile-header-tab -->
                                             <!-- BEGIN profile-header-tab -->
                                             <ul class="profile-header-tab nav nav-tabs">
-                                                <li class="nav-item"><a href="member-mypage.php" target="__blank"
+                                                <li class="nav-item"><a href="member-mypage.php"
                                                         class="nav-link_ active show">정보 확인</a></li>
-                                                <li class="nav-item"><a href="member-modify-form.php" target="__blank"
+                                                <li class="nav-item"><a href="member-modify-form.php"
                                                         class="nav-link_ active show">회원정보 변경</a>
                                                 </li>
                                                 <li class="nav-item"><a href="member-product-info.php" class="nav-link_ active show">등록한 농기계
                                                         관리</a></li>
-                                                <li class="nav-item"><a href="member-product-lended.php" target="__blank"
+                                                <li class="nav-item"><a href="member-product-lended.php"
                                                         class="nav-link_ active show">임대 중인 농기계</a></li>
-                                                <li class="nav-item"><a href="member-docs-info.php" target="__blank"
-                                                        class="nav-link_ active show">등록한 기술문서</a></li>
-                                                <li class="nav-item"><a href="member-docs-lended.php" target="__blank"
+                                                <li class="nav-item"><a href="member-docs-info.php"
+                                                        class="nav-link_ active show">등록한 기술문서 관리</a></li>
+                                                <li class="nav-item"><a href="member-docs-lended.php"
                                                         class="nav-link_ active show">구매한 기술문서</a></li>
                                                 <li class="nav-item">
-                                                    <form id="delete-form" action="member-delete.php" method="post">
-                                                        <button type="submit" name="delete-btn"
-                                                            class="member-delete-btn" onclick="confirm_delete()">회원
+                                                    <form id="member-delete-form" action="member-delete.php" method="post" onsubmit="return confirm_delete()">
+                                                        <button type="submit" name="member-delete-btn"
+                                                            class="member-delete-btn">회원
                                                             탈퇴</button>
                                                     </form>
                                                 </li>
 
                                                 <script type="text/javascript">
+                                                    document.getElementById('member-delete-form').onsubmit = function(){
+                                                        return confirm_delete();
+                                                    }
                                                     function confirm_delete() {
-                                                        if (window.confirm("정말로 탈퇴하시겠습니까?")) {
-                                                            document.getElementById('delete-form').submit();
-                                                        } else {
+                                                        if (!window.confirm("정말로 탈퇴하시겠습니까?")) {
                                                             window.alert("계정 삭제가 취소되었습니다.");
-                                                            window.location.href = "index.php";
+                                                            window.location.reload();
+                                                            return false;
                                                         }
                                                     }
                                                 </script>

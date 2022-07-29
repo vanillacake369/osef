@@ -81,7 +81,13 @@
     $stmt -> execute();
     $result = $stmt -> get_result();   
     echo("<div class=\"section\">"); 
-    $searchResult=$_POST["category"]." 카테고리 ";
+    
+    $engCategory=['tractor','combine','rice_transplanter','rotary','livestock_machinery','forklift','etc','all'];
+    $korCategory=['트랙터','콤바인','이양기','로터리','축산기계','포크레인','기타','전체'];    
+    $searchResult=$korCategory[array_search($_POST["category"], $engCategory)]." 카테고리 ";
+
+
+
     if(isset($_POST["searchWord"])){
     $searchResult.=$_POST["searchWord"];
     }
@@ -98,7 +104,7 @@
             echo("<td> <img src=\"".$row['link']."\" height=\"100px\"> </td>");
             echo("<td style=\"width: 40%;\" ><input type=\"submit\" value=\"".$row['model']."\" /></td>");
             echo("<td>".$row['member_name']."</td>");
-            echo("<td>".$row['category']."</td>");
+            echo("<td>".$korCategory[array_search($row['category'], $engCategory)]."</td>");
             echo("<td>".$row['upload']."</td>");        
             echo("<input type=\"hidden\" name=\"productId\" value=\"".$row['id']."\" >");
             echo("</tr> </form>");                       

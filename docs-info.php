@@ -35,10 +35,10 @@
             </div>
             <hr>
             <div class="doc_wrap">
-                <div class="doc_img">
+                <!-- <div class="doc_img">
                     <img class="preview">
-                </div>
-                <div class="doc_detail">
+                </div> -->
+                <div class="doc_detail" style="height:800px">
                     <div class="doc_detail_top">
                         <p>저자: <?=$row["member_name"];?></p>
                         <p>등록일: <?=$row["upload"];?></p>
