@@ -248,8 +248,8 @@ p {
 /* footer */
 #footer {
     width: 100%;
-    height: 160px;
-    padding: 20px;
+    height: 220px;
+    padding: 30px;
     background-color: var(--color-light-white);
     text-align: center;
 }
@@ -258,13 +258,32 @@ p {
     width: 150px;
     display: inline-block;
     line-height: 40px;
+}
+
+.footer_logo i,
+.footer_logo a {
+    color: var(--color-grey);
 
 }
 
 .footer_text_p {
     font-size: var(--font-micro);
+    color: var(--color-grey);
 }
 
+.footer_box {
+    max-width: 600px;
+    margin: 0 auto;
+    border-top: 1px solid var(--color-dark-white);
+    margin-top: 20px;
+}
+
+.footer_list {
+    margin: 0;
+    padding: 6px;
+    display: flex;
+    justify-content: space-evenly;
+}
 
 /* introduce.html */
 /* section home */
@@ -1624,7 +1643,6 @@ select.form-control:not([size]):not([multiple]) {
         flex-direction: column;
         text-align: center;
         width: 100%;
-
         display: none;
     }
 
