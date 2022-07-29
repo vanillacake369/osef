@@ -1302,7 +1302,7 @@ input.searchSubmit {
 
 .table.table-profile>tbody>tr>td.field {
     width: 20%;
-    text-align: right;
+    text-align: left;
     font-weight: 600;
     color: #2d353c
 }

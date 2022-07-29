@@ -53,23 +53,22 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="field">Mobile</td>
-                                    <td><i class="fa fa-mobile fa-lg m-r-5"></i>$user_mobile
-                                    </td>
+                                    <td class="field" style="text-align:center;"><i class="fa fa-mobile fa-lg m-r-5" style="margin-right:10px;"></i></td>
+                                    <td>$user_mobile</td>
                                 </tr>
                                 <tr class="divider">
                                     <td colspan="2"></td>
                                 </tr>
                                 <tr>
-                                    <td class="field">E-Mail</td>
-                                    <td><i class="fa fa-envelope-o fa-lg m-r-5"></i>$user_email</td>
+                                    <td class="field" style="text-align:center;"><i class="fa fa-envelope-o fa-lg m-r-5" style="margin-right:10px"></i></td>
+                                    <td>$user_email</td>
                                 </tr>
                                 <tr class="divider">
                                     <td colspan="2"></td>
                                 </tr>
                                 <tr>
-                                    <td class="field">Address</td>
-                                    <td><i class="fa fa-map-marker fa-lg m-r-5""></i>$user_address</td>
+                                    <td class="field" style="text-align:center;"><i class="fa fa-map-marker fa-lg m-r-5" style="margin-right:10px"></i></td>
+                                    <td>$user_address</td>
                                 </tr>
                             </tbody>
                         FORM;
