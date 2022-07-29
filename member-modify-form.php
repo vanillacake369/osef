@@ -1,31 +1,15 @@
 <!-- Ref : https://www.bootdey.com/snippets/view/bs4-profile-about -->
-<?php
-// CHECK SESSION
-include_once "check-session.php";
-?>
 
-<!DOCTYPE html>
-<html lang="en">
+<?php include_once "header.html"; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="mypage.css">
-    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>억새풀</title>
-</head>
+<?php include_once "check-session.php"; ?>
 
 <body>
     <!-- add default header -->
     <?php include_once "header.html"; ?>
 
     <!-- add default profile -->
-    <?php include_once "member-modify-form-profile.php"; ?>
+    <?php include_once "member-profile.php"; ?>
     
     <!-- begin member info modify section -->
     <section>
@@ -78,7 +62,7 @@ include_once "check-session.php";
                                 placeholder="~시 ~읍/면/동/리">
                         </div>
                         <div class="modify_submit">
-                            <button type="modify" class="btn_modify" name="modify">
+                            <button type="modify" class="btn-primary edit" style="margin-top : 10px;" name="modify">
                                 <span class="btn_text">회원정보 수정</span>
                             </button>
                         </div>

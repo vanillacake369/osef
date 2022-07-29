@@ -1,5 +1,4 @@
 <!-- Ref : https://www.bootdey.com/snippets/view/bs4-profile-about -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="mypage.css">
     <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
@@ -21,6 +19,9 @@
     <?php include_once "header.html"; ?>
     <?php include_once "check-session.php"; ?>
 
+    <!-- CHECK SESSION -->
+    <?php include_once "check-session.php"; ?>
+
     <!-- add default profile -->
     <?php include_once "member-profile.php"; ?>
 
@@ -29,7 +30,6 @@
         <div class="profile-content">
             <!-- begin tab-content -->
             <div class="tab-content p-0">
-
                 <!-- begin #profile-about tab -->
                 <div class="tab-pane fade in active show" id="profile-about">
                     <!-- begin table -->
@@ -63,14 +63,14 @@
                                 </tr>
                                 <tr>
                                     <td class="field">E-Mail</td>
-                                    <td>$user_email</td>
+                                    <td><i class="fa fa-envelope-o fa-lg m-r-5"></i>$user_email</td>
                                 </tr>
                                 <tr class="divider">
                                     <td colspan="2"></td>
                                 </tr>
                                 <tr>
                                     <td class="field">Address</td>
-                                    <td>$user_address</td>
+                                    <td><i class="fa fa-map-marker fa-lg m-r-5""></i>$user_address</td>
                                 </tr>
                             </tbody>
                         FORM;
