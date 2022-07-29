@@ -19,7 +19,6 @@ if (isset($_POST['member-delete-btn'])) {
             echo '<script>alert("계정 삭제가 완료되었습니다.");';
             echo 'window.location.href = "index.php";';
             echo '</script>';
-            session_start();
             session_destroy();
         }
     }
