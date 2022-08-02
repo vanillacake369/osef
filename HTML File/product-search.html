@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../style.css">
-    <script src="../main.js" defer></script>
+    <script src="../modal.js" defer></script>
     <title>억새풀</title>
 </head>
 
@@ -36,133 +36,116 @@
 
     <!-- section search -->
     <section id="product" class="section">
-        <ul class="product">
-            <li>트렉터</li>
-            <li>콤바인</li>
-            <li>이양기</li>
-            <li>로터리</li>
-            <li>축산기계</li>
-            <li>포크레인</li>
-            <li>기타</li>
-            <li>필터</li>
-        </ul>
-
-        <button class="openBtn">모달창 open</button>
-        <div class="modal hidden">
-            <div class="bg"></div>
-            <div class="modalBox">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quam nobis quis corrupti amet
-                    maxime neque, optio, in illo, voluptatibus consequuntur! Rerum quo ea nulla qui, maxime consectetur
-                    magni soluta!</p>
-                <button class="closeBtn">✖</button>
-            </div>
+        <div class="section_container">
+            <ul class="product_list">
+                <li>트렉터</li>
+                <li>콤바인</li>
+                <li>이양기</li>
+                <li>로터리</li>
+                <li>축산기계</li>
+                <li>포크레인</li>
+                <li>기타</li>
+                <li><button class="openBtn">필터</button>
+                    <div id="modal" class="hidden">
+                        <div class="modal_bg"></div>
+                        <div class="modalBox">
+                            <form name="ProductForm" method="post" action="product-search-submit.php" enctype="multipart/form-data">
+                                <div class="flex">
+                                    <p>모델명</p>
+                                    <div class="input_row" style="width: 40%; margin: 30px;">
+                                        <input type="text" name="searchWord" class="input_text" placeholder="모델명을 입력해주세요">
+                                    </div>
+                                </div>
+                    
+                                <div class="flex">
+                                    <p>일단위</p>
+                                    <div class="input_row" style="width: 40%; margin: 30px;">
+                                        <input type="date" name="dDate" class="input_text" placeholder="">
+                                    </div>
+                                </div>
+                    
+                                <div class="flex">
+                                    <p>시작일</p>
+                                    <div class="input_row" style="width: 40%; margin: 30px;">
+                                        <input type="date" name="sDate" class="input_text" placeholder="">
+                                    </div>
+                                </div>
+                    
+                                <div class="flex">
+                                    <p>종료일</p>
+                                    <div class="input_row" style="width: 40%; margin: 30px;">
+                                        <input type="date" name="eDate" class="input_text" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <button type="button" class="lend_answer_back" style="margin: 30px;">
+                                        <p>닫기</p>
+                                    </button>
+                                    <button type="submit" class="lend_answer_back" value="모델 검색" style="margin: 30px;">
+                                        <p>검색</p>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
-
-        <script>
-            const open = () => {
-                document.querySelector(".modal").classList.remove("hidden");
-            }
-
-            const close = () => {
-                document.querySelector(".modal").classList.add("hidden");
-            }
-
-            document.querySelector(".openBtn").addEventListener("click", open);
-            document.querySelector(".closeBtn").addEventListener("click", close);
-            document.querySelector(".bg").addEventListener("click", close);
-
-        </script>
-    </section>
-
-    <section id="product" class="section">
-        <form name="ProductForm" method="post" action="product-search-submit.php" enctype="multipart/form-data">
-            <table class="product_search">
-                <tr>
-                    <td style="width:60%;">
-                        <p style="display: inline-block; ">카테고리</p>
-                        <select
-                            style="display: inline-block; width:50%; border:1;  border: 1px solid #444444; margin-top:5px;"
-                            name="category">
-                            <option value="all">전체</option>
-                            <option value="etc">기타</option>
-                            <option value="tractor">트랙터</option>
-                            <option value="combine">콤바인</option>
-                            <option value="rice_transplanter">이양기</option>
-                            <option value="rotary">로터리</option>
-                            <option value="livestock_machinery">축산기계</option>
-                            <option value="forklift">포크레인</option>
-                        </select>
-                        <br>
-                        <p style="display: inline-block;">모델명</p>
-                        <input type="text" name="searchWord" class="searchInput"
-                            style="display: inline-block; width:50%;" /> <br>
-                    </td>
-                    <td>
-                        일단위: <input type="date" name="dDate" /> <br>
-                        기간단위: 대여시작일 <input type="date" name="sDate" />
-                        대여종료일 <input type="date" name="eDate" /> <br>
-                        <input type="submit" value="모델 검색" class="searchSubmit" name="submit">
-                    </td>
-                </tr>
-            </table>
-        </form>
     </section>
 
     <!-- section product -->
     <section id="product" class="section">
-        <div class="">
-            <div class="product_list">
-                <div class="product_list_item" onclick="location.href='#';">
-                    <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
-                        class="product_list_item_img">
-                    <h3>트렉터</h3>
-                    <p>종류</p>
-                    <p>안동시 송천1길 145-3</p>
-                    <p>8월 1일~10일</p>
-                    <h3>가격/박</h3>
-                </div>
-
-                <div class="product_list_item" onclick="location.href='#';">
-                    <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
-                        class="product_list_item_img">
-                    <h3>트렉터</h3>
-                    <p>종류</p>
-                    <p>안동시 송천1길 145-3</p>
-                    <p>8월 1일~10일</p>
-                    <h3>가격/박</h3>
-                </div>
-
-                <div class="product_list_item" onclick="location.href='#';">
-                    <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
-                        class="product_list_item_img">
-                    <h3>트렉터</h3>
-                    <p>종류</p>
-                    <p>안동시 송천1길 145-3</p>
-                    <p>8월 1일~10일</p>
-                    <h3>가격/박</h3>
-                </div>
-
-                <div class="product_list_item" onclick="location.href='#';">
-                    <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
-                        class="product_list_item_img">
-                    <h3>트렉터</h3>
-                    <p>종류</p>
-                    <p>안동시 송천1길 145-3</p>
-                    <p>8월 1일~10일</p>
-                    <h3>가격/박</h3>
-                </div>
-
-                <div class="product_list_item" onclick="location.href='#';">
-                    <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
-                        class="product_list_item_img">
-                    <h3>트렉터</h3>
-                    <p>종류</p>
-                    <p>안동시 송천1길 145-3</p>
-                    <p>8월 1일~10일</p>
-                    <h3>가격/박</h3>
-                </div>
-
+        <div class="section">
+            <div class="product_list_item" onclick="location.href='#';">
+                <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
+                    class="product_list_item_img">
+                <h3>트렉터</h3>
+                <p>종류</p>
+                <p>안동시 송천1길 145-3</p>
+                <p>8월 1일~10일</p>
+                <h3>가격/박</h3>
             </div>
+
+            <div class="product_list_item" onclick="location.href='#';">
+                <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
+                    class="product_list_item_img">
+                <h3>트렉터</h3>
+                <p>종류</p>
+                <p>안동시 송천1길 145-3</p>
+                <p>8월 1일~10일</p>
+                <h3>가격/박</h3>
+            </div>
+
+            <div class="product_list_item" onclick="location.href='#';">
+                <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
+                    class="product_list_item_img">
+                <h3>트렉터</h3>
+                <p>종류</p>
+                <p>안동시 송천1길 145-3</p>
+                <p>8월 1일~10일</p>
+                <h3>가격/박</h3>
+            </div>
+
+            <div class="product_list_item" onclick="location.href='#';">
+                <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
+                    class="product_list_item_img">
+                <h3>트렉터</h3>
+                <p>종류</p>
+                <p>안동시 송천1길 145-3</p>
+                <p>8월 1일~10일</p>
+                <h3>가격/박</h3>
+            </div>
+
+            <div class="product_list_item" onclick="location.href='#';">
+                <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
+                    class="product_list_item_img">
+                <h3>트렉터</h3>
+                <p>종류</p>
+                <p>안동시 송천1길 145-3</p>
+                <p>8월 1일~10일</p>
+                <h3>가격/박</h3>
+            </div>
+
         </div>
     </section>
 

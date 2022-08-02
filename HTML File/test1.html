@@ -4,76 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../style.css">
-    <script src="main.js" defer></script>
+    <script src="../modal.js" defer></script>
     <title>Modal</title>
-    <style>
-        button {
-            background-color: #F9B514;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal .bg {
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-        }
-
-        .modalBox {
-            position: absolute;
-            background-color: #fff;
-            width: 400px;
-            height: 200px;
-            padding: 15px;
-        }
-
-        .modalBox button {
-            display: block;
-            width: 80px;
-            margin: 0 auto;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
-    <button class="openBtn">모달창 open</button>
-    <div class="modal hidden">
-        <div class="bg"></div>
-        <div class="modalBox">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quam nobis quis corrupti amet
-                maxime neque, optio, in illo, voluptatibus consequuntur! Rerum quo ea nulla qui, maxime consectetur
-                magni soluta!</p>
-            <button class="closeBtn">✖</button>
-        </div>
-    </div>
+    <div class="modalBox">
+        <form name="ProductForm" method="post" action="product-search-submit.php" enctype="multipart/form-data">
+            <div class="flex">
+                <p>모델명</p>
+                <div class="input_row" style="width: 50%; margin: 30px;">
+                    <input type="text" name="searchWord" class="input_text" placeholder="모델명을 입력해주세요">
+                </div>
+            </div>
 
-    <script>
-        const open = () => {
-            document.querySelector(".modal").classList.remove("hidden");
-        }
-        const close = () => {
-            document.querySelector(".modal").classList.add("hidden");
-        }
-        document.querySelector(".openBtn").addEventListener("click", open);
-        document.querySelector(".closeBtn").addEventListener("click", close);
-        document.querySelector(".bg").addEventListener("click", close);
-    </script>
+            <div class="flex">
+                <p>일단위</p>
+                <div class="input_row" style="width: 50%; margin: 30px;">
+                    <input type="date" name="dDate" class="input_text" placeholder="">
+                </div>
+            </div>
+
+            <div class="flex">
+                <p>시작일</p>
+                <div class="input_row" style="width: 50%; margin: 30px;">
+                    <input type="date" name="sDate" class="input_text" placeholder="">
+                </div>
+            </div>
+
+            <div class="flex">
+                <p>종료일</p>
+                <div class="input_row" style="width: 50%; margin: 30px;">
+                    <input type="date" name="eDate" class="input_text" placeholder="">
+                </div>
+            </div>
+            <div class="flex">
+                <button type="submit" class="lend_answer_back" value="모델 검색">
+                    <p>검색</p>
+                </button>
+            </div>
+        </form>
+    </div>
 </body>
 
 </html>
