@@ -19,26 +19,28 @@
 
 <body>
     <section class="section">
-        <div class="docsRegiForm">
-            <h1>기술문서 등록</h1>
-            <form name="docsForm" method="post" action="docs-register.php" enctype="multipart/form-data">
-                <h2>기술문서명</h2>
-                <input type="text" name="title" class="docsRegister" required />
+        <div class="section_container">
+            <div class="docsRegiForm">
+                <h1>기술문서 등록</h1>
+                <form name="docsForm" method="post" action="docs-register.php" enctype="multipart/form-data">
+                    <h2>기술문서명</h2>
+                    <input type="text" name="title" class="docsRegister" required />
 
-                <h2>상세내용</h2>
-                <textarea row="10" cols="30" name="detail" class="docsRegister" required></textarea>
+                    <h2>상세내용</h2>
+                    <textarea row="10" cols="30" name="detail" class="docsRegister" required></textarea>
 
-                <div style="text-align: right; padding-bottom: 50px;">
-                    <h2 style="text-align: right; padding-right: 90px;">판매가격</h2>
-                    <input type="number" name="price" class="docsPrice" required />
-                    <h2 style="display: inline;">원</h2>
-                </div>
+                    <div style="text-align: right; padding-bottom: 50px;">
+                        <h2 style="text-align: right; padding-right: 90px;">판매가격</h2>
+                        <input type="number" name="price" class="docsPrice" required />
+                        <h2 style="display: inline;">원</h2>
+                    </div>
 
-                <h2>파일(txt, ppt, pptx, pdf파일 외에는 입력이 불가합니다.)</h2>
-                <input type="file" name="pdfFile" class="docsRegister" accept=".txt,.ppt,.pptx,.pdf" required />
-                <input type="submit" value="업로드" class="docsSubmit" name="submit" />
-                <div style="width: 10%;"> </div>
-            </form>
+                    <h2>파일(txt, ppt, pptx, pdf파일 외에는 입력이 불가합니다.)</h2>
+                    <input type="file" name="pdfFile" class="docsRegister" accept=".txt,.ppt,.pptx,.pdf" required />
+                    <input type="submit" value="업로드" class="docsSubmit" name="submit" />
+                    <div style="width: 10%;"> </div>
+                </form>
+            </div>
         </div>
     </section>
 </body>
