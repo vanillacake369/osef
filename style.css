@@ -551,7 +551,7 @@ p {
     width: 200px;
     height: 100px;
     padding: 10px;
-    margin: 20px;
+    margin: 30px;
 }
 
 .date_p {
@@ -609,7 +609,7 @@ p {
 
 .lend_card {
     display: inline-block;
-    width: 100%;
+    width: 60%;
     padding: 12px;
     border: 1px solid var(--color-dark-white);
     border-radius: 5px;

@@ -60,7 +60,7 @@
 
             <!-- lend_form_A1 -->
             <form id="lend_form_A1">
-                <div role="radiogroup">
+                <div class="radiogroup" role="radiogroup">
                     <input type="radio" id="Choice1" name="category" value="tractor">
                     <label for="Choice1" class="lend_answer_list">
                         <p class="lend_answer_list_p">트렉터</p>
@@ -100,7 +100,7 @@
             <!-- lend_form_A2 -->
             <form id="lend_form_A2" class="hidden">
                 <div class="section_container">
-                    <div class="input_row" style="width: 75%;">
+                    <div class="input_row" style="width: 50%; margin: 30px;">
                         <input type="text" name="model" class="input_text" placeholder="기계 이름을 입력해 주세요" required>
                     </div>
                 </div>
@@ -117,14 +117,14 @@
             <!-- lend_form_A3 -->
             <form id="lend_form_A3" class="hidden">
                 <div class="section_container">
-                    <div class="input_row" style="width: 75%;" id="lend_form_A3_maker">
+                    <div class="input_row" style="width: 50%; margin-top: 30px;" id="lend_form_A3_maker">
                         <input type="text" name="maker" class="input_text" placeholder="제조사를 입력해 주세요" required>
                     </div>
                     <div>
                         <br>
                     </div>
-                    <div class="input_row" style="width: 75%;" id="lend_form_A3_date">
-                        <input type="date" name="date" class="input_text" placeholder="제년식를 입력해 주세요" required>
+                    <div class="input_row" style="width: 50%; margin: 30px;" id="lend_form_A3_date">
+                        <input type="text" name="date" class="input_text" placeholder="제년식를 입력해 주세요" required>
                     </div>
                 </div>
                 <div class="lend_answer_bottom">
@@ -140,7 +140,7 @@
             <!-- lend_form_A4 -->
             <form id="lend_form_A4" class="hidden">
                 <div class="section_container">
-                    <div class="input_row" style="width: 75%;">
+                    <div class="input_row" style="width: 50%; margin: 30px;">
                         <input type="text" name="adress" class="input_text" placeholder="주소를 입력해 주세요" required>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
             <!-- lend_form_A6 -->
             <form id="lend_form_A6" class="hidden">
                 <div class="section_container">
-                    <div class="input_row" style="width: 75%;">
+                    <div class="input_row" style="width: 50%;">
                         <textarea name="detail" class="input_text" style="height: 200px;" required></textarea>
                     </div>
                 </div>
@@ -202,8 +202,8 @@
             <!-- lend_form_A7 -->
             <form id="lend_form_A7" class="hidden">
                 <div class="section_container">
-                    <div class="input_row" style="width: 50%;">
-                        <input type="number" name="maker" class="input_text" placeholder="$000원 /1박" required>
+                    <div class="input_row" style="width: 50%; margin: 30px;">
+                        <input type="price" name="maker" class="input_text" placeholder="$000원 /1박" required>
                     </div>
                 </div>
                 <div class="lend_answer_bottom">
@@ -232,15 +232,16 @@
                                 <img id="preview" class="hidden">
                             </div>
                             <div class="lend_card_text">
-                                <h2>기계종류</h2><input id="category" value="" name="category"></input>
-                                <h2>기계명</h2><input id="model" value="" name="model"></input>
-                                <h2>가격</h2><input id="price" value="" name="price"></input>
-                                <p>제조사</p><input id="maker" value="" name="maker"></input>
-                                <p>제조년식</p><input id="date" value="" name="makeDate"></input>
-                                <p>주소</p><input id="adress" value="" name="adress"></input>
-                                <p>시작일</p><input id="startdate" value="" name="startDate"></input>
-                                <p>종료일</p><input id="enddate" value="" name="endDate"></p>
-                                <p>상세내용</p><input id="detail" value="" name="detail"></input>
+
+                                <h2>기계종류</h2><input id="category" value=""></input>
+                                <h2>기계명</h2><input id="model" value=""></input>
+                                <h2>가격</h2><input id="price" value=""></input>
+                                <p>제조사</p><input id="maker" value=""></input>
+                                <p>제조년식</p><input id="date" value=""></input>
+                                <p>주소</p><input id="adress" value=""></input>
+                                <p>시작일</p><input id="startdate" value=""></input>
+                                <p>종료일</p><input id="enddate" value=""></p>
+                                <p>상세내용</p><input id="detail" value=""></input>
                             </div>
                         </div>
                     </div>
@@ -256,11 +257,7 @@
             </form>
         </div>
     </section>
-    </div>
-    </section>
 
-    </div>
-    </section>
 </body>
 
 </html>
