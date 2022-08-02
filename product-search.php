@@ -22,10 +22,10 @@
     if(!isset($_COOKIE["productPageCookie"])) {
         setcookie("productPageCookie","1",time()+(600),"/") ; //86400=1day
         $currentPage = 1;
-      } else {
+    } else {
         $currentPage = $_COOKIE["productPageCookie"];
-      }
-      
+    }
+    
     require_once "dbcon.php";
 
     //전체 페이지수
