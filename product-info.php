@@ -89,7 +89,7 @@
                 </div>
                 <hr class="hr_gray">
                 <div class="product_detail">
-                    <h3>장비정보</h3>
+                    <h3><i class="fas fa-wrench product_icon"></i>장비정보</h3>
                     <p>제조사:
                         <?=$productRow["maker"];?></p>
                     <p>제조년:
@@ -97,7 +97,7 @@
                 </div>
                 <hr class="hr_gray">
                 <div class="product_detail">
-                    <h3>임대정보</h3>
+                <h3><i class="fas fa-map-marked-alt product_icon"></i>임대정보</h3>
                     <p>대여가능기간:
                         <?=$productRow["start_date"];?>
                         ~
@@ -107,7 +107,7 @@
                 </div>
                 <hr class="hr_gray">
                 <div class="product_detail">
-                    <h3>대여인정보</h3>
+                    <h3><i class="far fa-address-card product_icon"></i>대여인정보</h3>
                     <p>대여인:
                         <?=$productRow["member_name"];?></p>
                     <p>대여인 연락처:
@@ -117,7 +117,7 @@
                 </div>
                 <hr class="hr_gray">
                 <div class="product_detail">
-                    <h3>상세내용</h3>
+                    <h3><i class="fas fa-info-circle product_icon"></i>상세내용</h3>
                     <p><?=$productRow["detail"];?></p>
                 </div>
             </div>
@@ -143,7 +143,7 @@
 <section id="product_comment" class="section">
     <div class="section_container">
         <div class="product_title">
-            <h2>댓글</h2>
+            <h2><i class="far fa-comments product_icon"></i>댓글</h2>
         </div>
 
     <?php
