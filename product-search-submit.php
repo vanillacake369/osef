@@ -1,24 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>억새풀</title>
-</head>
-
-<body>        
-
-<?php    
-
-    include_once("header.html"); 
-
+<?php
     //현재 페이지탐색
     $cokiekey = $_POST["category"];
     if(isset($_POST["searchWord"])){
@@ -39,6 +21,108 @@
     } else {
         $currentPage = $_COOKIE["productPageCookie".$cokiekey];
     }
+?>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin="crossorigin">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Gugi&display=swap"
+            rel="stylesheet">
+        <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
+        <script src="modal.js" defer="defer"></script>
+        <title>억새풀</title>
+    </head>
+    
+    <body>    
+    <?php include_once("header.html"); ?>
+        <section id="product" class="section">
+            <div class="section_container">
+                <ul class="product_list">
+                    <li>트렉터</li>
+                    <li>콤바인</li>
+                    <li>이양기</li>
+                    <li>로터리</li>
+                    <li>축산기계</li>
+                    <li>포크레인</li>
+                    <li>기타</li>
+                    <li>
+                        <button class="openBtn">필터</button>
+                        <div id="modal" class="hidden">
+                            <div class="modal_bg"></div>
+                            <div class="modalBox">
+                                <form
+                                    name="ProductForm"
+                                    method="post"
+                                    action="product-search-submit.php"
+                                    enctype="multipart/form-data">
+                                    <div class="flex">
+                                        <p>모델명</p>
+                                        <div class="input_row" style="width: 40%; margin: 30px;">
+                                            <input
+                                                type="text"
+                                                name="searchWord"
+                                                class="input_text"
+                                                placeholder="모델명을 입력해주세요">
+                                        </div>
+                                    </div>
+
+                                    <div class="flex">
+                                        <p>종류</p>
+                                        <select
+                                            class="input_row"
+                                            style="width: 40%; margin: 30px; margin-left: 40px;"
+                                            name="category">
+                                            <option value="all">전체</option>
+                                            <option value="etc">기타</option>
+                                            <option value="tractor">트랙터</option>
+                                            <option value="combine">콤바인</option>
+                                            <option value="rice_transplanter">이양기</option>
+                                            <option value="rotary">로터리</option>
+                                            <option value="livestock_machinery">축산기계</option>
+                                            <option value="forklift">포크레인</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="flex">
+                                        <p>시작일</p>
+                                        <div class="input_row" style="width: 40%; margin: 30px;">
+                                            <input type="date" name="sDate" class="input_text" placeholder="">
+                                        </div>
+                                    </div>
+
+                                    <div class="flex">
+                                        <p>종료일</p>
+                                        <div class="input_row" style="width: 40%; margin: 30px;">
+                                            <input type="date" name="eDate" class="input_text" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="flex">
+                                        <button type="button" class="lend_answer_back" style="margin: 30px;">
+                                            <p>닫기</p>
+                                        </button>
+                                        <button
+                                            type="submit"
+                                            class="lend_answer_back"
+                                            value="모델 검색"
+                                            style="margin: 30px;">
+                                            <p>검색</p>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    <?php   
 
     require_once "dbcon.php";
     $conn -> set_charset('utf8mb4');
@@ -53,13 +137,13 @@
         $sql1 .= "category = \"".$_POST["category"]."\" AND ";
         $sql2 .= "category = \"".$_POST["category"]."\" AND ";
     }
-    if($_POST["dDate"] != null){
-        $sql1 .= "start_date < str_to_date('".$_POST["dDate"]."', '%Y-%m-%d') AND end_date > str_to_date('".$_POST["dDate"]."', '%Y-%m-%d') AND ";
-        $sql2 .= "start_date < str_to_date('".$_POST["dDate"]."', '%Y-%m-%d') AND end_date > str_to_date('".$_POST["dDate"]."', '%Y-%m-%d') AND ";
-    }
     if($_POST["sDate"] != null){
-        $sql1 .= "start_date < str_to_date('".$_POST["sDate"]."', '%Y-%m-%d') AND end_date > str_to_date('".$_POST["eDate"]."', '%Y-%m-%d') AND ";
-        $sql2 .= "start_date < str_to_date('".$_POST["sDate"]."', '%Y-%m-%d') AND end_date > str_to_date('".$_POST["eDate"]."', '%Y-%m-%d') AND ";
+        $sql1 .= "start_date < str_to_date('".$_POST["sDate"]."', '%Y-%m-%d') AND ";
+        $sql2 .= "start_date < str_to_date('".$_POST["sDate"]."', '%Y-%m-%d') AND ";
+    }
+    if($_POST["eDate"] != null){
+        $sql1 .= "end_date > str_to_date('".$_POST["eDate"]."', '%Y-%m-%d') AND ";
+        $sql2 .= "end_date > str_to_date('".$_POST["eDate"]."', '%Y-%m-%d') AND ";
     }
     
     
@@ -94,27 +178,47 @@
     echo ("<h1 > ".$searchResult." 검색결과 </h1>");
     //--------------------------------------------게시물    
    
-    if($result!=NULL){        
-        echo("<div class=\"board__list\" >");
-        echo ("<table border=\"1\" class=\"board__list__table\" style=\"width: 100%;\" >");    
-        echo("<th>대표이미지</th><th>모델</th><th>등록자</th><th>카테고리</th><th>등록일</th>");
+    if($result!=NULL){    
+        echo("
+        <section id=\"product\" class=\"section\">
+        <div class=\"section\"> 
+        ");    
+        // echo("<div class=\"board__list\" >");
+        // echo ("<table border=\"1\" class=\"board__list__table\" style=\"width: 100%;\" >");    
+        // echo("<th>대표이미지</th><th>모델</th><th>등록자</th><th>카테고리</th><th>등록일</th>");
+        $n=0;
         while($row = $result -> fetch_assoc()){
-            echo("<form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\">"); 
-            echo("<tr>");
-            echo("<td> <img src=\"".$row['link']."\" height=\"100px\"> </td>");
-            echo("<td style=\"width: 40%;\" ><input type=\"submit\" value=\"".$row['model']."\" /></td>");
-            echo("<td>".$row['member_name']."</td>");
-            echo("<td>".$korCategory[array_search($row['category'], $engCategory)]."</td>");
-            echo("<td>".$row['upload']."</td>");        
-            echo("<input type=\"hidden\" name=\"productId\" value=\"".$row['id']."\" >");
-            echo("</tr> </form>");                       
+            $n++;            
+            echo("
+            <div class=\"product_list_item\" onclick=\"javascript:document.forms[".$n."].submit()\">
+            <form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\">
+                <input type=\"hidden\" name=\"productId\" value=\"".$row['id']."\" >
+                <img src=\"".$row['link']."\"
+                    class=\"product_list_item_img\">
+                <h3>".$row['model']."</h3>
+                <p>".$korCategory[array_search($row['category'], $engCategory)]."</p>
+                <p>".$row['place']."</p>
+                <p>".$row['start_date']."~".$row['end_date']."</p>
+                <h3>".$row['price']." /박</h3>
+                </form>
+            </div>
+            
+            ");
+
+            // echo("<form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\">"); 
+            // echo("<tr>");
+            // echo("<td> <img src=\"".$row['link']."\" height=\"100px\"> </td>");
+            // echo("<td style=\"width: 40%;\" ><input type=\"submit\" value=\"".$row['model']."\" /></td>");
+            // echo("<td>".$row['member_name']."</td>");
+            // echo("<td>".$korCategory[array_search($row['category'], $engCategory)]."</td>");
+            // echo("<td>".$row['upload']."</td>");        
+            // echo("<input type=\"hidden\" name=\"productId\" value=\"".$row['id']."\" >");
+            // echo("</tr> </form>");                     
         }  
-        echo("</table></div>");
-    }else{
-        echo("<h2>검색결과가 없습니다</h2>");
+        echo("</div></section>");
     }
     $stmt->close();
-    $conn->close();    
+    $conn->close();   
     
     //--------------------------------------------페이지
     
@@ -148,42 +252,58 @@
     }
     echo("</tr> </table> </form> </div>");    
 ?>
-<form name = "ProductForm" method="post" action="product-search-submit.php" enctype="multipart/form-data" > 
-    <table style="width:100%;  border: 1px solid #444444;">
-        <tr>
-        <td style="width:60%;">
-        <p style="display: inline-block; ">카테고리</p>
-            <select style="display: inline-block; width:50%; border:1;  border: 1px solid #444444; margin-top:5px;" name="category" >
-                <option value="all">전체</option>
-                <option value="etc">기타</option>
-                <option value="tractor">트랙터</option>
-                <option value="combine">콤바인</option>
-                <option value="rice_transplanter">이양기</option>
-                <option value="rotary">로터리</option>
-                <option value="livestock_machinery">축산기계</option>
-                <option value="forklift">포크레인</option>
-            </select>
-            <br>
-            <p style="display: inline-block;">모델명</p>
-            <input type="text" name="searchWord" class="searchInput" style="display: inline-block; width:50%;"/> <br>
-        </td>
-        <td>
-            일단위: <input type="date" name="dDate" /> <br>
-            기간단위: 대여시작일 <input type="date" name="sDate" />
-            대여종료일 <input type="date" name="eDate" /> <br>
-            <input type="submit" value="모델 검색" class="searchSubmit" name="submit">
-        </td>
-        </tr>
-    </table>
-</form>
-</div>
+        <form
+            name="ProductForm"
+            method="post"
+            action="product-search-submit.php"
+            enctype="multipart/form-data">
+            <table style="width:100%;  border: 1px solid #444444;">
+                <tr>
+                    <td style="width:60%;">
+                        <p style="display: inline-block; ">카테고리</p>
+                        <select
+                            style="display: inline-block; width:50%; border:1;  border: 1px solid #444444; margin-top:5px;"
+                            name="category">
+                            <option value="all">전체</option>
+                            <option value="etc">기타</option>
+                            <option value="tractor">트랙터</option>
+                            <option value="combine">콤바인</option>
+                            <option value="rice_transplanter">이양기</option>
+                            <option value="rotary">로터리</option>
+                            <option value="livestock_machinery">축산기계</option>
+                            <option value="forklift">포크레인</option>
+                        </select>
+                        <br>
+                        <p style="display: inline-block;">모델명</p>
+                        <input
+                            type="text"
+                            name="searchWord"
+                            class="searchInput"
+                            style="display: inline-block; width:50%;"/>
+                        <br>
+                    </td>
+                    <td>
+                        일단위:
+                        <input type="date" name="dDate"/>
+                        <br>
+                        기간단위: 대여시작일
+                        <input type="date" name="sDate"/>
+                        대여종료일
+                        <input type="date" name="eDate"/>
+                        <br>
+                        <input type="submit" value="모델 검색" class="searchSubmit" name="submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
 
-<?php include_once("footer.html"); ?>
-<script>
-function refresh(page) {
-  document.cookie = ("productPageCookie ="+page);
-  location.reload();
-}
-</script>
+    <?php include_once("footer.html"); ?>
+    <script>
+        function refresh(page) {
+            document.cookie = ("productPageCookie =" + page);
+            location.reload();
+        }
+    </script>
 </body>
 </html>
