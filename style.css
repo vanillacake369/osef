@@ -1101,6 +1101,12 @@ p {
     width: 100%;
 }
 
+.page_table_currentPage {
+    width: 25px;
+    cursor: pointer;   
+    font-weight: var(--weight-bold);
+}
+
 .page_table {
     width: 25px;
     cursor: pointer;    

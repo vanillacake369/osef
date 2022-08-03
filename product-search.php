@@ -190,7 +190,7 @@
         }
     }
 
-    echo("<td class=\"page_table\" >".$currentPage."</td>");
+    echo("<td class=\"page_table_currentPage\" >".$currentPage."</td>");
 
     if(($currentPage+$showingPage)>=$totalPageNum){
         for($i=$currentPage+1;$i<=$totalPageNum;$i++){
