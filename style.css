@@ -1101,6 +1101,15 @@ p {
     width: 100%;
 }
 
+.page_table {
+    width: 25px;
+    cursor: pointer;    
+}
+
+.page_table:hover {
+    font-weight: var(--weight-bold);
+}
+
 
 
 /* docs-register.html  */

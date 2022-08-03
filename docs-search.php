@@ -22,9 +22,9 @@
     if(!isset($_COOKIE["docsPageCookie"])) {
         setcookie("docsPageCookie","1",time()+(600),"/") ; //86400=1day
         $currentPage = 1;
-      } else {
+    } else {
         $currentPage = $_COOKIE["docsPageCookie"];
-      }
+    }
 
     require_once "dbcon.php";
     //전체 페이지수
@@ -39,7 +39,7 @@
     $page = ($currentPage-1)*20;
     $stmt -> execute();
     $result = $stmt -> get_result();
-     
+    
     //--------------------------------------------게시물 
     echo("<div class=\"section\">");
     if($result!=NULL){        
@@ -67,30 +67,29 @@
     $showingPage=4; //앞뒤로 보여지는 페이지 수
     echo("<div class=\"section\">");
     echo("<form method=\"post\" >");
-    echo("<p style=\"display:inline-block\">페이지</p>"); 
-    echo("<table border=\"1\" style=\" display:inline-block; text-align: center;\"  > <tr>");
+    echo("<table style=\" display:inline-block; text-align: center;\"  > <tr>");
     if (($currentPage-$showingPage)<=1){
         for($i=1;$i<$currentPage;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");  
+            echo("<td class=\"page_table\" onclick=\"refresh(".$i.")\">".$i."</td>");  
         }
     }else{
-        echo("<td  onclick=\"refresh(".($currentPage-$showingPage-1).")\" style=\"width:60px; cursor:pointer\" > ... </td>");
+        echo("<td class=\"page_table\" onclick=\"refresh(".($currentPage-$showingPage-1).")\"> ... </td>");
         for($i=$currentPage-$showingPage;$i<$currentPage;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");  
+            echo("<td class=\"page_table\" onclick=\"refresh(".$i.")\">".$i."</td>");  
         }
     }
 
-    echo("<td style=\" width:60px; background-color: aqua;\">".$currentPage."</td>");
+    echo("<td class=\"page_table\">".$currentPage."</td>");
 
     if(($currentPage+$showingPage)>=$totalPageNum){
         for($i=$currentPage+1;$i<=$totalPageNum;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\" width:60px; cursor:pointer\">".$i."</td>");  
+            echo("<td class=\"page_table\" onclick=\"refresh(".$i.")\">".$i."</td>");  
         }
     }else{
         for($i=$currentPage+1;$i<=($currentPage+$showingPage);$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");              
+            echo("<td class=\"page_table\" onclick=\"refresh(".$i.")\">".$i."</td>");              
         }
-        echo("<td  onclick=\"refresh(".($currentPage+$showingPage+1).")\" style=\"width:60px; cursor:pointer\" > ... </td>");
+        echo("<td class=\"page_table\" onclick=\"refresh(".($currentPage+$showingPage+1).")\"> ... </td>");
     }
     echo("</tr> </table> </form> </div>");    
 ?>
@@ -102,8 +101,8 @@
 <?php include_once("footer.html"); ?>
 <script>
 function refresh(page) {
-  document.cookie = ("<?="docsPageCookie"?> ="+page);
-  location.reload();
+    document.cookie = ("<?="docsPageCookie"?> ="+page);
+    location.reload();
 }
 </script>
 </body>

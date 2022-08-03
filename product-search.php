@@ -177,31 +177,30 @@
     //--------------------------------------------페이지
     $showingPage=4; //앞뒤로 보여지는 페이지 수
     echo("<div class=\"section\">");
-    echo("<p style=\"display:inline-block\">페이지</p>"); 
     echo("<form method=\"post\">");
-    echo("<table border=\"1\"> <tr>");
+    echo("<table style=\" display:inline-block; text-align: center;\"> <tr>");
     if (($currentPage-$showingPage)<=1){
         for($i=1;$i<$currentPage;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");  
+            echo("<td class=\"page_table\" onclick=\"refresh(".$i.")\">".$i."</td>");  
         }
     }else{
-        echo("<td  onclick=\"refresh(".($currentPage-$showingPage-1).")\" style=\"width:60px; cursor:pointer\" > ... </td>");
+        echo("<td class=\"page_table\" onclick=\"refresh(".($currentPage-$showingPage-1).")\"> ... </td>");
         for($i=$currentPage-$showingPage;$i<$currentPage;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");  
+            echo("<td class=\"page_table\" onclick=\"refresh(".$i.")\">".$i."</td>");  
         }
     }
 
-    echo("<td style=\" width:60px; background-color: aqua;\">".$currentPage."</td>");
+    echo("<td class=\"page_table\" >".$currentPage."</td>");
 
     if(($currentPage+$showingPage)>=$totalPageNum){
         for($i=$currentPage+1;$i<=$totalPageNum;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\" width:60px; cursor:pointer\">".$i."</td>");  
+            echo("<td class=\"page_table\" onclick=\"refresh(".$i.")\">".$i."</td>");  
         }
     }else{
         for($i=$currentPage+1;$i<=($currentPage+$showingPage);$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");              
+            echo("<td class=\"page_table\" onclick=\"refresh(".$i.")\">".$i."</td>");              
         }
-        echo("<td  onclick=\"refresh(".($currentPage+$showingPage+1).")\" style=\"width:60px; cursor:pointer\" > ... </td>");
+        echo("<td class=\"page_table\" onclick=\"refresh(".($currentPage+$showingPage+1).")\"> ... </td>");
     }
     echo("</tr> </table> </form> </div>");      
 ?>
