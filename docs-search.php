@@ -82,14 +82,18 @@
                     </div>
                 <?php
     //--------------------------------------------게시물 
-    if($result!=NULL){    
-        
+    $n=0;
+    if($result!=NULL){            
         while($row = $result -> fetch_assoc()){ 
+        $n++;     
             echo("
-        <div class=\"docs_box\">
+        <div class=\"docs_box\" onclick=\"javascript:document.forms[".$n."].submit()\">
+        <form method=\"post\" action=\"docs-info.php\" enctype=\"multipart/form-data\" >
                     <h2>제목 : ".$row['title']."</h2>
                     <h4>등록자 : ".$row['member_name']."</h4>
                     <h3>가격 : ".$row['price']."</h3>
+                    <input type=\"hidden\" name=\"docId\" value=\"".$row['id']."\" >
+        </form>                    
         </div>
         ");
         }  
