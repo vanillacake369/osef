@@ -253,7 +253,7 @@
     $page = ($currentPage-1)*20;
     $stmt -> execute();
     $result = $stmt -> get_result();   
-    echo("<div class=\"section\">"); 
+    echo("<div class=\"\">"); 
     
     $engCategory=['tractor','combine','rice_transplanter','rotary','livestock_machinery','forklift','etc','all'];
     $korCategory=['트랙터','콤바인','이양기','로터리','축산기계','포크레인','기타','전체'];    
@@ -264,7 +264,6 @@
     if(isset($_POST["searchWord"])){
     $searchResult.=$_POST["searchWord"];
     }
-    echo ("<h1 > ".$searchResult." 검색결과 </h1>");
     //--------------------------------------------게시물    
 
     if($result!=NULL){    
