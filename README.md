@@ -22,4 +22,4 @@
   
   
   ## 문서
-> https://vanillacake369.notion.site/OSEF-Online-Sharing-Economy-for-Farming-298136138dad444e9bf2a035bb7fc945  
+> https://vanillacake369.notion.site/3b24bdc7916c464cb94fdce394315b92
