@@ -45,6 +45,9 @@
         <section id="product" class="">
             <div class="section_container">
                 <ul class="product_list">
+                <li onclick="location.href='product-search.php'">
+                            <p>전체</p>
+                    </li>
                 <li onclick="document.forms['tractorForm'].submit();">
                         <form
                             name="tractorForm"
