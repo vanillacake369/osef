@@ -1,0 +1,96 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../main.js" defer></script>
+    <title>test</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav id="navbar">
+        <div class="navbar_logo">
+            <a href="index.html"><i class="fas fa-seedling"></i> 억새풀</a>
+        </div>
+        <ul class="navbar_list">
+            <li><a href="product-search.html">임대신청</a></li>
+            <li><a href="lend.html">기계등록</a></li>
+            <li><a href="docs-search.html">자료실</a></li>
+            <li><a href="docs-register.html">자료등록</a></li>
+            <li><a href="introduce.html">회사소개</a></li>
+        </ul>
+        <ul class="navbar_list">
+            <li><a href="login.html">로그인</a></li>
+            <li><a href="signup.html">회원가입</a></li>
+        </ul>
+        <button class="navbar_toggle_btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+
+    <section id="" class="section">
+        <div class="section_container">
+            <div>
+                <div class="doc_title">
+                    <h1>자료실</h1>
+                    <hr class="hr_darkgray">
+                </div>
+                <div class="search_box">
+                    <div class="search_box_page">
+                        <p>페이지 : 1/8</p>
+                        <p>총게시물 : 151</p>
+                    </div>
+                    <div class="search_box_search">
+                        <form name = "docsForm" method="post" action="docs-search-submit.php" enctype="multipart/form-data"> 
+                            <div class="flex">
+                                <div class="input_row">
+                                    <input type="text" name="searchWord" required class="input_text" placeholder="제목 입력해 주세요">
+                                </div>
+                                <input type="submit" value="검색" class="btn_white" name="submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="docs_box">
+                    <h2>제목 : 고구마 디따 크게 만드는 방법</h2>
+                    <h4>등록자 : 타이니팜 고수</h4>
+                    <h3>가격 : 190,000</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- footer -->
+    <footer id="footer">
+        <div class="footer_logo">
+            <div class="navbar_logo">
+                <i class="fas fa-seedling"></i>
+                <a href="index.html">억새풀</a>
+            </div>
+        </div>
+        </div>
+        <div class="footer_text">
+            <p class="footer_text_p">36729 경상북도 안동시 경동로 1375 (송천동) 국립안동대학교 공대1호관 413호 NGN연구실</p>
+            <p class="footer_text_p">TEL : 010-9548-1369 / E-MAIL : w1683111@naver.com</p>
+            <p class="footer_text_p">COPYRIGHT (C)2022 억새풀. ALL RIGHTS RESERVED.</p>
+        </div>
+        <div class="footer_box">
+            <ul class="footer_list">
+                <li><a href="introduce.html" class="footer_text_p">회사소개</a></li>
+                <li><a href="conditions.html" class="footer_text_p">이용약관</a></li>
+                <li><a href="user-policy.html" class="footer_text_p">개인정보처리방침</a></li>
+                <li><a href="instruction.html" class="footer_text_p">서비스이용안내</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>
