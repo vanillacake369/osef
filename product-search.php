@@ -221,7 +221,7 @@
 
     if($result!=NULL){    
         echo("
-        <section id=\"product\" class=\"\">
+        <section id=\"product_item\" class=\"\">
         <div class=\"section\"> 
         <div class=\"product_item_wrap\">
         ");
