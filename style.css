@@ -1149,9 +1149,9 @@ p {
     width: 330px;
     height: 480px;
     margin: 12px;
+    margin-bottom: 24px;
     border-radius: 10px;
     cursor: pointer;
-
 }
 
 .product_list_item_img {
