@@ -221,8 +221,9 @@
 
     if($result!=NULL){    
         echo("
-        <section id=\"product\" class=\"section\">
+        <section id=\"product\" class=\"\">
         <div class=\"section\"> 
+        <div class=\"product_item_wrap\">
         ");
         $n=0;
         while($row = $result -> fetch_assoc()){
@@ -244,7 +245,7 @@
             
             ");                    
         }  
-        echo("</div></section>");
+        echo("</div></div></section>");
     }
     $stmt->close();
     $conn->close();
