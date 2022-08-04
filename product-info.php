@@ -81,7 +81,7 @@
 </div>
 
 <section id="detail" class="section">
-    <div class="section_container">
+    <div class="section_container section">
         <div class="product_wrap">
             <div class="product_left">
                 <div class="product_title">
@@ -141,7 +141,7 @@
 
 <!-- section -->
 <section id="product_comment" class="section">
-    <div class="section_container">
+    <div class="section_container section">
         <div class="product_title">
             <h2><i class="far fa-comments product_icon"></i>댓글</h2>
         </div>

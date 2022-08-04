@@ -29,7 +29,7 @@
 
     <body>
         <?php include_once("header.html"); ?>
-        <section id="product" class="section">
+        <section id="product" class="">
             <div class="section_container">
                 <ul class="product_list">
                     <li onclick="document.forms['tractorForm'].submit();">
@@ -42,7 +42,7 @@
                             <input type="hidden" name="searchWord"/>
                             <input type="hidden" name="sDate"/>
                             <input type="hidden" name="eDate"/>
-                            트렉터
+                            <p>트렉터</p>
                         </form>
                     </li>
 
@@ -56,7 +56,7 @@
                             <input type="hidden" name="searchWord"/>
                             <input type="hidden" name="sDate"/>
                             <input type="hidden" name="eDate"/>
-                            콤바인
+                            <p>콤바인</p>
                         </form>
                     </li>
                     <li onclick="document.forms['rice_transplanter Form'].submit();">
@@ -69,7 +69,7 @@
                             <input type="hidden" name="searchWord"/>
                             <input type="hidden" name="sDate"/>
                             <input type="hidden" name="eDate"/>
-                            이양기
+                            <p>이양기</p>
                         </form>
                     </li>
                     <li onclick="document.forms['rotaryForm'].submit();">
@@ -82,7 +82,7 @@
                             <input type="hidden" name="searchWord"/>
                             <input type="hidden" name="sDate"/>
                             <input type="hidden" name="eDate"/>
-                            로터리
+                            <p>로터리</p>
                         </form>
                     </li>
 
@@ -96,7 +96,7 @@
                             <input type="hidden" name="searchWord"/>
                             <input type="hidden" name="sDate"/>
                             <input type="hidden" name="eDate"/>
-                            축산기계
+                            <p>축산기계</p>
                         </form>
                     </li>
                     <li onclick="document.forms['forkliftForm'].submit();">
@@ -109,7 +109,7 @@
                             <input type="hidden" name="searchWord"/>
                             <input type="hidden" name="sDate"/>
                             <input type="hidden" name="eDate"/>
-                            포크레인
+                            <p>포크레인</p>
                         </form>
                     </li>
                     <li onclick="document.forms['etcForm'].submit();">
@@ -122,7 +122,7 @@
                             <input type="hidden" name="searchWord"/>
                             <input type="hidden" name="sDate"/>
                             <input type="hidden" name="eDate"/>
-                            기타
+                            <p>기타</p>
                         </form>
                     </li>
 
@@ -231,13 +231,14 @@
             <div class=\"product_list_item\" onclick=\" document.forms['productID".$row['id']."'].submit();\">
             <form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\" name=\"productID".$row['id']."\">
                 <input type=\"hidden\" name=\"productId\" value=\"".$row['id']."\" >
-                <img src=\"".$row['link']."\"
-                    class=\"product_list_item_img\">
-                <h3>".$row['model']."</h3>
-                <p>".$korCategory[array_search($row['category'], $engCategory)]."</p>
-                <p>".$row['place']."</p>
-                <p>".$row['start_date']."~".$row['end_date']."</p>
-                <h3>".$row['price']." /박</h3>
+                <img src=\"".$row['link']."\" class=\"product_list_item_img\">
+                <div class=\"product_item_detail\">
+                    <h3>".$row['model']."</h3>
+                    <p>".$korCategory[array_search($row['category'], $engCategory)]."</p>
+                    <p>".$row['place']."</p>
+                    <p>".$row['start_date']."~".$row['end_date']."</p>
+                    <h3>".$row['price']." /박</h3>
+                </div>
                 </form>
             </div>
             

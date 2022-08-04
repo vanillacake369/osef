@@ -35,31 +35,34 @@
     </nav>
 
     <!-- section search -->
-    <section id="product" class="section">
+    <section id="product" class="">
         <div class="section_container">
             <ul class="product_list">
-                <li>트렉터</li>
-                <li>콤바인</li>
-                <li>이양기</li>
-                <li>로터리</li>
-                <li>축산기계</li>
-                <li>포크레인</li>
-                <li>기타</li>
+                <li><p>트렉터</p></li>
+                <li><p>콤바인</p></li>
+                <li><p>이양기</p></li>
+                <li><p>로터리</p></li>
+                <li><p>축산기계</p></li>
+                <li><p>포크레인</p></li>
+                <li><p>기타</p></li>
                 <li><button class="openBtn">필터</button>
                     <div id="modal" class="hidden">
                         <div class="modal_bg"></div>
                         <div class="modalBox">
-                            <form name="ProductForm" method="post" action="product-search-submit.php" enctype="multipart/form-data">
+                            <form name="ProductForm" method="post" action="product-search-submit.php"
+                                enctype="multipart/form-data">
                                 <div class="flex">
                                     <p>모델명</p>
                                     <div class="input_row" style="width: 40%; margin: 30px;">
-                                        <input type="text" name="searchWord" class="input_text" placeholder="모델명을 입력해주세요">
+                                        <input type="text" name="searchWord" class="input_text"
+                                            placeholder="모델명을 입력해주세요">
                                     </div>
                                 </div>
 
-                                <div class="flex">                                    
+                                <div class="flex">
                                     <p>종류</p>
-                                    <select class="input_row" style="width: 40%; margin: 30px; margin-left: 40px;" name="category">
+                                    <select class="input_row" style="width: 40%; margin: 30px; margin-left: 40px;"
+                                        name="category">
                                         <option value="all">전체</option>
                                         <option value="etc">기타</option>
                                         <option value="tractor">트랙터</option>
@@ -70,14 +73,14 @@
                                         <option value="forklift">포크레인</option>
                                     </select>
                                 </div>
-                    
+
                                 <div class="flex">
                                     <p>시작일</p>
                                     <div class="input_row" style="width: 40%; margin: 30px;">
                                         <input type="date" name="sDate" class="input_text" placeholder="">
                                     </div>
                                 </div>
-                    
+
                                 <div class="flex">
                                     <p>종료일</p>
                                     <div class="input_row" style="width: 40%; margin: 30px;">
@@ -101,58 +104,152 @@
     </section>
 
     <!-- section product -->
-    <section id="product" class="section">
+    <section id="product_item" class="">
         <div class="section">
-            <div class="product_list_item" onclick="location.href='#';">
-                <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
-                    class="product_list_item_img">
-                <h3>트렉터</h3>
-                <p>종류</p>
-                <p>안동시 송천1길 145-3</p>
-                <p>8월 1일~10일</p>
-                <h3>가격/박</h3>
-            </div>
+            <div class="product_item_wrap">
+                <div class="product_list_item" onclick="location.href='#';">
+                    <img src="../img/보트.jpg" class="product_list_item_img">
+                    <div class="product_item_detail">
+                        <h3>트렉터</h3>
+                        <p>종류</p>
+                        <p>안동시 송천1길 145-3</p>
+                        <p>8월 1일~10일</p>
+                        <h3>가격/박</h3>
+                    </div>
+                </div>
 
-            <div class="product_list_item" onclick="location.href='#';">
-                <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
-                    class="product_list_item_img">
-                <h3>트렉터</h3>
-                <p>종류</p>
-                <p>안동시 송천1길 145-3</p>
-                <p>8월 1일~10일</p>
-                <h3>가격/박</h3>
-            </div>
+                <div class="product_list_item" onclick="location.href='#';">
+                    <img src="../img/보트.jpg" class="product_list_item_img">
+                    <div class="product_item_detail">
+                        <h3>트렉터</h3>
+                        <p>종류</p>
+                        <p>안동시 송천1길 145-3</p>
+                        <p>8월 1일~10일</p>
+                        <h3>가격/박</h3>
+                    </div>
+                </div>
 
-            <div class="product_list_item" onclick="location.href='#';">
-                <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
-                    class="product_list_item_img">
-                <h3>트렉터</h3>
-                <p>종류</p>
-                <p>안동시 송천1길 145-3</p>
-                <p>8월 1일~10일</p>
-                <h3>가격/박</h3>
-            </div>
+                <div class="product_list_item" onclick="location.href='#';">
+                    <img src="../img/벼.jpg" class="product_list_item_img">
+                    <div class="product_item_detail">
+                        <h3>트렉터</h3>
+                        <p>종류</p>
+                        <p>안동시 송천1길 145-3</p>
+                        <p>8월 1일~10일</p>
+                        <h3>가격/박</h3>
+                    </div>
+                </div>
 
-            <div class="product_list_item" onclick="location.href='#';">
-                <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
-                    class="product_list_item_img">
-                <h3>트렉터</h3>
-                <p>종류</p>
-                <p>안동시 송천1길 145-3</p>
-                <p>8월 1일~10일</p>
-                <h3>가격/박</h3>
-            </div>
+                <div class="product_list_item" onclick="location.href='#';">
+                    <img src="../img/보트.jpg" class="product_list_item_img">
+                    <div class="product_item_detail">
+                        <h3>트렉터</h3>
+                        <p>종류</p>
+                        <p>안동시 송천1길 145-3</p>
+                        <p>8월 1일~10일</p>
+                        <h3>가격/박</h3>
+                    </div>
+                </div>
 
-            <div class="product_list_item" onclick="location.href='#';">
-                <img src="https://www.yanmar.com/ltc/kr/agri/img/d3da6c6016/img_index_01.jpg"
-                    class="product_list_item_img">
-                <h3>트렉터</h3>
-                <p>종류</p>
-                <p>안동시 송천1길 145-3</p>
-                <p>8월 1일~10일</p>
-                <h3>가격/박</h3>
-            </div>
+                <div class="product_list_item" onclick="location.href='#';">
+                    <img src="../img/보트.jpg" class="product_list_item_img">
+                    <div class="product_item_detail">
+                        <h3>트렉터</h3>
+                        <p>종류</p>
+                        <p>안동시 송천1길 145-3</p>
+                        <p>8월 1일~10일</p>
+                        <h3>가격/박</h3>
+                    </div>
+                </div>
 
+                <div class="product_list_item" onclick="location.href='#';">
+                    <img src="../img/보트.jpg" class="product_list_item_img">
+                    <div class="product_item_detail">
+                        <h3>트렉터</h3>
+                        <p>종류</p>
+                        <p>안동시 송천1길 145-3</p>
+                        <p>8월 1일~10일</p>
+                        <h3>가격/박</h3>
+                    </div>
+                </div>
+
+                <div class="product_list_item" onclick="location.href='#';">
+                    <img src="../img/보트.jpg" class="product_list_item_img">
+                    <div class="product_item_detail">
+                        <h3>트렉터</h3>
+                        <p>종류</p>
+                        <p>안동시 송천1길 145-3</p>
+                        <p>8월 1일~10일</p>
+                        <h3>가격/박</h3>
+                    </div>
+                </div>
+
+                <div class="product_list_item" onclick="location.href='#';">
+                    <img src="../img/보트.jpg" class="product_list_item_img">
+                    <div class="product_item_detail">
+                        <h3>트렉터</h3>
+                        <p>종류</p>
+                        <p>안동시 송천1길 145-3</p>
+                        <p>8월 1일~10일</p>
+                        <h3>가격/박</h3>
+                    </div>
+                </div>
+
+                <div class="product_list_item" onclick="location.href='#';">
+                    <img src="../img/보트.jpg" class="product_list_item_img">
+                    <div class="product_item_detail">
+                        <h3>트렉터</h3>
+                        <p>종류</p>
+                        <p>안동시 송천1길 145-3</p>
+                        <p>8월 1일~10일</p>
+                        <h3>가격/박</h3>
+                    </div>
+                </div>
+
+                <div class="product_list_item" onclick="location.href='#';">
+                    <img src="../img/농부.jpg" class="product_list_item_img">
+                    <div class="product_item_detail">
+                        <h3>트렉터</h3>
+                        <p>종류</p>
+                        <p>안동시 송천1길 145-3</p>
+                        <p>8월 1일~10일</p>
+                        <h3>가격/박</h3>
+                    </div>
+                </div>
+
+                <div class="product_list_item" onclick="location.href='#';">
+                    <img src="../img/농부.jpg" class="product_list_item_img">
+                    <div class="product_item_detail">
+                        <h3>트렉터</h3>
+                        <p>종류</p>
+                        <p>안동시 송천1길 145-3</p>
+                        <p>8월 1일~10일</p>
+                        <h3>가격/박</h3>
+                    </div>
+                </div>
+
+                <div class="product_list_item" onclick="location.href='#';">
+                    <img src="../img/벼.jpg" class="product_list_item_img">
+                    <div class="product_item_detail">
+                        <h3>트렉터</h3>
+                        <p>종류</p>
+                        <p>안동시 송천1길 145-3</p>
+                        <p>8월 1일~10일</p>
+                        <h3>가격/박</h3>
+                    </div>
+                </div>
+
+                <div class="product_list_item" onclick="location.href='#';">
+                    <img src="../img/벼.jpg" class="product_list_item_img">
+                    <div class="product_item_detail">
+                        <h3>트렉터</h3>
+                        <p>종류</p>
+                        <p>안동시 송천1길 145-3</p>
+                        <p>8월 1일~10일</p>
+                        <h3>가격/박</h3>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
