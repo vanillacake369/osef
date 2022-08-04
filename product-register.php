@@ -60,8 +60,7 @@ include_once "check-session.php";
         $sql="INSERT INTO product(category,start_date,end_date,detail,member_id,member_phone,member_email,member_name,place,price,maker,make_year,model)
         VALUE (?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id;";
         $stmt = $conn -> prepare($sql);
-        $stmt -> bind_param("sssssssssisss", $_POST['category'],$_POST['startDate'],$_POST['endDate'],$_POST['detail'],$id,$phone,$email,$name,$_POST['adress'],$_POST['price'],$_POST['maker'],$_POST['makeDate'],$_POST['model']);            
-        print($_POST['detail']."+".$_POST['startDate']."+".$_POST['endDate']."+".$_POST['detail']."+".$id."+".$phone."+".$email."+".$name."+".$_POST['adress']."+".$_POST['price']."+".$_POST['maker']."+".$_POST['makeDate']."+".$_POST['model']);            
+        $stmt -> bind_param("sssssssssisss", $_POST['category'],$_POST['startDate'],$_POST['endDate'],$_POST['detail'],$id,$phone,$email,$name,$_POST['adress'],$_POST['price'],$_POST['maker'],$_POST['makeDate'],$_POST['model']);                    
         $stmt -> execute();
         $result = $stmt -> get_result();
 
