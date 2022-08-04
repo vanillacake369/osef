@@ -87,8 +87,8 @@
         while($row = $result -> fetch_assoc()){ 
         $n++;     
             echo("
-        <div class=\"docs_box\" onclick=\"javascript:document.forms[".$n."].submit()\">
-        <form method=\"post\" action=\"docs-info.php\" enctype=\"multipart/form-data\" >
+        <div class=\"docs_box\" onclick=\"document.forms['docID".$row['id']."'].submit();\">
+        <form method=\"post\" action=\"docs-info.php\" enctype=\"multipart/form-data\" name=\"docID".$row['id']."\">
                     <h2>제목 : ".$row['title']."</h2>
                     <h4>등록자 : ".$row['member_name']."</h4>
                     <h3>가격 : ".$row['price']."</h3>
@@ -136,15 +136,6 @@
 ?>
                 </div>
             </section>
-            <form
-                name="docsForm"
-                method="post"
-                action="docs-search-submit.php"
-                enctype="multipart/form-data"
-                class="section">
-                <input type="text" name="searchWord" required="required" class="searchInput"/>
-                <input type="submit" value="검색" class="searchSubmit" name="submit">
-            </form>
         </div>
         <?php include_once("footer.html"); ?>
         <script>
