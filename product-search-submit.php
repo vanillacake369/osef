@@ -45,13 +45,99 @@
         <section id="product" class="section">
             <div class="section_container">
                 <ul class="product_list">
-                    <li>트렉터</li>
-                    <li>콤바인</li>
-                    <li>이양기</li>
-                    <li>로터리</li>
-                    <li>축산기계</li>
-                    <li>포크레인</li>
-                    <li>기타</li>
+                <li onclick="document.forms['tractorForm'].submit();">
+                        <form
+                            name="tractorForm"
+                            method="post"
+                            action="product-search-submit.php"
+                            enctype="multipart/form-data">
+                            <input type="hidden" name="category" value="tractor">
+                            <input type="hidden" name="searchWord"/>
+                            <input type="hidden" name="sDate"/>
+                            <input type="hidden" name="eDate"/>
+                            트렉터
+                        </form>
+                    </li>
+
+                    <li onclick="document.forms['combineForm'].submit();">
+                        <form
+                            name="combineForm"
+                            method="post"
+                            action="product-search-submit.php"
+                            enctype="multipart/form-data">
+                            <input type="hidden" name="category" value="combine">
+                            <input type="hidden" name="searchWord"/>
+                            <input type="hidden" name="sDate"/>
+                            <input type="hidden" name="eDate"/>
+                            콤바인
+                        </form>
+                    </li>
+                    <li onclick="document.forms['rice_transplanter Form'].submit();">
+                        <form
+                            name="rice_transplanter Form"
+                            method="post"
+                            action="product-search-submit.php"
+                            enctype="multipart/form-data">
+                            <input type="hidden" name="category" value="rice_transplanter">
+                            <input type="hidden" name="searchWord"/>
+                            <input type="hidden" name="sDate"/>
+                            <input type="hidden" name="eDate"/>
+                            이양기
+                        </form>
+                    </li>
+                    <li onclick="document.forms['rotaryForm'].submit();">
+                        <form
+                            name="rotaryForm"
+                            method="post"
+                            action="product-search-submit.php"
+                            enctype="multipart/form-data">
+                            <input type="hidden" name="category" value="rotary">
+                            <input type="hidden" name="searchWord"/>
+                            <input type="hidden" name="sDate"/>
+                            <input type="hidden" name="eDate"/>
+                            로터리
+                        </form>
+                    </li>
+
+                    <li onclick="document.forms['livestock_machineryForm'].submit();">
+                        <form
+                            name="livestock_machineryForm"
+                            method="post"
+                            action="product-search-submit.php"
+                            enctype="multipart/form-data">
+                            <input type="hidden" name="category" value="livestock_machinery">
+                            <input type="hidden" name="searchWord"/>
+                            <input type="hidden" name="sDate"/>
+                            <input type="hidden" name="eDate"/>
+                            축산기계
+                        </form>
+                    </li>
+                    <li onclick="document.forms['forkliftForm'].submit();">
+                        <form
+                            name="forkliftForm"
+                            method="post"
+                            action="product-search-submit.php"
+                            enctype="multipart/form-data">
+                            <input type="hidden" name="category" value="forklift">
+                            <input type="hidden" name="searchWord"/>
+                            <input type="hidden" name="sDate"/>
+                            <input type="hidden" name="eDate"/>
+                            포크레인
+                        </form>
+                    </li>
+                    <li onclick="document.forms['etcForm'].submit();">
+                        <form
+                            name="etcForm"
+                            method="post"
+                            action="product-search-submit.php"
+                            enctype="multipart/form-data">
+                            <input type="hidden" name="category" value="etc">
+                            <input type="hidden" name="searchWord"/>
+                            <input type="hidden" name="sDate"/>
+                            <input type="hidden" name="eDate"/>
+                            기타
+                        </form>
+                    </li>
                     <li>
                         <button class="openBtn">필터</button>
                         <div id="modal" class="hidden">
@@ -182,16 +268,13 @@
         echo("
         <section id=\"product\" class=\"section\">
         <div class=\"section\"> 
-        ");    
-        // echo("<div class=\"board__list\" >");
-        // echo ("<table border=\"1\" class=\"board__list__table\" style=\"width: 100%;\" >");    
-        // echo("<th>대표이미지</th><th>모델</th><th>등록자</th><th>카테고리</th><th>등록일</th>");
+        ");
         $n=0;
         while($row = $result -> fetch_assoc()){
             $n++;            
             echo("
-            <div class=\"product_list_item\" onclick=\"javascript:document.forms[".$n."].submit()\">
-            <form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\">
+            <div class=\"product_list_item\" onclick=\" document.forms['productID".$row['id']."'].submit();\">
+            <form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\" name=\"productID".$row['id']."\"]>
                 <input type=\"hidden\" name=\"productId\" value=\"".$row['id']."\" >
                 <img src=\"".$row['link']."\"
                     class=\"product_list_item_img\">
@@ -203,17 +286,7 @@
                 </form>
             </div>
             
-            ");
-
-            // echo("<form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\">"); 
-            // echo("<tr>");
-            // echo("<td> <img src=\"".$row['link']."\" height=\"100px\"> </td>");
-            // echo("<td style=\"width: 40%;\" ><input type=\"submit\" value=\"".$row['model']."\" /></td>");
-            // echo("<td>".$row['member_name']."</td>");
-            // echo("<td>".$korCategory[array_search($row['category'], $engCategory)]."</td>");
-            // echo("<td>".$row['upload']."</td>");        
-            // echo("<input type=\"hidden\" name=\"productId\" value=\"".$row['id']."\" >");
-            // echo("</tr> </form>");                     
+            ");              
         }  
         echo("</div></section>");
     }
@@ -224,78 +297,33 @@
     
     $showingPage=4; //앞뒤로 보여지는 페이지 수
     echo("<div class=\"section\">");
-    echo("<form method=\"post\" >");
-    echo("<p style=\"display:inline-block\">페이지</p>"); 
-    echo("<table border=\"1\" style=\" display:inline-block; text-align: center;\"  > <tr>");
+    echo("<form method=\"post\">");
+    echo("<table style=\" display:inline-block; text-align: center;\"> <tr>");
     if (($currentPage-$showingPage)<=1){
         for($i=1;$i<$currentPage;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");  
+            echo("<td class=\"page_table\" onclick=\"refresh(".$i.")\">".$i."</td>");  
         }
     }else{
-        echo("<td  onclick=\"refresh(".($currentPage-$showingPage-1).")\" style=\"width:60px; cursor:pointer\" > ... </td>");
+        echo("<td class=\"page_table\" onclick=\"refresh(".($currentPage-$showingPage-1).")\"> ... </td>");
         for($i=$currentPage-$showingPage;$i<$currentPage;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");  
+            echo("<td class=\"page_table\" onclick=\"refresh(".$i.")\">".$i."</td>");  
         }
     }
 
-    echo("<td style=\" width:60px; background-color: aqua;\">".$currentPage."</td>");
+    echo("<td class=\"page_table_currentPage\" >".$currentPage."</td>");
 
     if(($currentPage+$showingPage)>=$totalPageNum){
         for($i=$currentPage+1;$i<=$totalPageNum;$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\" width:60px; cursor:pointer\">".$i."</td>");  
+            echo("<td class=\"page_table\" onclick=\"refresh(".$i.")\">".$i."</td>");  
         }
     }else{
         for($i=$currentPage+1;$i<=($currentPage+$showingPage);$i++){
-            echo("<td onclick=\"refresh(".$i.")\" style=\"width:60px; cursor:pointer\">".$i."</td>");              
+            echo("<td class=\"page_table\" onclick=\"refresh(".$i.")\">".$i."</td>");              
         }
-        echo("<td  onclick=\"refresh(".($currentPage+$showingPage+1).")\" style=\"width:60px; cursor:pointer\" > ... </td>");
+        echo("<td class=\"page_table\" onclick=\"refresh(".($currentPage+$showingPage+1).")\"> ... </td>");
     }
-    echo("</tr> </table> </form> </div>");    
-?>
-        <form
-            name="ProductForm"
-            method="post"
-            action="product-search-submit.php"
-            enctype="multipart/form-data">
-            <table style="width:100%;  border: 1px solid #444444;">
-                <tr>
-                    <td style="width:60%;">
-                        <p style="display: inline-block; ">카테고리</p>
-                        <select
-                            style="display: inline-block; width:50%; border:1;  border: 1px solid #444444; margin-top:5px;"
-                            name="category">
-                            <option value="all">전체</option>
-                            <option value="etc">기타</option>
-                            <option value="tractor">트랙터</option>
-                            <option value="combine">콤바인</option>
-                            <option value="rice_transplanter">이양기</option>
-                            <option value="rotary">로터리</option>
-                            <option value="livestock_machinery">축산기계</option>
-                            <option value="forklift">포크레인</option>
-                        </select>
-                        <br>
-                        <p style="display: inline-block;">모델명</p>
-                        <input
-                            type="text"
-                            name="searchWord"
-                            class="searchInput"
-                            style="display: inline-block; width:50%;"/>
-                        <br>
-                    </td>
-                    <td>
-                        일단위:
-                        <input type="date" name="dDate"/>
-                        <br>
-                        기간단위: 대여시작일
-                        <input type="date" name="sDate"/>
-                        대여종료일
-                        <input type="date" name="eDate"/>
-                        <br>
-                        <input type="submit" value="모델 검색" class="searchSubmit" name="submit">
-                    </td>
-                </tr>
-            </table>
-        </form>
+    echo("</tr> </table> </form> </div>");     
+?>        
     </div>
 
     <?php include_once("footer.html"); ?>
