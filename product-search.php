@@ -229,7 +229,7 @@
             $n++;            
             echo("
             <div class=\"product_list_item\" onclick=\" document.forms['productID".$row['id']."'].submit();\">
-            <form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\" name=\"productID".$row['id']."\"]>
+            <form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\" name=\"productID".$row['id']."\">
                 <input type=\"hidden\" name=\"productId\" value=\"".$row['id']."\" >
                 <img src=\"".$row['link']."\"
                     class=\"product_list_item_img\">
