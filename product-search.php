@@ -26,19 +26,106 @@
         <script src="modal.js" defer="defer"></script>
         <title>억새풀</title>
     </head>
-    
-    <body>    
-    <?php include_once("header.html"); ?>
+
+    <body>
+        <?php include_once("header.html"); ?>
         <section id="product" class="section">
             <div class="section_container">
                 <ul class="product_list">
-                    <li>트렉터</li>
-                    <li>콤바인</li>
-                    <li>이양기</li>
-                    <li>로터리</li>
-                    <li>축산기계</li>
-                    <li>포크레인</li>
-                    <li>기타</li>
+                    <li onclick="document.forms['tractorForm'].submit();">
+                        <form
+                            name="tractorForm"
+                            method="post"
+                            action="product-search-submit.php"
+                            enctype="multipart/form-data">
+                            <input type="hidden" name="category" value="tractor">
+                            <input type="hidden" name="searchWord"/>
+                            <input type="hidden" name="sDate"/>
+                            <input type="hidden" name="eDate"/>
+                            트렉터
+                        </form>
+                    </li>
+
+                    <li onclick="document.forms['combineForm'].submit();">
+                        <form
+                            name="combineForm"
+                            method="post"
+                            action="product-search-submit.php"
+                            enctype="multipart/form-data">
+                            <input type="hidden" name="category" value="combine">
+                            <input type="hidden" name="searchWord"/>
+                            <input type="hidden" name="sDate"/>
+                            <input type="hidden" name="eDate"/>
+                            콤바인
+                        </form>
+                    </li>
+                    <li onclick="document.forms['rice_transplanter Form'].submit();">
+                        <form
+                            name="rice_transplanter Form"
+                            method="post"
+                            action="product-search-submit.php"
+                            enctype="multipart/form-data">
+                            <input type="hidden" name="category" value="rice_transplanter">
+                            <input type="hidden" name="searchWord"/>
+                            <input type="hidden" name="sDate"/>
+                            <input type="hidden" name="eDate"/>
+                            이양기
+                        </form>
+                    </li>
+                    <li onclick="document.forms['rotaryForm'].submit();">
+                        <form
+                            name="rotaryForm"
+                            method="post"
+                            action="product-search-submit.php"
+                            enctype="multipart/form-data">
+                            <input type="hidden" name="category" value="rotary">
+                            <input type="hidden" name="searchWord"/>
+                            <input type="hidden" name="sDate"/>
+                            <input type="hidden" name="eDate"/>
+                            로터리
+                        </form>
+                    </li>
+
+                    <li onclick="document.forms['livestock_machineryForm'].submit();">
+                        <form
+                            name="livestock_machineryForm"
+                            method="post"
+                            action="product-search-submit.php"
+                            enctype="multipart/form-data">
+                            <input type="hidden" name="category" value="livestock_machinery">
+                            <input type="hidden" name="searchWord"/>
+                            <input type="hidden" name="sDate"/>
+                            <input type="hidden" name="eDate"/>
+                            축산기계
+                        </form>
+                    </li>
+                    <li onclick="document.forms['forkliftForm'].submit();">
+                        <form
+                            name="forkliftForm"
+                            method="post"
+                            action="product-search-submit.php"
+                            enctype="multipart/form-data">
+                            <input type="hidden" name="category" value="forklift">
+                            <input type="hidden" name="searchWord"/>
+                            <input type="hidden" name="sDate"/>
+                            <input type="hidden" name="eDate"/>
+                            포크레인
+                        </form>
+                    </li>
+                    <li onclick="document.forms['etcForm'].submit();">
+                        <form
+                            name="etcForm"
+                            method="post"
+                            action="product-search-submit.php"
+                            enctype="multipart/form-data">
+                            <input type="hidden" name="category" value="etc">
+                            <input type="hidden" name="searchWord"/>
+                            <input type="hidden" name="sDate"/>
+                            <input type="hidden" name="eDate"/>
+                            기타
+                        </form>
+                    </li>
+
                     <li>
                         <button class="openBtn">필터</button>
                         <div id="modal" class="hidden">
@@ -136,16 +223,13 @@
         echo("
         <section id=\"product\" class=\"section\">
         <div class=\"section\"> 
-        ");    
-        // echo("<div class=\"board__list\" >");
-        // echo ("<table border=\"1\" class=\"board__list__table\" style=\"width: 100%;\" >");    
-        // echo("<th>대표이미지</th><th>모델</th><th>등록자</th><th>카테고리</th><th>등록일</th>");
+        ");
         $n=0;
         while($row = $result -> fetch_assoc()){
             $n++;            
             echo("
-            <div class=\"product_list_item\" onclick=\"javascript:document.forms[".$n."].submit()\">
-            <form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\">
+            <div class=\"product_list_item\" onclick=\" document.forms['productID".$row['id']."'].submit();\">
+            <form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\" name=\"productID".$row['id']."\"]>
                 <input type=\"hidden\" name=\"productId\" value=\"".$row['id']."\" >
                 <img src=\"".$row['link']."\"
                     class=\"product_list_item_img\">
@@ -157,17 +241,7 @@
                 </form>
             </div>
             
-            ");
-
-            // echo("<form method=\"post\" action=\"product-info.php\" enctype=\"multipart/form-data\">"); 
-            // echo("<tr>");
-            // echo("<td> <img src=\"".$row['link']."\" height=\"100px\"> </td>");
-            // echo("<td style=\"width: 40%;\" ><input type=\"submit\" value=\"".$row['model']."\" /></td>");
-            // echo("<td>".$row['member_name']."</td>");
-            // echo("<td>".$korCategory[array_search($row['category'], $engCategory)]."</td>");
-            // echo("<td>".$row['upload']."</td>");        
-            // echo("<input type=\"hidden\" name=\"productId\" value=\"".$row['id']."\" >");
-            // echo("</tr> </form>");                     
+            ");                    
         }  
         echo("</div></section>");
     }
