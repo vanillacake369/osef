@@ -749,7 +749,7 @@ p {
     cursor: pointer;
 }
 
-.docs_box > h2 {
+.docs_box > form > h2 {
     padding: 15px 0 10px 0;
 }
 
