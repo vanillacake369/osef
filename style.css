@@ -174,6 +174,11 @@ p {
     border-top: 1px solid var(--color-dark-white);
 }
 
+.icon {
+    width: 50px;
+    display: block;
+}
+
 /* index.html */
 /* navbar */
 #navbar {
@@ -1090,7 +1095,7 @@ p {
 }
 
 .product_list > li:last-child {
-    padding: 18px;
+    padding: 40px;
 }
 
 #modal {
