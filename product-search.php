@@ -33,7 +33,7 @@
             <div class="section_container">
                 <ul class="product_list">
                 <li onclick="location.href='product-search.php'">
-                            <p><img src="/icon/all.png" class="icon">전체</p>
+                            <p><img src="icon/all.png" class="icon">전체</p>
                     </li>
                     <li onclick="document.forms['tractorForm'].submit();">
                         <form
@@ -45,7 +45,7 @@
                             <input type="hidden" name="searchWord"/>
                             <input type="hidden" name="sDate"/>
                             <input type="hidden" name="eDate"/>
-                            <p><img src="/icon/트렉터.png" class="icon">트렉터</p>
+                            <p><img src="icon/트렉터.png" class="icon">트렉터</p>
                         </form>
                     </li>
 
@@ -59,7 +59,7 @@
                             <input type="hidden" name="searchWord"/>
                             <input type="hidden" name="sDate"/>
                             <input type="hidden" name="eDate"/>
-                            <p><img src="/icon/콤바인.png" class="icon">콤바인</p>
+                            <p><img src="icon/콤바인.png" class="icon">콤바인</p>
                         </form>
                     </li>
                     <li onclick="document.forms['rice_transplanter Form'].submit();">
@@ -72,7 +72,7 @@
                             <input type="hidden" name="searchWord"/>
                             <input type="hidden" name="sDate"/>
                             <input type="hidden" name="eDate"/>
-                            <p><img src="/icon/이양기.png" class="icon">이양기</p>
+                            <p><img src="icon/이양기.png" class="icon">이양기</p>
                         </form>
                     </li>
                     <li onclick="document.forms['rotaryForm'].submit();">
@@ -85,7 +85,7 @@
                             <input type="hidden" name="searchWord"/>
                             <input type="hidden" name="sDate"/>
                             <input type="hidden" name="eDate"/>
-                            <p><img src="/icon/로터리.png" class="icon">로터리</p>
+                            <p><img src="icon/로터리.png" class="icon">로터리</p>
                         </form>
                     </li>
 
@@ -112,7 +112,7 @@
                             <input type="hidden" name="searchWord"/>
                             <input type="hidden" name="sDate"/>
                             <input type="hidden" name="eDate"/>
-                            <p><img src="/icon/포크레인.png" class="icon">포크레인</p>
+                            <p><img src="icon/포크레인.png" class="icon">포크레인</p>
                         </form>
                     </li>
                     <li onclick="document.forms['etcForm'].submit();">
@@ -125,7 +125,7 @@
                             <input type="hidden" name="searchWord"/>
                             <input type="hidden" name="sDate"/>
                             <input type="hidden" name="eDate"/>
-                            <p><img src="/icon/etc.png" class="icon">기타</p>
+                            <p><img src="icon/etc.png" class="icon">기타</p>
                         </form>
                     </li>
 
