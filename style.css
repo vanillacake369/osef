@@ -177,6 +177,7 @@ p {
 .icon {
     width: 50px;
     display: block;
+    cursor: pointer;
 }
 
 /* index.html */
@@ -731,7 +732,7 @@ p {
     display: flex;
 }
 
-.search_box_page > p {
+.search_box_page>p {
     padding-right: 20px;
     font-size: var(--font-micro);
     line-height: 62px;
@@ -754,7 +755,7 @@ p {
     cursor: pointer;
 }
 
-.docs_box > form > h2 {
+.docs_box>form>h2 {
     padding: 15px 0 10px 0;
 }
 
@@ -1086,15 +1087,19 @@ p {
     display: flex;
 }
 
-.product_list > li {
+.product_list>li {
     padding: 20px;
 }
 
-.product_list > li > p {
+.product_list>li>p {
     cursor: pointer;
 }
 
-.product_list > li:last-child {
+.product_list>li>form>p {
+    cursor: pointer;
+}
+
+.product_list>li:last-child {
     padding: 40px;
 }
 
@@ -1139,7 +1144,7 @@ p {
 }
 
 /* section product */
-#product_item > .section {
+#product_item>.section {
     padding-top: 0px;
 }
 
@@ -1170,20 +1175,20 @@ p {
     text-align: left;
 }
 
-.product_item_detail > p {
+.product_item_detail>p {
     margin-top: 2px;
     margin-bottom: 2px;
 }
 
 .page_table_currentPage {
     width: 25px;
-    cursor: pointer;   
+    cursor: pointer;
     font-weight: var(--weight-bold);
 }
 
 .page_table {
     width: 25px;
-    cursor: pointer;    
+    cursor: pointer;
 }
 
 .page_table:hover {
