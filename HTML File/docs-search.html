@@ -1,26 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7395e48b31.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../style.css">
     <script src="../main.js" defer></script>
-
-    <title>억새풀</title>
+    <title>test</title>
 </head>
 
-<header>
-    <meta charset="UTF-8">
-
-</header>
-
 <body>
-
     <!-- navbar -->
     <nav id="navbar">
         <div class="navbar_logo">
@@ -37,37 +28,47 @@
             <li><a href="login.html">로그인</a></li>
             <li><a href="signup.html">회원가입</a></li>
         </ul>
-
         <button class="navbar_toggle_btn">
             <i class="fas fa-bars"></i>
         </button>
     </nav>
 
-    <section class="section">
+
+    <section id="" class="section">
         <div class="section_container">
-            <div class="docsRegiForm">
-                <h1>기술문서 등록</h1>
-                <form name="docsForm" method="post" action="docs-register.php" enctype="multipart/form-data">
-                    <h2>기술문서명</h2>
-                    <input type="text" name="title" class="docsRegister" required />
-                    
-                    <h2>상세내용</h2>
-                    <textarea row="10" cols="30" name="detail" class="docsRegister" required></textarea>
-                    
-                    <div style="text-align: right; padding-bottom: 50px;">
-                        <h2 style="text-align: right; padding-right: 90px;">판매가격</h2>
-                        <input type="number" name="price" class="docsPrice" required />
-                        <h2 style="display: inline;">원</h2>
+            <div>
+                <div class="doc_title">
+                    <h1>자료실</h1>
+                    <hr class="hr_darkgray">
+                </div>
+                <div class="search_box">
+                    <div class="search_box_page">
+                        <p>페이지 : 1/8</p>
+                        <p>총게시물 : 151</p>
                     </div>
-                    
-                    <h2>파일(txt, ppt, pptx, pdf파일 외에는 사용이 불가합니다.)</h2>
-                    <input type="file" name="pdfFile" class="docsRegister" required />
-                    <input type="submit" value="업로드" class="docsSubmit" name="submit" />
-                    <div style="width: 10%;"> </div>
-                </form>
+                    <div class="search_box_search">
+                        <form name = "docsForm" method="post" action="docs-search-submit.php" enctype="multipart/form-data"> 
+                            <div class="flex">
+                                <div class="input_row">
+                                    <input type="text" name="searchWord" required class="input_text" placeholder="제목 입력해 주세요">
+                                </div>
+                                <input type="submit" value="검색" class="btn_white" name="submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="docs_box">
+                    <form>
+                        <h2>제목 : 고구마 디따 크게 만드는 방법</h2>
+                        <h4>등록자 : 타이니팜 고수</h4>
+                        <h3>가격 : 190,000</h3>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
+
+
 
     <!-- footer -->
     <footer id="footer">
